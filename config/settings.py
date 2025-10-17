@@ -41,11 +41,16 @@ INSTALLED_APPS = [
 #     third party apps
     'allauth',
     'allauth.account',
+    'crispy_forms',
+    'crispy_bootstrap5',
 
 #     local apps
     'accounts',
     'pages',
 ]
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
 SITE_ID = 1
 
 MIDDLEWARE = [
@@ -142,6 +147,7 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
+ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
