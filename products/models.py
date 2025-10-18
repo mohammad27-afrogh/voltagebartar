@@ -14,6 +14,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, blank=True)
     sku = models.CharField(max_length=150, unique=True, blank=True, null=True)
+    category = models.Foreignkey('Category', on_delete=models.CASCADE, related_name='products')
     product_type = models.CharField(max_length=4, choices=PRODUCT_TYPE)
     base_price = models.DecimalField(max_digits=10, decimal_places=2)
 
@@ -52,3 +53,8 @@ class Discount(models.Model):
     start_date = models.DateField(default=date.today)
     end_date = models.DateField(default=True)
     is_active = models.BooleanField(default=True)
+
+class Category(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    slug = models.Slugfield(unique=True)
+    parent_catigory = models.Foreignkey('self', on_delete=models.CASCADE, nul=True, blank=True, related_name='subcategories')
