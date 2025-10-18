@@ -18,6 +18,15 @@ class Product(models.Model):
     base_price = models.DecimalField(max_digits=10, decimal_places=2)
 
     @property
+    def is_on_sale(self):
+        today = timezone.now().date()
+        return self.discounts.filter(
+            is_active=True,
+            start_date__lte=today,
+            end_date__gte=today,
+        ).exists()
+
+    @property
     def active_discounts(self):
         today = timezone.now().date()
         return self.discounts.filter(
