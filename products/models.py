@@ -1,6 +1,10 @@
 from django.db import models
-from datetime import date
 from django.utils import timezone
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+from datetime import date
+
 
 class Product(models.Model):
     PRODUCT_TYPE = [
@@ -10,6 +14,12 @@ class Product(models.Model):
         ('SEED', 'Seed'),
         ('SOIL', 'Potting Soil'),
     ]
+    INVENTORY_STATUS = [
+        ('AVA', 'Available'),
+        ('OFS', 'Out_of_stock'),
+        ('PEN', 'Pending'),
+        ('DIS', 'Discontinued'),
+    ]
 
     name = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, blank=True)
@@ -17,6 +27,9 @@ class Product(models.Model):
     category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='products')
     product_type = models.CharField(max_length=4, choices=PRODUCT_TYPE)
     features = models.ForeignKey('Features', on_delete=models.CASCADE, related_name='product')
+    inventory = models.DecimalField(max_digits=4, decimal_places=2, default=0)
+    commodity_status = models.CharField(max_length=3, choices=INVENTORY_STATUS, default='AVA')
+    successful_sales_count = models.PositiveIntegerField(default=0)
     base_price = models.DecimalField(max_digits=10, decimal_places=2)
     short_description = models.CharField(max_length=100)
     description = models.TextField()
@@ -89,3 +102,27 @@ class Features(models.Model):
     ingredients = models.CharField(max_length=250)
     care_tips = models.TextField(blank=True, null=True)
     usage_instructions = models.TextField(blank=True, null=True)
+
+class Order(models.Model):
+    PAYMENT_STATUS = [
+        ('PEN', 'Pending'),
+        ('PAI', 'Paid'),
+        ('CAN', 'Cancelled'),
+        ('RET', 'Returned'),
+    ]
+    status = models.CharField(max_length=3, choices=PAYMENT_STATUS, default='PEN')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class OrderItem(models.Model):
+    order = models.ForeignKey('Order', on_delete=models.CASCADE, related_name='items')
+    product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='order_items')
+    quantity = models.DecimalField(max_digits=5, decimal_places=2)
+
+    @receiver(post_save, sender=Order)
+    def update_successful_sales(sender, instance, **kwargs):
+        if instance.status == 'PAID':
+            for item in instance.items.all():
+                product = item.product
+                product.successful_sales_count += int(item.quantity)
+                product.inventory -= item.quantity
+                product.save()
