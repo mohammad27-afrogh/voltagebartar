@@ -16,7 +16,10 @@ class Product(models.Model):
     sku = models.CharField(max_length=150, unique=True, blank=True, null=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='products')
     product_type = models.CharField(max_length=4, choices=PRODUCT_TYPE)
+    features = models.ForeignKey('Features', on_delete=models.CASCADE, related_name='product')
     base_price = models.DecimalField(max_digits=10, decimal_places=2)
+    short_description = models.CharField(max_length=100)
+    description = models.TextField()
 
     @property
     def is_on_sale(self):
@@ -78,6 +81,11 @@ class Features(models.Model):
     Length = models.BooleanField(max_length=3, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
     Width = models.BooleanField(max_length=3, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
     Height = models.BooleanField(max_length=3, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
+    pot_size = models.BooleanField(max_length=5, blank=True, null=True)
 
     unit = models.CharField(max_length=4, choices=PRODUCT_SOLIDS_UNIT, blank=True, null=True)
     weight = models.CharField(max_length=2, choices=PRODUCT_LIQUID_UNIT, blank=True, null=True)
+
+    ingredients = models.CharField(max_length=250)
+    care_tips = models.TextField(blank=True, null=True)
+    usage_instructions = models.TextField(blank=True, null=True)
