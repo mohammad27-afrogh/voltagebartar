@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from datetime import date
-
+from taggit.managers import TaggableManager
 
 class Product(models.Model):
     PRODUCT_TYPE = [
@@ -33,6 +33,7 @@ class Product(models.Model):
     base_price = models.DecimalField(max_digits=10, decimal_places=2)
     short_description = models.CharField(max_length=100)
     description = models.TextField()
+    tags = TaggableManager(blank=True)
 
     @property
     def is_on_sale(self):
