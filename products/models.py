@@ -27,6 +27,7 @@ class Product(models.Model):
     category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='products')
     product_type = models.CharField(max_length=4, choices=PRODUCT_TYPE)
     features = models.ForeignKey('Features', on_delete=models.CASCADE, related_name='product')
+    brand = models.ForeignKey('Brand', on_delete=models.SET_NULL, blank=True, null=True, related_name='products', verbose_name='brand')
     inventory = models.DecimalField(max_digits=4, decimal_places=2, default=0)
     commodity_status = models.CharField(max_length=3, choices=INVENTORY_STATUS, default='AVA')
     successful_sales_count = models.PositiveIntegerField(default=0)
@@ -127,3 +128,12 @@ class OrderItem(models.Model):
                 product.successful_sales_count += int(item.quantity)
                 product.inventory -= item.quantity
                 product.save()
+
+class Brand(models.Model):
+    name = models.CharField(max_length=100, unique=True, verbose_name='Brand name')
+    description = models.TextField(blank=True, null=True, verbose_name='description')
+
+    class Meta:
+        verbose_name = 'brand'
+        verbose_name_plural = 'brands'
+        ordering = ['name']
