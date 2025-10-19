@@ -14,7 +14,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, blank=True)
     sku = models.CharField(max_length=150, unique=True, blank=True, null=True)
-    category = models.Foreignkey('Category', on_delete=models.CASCADE, related_name='products')
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='products')
     product_type = models.CharField(max_length=4, choices=PRODUCT_TYPE)
     base_price = models.DecimalField(max_digits=10, decimal_places=2)
 
@@ -56,5 +56,28 @@ class Discount(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    slug = models.Slugfield(unique=True)
-    parent_catigory = models.Foreignkey('self', on_delete=models.CASCADE, nul=True, blank=True, related_name='subcategories')
+    slug = models.SlugField(unique=True)
+    parent_category = models.ForeignKey('self', on_delete=models.CASCADE, nul=True, blank=True, related_name='subcategories')
+
+class Features(models.Model):
+    PRODUCT_LIQUID_UNIT = [
+        ('GR', 'Gram'),
+        ('KG', 'KiloGram'),
+
+        ('Ml', 'MilliLiter'),
+        ('L', 'Liter'),
+    ]
+    PRODUCT_SOLIDS_UNIT = [
+        ('Num', 'Number'),
+        ('Pack', 'Packet'),
+    ]
+    PRODUCT_NUMBER_UNIT = [
+        ('Cm', 'SantiMeter'),
+        ('M', 'Meter'),
+    ]
+    Length = models.BooleanField(max_length=3, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
+    Width = models.BooleanField(max_length=3, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
+    Height = models.BooleanField(max_length=3, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
+
+    unit = models.CharField(max_length=4, choices=PRODUCT_SOLIDS_UNIT, blank=True, null=True)
+    weight = models.CharField(max_length=2, choices=PRODUCT_LIQUID_UNIT, blank=True, null=True)
