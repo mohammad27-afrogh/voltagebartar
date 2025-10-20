@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.contrib.auth import get_user_model
 
 from datetime import date
 from taggit.managers import TaggableManager
@@ -68,7 +69,7 @@ class Product(models.Model):
             return self.base_price
 
 class Discount(models.Model):
-    product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='discounts')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='discounts')
     discount_percentage = models.DecimalField(max_digits=5, decimal_places=2)
     start_date = models.DateField(default=date.today)
     end_date = models.DateField(default=True)
@@ -127,8 +128,8 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 class OrderItem(models.Model):
-    order = models.ForeignKey('Order', on_delete=models.CASCADE, related_name='items')
-    product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='order_items')
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='order_items')
     quantity = models.DecimalField(max_digits=5, decimal_places=2)
 
     @receiver(post_save, sender=Order)
@@ -149,3 +150,10 @@ class Brand(models.Model):
         verbose_name_plural = 'brands'
         ordering = ['name']
 
+class Comment(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    time_release_comment = models.DateTimeField(auto_now_add=True)
+    update_to = models.DateTimeField(auto_now=True)
+    body_comment = models.TextField()
+    answer_comment = models.ForeignKey(self, null=True, blank=True)

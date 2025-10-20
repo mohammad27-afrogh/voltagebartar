@@ -37,13 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
 #     third party apps
     'allauth',
     'allauth.account',
     'crispy_forms',
     'crispy_bootstrap5',
-    'taggit'
+    'taggit',
+    'star_ratings',
 
 #     local apps
     'accounts',
@@ -165,3 +167,9 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
+
+STAR_RATINGS_STAR_HEIGHT = 20
+STAR_RATINGS_STAR_WIDTH = 20
+STAR_RATINGS_RERATE = True
+STAR_RATINGS_RANGE = 5
+STAR_RATINGS_ANONYMOUS = True
