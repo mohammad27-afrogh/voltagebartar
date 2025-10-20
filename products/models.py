@@ -117,9 +117,9 @@ class Features(models.Model):
         ('Cm', 'SantiMeter'),
         ('M', 'Meter'),
     ]
-    Length = models.DecimalField(max_length=3, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
-    Width = models.DecimalField(max_length=3, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
-    Height = models.DecimalField(max_length=3, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
+    Length = models.DecimalField(max_digits=3, decimal_places=2, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
+    Width = models.DecimalField(max_digits=3, decimal_places=2, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
+    Height = models.DecimalField(max_digits=3, decimal_places=2, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
     pot_size = models.CharField(max_length=5, blank=True, null=True)
 
     unit = models.CharField(max_length=4, choices=PRODUCT_SOLIDS_UNIT, blank=True, null=True)
@@ -171,7 +171,7 @@ class Comment(models.Model):
     time_release_comment = models.DateTimeField(auto_now_add=True)
     update_to = models.DateTimeField(auto_now=True)
     body_comment = RichTextField()
-    answer_comment = models.ForeignKey('self', null=True, blank=True)
+    answer_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.product
