@@ -35,6 +35,8 @@ class Product(models.Model):
     short_description = models.CharField(max_length=100)
     description = models.TextField()
     tags = TaggableManager(blank=True)
+    date_time_create = models.DateTimeField(auto_now_add=True)
+    date_time_modified = models.DateTimeField(auto_now=True)
 
     @property
     def is_on_sale(self):
@@ -146,3 +148,4 @@ class Brand(models.Model):
         verbose_name = 'brand'
         verbose_name_plural = 'brands'
         ordering = ['name']
+
