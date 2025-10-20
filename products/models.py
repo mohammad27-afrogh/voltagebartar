@@ -40,6 +40,9 @@ class Product(models.Model):
     date_time_create = models.DateTimeField(auto_now_add=True)
     date_time_modified = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.name
+
     @property
     def is_on_sale(self):
         today = timezone.now().date()
@@ -76,10 +79,16 @@ class Discount(models.Model):
     end_date = models.DateField(default=True)
     is_active = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.product
+
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(unique=True)
     parent_category = models.ForeignKey('self', on_delete=models.CASCADE, nul=True, blank=True, related_name='subcategories')
+
+    def __Str__(self):
+        return self.name
 
 class Inventory(models.Model):
     INVENTORY_STATUS = [
@@ -89,6 +98,9 @@ class Inventory(models.Model):
     ]
     status = models.CharField(max_length=3, choices=INVENTORY_STATUS, default='AVA')
     inventory = models.DecimalField(max_digits=4, decimal_places=2, default=0)
+
+    def __str__(self):
+        return self.status
 
 class Features(models.Model):
     PRODUCT_LIQUID_UNIT = [
@@ -118,6 +130,9 @@ class Features(models.Model):
     care_tips = models.RichTextField(blank=True, null=True, verbose_name='care tipe')
     usage_instructions = models.RichTextField(blank=True, null=True, verbose_name='usage instructions')
 
+    def __str__(self):
+        return self.unit
+
 class Order(models.Model):
     PAYMENT_STATUS = [
         ('PEN', 'Pending'),
@@ -128,10 +143,16 @@ class Order(models.Model):
     status = models.CharField(max_length=3, choices=PAYMENT_STATUS, default='PEN')
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.status
+
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='order_items')
     quantity = models.DecimalField(max_digits=5, decimal_places=2)
+
+    def __str__(self):
+        return self.order
 
     @receiver(post_save, sender=Order)
     def update_successful_sales(sender, instance, **kwargs):
@@ -146,6 +167,9 @@ class Brand(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name='Brand name')
     description = models.RichTextField(blank=True, null=True, verbose_name='description')
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = 'brand'
         verbose_name_plural = 'brands'
@@ -158,3 +182,6 @@ class Comment(models.Model):
     update_to = models.DateTimeField(auto_now=True)
     body_comment = models.RichTextField()
     answer_comment = models.ForeignKey(self, null=True, blank=True)
+
+    def __str__(self):
+        return self.product
