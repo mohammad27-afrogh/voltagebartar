@@ -46,12 +46,26 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'taggit',
     'star_ratings',
+    'ckeditor',
 
 #     local apps
     'accounts',
     'pages',
     'products',
 ]
+
+CKEDITOR_CONFIGS = {
+    'default':{
+        'toolbar': 'full',
+        'height': 300,
+        'width': '100%',
+        'extraPlugins': ','.join([
+            'codesnippet',
+            'smiley',
+        ])
+    }
+}
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 

@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 
 from datetime import date
 from taggit.managers import TaggableManager
+from ckeditor.fields import RichTextField
 
 class Product(models.Model):
     PRODUCT_TYPE = [
@@ -34,7 +35,7 @@ class Product(models.Model):
     successful_sales_count = models.PositiveIntegerField(default=0)
     base_price = models.DecimalField(max_digits=10, decimal_places=2)
     short_description = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.RichTextField()
     tags = TaggableManager(blank=True)
     date_time_create = models.DateTimeField(auto_now_add=True)
     date_time_modified = models.DateTimeField(auto_now=True)
@@ -114,8 +115,8 @@ class Features(models.Model):
     weight = models.CharField(max_length=2, choices=PRODUCT_LIQUID_UNIT, blank=True, null=True)
 
     ingredients = models.CharField(max_length=250)
-    care_tips = models.TextField(blank=True, null=True)
-    usage_instructions = models.TextField(blank=True, null=True)
+    care_tips = models.RichTextField(blank=True, null=True, verbose_name='care tipe')
+    usage_instructions = models.RichTextField(blank=True, null=True, verbose_name='usage instructions')
 
 class Order(models.Model):
     PAYMENT_STATUS = [
@@ -143,7 +144,7 @@ class OrderItem(models.Model):
 
 class Brand(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name='Brand name')
-    description = models.TextField(blank=True, null=True, verbose_name='description')
+    description = models.RichTextField(blank=True, null=True, verbose_name='description')
 
     class Meta:
         verbose_name = 'brand'
@@ -155,5 +156,5 @@ class Comment(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     time_release_comment = models.DateTimeField(auto_now_add=True)
     update_to = models.DateTimeField(auto_now=True)
-    body_comment = models.TextField()
+    body_comment = models.RichTextField()
     answer_comment = models.ForeignKey(self, null=True, blank=True)
