@@ -1,4 +1,5 @@
 from django.contrib import admin
+from jalali_date.admin import ModelAdminJalaliMixin
 
 from .models import Product, Discount, Category, Inventory, Features, Order, OrderItem, Brand, Comment
 
@@ -10,7 +11,7 @@ class CommentsInline(admin.TabularInline):
     ]
 
 @admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = [
         'name',
         'slug',
@@ -24,7 +25,7 @@ class ProductAdmin(admin.ModelAdmin):
     ]
 
 @admin.register(Discount)
-class DiscountAdmin(admin.ModelAdmin):
+class DiscountAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = [
         'product',
         'discount_percentage',
@@ -56,7 +57,7 @@ class FeaturesAdmin(admin.ModelAdmin):
     ]
 
 @admin.register(Order)
-class OrderAdmin(admin.ModelAdmin):
+class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = [
         'status',
     ]
@@ -76,7 +77,7 @@ class BrandAdmin(admin.ModelAdmin):
     ]
 
 @admin.register(Comment)
-class CommentAdmin(admin.ModelAdmin):
+class CommentAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = [
         'product',
         'time_release_comment',
