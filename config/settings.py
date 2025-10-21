@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'taggit',
     'star_ratings',
     'ckeditor',
+    'jalali_date',
 
 #     local apps
     'accounts',
