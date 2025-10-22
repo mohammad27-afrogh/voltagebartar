@@ -135,21 +135,21 @@ class Features(models.Model):
 
 class Order(models.Model):
     PAYMENT_STATUS = [
-        ('PEN', 'Pending'),
-        ('PAI', 'Paid'),
-        ('CAN', 'Cancelled'),
-        ('RET', 'Returned'),
+        ('PEN', _('Pending')),
+        ('PAI', _('Paid')),
+        ('CAN', _('Cancelled')),
+        ('RET', _('Returned')),
     ]
-    status = models.CharField(max_length=3, choices=PAYMENT_STATUS, default='PEN')
-    created_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(_('status'), max_length=3, choices=PAYMENT_STATUS, default='PEN')
+    created_at = models.DateTimeField(_('created_at'), default=timezone.now)
 
     def __str__(self):
-        return self.status
+        return f'{self.status}'
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='order_items')
-    quantity = models.DecimalField(max_digits=5, decimal_places=2)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name=_('items'))
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name=_('order_items'))
+    quantity = models.DecimalField(_('quantity'), max_digits=5, decimal_places=2)
 
     def __str__(self):
         return f'{self.quantity} * {self.product.name}'
