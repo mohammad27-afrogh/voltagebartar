@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth import get_user_model
+from django.utils.translation import gettext_lazy as _
 
 from datetime import date
 from taggit.managers import TaggableManager
@@ -9,35 +10,35 @@ from decimal import Decimal, ROUND_HALF_UP
 
 class Product(models.Model):
     PRODUCT_TYPE = [
-        ('FL', 'Flower'),
-        ('FER', 'Fertilizer'),
-        ('TOOL', 'Gardening Tool'),
-        ('SEED', 'Seed'),
-        ('SOIL', 'Potting Soil'),
+        ('FL', _('Flower')),
+        ('FER', _('Fertilizer')),
+        ('TOOL', _('Gardening Tool')),
+        ('SEED', _('Seed')),
+        ('SOIL', _('Potting Soil')),
     ]
     INVENTORY_STATUS = [
-        ('AVA', 'Available'),
-        ('OFS', 'Out_of_stock'),
-        ('PEN', 'Pending'),
-        ('DIS', 'Discontinued'),
+        ('AVA', _('Available')),
+        ('OFS', _('Out_of_stock')),
+        ('PEN', _('Pending')),
+        ('DIS', _('Discontinued')),
     ]
 
-    name = models.CharField(max_length=200)
-    slug = models.SlugField(unique=True, blank=True)
-    sku = models.CharField(max_length=150, unique=True, blank=True, null=True)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='products')
-    product_type = models.CharField(max_length=4, choices=PRODUCT_TYPE)
-    features = models.ForeignKey('Features', on_delete=models.CASCADE, related_name='product')
-    brand = models.ForeignKey('Brand', on_delete=models.SET_NULL, blank=True, null=True, related_name='products', verbose_name='brand')
-    inventory = models.ForeignKey('Inventory', on_delete=models.SET_NULL, null=True, related_name='product')
-    commodity_status = models.CharField(max_length=3, choices=INVENTORY_STATUS, default='AVA')
-    successful_sales_count = models.PositiveIntegerField(default=0)
-    base_price = models.DecimalField(max_digits=10, decimal_places=2)
-    short_description = models.CharField(max_length=100)
-    description = RichTextField()
-    tags = TaggableManager(blank=True)
-    date_time_create = models.DateTimeField(auto_now_add=True)
-    date_time_modified = models.DateTimeField(auto_now=True)
+    name = models.CharField(_('name'), max_length=200)
+    slug = models.SlugField(_('slug'), unique=True, blank=True)
+    sku = models.CharField(_('sku'), max_length=150, unique=True, blank=True, null=True)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='products', verbose_name=_('category'))
+    product_type = models.CharField(_('product_type'), max_length=4, choices=PRODUCT_TYPE)
+    features = models.ForeignKey('Features', on_delete=models.CASCADE, related_name='product', verbose_name=_('features'))
+    brand = models.ForeignKey('Brand', on_delete=models.SET_NULL, blank=True, null=True, related_name='products', verbose_name=_('brand'))
+    inventory = models.ForeignKey('Inventory', on_delete=models.SET_NULL, null=True, related_name='product', verbose_name=_('inventory'))
+    commodity_status = models.CharField(_('commodity_status'), max_length=3, choices=INVENTORY_STATUS, default='AVA')
+    successful_sales_count = models.PositiveIntegerField(_('successful_sales_count'), default=0)
+    base_price = models.DecimalField(_('base_price'), max_digits=10, decimal_places=2)
+    short_description = models.CharField(_('short_description'), max_length=100)
+    description = RichTextField(_('description'))
+    tags = TaggableManager(_('tags'), blank=True)
+    date_time_create = models.DateTimeField(_('date_time_create'), default=timezone.now)
+    date_time_modified = models.DateTimeField(_('date_time_modified'), auto_now=True)
 
     def __str__(self):
         return f'{self.name}'
