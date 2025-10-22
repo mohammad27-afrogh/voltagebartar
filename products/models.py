@@ -155,8 +155,8 @@ class OrderItem(models.Model):
         return f'{self.quantity} * {self.product.name}'
 
 class Brand(models.Model):
-    name = models.CharField(max_length=100, unique=True, verbose_name='Brand name')
-    description = RichTextField(blank=True, null=True, verbose_name='description')
+    name = models.CharField(max_length=100, unique=True, verbose_name=_('Brand_name'))
+    description = RichTextField(blank=True, null=True, verbose_name=_('description'))
 
     def __str__(self):
         return f'{self.name}'
@@ -167,12 +167,12 @@ class Brand(models.Model):
         ordering = ['name']
 
 class Comment(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments')
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    time_release_comment = models.DateTimeField(auto_now_add=True)
-    update_to = models.DateTimeField(auto_now=True)
-    body_comment = RichTextField()
-    answer_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name=_('comments'))
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name=_('user'))
+    time_release_comment = models.DateTimeField(_('time_release_comment'), default=timezone.now)
+    update_to = models.DateTimeField(_('update_to'), auto_now=True)
+    body_comment = RichTextField(_('body_comment'), )
+    answer_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name=_('answer_comment'))
 
     def __str__(self):
-        return self.product
+        return f'{self.product}'
