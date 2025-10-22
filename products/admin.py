@@ -41,7 +41,6 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Inventory)
 class InventoryAdmin(admin.ModelAdmin):
     list_display = [
-        'product',
         'status',
         'inventory',
     ]
