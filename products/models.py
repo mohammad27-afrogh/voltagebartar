@@ -73,11 +73,11 @@ class Product(models.Model):
             return f'{self.base_price}'
 
 class Discount(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='discounts')
-    discount_percentage = models.DecimalField(max_digits=5, decimal_places=2)
-    start_date = models.DateField(default=date.today)
-    end_date = models.DateField(default=date.today)
-    is_active = models.BooleanField(default=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name=_('product_discounts'))
+    discount_percentage = models.DecimalField(_('discount_percentage'), max_digits=5, decimal_places=2)
+    start_date = models.DateField(_('start_date'), default=timezone.now)
+    end_date = models.DateField(_('end_date'), default=timezone.now)
+    is_active = models.BooleanField(_('is_active'), default=True)
 
     def __str__(self):
         return f'{self.product.name} - {self.discount_percentage}'
