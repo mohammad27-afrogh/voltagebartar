@@ -104,34 +104,34 @@ class Inventory(models.Model):
 
 class Features(models.Model):
     PRODUCT_LIQUID_UNIT = [
-        ('GR', 'Gram'),
-        ('KG', 'KiloGram'),
+        ('GR', _('Gram')),
+        ('KG', _('KiloGram')),
 
-        ('Ml', 'MilliLiter'),
-        ('L', 'Liter'),
+        ('Ml', _('MilliLiter')),
+        ('L', _('Liter')),
     ]
     PRODUCT_SOLIDS_UNIT = [
-        ('Num', 'Number'),
-        ('Pack', 'Packet'),
+        ('Num', _('Number')),
+        ('Pack', _('Packet')),
     ]
     PRODUCT_NUMBER_UNIT = [
-        ('Cm', 'SantiMeter'),
-        ('M', 'Meter'),
+        ('Cm', _('SantiMeter')),
+        ('M', _('Meter')),
     ]
-    Length = models.DecimalField(max_digits=3, decimal_places=2, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
-    Width = models.DecimalField(max_digits=3, decimal_places=2, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
-    Height = models.DecimalField(max_digits=3, decimal_places=2, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
-    pot_size = models.CharField(max_length=5, blank=True, null=True)
+    Length = models.DecimalField(_('Length'), max_digits=3, decimal_places=2, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
+    Width = models.DecimalField(_('Width'), max_digits=3, decimal_places=2, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
+    Height = models.DecimalField(_('Height'), max_digits=3, decimal_places=2, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
+    pot_size = models.CharField(_('pot_size'), max_length=5, blank=True, null=True)
 
-    unit = models.CharField(max_length=4, choices=PRODUCT_SOLIDS_UNIT, blank=True, null=True)
-    weight = models.CharField(max_length=2, choices=PRODUCT_LIQUID_UNIT, blank=True, null=True)
+    unit = models.CharField(_('unit'), max_length=4, choices=PRODUCT_SOLIDS_UNIT, blank=True, null=True)
+    weight = models.CharField(_('weight'), max_length=2, choices=PRODUCT_LIQUID_UNIT, blank=True, null=True)
 
-    ingredients = models.CharField(max_length=250)
-    care_tips = RichTextField(blank=True, null=True, verbose_name='care tipe')
-    usage_instructions = RichTextField(blank=True, null=True, verbose_name='usage instructions')
+    ingredients = models.CharField(_('ingredients'), max_length=250)
+    care_tips = RichTextField(blank=True, null=True, verbose_name=_('care tipe'))
+    usage_instructions = RichTextField(blank=True, null=True, verbose_name=_('usage instructions'))
 
     def __str__(self):
-        return f'Features for product unit: {self.unit or '-'}'
+        return _(f'Features for product unit: {self.unit or '-'}')
 
 class Order(models.Model):
     PAYMENT_STATUS = [
