@@ -83,21 +83,21 @@ class Discount(models.Model):
         return f'{self.product.name} - {self.discount_percentage}'
 
 class Category(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    slug = models.SlugField(unique=True)
-    parent_category = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='subcategories')
+    name = models.CharField(_('name'), max_length=100, unique=True)
+    slug = models.SlugField(_('slug'), unique=True)
+    parent_category = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name=_('subcategories'))
 
     def __str__(self):
         return self.name
 
 class Inventory(models.Model):
     INVENTORY_STATUS = [
-        ('AVA', 'Available'),
-        ('NON', 'Non-available'),
-        ('SPE', 'Special'),
+        ('AVA', _('Available')),
+        ('NON', _('Non-available')),
+        ('SPE', _('Special')),
     ]
-    status = models.CharField(max_length=3, choices=INVENTORY_STATUS, default='AVA')
-    inventory = models.PositiveIntegerField(default=0)
+    status = models.CharField(_('status'), max_length=3, choices=INVENTORY_STATUS, default='AVA')
+    inventory = models.PositiveIntegerField(_('inventory'), default=0)
 
     def __str__(self):
         return self.status
