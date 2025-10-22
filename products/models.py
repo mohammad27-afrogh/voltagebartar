@@ -172,7 +172,7 @@ class Comment(models.Model):
     time_release_comment = models.DateTimeField(_('time_release_comment'), default=timezone.now)
     update_to = models.DateTimeField(_('update_to'), auto_now=True)
     body_comment = RichTextField(_('body_comment'), )
-    answer_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name=_('answer_comment'))
+    answer_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name=_('answer'))
 
     def __str__(self):
         return f'{self.product}'
