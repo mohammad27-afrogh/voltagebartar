@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('ratings/', include('star_ratings.urls', namespace='ratings')),
+    path('rosetta/', include('rosetta.urls')),
     path('', include('pages.urls')),
 ]
