@@ -73,7 +73,7 @@ class Product(models.Model):
             return f'{self.base_price}'
 
 class Discount(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name=_('product_discounts'))
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='discounts', verbose_name=_('product_discounts'))
     discount_percentage = models.DecimalField(_('discount_percentage'), max_digits=5, decimal_places=2)
     start_date = models.DateField(_('start_date'), default=timezone.now)
     end_date = models.DateField(_('end_date'), default=timezone.now)
@@ -85,7 +85,7 @@ class Discount(models.Model):
 class Category(models.Model):
     name = models.CharField(_('name'), max_length=100, unique=True)
     slug = models.SlugField(_('slug'), unique=True)
-    parent_category = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name=_('subcategories'))
+    parent_category = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='subcategories', verbose_name=_('subcategories'))
 
     def __str__(self):
         return self.name
@@ -100,7 +100,7 @@ class Inventory(models.Model):
     inventory = models.PositiveIntegerField(_('inventory'), default=0)
 
     def __str__(self):
-        return self.status
+        return f'{self.status}'
 
 class Features(models.Model):
     PRODUCT_LIQUID_UNIT = [
@@ -147,8 +147,8 @@ class Order(models.Model):
         return f'{self.status}'
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name=_('items'))
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name=_('order_items'))
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items', verbose_name=_('items'))
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='order_items', verbose_name=_('order_items'))
     quantity = models.DecimalField(_('quantity'), max_digits=5, decimal_places=2)
 
     def __str__(self):
@@ -167,12 +167,12 @@ class Brand(models.Model):
         ordering = ['name']
 
 class Comment(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name=_('comments'))
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name=_('user'))
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments', verbose_name=_('comments'))
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name=_('user'))
     time_release_comment = models.DateTimeField(_('time_release_comment'), default=timezone.now)
     update_to = models.DateTimeField(_('update_to'), auto_now=True)
     body_comment = RichTextField(_('body_comment'), )
-    answer_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name=_('answer'))
+    answer_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, verbose_name=_('answer'))
 
     def __str__(self):
         return f'{self.product}'
