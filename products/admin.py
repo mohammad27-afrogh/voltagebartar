@@ -48,11 +48,10 @@ class InventoryAdmin(admin.ModelAdmin):
 @admin.register(Features)
 class FeaturesAdmin(admin.ModelAdmin):
     list_display = [
-        'Length',
-        'Width',
-        'Height',
+        'name_features',
         'pot_size',
-        'unit',
+        'unit_counting',
+        'ingredients',
     ]
 
 @admin.register(Order)

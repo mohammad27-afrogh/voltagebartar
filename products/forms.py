@@ -49,12 +49,18 @@ class FeaturesForm(forms.ModelForm):
     class Meta:
         model = Features
         fields = [
+            'name_features',
+            'Length_unit',
             'Length',
+            'Width_unit',
             'Width',
+            'Height_unit',
             'Height',
             'pot_size',
-            'unit',
+            'number',
+            'unit_counting',
             'weight',
+            'weight_unit',
             'ingredients',
             'care_tips',
             'usage_instructions',
