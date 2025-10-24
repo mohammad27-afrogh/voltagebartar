@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24 15:39+0330\n"
-"PO-Revision-Date: 2025-10-24 15:41+0330\n"
+"PO-Revision-Date: 2025-10-24 19:44+0330\n"
 "Last-Translator:   <m.afroogh25@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -220,7 +220,7 @@ msgstr "ارتفاع واحد"
 
 #: .\models.py:132
 msgid "pot_size"
-msgstr "گلدان_اندازه"
+msgstr "اندازه گلدان"
 
 #: .\models.py:134
 msgid "number"

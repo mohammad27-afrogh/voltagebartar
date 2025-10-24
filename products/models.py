@@ -30,13 +30,13 @@ class Product(models.Model):
     product_type = models.CharField(_('product_type'), max_length=4, choices=PRODUCT_TYPE)
     features = models.ForeignKey('Features', on_delete=models.CASCADE, related_name='product', verbose_name=_('features'))
     brand = models.ForeignKey('Brand', on_delete=models.SET_NULL, blank=True, null=True, related_name='products', verbose_name=_('brand'))
-    inventory = models.ForeignKey('Inventory', on_delete=models.SET_NULL, null=True, related_name='product', verbose_name=_('inventory'))
+    inventory = models.ForeignKey('Inventory', on_delete=models.SET_NULL, blank=True, null=True, related_name='inventory_link', verbose_name=_('inventory'))
     commodity_status = models.CharField(_('commodity_status'), max_length=3, choices=INVENTORY_STATUS, default='AVA')
     successful_sales_count = models.PositiveIntegerField(_('successful_sales_count'), default=0)
     base_price = models.DecimalField(_('base_price'), max_digits=10, decimal_places=2)
     short_description = models.CharField(_('short_description'), max_length=100)
     description = RichTextField(_('description'))
-    tags = TaggableManager(_('tags'), blank=True)
+    tags = TaggableManager(_('tags'))
     date_time_create = models.DateTimeField(_('date_time_create'), default=timezone.now)
     date_time_modified = models.DateTimeField(_('date_time_modified'), auto_now=True)
 
@@ -80,7 +80,7 @@ class Discount(models.Model):
     is_active = models.BooleanField(_('is_active'), default=True)
 
     def __str__(self):
-        return f'{self.product.name} - {self.discount_percentage}'
+        return f'{self.product.name} - % {self.discount_percentage} discount'
 
 class Category(models.Model):
     name = models.CharField(_('name'), max_length=100, unique=True)
@@ -88,7 +88,7 @@ class Category(models.Model):
     parent_category = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='subcategories', verbose_name=_('subcategories'))
 
     def __str__(self):
-        return self.name
+        return f'{self.name}'
 
 class Inventory(models.Model):
     INVENTORY_STATUS = [
@@ -96,11 +96,12 @@ class Inventory(models.Model):
         ('NON', _('Non-available')),
         ('SPE', _('Special')),
     ]
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_item', verbose_name=_('product_name'))
     status = models.CharField(_('status'), max_length=3, choices=INVENTORY_STATUS, default='AVA')
     inventory = models.PositiveIntegerField(_('inventory'), default=0)
 
     def __str__(self):
-        return f'{self.status}'
+        return f'{self.product}'
 
 class Features(models.Model):
     PRODUCT_LIQUID_UNIT = [
@@ -137,7 +138,7 @@ class Features(models.Model):
     weight = models.DecimalField(_('weight'), decimal_places=2, max_digits=10, blank=True, null=True)
     weight_unit = models.CharField(_('weight_unit'), max_length=2, choices=PRODUCT_LIQUID_UNIT, blank=True, null=True)
 
-    ingredients = models.CharField(_('ingredients'), max_length=250)
+    ingredients = models.CharField(_('ingredients'), max_length=250, blank=True, null=True)
     care_tips = RichTextField(blank=True, null=True, verbose_name=_('care tipe'))
     usage_instructions = RichTextField(blank=True, null=True, verbose_name=_('usage instructions'))
 

@@ -15,6 +15,7 @@ class ProductAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = [
         'name',
         'slug',
+        'category',
         'successful_sales_count',
         'base_price',
         'date_time_create',
@@ -29,6 +30,9 @@ class DiscountAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = [
         'product',
         'discount_percentage',
+        'start_date',
+        'end_date',
+        'is_active',
     ]
 
 @admin.register(Category)
@@ -41,6 +45,7 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Inventory)
 class InventoryAdmin(admin.ModelAdmin):
     list_display = [
+        'product',
         'status',
         'inventory',
     ]
