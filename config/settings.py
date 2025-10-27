@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'jalali_date',
     'rosetta',
+    'pillow',
 
 #     local apps
     'accounts',
