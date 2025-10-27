@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'ckeditor',
     'jalali_date',
     'rosetta',
-    'pillow',
 
 #     local apps
     'accounts',
@@ -71,6 +70,9 @@ CKEDITOR_CONFIGS = {
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
 
 SITE_ID = 1
 

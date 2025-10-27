@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-24 20:34+0330\n"
-"PO-Revision-Date: 2025-10-24 20:35+0330\n"
+"POT-Creation-Date: 2025-10-28 01:16+0330\n"
+"PO-Revision-Date: 2025-10-28 01:17+0330\n"
 "Last-Translator:   <m.afroogh25@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,292 +18,295 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: .\models.py:13
+#: .\models.py:14
 msgid "Flower"
 msgstr "گل"
 
-#: .\models.py:14
+#: .\models.py:15
 msgid "Fertilizer"
 msgstr "کود"
 
-#: .\models.py:15
+#: .\models.py:16
 msgid "Gardening Tool"
 msgstr "ابزار باغبانی"
 
-#: .\models.py:16
+#: .\models.py:17
 msgid "Seed"
 msgstr "بذر"
 
-#: .\models.py:17
+#: .\models.py:18
 msgid "Potting Soil"
 msgstr "خاک گلدان"
 
-#: .\models.py:20 .\models.py:95
+#: .\models.py:21 .\models.py:100
 msgid "Available"
 msgstr "موجود است"
 
-#: .\models.py:21
+#: .\models.py:22
 msgid "Out_of_stock"
 msgstr "موجود نیست"
 
-#: .\models.py:22 .\models.py:150
+#: .\models.py:23 .\models.py:155
 msgid "Pending"
 msgstr "در انتظار"
 
-#: .\models.py:23
+#: .\models.py:24
 msgid "Discontinued"
 msgstr "متوقف شد"
 
-#: .\models.py:26 .\models.py:86
+#: .\models.py:27 .\models.py:91
 msgid "name"
 msgstr "نام"
 
-#: .\models.py:27 .\models.py:87
+#: .\models.py:28 .\models.py:92
 msgid "slug"
 msgstr "لینک آدرس محصول به انگلیسی"
 
-#: .\models.py:28
+#: .\models.py:29
 msgid "sku"
 msgstr "شماره سریال محصول"
 
-#: .\models.py:29
+#: .\models.py:30
 msgid "category"
 msgstr "دسته بندی"
 
-#: .\models.py:30
+#: .\models.py:31
 msgid "product_type"
 msgstr "نوع محصول"
 
-#: .\models.py:31
+#: .\models.py:32
+msgid "cover_product"
+msgstr "تصویر_محصول"
+
+#: .\models.py:33
 msgid "features"
 msgstr "ویژگی ها"
 
-#: .\models.py:32
+#: .\models.py:34
 msgid "brand"
 msgstr "نام تجاری"
 
-#: .\models.py:33 .\models.py:101
+#: .\models.py:35 .\models.py:106
 msgid "inventory"
 msgstr "موجودی"
 
-#: .\models.py:34
+#: .\models.py:36
 msgid "commodity_status"
 msgstr "وضعیت_کالا"
 
-#: .\models.py:35
+#: .\models.py:37
 msgid "successful_sales_count"
 msgstr "تعداد_فروش_موفق"
 
-#: .\models.py:36
+#: .\models.py:38
 msgid "base_price"
 msgstr "قیمت_پایه"
 
-#: .\models.py:37
+#: .\models.py:39
 msgid "short_description"
 msgstr "توضیح کوتاه"
 
-#: .\models.py:38 .\models.py:171
+#: .\models.py:40 .\models.py:176
 msgid "description"
 msgstr "توضیحات"
 
-#: .\models.py:39
+#: .\models.py:41
 msgid "tags"
 msgstr "برچسب ها"
 
-#: .\models.py:40
+#: .\models.py:42
 msgid "date_time_create"
 msgstr "تاریخ_زمان_ایجاد"
 
-#: .\models.py:41
+#: .\models.py:43
 msgid "date_time_modified"
 msgstr "تاریخ_زمان_تغییر یافته"
 
-#: .\models.py:76
+#: .\models.py:81
 msgid "product_discounts"
 msgstr "تخفیف‌های_محصول"
 
-#: .\models.py:77
+#: .\models.py:82
 msgid "discount_percentage"
 msgstr "درصد تخفیف"
 
-#: .\models.py:78
+#: .\models.py:83
 msgid "start_date"
 msgstr "شروع_تاریخ"
 
-#: .\models.py:79
+#: .\models.py:84
 msgid "end_date"
 msgstr "تاریخ پایان"
 
-#: .\models.py:80
+#: .\models.py:85
 msgid "is_active"
 msgstr "فعال است"
 
-#: .\models.py:88
+#: .\models.py:93
 msgid "subcategories"
 msgstr "زیر مجموعه ها"
 
-#: .\models.py:96
+#: .\models.py:101
 msgid "Non-available"
 msgstr "در دسترس نیست"
 
-#: .\models.py:97
+#: .\models.py:102
 msgid "Special"
 msgstr "ویژه"
 
-#: .\models.py:99
-#| msgid "product_type"
+#: .\models.py:104
 msgid "product_name"
 msgstr "نام محصول"
 
-#: .\models.py:100 .\models.py:155
+#: .\models.py:105 .\models.py:160
 msgid "status"
 msgstr "وضعیت"
 
-#: .\models.py:108
+#: .\models.py:113
 msgid "Gram"
 msgstr "گرم"
 
-#: .\models.py:109
+#: .\models.py:114
 msgid "KiloGram"
 msgstr "کیلو گرم"
 
-#: .\models.py:111
+#: .\models.py:116
 msgid "MilliLiter"
 msgstr "میلی لیتر"
 
-#: .\models.py:112
+#: .\models.py:117
 msgid "Liter"
 msgstr "لیتر"
 
-#: .\models.py:115
+#: .\models.py:120
 msgid "Number"
 msgstr "عدد"
 
-#: .\models.py:116
+#: .\models.py:121
 msgid "Packet"
 msgstr "بسته"
 
-#: .\models.py:119
+#: .\models.py:124
 msgid "SantiMeter"
 msgstr "سانتی متر"
 
-#: .\models.py:120
+#: .\models.py:125
 msgid "Meter"
 msgstr "متر"
 
-#: .\models.py:122
+#: .\models.py:127
 msgid "name_features"
 msgstr "نام ویژگی "
 
-#: .\models.py:124
+#: .\models.py:129
 msgid "Length"
 msgstr "طول"
 
-#: .\models.py:125
+#: .\models.py:130
 msgid "Length_unit"
 msgstr "طول واحد"
 
-#: .\models.py:127
+#: .\models.py:132
 msgid "Width"
 msgstr "عرض"
 
-#: .\models.py:128
+#: .\models.py:133
 msgid "Width_unit"
 msgstr "عرض واحد"
 
-#: .\models.py:130
+#: .\models.py:135
 msgid "Height"
 msgstr "وزن"
 
-#: .\models.py:131
+#: .\models.py:136
 msgid "Height_unit"
 msgstr "ارتفاع واحد"
 
-#: .\models.py:133
+#: .\models.py:138
 msgid "pot_size"
 msgstr "اندازه گلدان"
 
-#: .\models.py:135
+#: .\models.py:140
 msgid "number"
 msgstr "عدد"
 
-#: .\models.py:136
+#: .\models.py:141
 msgid "unit_counting"
 msgstr "واحد شمارش"
 
-#: .\models.py:138
+#: .\models.py:143
 msgid "weight"
 msgstr "وزن"
 
-#: .\models.py:139
+#: .\models.py:144
 msgid "weight_unit"
 msgstr "ارتفاع"
 
-#: .\models.py:141
+#: .\models.py:146
 msgid "ingredients"
 msgstr "مواد تشکیل دهنده"
 
-#: .\models.py:142
+#: .\models.py:147
 msgid "care tipe"
 msgstr "نکات مراقبتی"
 
-#: .\models.py:143
+#: .\models.py:148
 msgid "usage instructions"
 msgstr "دستورالعمل استفاده"
 
-#: .\models.py:151
+#: .\models.py:156
 msgid "Paid"
 msgstr "پرداخت شده است"
 
-#: .\models.py:152
+#: .\models.py:157
 msgid "Cancelled"
 msgstr "لغو شد"
 
-#: .\models.py:153
+#: .\models.py:158
 msgid "Returned"
 msgstr "بازگشت"
 
-#: .\models.py:156
+#: .\models.py:161
 msgid "created_at"
 msgstr "ایجاد_در"
 
-#: .\models.py:162
+#: .\models.py:167
 msgid "items"
 msgstr "موارد"
 
-#: .\models.py:163
+#: .\models.py:168
 msgid "order_items"
 msgstr "موارد اقلام"
 
-#: .\models.py:164
+#: .\models.py:169
 msgid "quantity"
 msgstr "تعداد"
 
-#: .\models.py:170
+#: .\models.py:175
 msgid "Brand_name"
 msgstr "نام تجاری"
 
-#: .\models.py:182
+#: .\models.py:187
 msgid "comments"
 msgstr "نظرات"
 
-#: .\models.py:183
+#: .\models.py:188
 msgid "user"
 msgstr "کاربر"
 
-#: .\models.py:184
+#: .\models.py:189
 msgid "time_release_comment"
 msgstr "زمان_انتشار_نظر"
 
-#: .\models.py:185
+#: .\models.py:190
 msgid "update_to"
 msgstr "به روز رسانی به"
 
-#: .\models.py:186
+#: .\models.py:191
 msgid "body_comment"
 msgstr "متن نظر"
 
-#: .\models.py:187
+#: .\models.py:192
 msgid "answer"
 msgstr "پاسخ دهید"
 

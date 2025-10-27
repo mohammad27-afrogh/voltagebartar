@@ -29,6 +29,7 @@ class Product(models.Model):
     sku = models.CharField(_('sku'), max_length=150, unique=True, blank=True, null=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='products', verbose_name=_('category'))
     product_type = models.CharField(_('product_type'), max_length=4, choices=PRODUCT_TYPE)
+    cover_product = models.ImageField(_('cover_product'), upload_to='product/product_covers/', blank=True)
     features = models.ForeignKey('Features', on_delete=models.CASCADE, related_name='product', verbose_name=_('features'))
     brand = models.ForeignKey('Brand', on_delete=models.SET_NULL, blank=True, null=True, related_name='products', verbose_name=_('brand'))
     inventory = models.ForeignKey('Inventory', on_delete=models.CASCADE, blank=True, null=True, related_name='inventory_link', verbose_name=_('inventory'))
