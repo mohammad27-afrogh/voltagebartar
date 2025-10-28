@@ -16,3 +16,9 @@
 <h1>{{ product.short_description }}</h1>
 <h1>{{ product.description }}</h1>
 ------------------
+
+{% for comment in comments %}
+	<h1>{{ comment.user.username }}</h1>
+    <h1>{{ comment.time_release_comment }}</h1>
+    <h1>{{ comment.body_comment }}</h1>
+{% endfor %}
