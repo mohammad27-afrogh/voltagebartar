@@ -22,3 +22,10 @@
     <h1>{{ comment.time_release_comment }}</h1>
     <h1>{{ comment.body_comment }}</h1>
 {% endfor %}
+-------------------
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <button type="submit">send</button>
+</form>

@@ -94,11 +94,7 @@ class BrandForm(forms.ModelForm):
 
 class CommentForm(forms.ModelForm):
     class Meta:
-        model = comment
+        model = Comment
         fields = [
-            'product',
-            'user',
-            'time_release_comment',
             'body_comment',
-            'answer_comment',
             ]
