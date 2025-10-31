@@ -46,7 +46,7 @@ class Product(models.Model):
         return f'{self.name}'
 
     def get_absolute_url(self):
-        return reverse('product_detail', args=[self.id])
+        return reverse('product_detail_by_slug', args=[self.slug])
 
     @property
     def is_on_sale(self):
@@ -70,12 +70,14 @@ class Product(models.Model):
     def final_price(self):
         best_discount = self.active_discounts.order_by('-discount_percentage').first()
 
+        base_price = Decimal(self.base_price)
+
         if best_discount:
-            discount_factor = 1 - (best_discount.discount_percentage / 100)
-            discounted_price = self.base_price * discount_factor
+            discount_factor = Decimal('1') - (best_discount.discount_percentage / Decimal('100'))
+            discounted_price = base_price * discount_factor
             return discounted_price.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
         else:
-            return f'{self.base_price}'
+            return base_price
 
 class Discount(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='discounts', verbose_name=_('product_discounts'))
