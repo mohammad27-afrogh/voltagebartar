@@ -35,7 +35,7 @@ class Product(models.Model):
     inventory = models.ForeignKey('Inventory', on_delete=models.CASCADE, blank=True, null=True, related_name='inventory_link', verbose_name=_('inventory'))
     commodity_status = models.CharField(_('commodity_status'), max_length=3, choices=INVENTORY_STATUS, default='AVA')
     successful_sales_count = models.PositiveIntegerField(_('successful_sales_count'), default=0)
-    base_price = models.DecimalField(_('base_price'))
+    base_price = models.DecimalField(_('base_price'), max_digits=10, decimal_places=2)
     short_description = models.CharField(_('short_description'), max_length=100)
     description = RichTextField(_('description'))
     tags = TaggableManager(_('tags'))
