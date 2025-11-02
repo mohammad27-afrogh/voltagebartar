@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'accounts',
     'pages',
     'products',
+    'blogs',
 ]
 
 CKEDITOR_CONFIGS = {
