@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
 
@@ -31,3 +32,13 @@ class Category(models.Model):
     def __str__(self):
         return f'{self.name}'
 
+class CommentBlog(models.Model):
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments', verbose_name=_('comments'))
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name=_('user'))
+    time_release_comment = models.DateTimeField(_('time_release_comment'), default=timezone.now)
+    update_to = models.DateTimeField(_('update_to'), auto_now=True)
+    body_comment = RichTextField(_('body_comment'), )
+    answer_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, verbose_name=_('answer'))
+
+    def __str__(self):
+        return f'{self.blog}'
