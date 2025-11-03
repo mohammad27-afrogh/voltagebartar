@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Blog, Category
+from .models import Blog, Category, CommentBlog
 
 class BlogForm(forms.ModelForm):
     class Meta:
@@ -24,3 +24,10 @@ class CategoryForm(forms.ModelForm):
             'slug',
             'parent_category',
         ]
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = CommentBlog
+        fields = [
+            'body_comment',
+            ]

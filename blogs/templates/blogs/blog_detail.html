@@ -1,0 +1,21 @@
+<h1>{{ blog.name }}</h1>
+
+<h1>{{ blog.category }}</h1>
+------------------
+<h1>{{ blog.short_description }}</h1>
+------------------
+<h1>{{ blog.description }}</h1>
+------------------
+
+{% for comment in comments %}
+	<h1>{{ comment.user.username }}</h1>
+    <h1>{{ comment.time_release_comment }}</h1>
+    <h1>{{ comment.body_comment }}</h1>
+{% endfor %}
+-------------------
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <button type="submit">send</button>
+</form>
