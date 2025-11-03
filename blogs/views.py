@@ -1,6 +1,9 @@
 from django.shortcuts import render
+from django.views import generic
 
-from django.views.generic import TemplateView
+from .models import Blog
 
-class BlogsHomePageView(TemplateView):
+class BlogsHomePageView(generic.ListView):
+    model = Blog
     template_name = 'blogs/blog.html'
+    context_object_name = 'blogs'
