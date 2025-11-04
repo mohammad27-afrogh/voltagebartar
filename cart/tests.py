@@ -14,6 +14,6 @@ class TestCartDetailView(TestCase):
         response = self.client.get(reverse('cart:Cart_detail'))
         self.assertContains(response, 'cart_detail')
 
-    def testtest_cart_detail_view_template_used(self):
+    def test_cart_detail_view_template_used(self):
         response = self.client.get(reverse('cart:Cart_detail'))
         self.assertTemplateUsed(response, 'cart/cart_detail.html')

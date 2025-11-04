@@ -77,6 +77,7 @@ class Cart:
         Clear product in cart
         """
         del self.session['cart']
+        messages.success(self.request, _('Shopping cart successfully cleared.'))
         self.save()
 
     def get_total_price(self):
