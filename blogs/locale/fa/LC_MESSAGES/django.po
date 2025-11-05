@@ -1,0 +1,83 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-05 16:26+0330\n"
+"PO-Revision-Date: 2025-11-05 16:43+0330\n"
+"Last-Translator:   <m.afroogh25@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.10.2\n"
+
+#: .\models.py:11 .\models.py:28
+msgid "name"
+msgstr "نام"
+
+#: .\models.py:12 .\models.py:29
+msgid "slug"
+msgstr "لینک آدرس محصول به انگلیسی"
+
+#: .\models.py:13
+msgid "category"
+msgstr "دسته بندی"
+
+#: .\models.py:14
+msgid "cover_blog"
+msgstr "عکس بلاگ"
+
+#: .\models.py:15
+msgid "short_description"
+msgstr "خلاصه توضیحات"
+
+#: .\models.py:16
+msgid "description"
+msgstr "توضیحات"
+
+#: .\models.py:17
+msgid "tags"
+msgstr "تگ ها"
+
+#: .\models.py:18
+msgid "date_time_create"
+msgstr "تاریخ_زمان_ایجاد"
+
+#: .\models.py:19
+msgid "date_time_modified"
+msgstr "تاریخ_زمان_تغییر یافته"
+
+#: .\models.py:30
+msgid "subcategories"
+msgstr "زیر مجموعه ها"
+
+#: .\models.py:36
+msgid "comments"
+msgstr "کامنت ها"
+
+#: .\models.py:37
+msgid "user"
+msgstr "گاربر"
+
+#: .\models.py:38
+msgid "time_release_comment"
+msgstr "زمان انتشار کامنت"
+
+#: .\models.py:39
+msgid "update_to"
+msgstr "آپدیت"
+
+#: .\models.py:40
+msgid "body_comment"
+msgstr "متن کامنت"
+
+#: .\models.py:41
+msgid "answer"
+msgstr "پاسخ دهید"
