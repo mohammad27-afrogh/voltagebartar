@@ -4,7 +4,7 @@ from django.views import generic
 from .models import Blog
 from .forms import CommentForm
 
-class BlogsHomePageView(generic.ListView):
+class BlogsPageView(generic.ListView):
     model = Blog
     template_name = 'blogs/blog.html'
     context_object_name = 'blogs'

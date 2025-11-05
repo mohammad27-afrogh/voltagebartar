@@ -1,4 +1,4 @@
-
+<h1>blog page</h1>
 {% for blog in blogs %}
     <a href="{% url 'blog_detail_by_slug' blog_slug=blog.slug %}">{{ blog.name }}</a>
 {% endfor %}
