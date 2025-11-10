@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'jalali_date',
     'rosetta',
+    'rest_framework',
 
 #     local apps
     'accounts',
