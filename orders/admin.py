@@ -1,3 +1,28 @@
 from django.contrib import admin
+from jalali_date.admin import ModelAdminJalaliMixin
 
-# Register your models here.
+from .models import Order, OrderItem
+
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    fields = ['order', 'product', 'quantity', 'price', ]
+
+@admin.register(Order)
+class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
+    list_display = [
+        'first_name',
+        'phone_number',
+        'national_number',
+        'address_province',
+        'exact_address',
+        'datetime_created',
+        'is_paid',
+    ]
+
+    inlines = [
+        OrderItemInline,
+    ]
+
+@admin.register(OrderItem)
+class OrderItemAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
+    list_display = ['order', 'product', 'quantity', 'price', ]
