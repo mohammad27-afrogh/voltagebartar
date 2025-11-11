@@ -3,7 +3,7 @@ from .models import Province, City
 from .serializers import CitySerializer, ProvinceSerializer
 
 
-class ProvinceViewsets(viewsets.ModelViewset):
+class ProvinceViewsets(viewsets.ModelViewSet):
     queryset = Province.objects.all()
     serializer_class = ProvinceSerializer
     permissions_class = [permissions.IsAuthenticatedOrReadOnly]
