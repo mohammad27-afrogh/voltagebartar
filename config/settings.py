@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'jalali_date',
     'rosetta',
     'rest_framework',
+    'phonenumber_field',
 
 #     local apps
     'accounts',
@@ -202,3 +203,5 @@ STAR_RATINGS_STAR_WIDTH = 20
 STAR_RATINGS_RERATE = True
 STAR_RATINGS_RANGE = 5
 STAR_RATINGS_ANONYMOUS = True
+
+PHONENUMBER_DEFAULT_REGION = 'IR'
