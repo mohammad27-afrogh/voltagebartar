@@ -13,9 +13,10 @@ class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         'first_name',
         'phone_number',
         'national_number',
-        'address_province',
+        'province_address',
+        'city_address',
         'exact_address',
-        'datetime_created',
+        'date_time_create',
         'is_paid',
     ]
 
@@ -25,4 +26,9 @@ class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 
 @admin.register(OrderItem)
 class OrderItemAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
-    list_display = ['order', 'product', 'quantity', 'price', ]
+    list_display = [
+        'order',
+        'product',
+        'quantity',
+        'price',
+    ]

@@ -1,0 +1,87 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-11 11:49+0330\n"
+"PO-Revision-Date: 2025-11-11 12:00+0330\n"
+"Last-Translator:   <m.afroogh25@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.10.2\n"
+
+#: .\models.py:12
+msgid "user"
+msgstr "کاربر"
+
+#: .\models.py:13
+msgid "is paid"
+msgstr "پرداخت میشود"
+
+#: .\models.py:14
+msgid "first name"
+msgstr "نام"
+
+#: .\models.py:15
+msgid "last name"
+msgstr "نام خانوادگی"
+
+#: .\models.py:16
+msgid "phone number"
+msgstr "تلفن همراه"
+
+#: .\models.py:17
+msgid "national number"
+msgstr "کد ملی"
+
+#: .\models.py:18
+msgid "province"
+msgstr "استان"
+
+#: .\models.py:19
+msgid "city"
+msgstr "شهرستان"
+
+#: .\models.py:20
+msgid "exact address"
+msgstr "آدرس دقیق"
+
+#: .\models.py:21
+msgid "email"
+msgstr "ایمیل"
+
+#: .\models.py:22
+msgid "order notes"
+msgstr "توضیحات"
+
+#: .\models.py:23
+msgid "date_time_create"
+msgstr "تاریخ_زمان_ایجاد"
+
+#: .\models.py:24
+msgid "date_time_modified"
+msgstr "تاریخ_زمان_تغییر یافته"
+
+#: .\models.py:34
+msgid "order"
+msgstr "سفارش دهید"
+
+#: .\models.py:35
+msgid "product"
+msgstr "محصول"
+
+#: .\models.py:36
+msgid "quantity"
+msgstr "تعداد"
+
+#: .\models.py:37
+msgid "price"
+msgstr "قیمت"
