@@ -12,6 +12,12 @@
 ------------------
 <h1>{{ product.successful_sales_count }}</h1>
 <h1>{{ product.base_price }}</h1>
+
+<form action="{% url 'cart:cart_add' product.id %}" method="POST">
+    {% csrf_token %}
+    <input type="number" name="quantity" id="qty" value="1" min="1">
+    <button type="submit">add to cart</button>
+</form>
 ------------------
 <h1>{{ product.short_description }}</h1>
 <h1>{{ product.description }}</h1>

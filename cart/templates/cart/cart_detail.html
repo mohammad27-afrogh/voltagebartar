@@ -1,1 +1,3 @@
-cart_detail
+{% for item in cart %}
+	{{ item.product_obj.name}}
+{% endfor %}
