@@ -1,5 +1,5 @@
 
 <h1>product list</h1>
 {% for product in products %}
-    <a href="{% url 'product_detail_by_slug' product_slug=product.slug %}">{{ product.name }}</a>
+    <a href="{% url 'product_detail_by_slug' product_slug=product.slug %}">{{ product.name }}</a><br>
 {% endfor %}
