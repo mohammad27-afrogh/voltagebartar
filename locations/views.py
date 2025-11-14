@@ -3,20 +3,20 @@ from .models import Province, City
 from .serializers import CitySerializer, ProvinceSerializer
 
 
-class ProvinceViewsets(viewsets.ModelViewSet):
+class ProvinceViewSets(viewsets.ReadOnlyModelViewSet):
     queryset = Province.objects.all()
     serializer_class = ProvinceSerializer
-    permissions_class = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-class CityViewset(viewsets.ModelViewSet):
+class CityViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = City.objects.all()
     serializer_class = CitySerializer
-    permissions_class = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
-        queryset = super().get_queryset()
-        province_id = self.request.query_parms.get('province_id')
+        province_id = self.request.query_params.get('province_id')
+        queryset = self.queryset
 
         if province_id:
-            return queryset.filter(province_id=province_id)
+            queryset = queryset.filter(province_id=province_id)
         return queryset

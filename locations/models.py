@@ -14,7 +14,7 @@ class Province(models.Model):
 
 
 class City(models.Model):
-    province = models.ForeignKey(Province, on_delete=models.CASCADE, related_name = 'relevant_province', verbose_name =_('province'))
+    province = models.ForeignKey(Province, on_delete=models.CASCADE, related_name = 'cities', verbose_name =_('province'))
     name = models.CharField(max_length=100, verbose_name =_('city_name'))
 
     class Meta:
