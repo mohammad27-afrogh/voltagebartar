@@ -1,0 +1,11 @@
+{% for item in cart %}
+	اسم :{{ item.product_obj.name }}<br>
+     تعداد :{{ item.quantity }}<br>
+    قیمت محصول :{{ item.product_obj.base_price }}<br>
+    قیمت کل :{{ cart.get_total_price }}
+{% endfor %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+</form>
