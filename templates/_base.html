@@ -1,0 +1,46 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font---------------------------------------->
+    <link rel="stylesheet" href="{% static 'css/vendor/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/materialdesignicons.css' %}">
+    <!-- plugin-------------------------------------->
+    <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/noUISlider.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/jquery.jqZoom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/sweetalert2.min.css' %}">
+    <!-- main-style---------------------------------->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+
+    <title>{% block page_title %}
+
+    {% endblock page_title %}</title>
+</head>
+<body>
+
+{% block content %}
+
+{% endblock content %}
+
+</body>
+<!-- file js---------------------------------------------------->
+<script src="{% static 'js/vendor/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/vendor/bootstrap.js' %}"></script>
+<!-- plugin----------------------------------------------------->
+<script src="{% static 'js/vendor/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery.countdown.js' %}"></script>
+<script src="{% static 'js/vendor/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery.jqZoom.js' %}"></script>
+<script src="{% static 'js/vendor/sweetalert2.all.min.js' %}"></script>
+<!-- main js---------------------------------------------------->
+<script src="{% static 'js/main.js' %}"></script>
+
+</html>
