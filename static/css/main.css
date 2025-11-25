@@ -9681,7 +9681,7 @@ body.light .progress-wrap svg.progress-circle path {
 }
 
 /* --- تنظیم بک‌گراند برای صفحات لاگین/ثبت‌نام (بر اساس درخواست کاربر) --- */
-body.login_signup_page::before {
+body.account_page::before {
    content: "";
    position: fixed;
    top: 0;

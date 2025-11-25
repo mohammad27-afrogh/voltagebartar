@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-24 22:47+0330\n"
-"PO-Revision-Date: 2025-11-24 22:48+0330\n"
+"POT-Creation-Date: 2025-11-26 01:08+0330\n"
+"PO-Revision-Date: 2025-11-26 01:09+0330\n"
 "Last-Translator:   <m.afroogh25@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -39,43 +39,52 @@ msgstr ""
 msgid "Please Confirm email"
 msgstr "لطفا ایمیل را تایید کنید"
 
-#: .\account\login.html:7 .\account\login.html:24 .\account\signup.html:24
+#: .\account\login.html:7 .\account\login.html:27 .\account\signup.html:27
 msgid "login"
 msgstr "ورود"
 
-#: .\account\login.html:25 .\account\login.html:29 .\account\signup.html:25
-#: .\account\signup.html:29
+#: .\account\login.html:28 .\account\login.html:32 .\account\signup.html:28
+#: .\account\signup.html:32
 msgid "to sabzeonline"
 msgstr "به سبزآنلاین"
 
-#: .\account\login.html:28 .\account\signup.html:7 .\account\signup.html:28
+#: .\account\login.html:31 .\account\signup.html:7 .\account\signup.html:31
 msgid "signup"
 msgstr "ثبت نام"
 
-#: .\account\login.html:34
+#: .\account\login.html:37
 msgid "Login to user account"
 msgstr "وارد حساب کاربری شوید"
 
-#: .\account\login.html:39
+#: .\account\login.html:42
 msgid "login to sabzeonline"
 msgstr "ورود به سبزآنلاین"
 
-#: .\account\signup.html:34
+#: .\account\logout.html:15
+msgid "log out"
+msgstr "خروج"
+
+#: .\account\logout.html:39
+msgid "Are you sure you want to log out?"
+msgstr "آیا مطمئن هستید که می‌خواهید از سیستم خارج شوید؟"
+
+#: .\account\logout.html:43
+msgid "Yes, I'm sure. Get out!"
+msgstr "بله، مطمئنم. خارج شو!"
+
+#: .\account\signup.html:37
 msgid "signup to user account"
 msgstr "ثبت نام در حساب کاربری"
 
-#: .\account\signup.html:44
+#: .\account\signup.html:47
 msgid "Privacy"
 msgstr "حریم خصوصی"
 
-#: .\account\signup.html:44
+#: .\account\signup.html:47
 msgid "Terms of the rules"
 msgstr "شرایط قوانین"
 
-#: .\account\signup.html:45
-#| msgid ""
-#| "I have read the terms of use of the DigiSmart website services and agree to "
-#| "all of them."
+#: .\account\signup.html:48
 msgid ""
 "I have read the terms of use of the sabzeonline website services and agree "
 "to all of them."
@@ -83,6 +92,6 @@ msgstr ""
 "شرایط استفاده از خدمات وب‌سایت سبزآنلاین را مطالعه کرده و با تمامی موارد آن "
 "موافقم."
 
-#: .\account\signup.html:49
+#: .\account\signup.html:52
 msgid "signup to sabzeonline"
 msgstr "ثبت نام در سبزآنلاین"

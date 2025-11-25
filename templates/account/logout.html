@@ -1,7 +1,64 @@
+{#<div class="container">#}
+{#    <form action="" method="POST">#}
+{#        {% csrf_token %}#}
+{#        <p> Are you sure you want to log out?</p>#}
+{#        <button type="submit">log out</button>#}
+{#    </form>#}
+{#</div>#}
+
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block page_title %}
+    {% trans 'log out' %}
+{% endblock page_title %}
+
+{% block body_class %}
+    account_page
+{% endblock body_class %}
+
+{% block content %}
+
+<!-- logout----------------------------------->
 <div class="container">
-    <form action="" method="POST">
-        {% csrf_token %}
-        <p> are you sure want to log out?</p>
-        <button type="submit">log out</button>
-    </form>
+    <div class="row">
+        <div class="col-lg">
+            <section class="page-account-box">
+                <div class="col-lg-6 col-md-6 col-xs-12 mx-auto">
+                    <div class="ds-userlogin">
+                        <a href="#" class="account-box-logo">sabzeonline</a>
+                        <div class="account-box">
+                            <div class="logout-to-account m-4">
+                                <div class="account-box-content">
+                                    <form action="" method="POST" class="form-account text-right">
+                                        {% csrf_token %}
+                                        <div class="form-auth-row">
+                                            <h5 for="remember" class="remember-me mr-0">
+                                                <b>{% trans 'Are you sure you want to log out?' %}</b>
+                                            </h5>
+                                        </div>
+                                        <button class="btn btn-danger btn-logout" type="submit">
+                                            {% trans "Yes, I'm sure. Get out!" %}</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
 </div>
+<!-- logout----------------------------------->
+
+<!-- scroll_Progress------------------------->
+<div class="progress-wrap">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+    </svg>
+</div>
+<!-- scroll_Progress------------------------->
+
+{% endblock content %}
