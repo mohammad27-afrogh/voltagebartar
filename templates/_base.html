@@ -24,7 +24,10 @@
 
     {% endblock page_title %}</title>
 </head>
-<body>
+
+<body class="{% block body_class %}
+
+{% endblock body_class %}">
 
 {% block content %}
 

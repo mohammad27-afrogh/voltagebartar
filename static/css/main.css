@@ -9679,3 +9679,21 @@ body.light .progress-wrap::after {
 body.light .progress-wrap svg.progress-circle path {
     stroke: var(--black-blue);
 }
+
+/* --- تنظیم بک‌گراند برای صفحات لاگین/ثبت‌نام (بر اساس درخواست کاربر) --- */
+body.login_signup_page::before {
+   content: "";
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   /* مسیر تصویر در فولدر static/img/ فرض شده است */
+   background-image: url("/static/img/login/background4.jpg");
+   background-size: cover;
+   background-position: center;
+   filter: blur(0px); /* اعمال کمی تاری برای تمرکز بیشتر روی فرم */
+   z-index: 0;
+   opacity: 1; /* تنظیم شفافیت برای خوانایی بهتر متن فرم */
+    background-color: rgba(0, 0, 0, 0.7);
+}
