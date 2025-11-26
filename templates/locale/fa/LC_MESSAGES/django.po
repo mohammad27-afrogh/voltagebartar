@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-26 01:08+0330\n"
-"PO-Revision-Date: 2025-11-26 01:09+0330\n"
+"POT-Creation-Date: 2025-11-27 00:10+0330\n"
+"PO-Revision-Date: 2025-11-27 00:12+0330\n"
 "Last-Translator:   <m.afroogh25@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -56,7 +56,7 @@ msgstr "ثبت نام"
 msgid "Login to user account"
 msgstr "وارد حساب کاربری شوید"
 
-#: .\account\login.html:42
+#: .\account\login.html:43
 msgid "login to sabzeonline"
 msgstr "ورود به سبزآنلاین"
 
@@ -71,6 +71,23 @@ msgstr "آیا مطمئن هستید که می‌خواهید از سیستم خ
 #: .\account\logout.html:43
 msgid "Yes, I'm sure. Get out!"
 msgstr "بله، مطمئنم. خارج شو!"
+
+#: .\account\password_change.html:7 .\account\password_change.html:27
+#: .\account\password_change.html:32
+msgid "Change password"
+msgstr "رمز عبور را تغییر دهید"
+
+#: .\account\password_change_done.html:7
+msgid "successful"
+msgstr "موفق"
+
+#: .\account\password_change_done.html:27
+msgid "Your Password Was Changed."
+msgstr "رمز عبور شما تغییر کرد."
+
+#: .\account\password_change_done.html:31
+msgid "Return to the login page"
+msgstr "بازگشت به صفحه خانه"
 
 #: .\account\signup.html:37
 msgid "signup to user account"
@@ -92,6 +109,6 @@ msgstr ""
 "شرایط استفاده از خدمات وب‌سایت سبزآنلاین را مطالعه کرده و با تمامی موارد آن "
 "موافقم."
 
-#: .\account\signup.html:52
+#: .\account\signup.html:53
 msgid "signup to sabzeonline"
 msgstr "ثبت نام در سبزآنلاین"

@@ -9692,7 +9692,7 @@ body.account_page::before {
    background-image: url("/static/img/login/background4.jpg");
    background-size: cover;
    background-position: center;
-   filter: blur(0px); /* اعمال کمی تاری برای تمرکز بیشتر روی فرم */
+   filter: blur(3px); /* اعمال کمی تاری برای تمرکز بیشتر روی فرم */
    z-index: 0;
    opacity: 1; /* تنظیم شفافیت برای خوانایی بهتر متن فرم */
     background-color: rgba(0, 0, 0, 0.7);
