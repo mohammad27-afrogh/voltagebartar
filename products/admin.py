@@ -40,6 +40,7 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = [
         'name',
         'slug',
+        'parent',
     ]
 
 @admin.register(Inventory)

@@ -34,7 +34,7 @@ class CategoryForm(forms.ModelForm):
         fields = [
             'name',
             'slug',
-            'parent_category',
+            'parent',
         ]
 
 class InventoryForm(forms.ModelForm):

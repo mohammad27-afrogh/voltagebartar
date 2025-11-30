@@ -89,13 +89,38 @@ class Discount(models.Model):
     def __str__(self):
         return f'{self.product.name} - % {self.discount_percentage} discount'
 
-class Category(models.Model):
-    name = models.CharField(_('name'), max_length=100, unique=True)
-    slug = models.SlugField(_('slug'), unique=True)
-    parent_category = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='subcategories', verbose_name=_('subcategories'))
+# class Category(models.Model):
+#     name = models.CharField(_('name'), max_length=100, unique=True)
+#     slug = models.SlugField(_('slug'), unique=True)
+#     parent_category = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='subcategories', verbose_name=_('subcategories'))
+#     caver_category = models.ImageField(_('cover_category'), upload_to='category/category_covers/', blank=True)
+#
+#     def __str__(self):
+#         return f'{self.name}'
 
-    def __str__(self):
-        return f'{self.name}'
+class Category(models.Model):
+    name = models.CharField(_('Category name'), max_length=100, unique=True)
+    slug = models.SlugField(_('Address (slug)'), unique=True)
+    parent = models.ForeignKey(
+        "self",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="subcategories",
+        verbose_name=_('Parent category')
+    )
+    caver_category = models.ImageField(_('cover_category'), upload_to='category/category_covers/', blank=True)
+
+    class Meta:
+        verbose_name = _('category')
+        verbose_name_plural = _('Categories')
+        ordering = ["name"]
+
+    def str(self):
+        # نمایش مسیر کامل دسته (مثلاً: گل و گیاه > سانسوریا)
+        if self.parent:
+            return f"{self.parent} > {self.name}"
+        return self.name
 
 class Inventory(models.Model):
     INVENTORY_STATUS = [
