@@ -674,30 +674,48 @@ header.header-main {
     box-shadow: none;
     background: transparent;
 }
+/* === اصلاح شده نهایی برای سطح سوم (نمایش عمودی، تمیز و با فاصله) === */
 
+/* 1. تنظیم LI والد سطح سوم: اجبار به نمایش بلوکی و اضافه کردن فاصله عمودی */
 .header-main-nav ul.menu-ul li.menu-item ul.is-mega-menu li.menu-mega-item>ul li.menu-mega-item-three {
     position: relative;
     text-align: right;
-    width: 100%;
-    display: block;
-    line-height: 32px;
+    width: 100% !important;
+    display: block !important;
+
+    /* خطوط زیر جایگزین line-height شدند: */
+    line-height: normal !important; /* حذف خط مبهم */
+    margin-bottom: 6px !important; /* ایجاد فاصله 6 پیکسلی بین آیتم‌ها */
+    padding: 0 !important;
 }
 
+/* 2. تنظیم لینک‌های سطح سوم: اجبار به نمایش بلوکی و ایجاد padding مناسب */
 .header-main-nav ul.menu-ul li.menu-item ul.is-mega-menu li.menu-mega-item>ul li.menu-mega-item-three a {
     color: #666666;
     font-size: 14px;
-    padding: 0 30px;
+
+    /* تنظیم padding ثابت برای فضای داخلی لینک */
+    padding: 3px 0px !important; /* 3px بالا/پایین، 0 افقی (چون راست چین است) */
+
     transition: all 0.4s ease-out;
     font-weight: 300;
-    display: inline-block;
+
+    /* کلید اصلی: نمایش عمودی */
+    display: block !important;
+    text-align: right !important;
 }
 
+/* 3. تنظیم رفتار هنگام Hover: حذف تغییر padding که باعث جابجایی می‌شد */
 .header-main-nav ul.menu-ul li.menu-item ul.is-mega-menu li.menu-mega-item>ul li.menu-mega-item-three:hover a {
-    color: #651fff;
-    padding: 0 40px;
+    color: #651fff !important;
+
+    /* *** مهم: حفظ padding یکسان با حالت عادی برای جلوگیری از پرش *** */
+    padding: 3px 0px !important;
+
     transition: all 0.4s ease-out;
     font-weight: 600;
 }
+
 
 .bg-image {
     position: absolute;
@@ -9696,4 +9714,72 @@ body.account_page::before {
    z-index: 0;
    opacity: 1; /* تنظیم شفافیت برای خوانایی بهتر متن فرم */
     background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* === استایل عمومی برای منو و لینک‌ها === */
+.header-main-nav a.mega-menu-link {
+    text-decoration: none !important; /* حذف خط زیرین پیش‌فرض لینک‌ها */
+    border-bottom: none !important;   /* حذف هرگونه خط پایین (خط‌چین) */
+    color: #333;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    display: block; /* برای padding و margin راحت‌تر */
+}
+
+.header-main-nav a.mega-menu-link:hover {
+    color: #2e7d32 !important; /* سبز تیره هنگام هاور */
+}
+
+/* === استایل مگا منو (سطح ۲) === */
+.sub-menu.mega-menu-level-two {
+    display: flex;
+    gap: 20px; /* فاصله بین ستون‌ها */
+    padding: 15px 20px;
+    background: #ffffff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+    border-radius: 0 0 8px 8px;
+    list-style: none; /* حذف بولت‌های پیش‌فرض UL */
+}
+
+.menu-mega-item.nav-overlay {
+    /* اطمینان از اینکه آیتم‌های سطح ۱ در حالت عادی قرار دارند */
+    position: relative;
+}
+
+/* ستون‌های سطح ۲ */
+.mega-menu-level-two > .menu-mega-item {
+    flex: 1;
+    padding-right: 15px;
+    border-right: 1px solid #f0f0f0;
+}
+
+.mega-menu-level-two > .menu-mega-item:last-child {
+    border-right: none;
+}
+
+/* برچسب دسته سطح ۲ (مثلا 'گیاهان آپارتمانی') */
+.mega-menu-level-two > .menu-mega-item > a.mega-menu-link {
+    font-weight: 600;
+    color: #1b5e20 !important; /* سبز تیره تر برای عنوان ستون */
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    position: relative; /* برای افزودن خط جداکننده زیبا */
+    display: flex;
+    align-items: center;
+}
+
+/* === سطح سوم === */
+.sub-menu.mega-menu-level-three {
+    list-style: none;
+    padding-left: 10px; /* فاصله برای تو رفتگی */
+    margin-top: 5px;
+}
+
+.mega-menu-level-three .menu-mega-item-three {
+    margin-bottom: 4px;
+}
+
+.mega-menu-level-three a {
+    font-size: 0.9rem;
+    color: #555;
 }
