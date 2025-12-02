@@ -1,0 +1,140 @@
+{% load static %}
+{% load i18n %}
+
+<!-- header-------------------------------->
+<header class="header-main">
+    <div class="d-block">
+        <section class="h-main-row">
+            <div class="col-lg-9 col-md-12 col-xs-12 pr">
+                <div class="header-right">
+                    <div class="col-lg-3 pr">
+                        <div class="header-logo row text-right">
+                            <a href="{% url 'home' %}">
+                                <img src="assets/images/logo.png" alt="{% trans 'sabzeonline' %}">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 pr">
+                        <div class="header-search row text-right">
+                            <div class="header-search-box">
+                                <form action="#" class="form-search">
+                                    <input type="search" class="header-search-input" name="search-input"
+                                           placeholder="{% trans 'Search for the product name, brand or category you are looking for…' %}">
+                                    <div class="action-btns">
+                                        <button class="btn btn-search" type="submit">
+                                            <img src="{% static 'img/logo/search.png' %}" alt="search">
+                                        </button>
+                                        <div class="search-filter">
+                                            <div class="form-ui">
+                                                <div class="custom-select-ui">
+                                                    <select class="right">
+                                                        <option>{% trans 'categories' %}</option>
+                                                        {% for item in parent_categories %}
+                                                            <option>{{ item.name }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="search-result">
+                                    <ul class="search-result-list mb-0">
+                                        {% for category in parent_categories %}
+                                            <li>
+                                                <a href="#"><i class="mdi mdi-clock-outline"></i>
+                                                    {{ category.name }}
+                                                    <button class="btn btn-light btn-continue-search" type="submit">
+                                                        <i class="fa fa-angle-left"></i>
+                                                    </button>
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                    <div class="localSearchSimple"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--    profile----------------->
+            <div class="col-lg-3 col-md-0 col-xs-12 pl">
+                <div class="header-left">
+                    <div class="header-account text-left">
+                        <div class="d-block">
+                            <div class="account-box">
+                                <div class="nav-account d-block pl">
+                                    <span class="icon-account">
+                                        <img src="{% static 'img/profile.png' %}" class="avator">
+                                    </span>
+                                    <span class="title-account">{% trans 'User account' %}</span>
+                                    <div class="dropdown-menu">
+                                        <ul class="account-uls mb-0">
+                                            {% if user.is_authenticated %}
+                                                <li class="account-item">
+                                                    <a href="{% url 'blogs' %}" class="account-link">{% trans 'blog' %}</a>
+                                                </li>
+                                                <li class="account-item">
+                                                    <a href="#" class="account-link">{% trans 'My orders' %}</a>
+                                                </li>
+                                                <li class="account-item">
+                                                    <a href="{% url 'cart:Cart_detail' %}" class="account-link">{% trans 'cart' %}</a>
+                                                </li>
+                                                <li class="account-item">
+                                                    <a href="{% url 'account_logout' %}" class="account-link">{% trans 'logout' %}</a>
+                                                </li>
+                                            {% else %}
+                                                <li class="account-item">
+                                                    <a href="#" class="account-link">{% trans 'blog' %}</a>
+                                                </li>
+                                                <li class="account-item">
+                                                    <a href="{% url 'account_login' %}" class="account-link">{% trans 'login' %}</a>
+                                                </li>
+                                                <li class="account-item">
+                                                    <a href="{% url 'account_signup' %}" class="account-link">{% trans 'signup' %}</a>
+                                                </li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--    end_profile----------------->
+        </section>
+        <!--    navbar----------------->
+        <nav class="header-main-nav">
+            <div class="d-block">
+                <div class="align-items-center">
+                    <ul class="menu-ul mega-menu-level-one">
+                        {% for parent_cat in parent_categories %}
+                            <li id="nav-menu-item" class="menu-item nav-overlay">
+                                <a href="#" class="current-link-menu">
+                                    <img src="/media/{{ parent_cat.caver_category }}" alt="menu" width="22px">
+                                    {{ parent_cat.name }}
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                {% if parent_cat.subcategories.all %}
+                                    <ul class="sub-menu is-mega-menu mega-menu-level-two">
+                                        {% for sub_cat in parent_cat.subcategories.all %}
+                                            <li class="menu-mega-item menu-item-type-mega-menu">
+                                                <a href="{% url 'category_detail' category_slug=sub_cat.slug %}" class="mega-menu-link">
+                                                    {{ sub_cat.name }}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!--    end_navbar----------------->
+    </div>
+</header>
+<!-- end header-------------------------------->

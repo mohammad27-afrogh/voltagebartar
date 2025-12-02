@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-27 01:13+0330\n"
-"PO-Revision-Date: 2025-11-27 01:25+0330\n"
+"POT-Creation-Date: 2025-11-29 12:38+0330\n"
+"PO-Revision-Date: 2025-11-30 12:42+0330\n"
 "Last-Translator:   <m.afroogh25@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -40,6 +40,7 @@ msgid "Please Confirm email"
 msgstr "لطفا ایمیل را تایید کنید"
 
 #: .\account\login.html:7 .\account\login.html:27 .\account\signup.html:27
+#: .\partials\navbar.html:92
 msgid "login"
 msgstr "ورود"
 
@@ -49,6 +50,7 @@ msgid "to sabzeonline"
 msgstr "به سبزآنلاین"
 
 #: .\account\login.html:31 .\account\signup.html:7 .\account\signup.html:31
+#: .\partials\navbar.html:95
 msgid "signup"
 msgstr "ثبت نام"
 
@@ -90,12 +92,10 @@ msgid "Return to the login page"
 msgstr "بازگشت به صفحه خانه"
 
 #: .\account\password_reset.html:7
-#| msgid "Change password"
 msgid "Forgot password"
 msgstr "فراموشی گذرواژه"
 
 #: .\account\password_reset.html:27
-#| msgid "Change password"
 msgid "Forgot password?"
 msgstr "فراموشی گذرواژه"
 
@@ -150,3 +150,39 @@ msgstr ""
 #: .\account\signup.html:53
 msgid "signup to sabzeonline"
 msgstr "ثبت نام در سبزآنلاین"
+
+#: .\home.html:7 .\partials\navbar.html:13
+#| msgid "to sabzeonline"
+msgid "sabzeonline"
+msgstr "سبزآنلاین"
+
+#: .\partials\navbar.html:22
+msgid "Search for the product name, brand or category you are looking for…"
+msgstr "نام محصول، برند یا دسته بندی مورد نظر خود را جستجو کنید…"
+
+#: .\partials\navbar.html:31
+msgid "categories"
+msgstr "دسته بندی ها"
+
+#: .\partials\navbar.html:71
+#| msgid "Login to user account"
+msgid "User account"
+msgstr "حساب کاربری"
+
+#: .\partials\navbar.html:76 .\partials\navbar.html:89
+#| msgid "login"
+msgid "blog"
+msgstr "بلاگ"
+
+#: .\partials\navbar.html:79
+msgid "My orders"
+msgstr "سفارشات من"
+
+#: .\partials\navbar.html:82
+msgid "cart"
+msgstr "سبد خرید"
+
+#: .\partials\navbar.html:85
+#| msgid "log out"
+msgid "logout"
+msgstr "خروج"
