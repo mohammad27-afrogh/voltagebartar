@@ -115,6 +115,7 @@ TEMPLATES = [
                 'cart.context_processors.cart',
                 'products.context_processors.context_processors',
                 'products.context_processors.context_processors_discount',
+                'products.context_processors.context_successful_sales',
             ],
         },
     },
