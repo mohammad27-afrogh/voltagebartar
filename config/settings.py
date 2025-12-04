@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'django.contrib.sites',
 
 #     third party apps
@@ -64,6 +65,7 @@ INSTALLED_APPS = [
     'cart',
     'locations',
     'orders',
+    'persian_translate',
 ]
 
 CKEDITOR_CONFIGS = {
@@ -112,6 +114,7 @@ TEMPLATES = [
             #     custom context processors
                 'cart.context_processors.cart',
                 'products.context_processors.context_processors',
+                'products.context_processors.context_processors_discount',
             ],
         },
     },
