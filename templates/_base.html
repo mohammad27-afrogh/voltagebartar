@@ -19,6 +19,29 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 
+<style>
+/* استایل‌دهی به آیتم اصلی در اسلایدر (ملایم) */
+.product-carousel .item {
+    border: 1px solid transparent; /* حاشیه شفاف */
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* بهبود منحنی انیمیشن */
+    position: relative;
+    background-color: #ffffff; /* اطمینان از پس‌زمینه سفید */
+}
+
+/* استایل‌دهی هنگام هاور (ظریف‌تر) */
+.product-carousel .item:hover {
+    /* 1. کادر گرفتن: تغییر رنگ حاشیه به رنگی ملایم‌تر یا حذف */
+    border: 1px solid #e0e0e0; /* یک حاشیه خاکستری بسیار روشن */
+
+    /* 2. بولد شدن/برجسته شدن: سایه نرم و ملایم */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); /* سایه کمتر، تیرگی کمتر */
+
+    /* افکت شناور شدن نرم‌تر */
+    transform: translateY(-2px);
+}
+</style>
 
     <title>{% block page_title %}
 

@@ -2888,13 +2888,13 @@ header.header-main {
 }
 
 @media (max-width: 450px) {
-    .widget-product .product-carousel .price>span:first-child {
+    .widget-product .product-carousel .price<span:first-child {
         display: inline-block;
         font-size: 18px;
     }
 }
 
-.widget-product .product-carousel .price del>span span:last-child {
+.widget-product .product-carousel .price del<span span:last-child {
     font-size: 10px;
 }
 
@@ -9783,3 +9783,48 @@ body.account_page::before {
     font-size: 0.9rem;
     color: #555;
 }
+
+/* ایجاد فاصله بین Navbar و بلوک محتوای اصلی */
+.slider-widget-products {
+    /* تنظیم فاصله از بالا.
+       اگر Navbar شما ارتفاع ثابتی دارد (مثلاً 70 پیکسل)،
+       مقدار را کمی بیشتر از آن قرار دهید (مثلاً 90px) تا فاصله مناسب ایجاد شود. */
+    margin-top: 10px;
+}
+
+/* استایل برای مدیریت موقعیت لینک "مشاهده همه" در کنار کنترل‌های Owl Carousel */
+
+.card-header {
+    display: flex;
+    justify-content: space-between; /* محتوا را بین دو طرف تقسیم می‌کند */
+    align-items: center;
+    position: relative; /* اگر Owl خودش موقعیت فلش‌ها را با پوزیشن مطلق تنظیم کرده باشد */
+}
+
+.view-all-header-container {
+    /* این قسمت به لینک اجازه می‌دهد در کنار عنوان قرار بگیرد */
+    order: 3; /* تنظیم اولویت نمایش در Flexbox */
+    margin-left: 10px; /* فاصله کمی از سایر المان‌ها */
+}
+
+/* برای اطمینان از اینکه لینک در کنار فلش‌ها قرار گیرد،
+   باید استایل مربوط به کنترل‌های Owl Carousel را هم در نظر بگیریم.
+   اگر کنترل‌های Owl به طور پیش‌فرض در سمت چپ (ناحیه Prev) قرار می‌گیرند،
+   با قرار دادن view-all-header-container در انتهای card-header،
+   با تنظیم flex-direction: row-reverse; در card-header
+   می‌توانید ترتیب دقیق را به دست آورید. */
+
+.card-header {
+    /* اگر فلش‌ها به صورت RLT (راست به چپ) در سمت راست هدِر هستند،
+       این خط به نمایش لینک در سمت چپ کمک می‌کند */
+    display: flex;
+    justify-content: flex-start; /* برای مثال، همه چیز را به سمت چپ هل می‌دهد */
+    align-items: center;
+    gap: 15px; /* فاصله بین عنوان، لینک و فلش‌ها */
+}
+
+/* اگر فلش‌های Owl به صورت مطلق (absolute) در داخل خود "product-carousel" هستند،
+   تنها کاری که باید بکنید این است که مطمئن شوید view-all-link در
+   بالاترین سطح (header) قرار دارد و برای کاربران قابل کلیک است.
+   در این حالت، لینک به عنوان یک دکمه جداگانه و غیرمرتبط با پیمایش اسلایدر،
+   کنار عنوان نمایش داده می‌شود که در اغلب تم‌ها، دقیقاً همان چیزی است که می‌خواهید. */

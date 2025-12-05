@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-29 12:38+0330\n"
-"PO-Revision-Date: 2025-11-30 12:42+0330\n"
+"POT-Creation-Date: 2025-12-04 23:11+0330\n"
+"PO-Revision-Date: 2025-12-04 23:12+0330\n"
 "Last-Translator:   <m.afroogh25@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -152,9 +152,20 @@ msgid "signup to sabzeonline"
 msgstr "ثبت نام در سبزآنلاین"
 
 #: .\home.html:7 .\partials\navbar.html:13
-#| msgid "to sabzeonline"
 msgid "sabzeonline"
 msgstr "سبزآنلاین"
+
+#: .\home.html:22
+msgid "Special discounts"
+msgstr "تخفیف های ویژه"
+
+#: .\home.html:27
+msgid "view all"
+msgstr "مشاهده همه"
+
+#: .\home.html:52 .\home.html:53
+msgid "$"
+msgstr "تومان"
 
 #: .\partials\navbar.html:22
 msgid "Search for the product name, brand or category you are looking for…"
@@ -165,12 +176,10 @@ msgid "categories"
 msgstr "دسته بندی ها"
 
 #: .\partials\navbar.html:71
-#| msgid "Login to user account"
 msgid "User account"
 msgstr "حساب کاربری"
 
 #: .\partials\navbar.html:76 .\partials\navbar.html:89
-#| msgid "login"
 msgid "blog"
 msgstr "بلاگ"
 
@@ -183,6 +192,5 @@ msgid "cart"
 msgstr "سبد خرید"
 
 #: .\partials\navbar.html:85
-#| msgid "log out"
 msgid "logout"
 msgstr "خروج"
