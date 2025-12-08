@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-03 12:35+0330\n"
-"PO-Revision-Date: 2025-12-03 12:37+0330\n"
+"POT-Creation-Date: 2025-12-09 00:29+0330\n"
+"PO-Revision-Date: 2025-12-09 00:31+0330\n"
 "Last-Translator:   <m.afroogh25@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -159,19 +159,22 @@ msgstr "سبزآنلاین"
 msgid "Special discounts"
 msgstr "تخفیف های ویژه"
 
-#: .\home.html:30 .\home.html:76
+#: .\home.html:30 .\home.html:76 .\home.html:142
 msgid "view all"
 msgstr "مشاهده همه"
 
 #: .\home.html:55 .\home.html:56 .\home.html:106 .\home.html:107
-#: .\home.html:121
+#: .\home.html:121 .\home.html:172 .\home.html:173 .\home.html:187
 msgid "$"
 msgstr "تومان"
 
 #: .\home.html:71
-#| msgid "successful"
 msgid "successful sales"
 msgstr "پرفروش ترین ها"
+
+#: .\home.html:137
+msgid "latest_products"
+msgstr "جدیدترین محصولات"
 
 #: .\partials\navbar.html:22
 msgid "Search for the product name, brand or category you are looking for…"
