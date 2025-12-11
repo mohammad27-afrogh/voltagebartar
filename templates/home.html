@@ -69,58 +69,34 @@
                     <div class="widget widget-product card">
                         <header class="card-header">
                             <span class="title-one">{% trans 'successful sales' %}</span>
-                            <h3 class="card-title"></h3>
-                            {% if active_discounts_count > 4 %}
-                                <div class="view-all-header-container">
-                                    <a href="#" class="view-all-link">
-                                        {% trans 'view all' %}
-                                    </a>
-                                </div>
-                            {% endif %}
-                        </header>
+                            </header>
                         <div class="product-carousel owl-carousel owl-theme owl-rtl owl-loaded owl-drag">
                             {% for sales in successful_sales %}
                                 <div class="item">
-                                    {% if sales.final_price < sales.base_price %}
-                                        {% for discount in sales.discounts.all %}
-                                            {% if discount.discount_percentage %}
-                                                <div class="discount-badge"
-                                                     style="position: absolute; top: 5px; left: 5px; z-index: 10;
-                                                            background-color: #e61c1c; color: white;
-                                                            padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: bold;">
-                                                    {{ discount.discount_percentage|intcomma:False|translate_number }}%
-                                                </div>
-                                            {% endif %}
-                                        {% endfor %}
-                                        <a href="#"
-                                           class="d-block hover-img-link" data-toggle="modal" data-target="#exampleModal">
-                                            <img src="{% static 'img/products/successful_sales' %}"
-                                                class="img-fluid" alt="">
-                                        </a>
-                                        <h2 class="post-title">
-                                            <a href="#">
-                                                {{ sales.name }}
-                                            </a>
-                                        </h2>
-                                        <div class="price">
-                                            <del><span>{{ sales.base_price|intcomma:False|translate_number }} {% trans '$' %}</span></del>
-                                            <ins><span>{{ sales.final_price|intcomma:False|translate_number }} {% trans '$' %}</span></ins>
-                                        </div>
-                                    {% else %}
-                                        <a href="#"
-                                           class="d-block hover-img-link" data-toggle="modal" data-target="#exampleModal">
-                                            <img src="{% static 'img/products/successful_sales' %}"
-                                                class="img-fluid" alt="">
-                                        </a>
-                                        <h2 class="post-title">
-                                            <a href="#">
-                                                {{ sales.name }}
-                                            </a>
-                                        </h2>
-                                        <div class="price">
-                                            <ins><span>{{ sales.base_price|intcomma:False|translate_number }} {% trans '$' %}</span></ins>
+                                    {% if sales.active_discount %}  {# --- بررسی وجود تخفیف فعال --- #}
+                                        <div class="discount-badge"
+                                             style="position: absolute; top: 5px; left: 5px; z-index: 10;
+                                                    background-color: #e61c1c; color: white;
+                                                    padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: bold;">
+                                            {{ sales.active_discount.discount_percentage|intcomma:False|translate_number }}%
                                         </div>
                                     {% endif %}
+                                    <a href="#" class="d-block hover-img-link">
+                                        <img src="{% static 'img/products' %}" class="img-fluid" alt="">
+                                    </a>
+                                    <h2 class="post-title">
+                                        <a href="#">
+                                            {{ sales.name }}
+                                        </a>
+                                    </h2>
+                                    <div class="price">
+                                        {% if sales.active_discount %} {# --- اگر تخفیف فعال وجود داشت، قیمت اصلی را خط بزنید --- #}
+                                            <del><span>{{ sales.base_price|intcomma:False|translate_number }} {% trans '$' %}</span></del>
+                                            <ins><span>{{ sales.final_price|intcomma:False|translate_number }} {% trans '$' %}</span></ins>
+                                        {% else %} {# --- اگر تخفیف فعال وجود نداشت، فقط قیمت اصلی را نمایش دهید --- #}
+                                            <ins><span>{{ sales.base_price|intcomma:False|translate_number }} {% trans '$' %}</span></ins>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             {% endfor %}
                         </div>
@@ -135,58 +111,34 @@
                     <div class="widget widget-product card">
                         <header class="card-header">
                             <span class="title-one">{% trans 'latest_products' %}</span>
-                            <h3 class="card-title"></h3>
-                            {% if active_discounts_count > 4 %}
-                                <div class="view-all-header-container">
-                                    <a href="#" class="view-all-link">
-                                        {% trans 'view all' %}
-                                    </a>
-                                </div>
-                            {% endif %}
                         </header>
                         <div class="product-carousel owl-carousel owl-theme owl-rtl owl-loaded owl-drag">
                             {% for latest_product in latest_products %}
                                 <div class="item">
-                                    {% if latest_product.final_price < latest_product.base_price %}
-                                        {% for discount in latest_product.discounts.all %}
-                                            {% if discount.discount_percentage %}
-                                                <div class="discount-badge"
-                                                     style="position: absolute; top: 5px; left: 5px; z-index: 10;
-                                                            background-color: #e61c1c; color: white;
-                                                            padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: bold;">
-                                                    {{ discount.discount_percentage|intcomma:False|translate_number }}%
-                                                </div>
-                                            {% endif %}
-                                        {% endfor %}
-                                        <a href="#"
-                                           class="d-block hover-img-link" data-toggle="modal" data-target="#exampleModal">
-                                            <img src="{% static 'img/products/successful_sales' %}"
-                                                class="img-fluid" alt="">
-                                        </a>
-                                        <h2 class="post-title">
-                                            <a href="#">
-                                                {{ latest_product.name }}
-                                            </a>
-                                        </h2>
-                                        <div class="price">
-                                            <del><span>{{ latest_product.base_price|intcomma:False|translate_number }} {% trans '$' %}</span></del>
-                                            <ins><span>{{ latest_product.final_price|intcomma:False|translate_number }} {% trans '$' %}</span></ins>
-                                        </div>
-                                    {% else %}
-                                        <a href="#"
-                                           class="d-block hover-img-link" data-toggle="modal" data-target="#exampleModal">
-                                            <img src="{% static 'img/products/successful_sales' %}"
-                                                class="img-fluid" alt="">
-                                        </a>
-                                        <h2 class="post-title">
-                                            <a href="#">
-                                                {{ latest_product.name }}
-                                            </a>
-                                        </h2>
-                                        <div class="price">
-                                            <ins><span>{{ latest_product.base_price|intcomma:False|translate_number }} {% trans '$' %}</span></ins>
+                                    {% if latest_product.active_discount %}  {# --- بررسی وجود تخفیف فعال --- #}
+                                        <div class="discount-badge"
+                                             style="position: absolute; top: 5px; left: 5px; z-index: 10;
+                                                    background-color: #e61c1c; color: white;
+                                                    padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: bold;">
+                                            {{ latest_product.active_discount.discount_percentage|intcomma:False|translate_number }}%
                                         </div>
                                     {% endif %}
+                                    <a href="#" class="d-block hover-img-link">
+                                        <img src="{% static 'img/products' %}" class="img-fluid" alt="">
+                                    </a>
+                                    <h2 class="post-title">
+                                        <a href="#">
+                                            {{ latest_product.name }}
+                                        </a>
+                                    </h2>
+                                    <div class="price">
+                                        {% if latest_product.active_discount %} {# --- اگر تخفیف فعال وجود داشت، قیمت اصلی را خط بزنید --- #}
+                                            <del><span>{{ latest_product.base_price|intcomma:False|translate_number }} {% trans '$' %}</span></del>
+                                            <ins><span>{{ latest_product.final_price|intcomma:False|translate_number }} {% trans '$' %}</span></ins>
+                                        {% else %} {# --- اگر تخفیف فعال وجود نداشت، فقط قیمت اصلی را نمایش دهید --- #}
+                                            <ins><span>{{ latest_product.base_price|intcomma:False|translate_number }} {% trans '$' %}</span></ins>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             {% endfor %}
                         </div>
@@ -194,6 +146,7 @@
                 </div>
             </div>
             <!-- end latest_products--------------------------------------->
+
         </div>
     </div>
 
