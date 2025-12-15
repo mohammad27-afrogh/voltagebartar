@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-09 00:29+0330\n"
-"PO-Revision-Date: 2025-12-09 00:31+0330\n"
+"POT-Creation-Date: 2025-12-15 17:44+0330\n"
+"PO-Revision-Date: 2025-12-15 17:49+0330\n"
 "Last-Translator:   <m.afroogh25@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -159,20 +159,53 @@ msgstr "سبزآنلاین"
 msgid "Special discounts"
 msgstr "تخفیف های ویژه"
 
-#: .\home.html:30 .\home.html:76 .\home.html:142
+#: .\home.html:30 .\home.html:81 .\home.html:99 .\home.html:117
+#: .\home.html:135
 msgid "view all"
 msgstr "مشاهده همه"
 
-#: .\home.html:55 .\home.html:56 .\home.html:106 .\home.html:107
-#: .\home.html:121 .\home.html:172 .\home.html:173 .\home.html:187
+#: .\home.html:55 .\home.html:56 .\home.html:171 .\home.html:172
+#: .\home.html:174 .\home.html:213 .\home.html:214 .\home.html:216
 msgid "$"
 msgstr "تومان"
 
-#: .\home.html:71
+#: .\home.html:78
+msgid "Houseplants"
+msgstr "گیاهان آپارتمانی"
+
+#: .\home.html:80
+msgid "Houseplants and air purifiers"
+msgstr "گیاهان آپارتمانی و تصفیه کننده هوا"
+
+#: .\home.html:96
+msgid "Ready compounds"
+msgstr "ترکیبات خاک آماده "
+
+#: .\home.html:98
+msgid "Ready-made mixtures for flowers and houseplants and planting media"
+msgstr "مخلوط‌های آماده برای گل‌ها و گیاهان آپارتمانی و محیط‌های کاشت"
+
+#: .\home.html:114
+msgid "chemical fertilizer"
+msgstr "کود شیمیایی"
+
+#: .\home.html:116
+msgid "Chemical fertilizer for plant nutrition"
+msgstr "کود شیمیایی برای تغذیه گیاهان"
+
+#: .\home.html:132
+msgid "plastic pot"
+msgstr "گلدان پلاستیکی"
+
+#: .\home.html:134
+msgid "Plastic pots are the best choice for plants of all sizes."
+msgstr "گلدان‌های پلاستیکی بهترین انتخاب برای گیاهان در هر اندازه‌ای"
+
+#: .\home.html:148
 msgid "successful sales"
 msgstr "پرفروش ترین ها"
 
-#: .\home.html:137
+#: .\home.html:190
 msgid "latest_products"
 msgstr "جدیدترین محصولات"
 
