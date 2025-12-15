@@ -1,5 +1,43 @@
 
-<h1>product list</h1>
-{% for product in products %}
-    <a href="{% url 'product_detail_by_slug' product_slug=product.slug %}">{{ product.name }}</a><br>
-{% endfor %}
+{#<h1>product list</h1>#}
+{#{% for product in products %}#}
+{#    <a href="{% url 'product_detail_by_slug' product_slug=product.slug %}">{{ product.name }}</a><br>#}
+{#{% endfor %}#}
+
+<!-- templates/products.html -->
+
+{#{% extends 'base.html' %} <!-- اگر از وراثت قالب‌ها استفاده می‌کنید -->#}
+
+{% extends '_base.html' %}
+
+{% block title %}
+    {% if current_category_name %}
+        محصولات - {{ current_category_name.name }}
+    {% else %}
+        همه محصولات
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <h1>
+        {% if current_category_name %}
+            {{ current_category_name.name }}
+        {% else %}
+            همه محصولات
+        {% endif %}
+    </h1>
+
+    {% if products %}
+        <div class="product-grid">
+            {% for product in products %}
+                <div class="product-item">
+                    <a href="{% url 'product_detail_by_slug' product.slug %}">
+                        {{ product.name }}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>در این دسته محصولی یافت نشد.</p>
+    {% endif %}
+{% endblock %}

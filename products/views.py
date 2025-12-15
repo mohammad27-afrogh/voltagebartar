@@ -1,14 +1,44 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.conf import settings
+from django.db.models import Q
 
 from .models import  Product, Comment, Category
 from .forms import CommentForm
 
-class ProductListView(generic.ListView):
-    model = Product
-    template_name = 'products/product_list.html'
-    context_object_name = 'products'
+# class ProductListView(generic.ListView):
+#     model = Product
+#     template_name = 'products/product_list.html'
+#     context_object_name = 'products'
+
+def product_list_view(request):
+    selected_category_slug = request.GET.get('category')
+    products = Product.objects.all().order_by('id')
+    current_category_name = 'all products'
+
+    if selected_category_slug:
+        try:
+            category = Category.objects.get(slug__iexact=selected_category_slug)
+            # ایجاد فیلتر برای خود دسته و زیر‌دسته‌هایش
+            subcategories = category.subcategories.all()
+            products = Product.objects.filter(
+                Q(category=category) | Q(category__in=subcategories)
+            ).order_by('id')
+
+            current_category_name = category.name
+
+        except Category.DoesNotExist:
+            products = Product.objects.none()
+            current_category_name = f'Category "{selected_category_slug}" not found!'
+
+    context = {
+        'products': products,
+        'current_category_name': current_category_name,
+        'categories': Category.objects.all(),
+    }
+
+    return render(request, 'products/product_list.html', context)
+
 
 def product_detail_view(request, product_slug):
     product_comment = get_object_or_404(Product, slug=product_slug)
