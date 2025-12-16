@@ -224,6 +224,37 @@
             </div>
             <!-- end latest_products--------------------------------------->
 
+            <!-- elementor_post_blog--------------------------------------->
+            <div class="slider-widget-products">
+                <div class="widget widget-product card">
+                    <header class="new-blog-banner">
+                        <h5>{% trans 'The latest published blogs' %}</h5>
+                    </header>
+                    <div class="elementor row">
+                        {% for blog in blog_most_recent %}
+                            <div class="col-3 col-md-3 col-lg-3 col-xl-3 items-4 pr">
+                                <article class="blog-item">
+                                    <figure class="figure">
+                                        <div class="post-thumbnail">
+                                            <img src="{{ blog.cover_blog }}"
+                                                alt="camera">
+                                        </div>
+                                        <div class="post-title">
+                                            <p><b>{{ blog.name }}</b></p>
+                                            <p>{{ blog.short_description }}</p>
+                                            <a href="{% url 'blog_detail_by_slug' blog.slug %}" type="button" class="btn btn-light btn-see-all">{% trans 'View the blog' %}</a>
+                                        </div>
+                                    </figure>
+                                </article>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="container-for-my-button">
+                        <a href="{% url 'blogs' %}" type="button" class="btn btn-light btn-see-all">{% trans 'View all blogs' %}</a>
+                    </div>
+                </div>
+            </div>
+            <!-- end elementor_post_blog--------------------------------------->
         </div>
     </div>
 
