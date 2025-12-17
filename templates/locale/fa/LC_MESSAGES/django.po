@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-15 17:44+0330\n"
-"PO-Revision-Date: 2025-12-15 17:49+0330\n"
+"POT-Creation-Date: 2025-12-17 12:22+0330\n"
+"PO-Revision-Date: 2025-12-17 12:33+0330\n"
 "Last-Translator:   <m.afroogh25@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -131,7 +131,7 @@ msgstr "با ما تماس بگیرید"
 msgid "signup to user account"
 msgstr "ثبت نام در حساب کاربری"
 
-#: .\account\signup.html:47
+#: .\account\signup.html:47 .\partials\footer.html:99
 msgid "Privacy"
 msgstr "حریم خصوصی"
 
@@ -208,6 +208,107 @@ msgstr "پرفروش ترین ها"
 #: .\home.html:190
 msgid "latest_products"
 msgstr "جدیدترین محصولات"
+
+#: .\home.html:231
+msgid "The latest published blogs"
+msgstr "آخرین وبلاگ‌های منتشر شده"
+
+#: .\home.html:245
+msgid "View the blog"
+msgstr "وبلاگ ها را مشاهده کنید"
+
+#: .\home.html:253
+#| msgid "view all"
+msgid "View all blogs"
+msgstr "مشاهده همه بلاگ ها"
+
+#: .\partials\footer.html:21
+msgid "follow us"
+msgstr "ما را دنبال کنید"
+
+#: .\partials\footer.html:50
+#| msgid "to sabzeonline"
+msgid "with sabzeonline"
+msgstr "با سبزآنلاین"
+
+#: .\partials\footer.html:56
+#| msgid "to sabzeonline"
+msgid "newsroom sabzeonline"
+msgstr "اتاق خبر سبزآنلاین"
+
+#: .\partials\footer.html:61
+msgid "about us"
+msgstr "در مورد ما"
+
+#: .\partials\footer.html:66
+msgid "Flower and plant articles"
+msgstr "محصولات گل و گیاه"
+
+#: .\partials\footer.html:78
+msgid "Customer service"
+msgstr "خدمات مشتری"
+
+#: .\partials\footer.html:84
+msgid "Answers to frequently asked questions"
+msgstr "پاسخ به سوالات متداول"
+
+#: .\partials\footer.html:89
+msgid "Return procedures"
+msgstr "مراحل بازگشت"
+
+#: .\partials\footer.html:94
+#| msgid "Terms of the rules"
+msgid "Terms of Use"
+msgstr "شرایط استفاده"
+
+#: .\partials\footer.html:111
+#| msgid "signup to sabzeonline"
+msgid "Buying Guide from sabzeonline"
+msgstr "راهنمای خرید از سبزآنلاین"
+
+#: .\partials\footer.html:117
+msgid "How to place an order"
+msgstr "نحوه ثبت سفارش"
+
+#: .\partials\footer.html:122
+msgid "Order sending procedure"
+msgstr "مراحل ارسال سفارش"
+
+#: .\partials\footer.html:127
+msgid "Payment methods"
+msgstr "روش های پرداخت"
+
+#: .\partials\footer.html:141
+msgid ""
+"Stay informed about the latest news and products on the site by subscribing "
+"to the newsletter..."
+msgstr "با عضویت در خبرنامه از آخرین اخبار و محصولات سایت مطلع شوید..."
+
+#: .\partials\footer.html:145
+msgid "Enter your email address."
+msgstr "آدرس ایمیل خود را وارد کنید."
+
+#: .\partials\footer.html:146
+#| msgid "sent"
+msgid "send"
+msgstr "ارسال کنید"
+
+#: .\partials\footer.html:156
+msgid "sabzeonline flower and plant store"
+msgstr "فروشگاه گل و گیاه سبز آنلاین"
+
+#: .\partials\footer.html:158
+msgid ""
+"sabzeonline, a specialized reference for buying flowers, plants, seeds, "
+"soil, fertilizers and gardening tools.Quality, freshness and free advice for"
+" nature lovers."
+msgstr ""
+"سبزآنلاین، مرجع تخصصی خرید گل، گیاه، بذر، خاک، کود و ابزار باغبانی. کیفیت، "
+"تازگی و مشاوره رایگان برای دوستداران طبیعت."
+
+#: .\partials\footer.html:199
+msgid "All content, photos, etc. belong to the sabzeonline shopping site."
+msgstr "تمامی مطالب، عکس ها و... متعلق به سایت فروشگاهی سبزآنلاین می باشد."
 
 #: .\partials\navbar.html:22
 msgid "Search for the product name, brand or category you are looking for…"
