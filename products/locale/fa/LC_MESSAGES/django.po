@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-04 22:58+0330\n"
-"PO-Revision-Date: 2025-12-01 00:42+0330\n"
+"POT-Creation-Date: 2025-12-18 11:22+0330\n"
+"PO-Revision-Date: 2025-12-18 11:34+0330\n"
 "Last-Translator:   <m.afroogh25@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -325,6 +325,34 @@ msgstr "متن نظر"
 #: .\models.py:210
 msgid "answer"
 msgstr "پاسخ دهید"
+
+#: .\models.py:216
+msgid "Ad Title"
+msgstr "عنوان آگهی"
+
+#: .\models.py:217
+#| msgid "short_description"
+msgid "Short description"
+msgstr "توضیحات کوتاه"
+
+#: .\models.py:218
+#| msgid "care tipe"
+msgid "caver slide"
+msgstr "عکس اسلاید"
+
+#: .\models.py:221
+#| msgid "Parent category"
+msgid "Related category"
+msgstr "دسته بندی مرتبط"
+
+#: .\models.py:224
+msgid "Display order"
+msgstr "نمایش سفارش"
+
+#: .\models.py:225
+#| msgid "is_active"
+msgid "active"
+msgstr "فعال است"
 
 #~ msgid "unit"
 #~ msgstr "واحد اندازه گیری"

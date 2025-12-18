@@ -211,3 +211,25 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'{self.product}'
+
+class CategorySlider(models.Model):
+    title = models.CharField(_('Ad Title'), max_length=100)
+    subtitle = models.CharField(_('Short description'), max_length=200, blank=True)
+    image = models.ImageField(_('caver slide'), upload_to='slider/category/')
+    category = models.ForeignKey(
+        'Category',
+        verbose_name=_('Related category'),
+        on_delete=models.CASCADE
+    )
+    order = models.PositiveIntegerField(_('Display order'), default=0)
+    is_active = models.BooleanField(_('active'), default=True)
+
+    class Meta:
+        ordering = ['order']
+
+    def __str__(self):
+        return self.title
+
+    def get_category_url(self):
+        """بازگرداندن لینک به صفحه دسته مربوطه"""
+        return self.category.get_absolute_url()

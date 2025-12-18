@@ -1,5 +1,5 @@
 from django import forms
-from .models import Product, Discount, Category, Inventory, Features, Order, OrderItem, Brand, Comment
+from .models import Product, Discount, Category, Inventory, Features, Order, OrderItem, Brand, Comment, CategorySlider
 
 class ProductForm(forms.ModelForm):
     class Meta:
@@ -98,3 +98,12 @@ class CommentForm(forms.ModelForm):
         fields = [
             'body_comment',
             ]
+
+class CategorySliderForm(forms.ModelForm):
+    class Meta:
+        model = CategorySlider
+        fields = [
+            'title',
+            'subtitle',
+            'image',
+        ]
