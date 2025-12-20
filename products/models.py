@@ -113,6 +113,9 @@ class Category(models.Model):
             return f"{self.parent} > {self.name}"
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('products:category_detail', kwargs={'category_slug': self.slug})
+
 class Inventory(models.Model):
     INVENTORY_STATUS = [
         ('AVA', _('Available')),

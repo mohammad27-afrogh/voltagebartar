@@ -118,6 +118,7 @@ TEMPLATES = [
                 'products.context_processors.context_successful_sales',
                 'products.context_processors.context_latest_products',
                 'blogs.context_processors.context_processors_blog',
+                'pages.context_processors.context_slider_category_home',
             ],
         },
     },
