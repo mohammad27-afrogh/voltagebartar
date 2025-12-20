@@ -14,6 +14,52 @@
 {% block content %}
 
     {% include 'partials/navbar.html' %}
+
+    <!-- slider-main--------------------------->
+    <div class="container-main">
+        <div class="d-block">
+            <div class="col-lg-12 col-xs-12 pr mb-4">
+                <div class="slider-main-container d-block">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            {% for slider in sliders %}
+                                <li data-target="#carouselExampleIndicators"
+                                    data-slide-to="{{ forloop.counter0 }}"
+                                    class="{% if forloop.first %}active{% endif %}">
+                                </li>
+                            {% endfor %}
+                        </ol>
+                        <div class="carousel-inner">
+                            {% for slider in sliders %}
+                                <div class="carousel-item carousel-item-h4 {% if forloop.first %}active{% endif %}">
+                                    <img src="{{ slider.image.url }}" class="d-block w-100 h-four-img"
+                                        alt="...">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h3>{{ slider.title }}</h3>
+                                        <p>{{ slider.subtitle }}</p>
+                                        <a href="{{ slider.get_category_url }}" type="button"
+                                           class="btn btn-warning btn-buy mt-4">{% trans 'make a purchase' %}</a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                            data-slide="prev">
+                            <span class="fa fa-angle-left" aria-hidden="true"></span>
+                            <span class="sr-only">{% trans 'Previous' %}</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                            data-slide="next">
+                            <span class="fa fa-angle-right" aria-hidden="true"></span>
+                            <span class="sr-only">{% trans 'Next' %}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end_slider-main--------------------------->
+
         <!-- slidre-product------------------------>
     <div class="container-main">
         <div class="d-block">
@@ -41,13 +87,13 @@
                                                 padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: bold;">
                                         {{ discount.discount_percentage|intcomma:False|translate_number }}%
                                     </div>
-                                    <a href="{% url 'product_detail_by_slug' discount.product.id %}"
+                                    <a href="{% url 'products:product_detail_by_slug' discount.product.id %}"
                                        class="d-block hover-img-link" data-toggle="modal" data-target="#exampleModal">
                                         <img src="{% static 'img/products/discount_products' %}"
                                             class="img-fluid" alt="">
                                     </a>
                                     <h2 class="post-title">
-                                        <a href="{% url 'product_detail_by_slug' discount.product.id %}">
+                                        <a href="{% url 'products:product_detail_by_slug' discount.product.id %}">
                                             {{ discount.product.name }}
                                         </a>
                                     </h2>
@@ -74,11 +120,11 @@
                                 </div>
 
                                 <div class="post-title">
-                                    <a href="{% url 'product_list' %}?category=houseplants" class="d-block">
+                                    <a href="{% url 'products:product_list' %}?category=houseplants" class="d-block">
                                         <h5>{% trans 'Houseplants' %}</h5>
                                     </a>
                                     <p>{% trans 'Houseplants and air purifiers' %}</p>
-                                    <a href="{% url 'product_list' %}?category=houseplants" type="button" class="btn btn-light btn-see-all">{% trans 'view all' %}</a>
+                                    <a href="{% url 'products:product_list' %}?category=houseplants" type="button" class="btn btn-light btn-see-all">{% trans 'view all' %}</a>
                                 </div>
                             </figure>
                         </article>
@@ -92,11 +138,11 @@
                                 </div>
 
                                 <div class="post-title">
-                                    <a href="{% url 'product_list' %}?category=Ready-compounds" class="d-block">
+                                    <a href="{% url 'products:product_list' %}?category=Ready-compounds" class="d-block">
                                         <h5>{% trans 'Ready compounds' %}</h5>
                                     </a>
                                     <p>{% trans 'Ready-made mixtures for flowers and houseplants and planting media' %}</p>
-                                    <a href="{% url 'product_list' %}?category=Ready-compounds" type="button" class="btn btn-light btn-see-all">{% trans 'view all' %}</a>
+                                    <a href="{% url 'products:product_list' %}?category=Ready-compounds" type="button" class="btn btn-light btn-see-all">{% trans 'view all' %}</a>
                                 </div>
                             </figure>
                         </article>
@@ -110,11 +156,11 @@
                                 </div>
 
                                 <div class="post-title">
-                                    <a href="{% url 'product_list' %}?category=chemical-fertilizer" class="d-block">
+                                    <a href="{% url 'products:product_list' %}?category=chemical-fertilizer" class="d-block">
                                         <h5>{% trans 'chemical fertilizer' %}</h5>
                                     </a>
                                     <p>{% trans 'Chemical fertilizer for plant nutrition' %}</p>
-                                    <a href="{% url 'product_list' %}?category=chemical-fertilizer" type="button" class="btn btn-light btn-see-all">{% trans 'view all' %}</a>
+                                    <a href="{% url 'products:product_list' %}?category=chemical-fertilizer" type="button" class="btn btn-light btn-see-all">{% trans 'view all' %}</a>
                                 </div>
                             </figure>
                         </article>
@@ -128,11 +174,11 @@
                                 </div>
 
                                 <div class="post-title">
-                                    <a href="{% url 'product_list' %}?category=plastic" class="d-block">
+                                    <a href="{% url 'products:product_list' %}?category=plastic" class="d-block">
                                         <h5>{% trans 'plastic pot' %}</h5>
                                     </a>
                                     <p>{% trans 'Plastic pots are the best choice for plants of all sizes.' %}</p>
-                                    <a href="{% url 'product_list' %}?category=plastic" type="button" class="btn btn-light btn-see-all">{% trans 'view all' %}</a>
+                                    <a href="{% url 'products:product_list' %}?category=plastic" type="button" class="btn btn-light btn-see-all">{% trans 'view all' %}</a>
                                 </div>
                             </figure>
                         </article>
@@ -258,4 +304,5 @@
         </div>
     </div>
     {% include 'partials/footer.html' %}
+
 {% endblock content %}

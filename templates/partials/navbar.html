@@ -128,14 +128,14 @@
                                                     <ul class="sub-menu is-mega-menu maga-menu-level-three">
                                                         {% for sub_sub_cat in sub_cat.subcategories.all %}
                                                             <li class="menu-mega-item-three">
-                                                                <a href="{% url 'category_detail' category_slug=sub_sub_cat.slug %}" class="mega-menu-link">
+                                                                <a href="{% url 'products:category_detail' category_slug=sub_sub_cat.slug %}" class="mega-menu-link">
                                                                     {{ sub_sub_cat.name }}
                                                                 </a>
                                                             </li>
                                                         {% endfor %}
                                                     </ul>
                                                 {% else %}
-                                                    <a href="{% url 'category_detail' category_slug=sub_cat.slug %}" class="mega-menu-link">
+                                                    <a href="{% url 'products:category_detail' category_slug=sub_cat.slug %}" class="mega-menu-link">
                                                         {{ sub_cat.name }}
                                                     </a>
                                                 {% endif %}

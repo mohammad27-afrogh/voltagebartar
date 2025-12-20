@@ -25,7 +25,7 @@ urlpatterns = [
     path('ratings/', include('star_ratings.urls', namespace='ratings')),
     path('rosetta/', include('rosetta.urls')),
     path('', include('pages.urls')),
-    path('products/', include('products.urls')),
+    path('products/', include('products.urls', namespace='products')),
     path('blogs/', include('blogs.urls')),
     path('cart/', include('cart.urls')),
     path('api/', include('locations.urls')),

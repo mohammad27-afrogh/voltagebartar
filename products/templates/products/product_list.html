@@ -31,7 +31,7 @@
         <div class="product-grid">
             {% for product in products %}
                 <div class="product-item">
-                    <a href="{% url 'product_detail_by_slug' product.slug %}">
+                    <a href="{% url 'products:product_detail_by_slug' product.slug %}">
                         {{ product.name }}
                     </a>
                 </div>
