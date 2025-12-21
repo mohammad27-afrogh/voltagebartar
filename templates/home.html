@@ -87,13 +87,13 @@
                                                 padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: bold;">
                                         {{ discount.discount_percentage|intcomma:False|translate_number }}%
                                     </div>
-                                    <a href="{% url 'products:product_detail_by_slug' discount.product.id %}"
+                                    <a href="{% url 'products:product_detail_by_slug' discount.product.slug %}"
                                        class="d-block hover-img-link" data-toggle="modal" data-target="#exampleModal">
-                                        <img src="{% static 'img/products/discount_products' %}"
+                                        <img src="{% static 'img/products' %}"
                                             class="img-fluid" alt="">
                                     </a>
                                     <h2 class="post-title">
-                                        <a href="{% url 'products:product_detail_by_slug' discount.product.id %}">
+                                        <a href="{% url 'products:product_detail_by_slug' discount.product.slug %}">
                                             {{ discount.product.name }}
                                         </a>
                                     </h2>
@@ -204,11 +204,11 @@
                                             {{ sales.active_discount.discount_percentage|intcomma:False|translate_number }}%
                                         </div>
                                     {% endif %}
-                                    <a href="#" class="d-block hover-img-link">
+                                    <a href="{% url 'products:product_detail_by_slug' sales.slug %}" class="d-block hover-img-link">
                                         <img src="{% static 'img/products' %}" class="img-fluid" alt="">
                                     </a>
                                     <h2 class="post-title">
-                                        <a href="#">
+                                        <a href="{% url 'products:product_detail_by_slug' sales.slug %}">
                                             {{ sales.name }}
                                         </a>
                                     </h2>
@@ -246,11 +246,11 @@
                                             {{ latest_product.active_discount.discount_percentage|intcomma:False|translate_number }}%
                                         </div>
                                     {% endif %}
-                                    <a href="#" class="d-block hover-img-link">
+                                    <a href="{% url 'products:product_detail_by_slug' latest_product.slug %}" class="d-block hover-img-link">
                                         <img src="{% static 'img/products' %}" class="img-fluid" alt="">
                                     </a>
                                     <h2 class="post-title">
-                                        <a href="#">
+                                        <a href="{% url 'products:product_detail_by_slug' latest_product.slug %}">
                                             {{ latest_product.name }}
                                         </a>
                                     </h2>
