@@ -124,7 +124,5 @@ class QuestionsAndAnswersForm(forms.ModelForm):
     class Meta:
         model = Questions_and_answers
         fields = [
-            'user',
-            'time_release_question',
             'body_question',
         ]
