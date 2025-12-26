@@ -1,5 +1,16 @@
 from django import forms
-from .models import Product, Discount, Category, Inventory, Features, Order, OrderItem, Brand, Comment, CategorySlider
+from .models import (Product,
+                     Discount,
+                     Category,
+                     Inventory,
+                     Features,
+                     Order,
+                     OrderItem,
+                     Brand,
+                     Comment,
+                     CategorySlider,
+                     Questions_and_answers,
+                     )
 
 class ProductForm(forms.ModelForm):
     class Meta:
@@ -97,7 +108,8 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = [
             'body_comment',
-            ]
+            'is_active',
+        ]
 
 class CategorySliderForm(forms.ModelForm):
     class Meta:
@@ -106,4 +118,13 @@ class CategorySliderForm(forms.ModelForm):
             'title',
             'subtitle',
             'image',
+        ]
+
+class QuestionsAndAnswersForm(forms.ModelForm):
+    class Meta:
+        model = Questions_and_answers
+        fields = [
+            'user',
+            'time_release_question',
+            'body_question',
         ]

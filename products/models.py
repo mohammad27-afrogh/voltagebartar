@@ -211,6 +211,7 @@ class Comment(models.Model):
     update_to = models.DateTimeField(_('update_to'), auto_now=True)
     body_comment = RichTextField(_('body_comment'), )
     answer_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, verbose_name=_('answer'))
+    is_active = models.BooleanField(_('I recommend purchasing this product ?'), default=True)
 
     def __str__(self):
         return f'{self.product}'
@@ -236,3 +237,11 @@ class CategorySlider(models.Model):
     def get_category_url(self):
         """بازگرداندن لینک به صفحه دسته مربوطه"""
         return self.category.get_absolute_url()
+
+class Questions_and_answers(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='questions', verbose_name=_('Product questions and answers'))
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name=_('user'))
+    time_release_question = models.DateTimeField(_('time_release_question'), default=timezone.now)
+    update_to = models.DateTimeField(_('update_to'), auto_now=True)
+    body_question = RichTextField(_('body_question'), )
+    answer_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, verbose_name=_('answer'))
