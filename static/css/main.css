@@ -3599,24 +3599,26 @@ aside.main-row-bg .card-product-horizontal .card-product-horizontal-content {
     padding: 30px 0;
     float: right;
 }
-
+/* 1. تنظیمات کلی Breadcrumb (برای حفظ تنظیمات حاشیه و فلوت اصلی) */
 .main-row #breadcrumb {
     width: 100%;
     font-size: 14px;
     padding: 8px 30px 8px 10px;
-    color: #bbb;
+    /* رنگ اصلی را اگر لازم است حفظ کنید، در غیر این صورت به مشکی تغییر دهید */
+    color: #000000 !important;
     margin-bottom: 0;
     position: relative;
     background: transparent;
     float: right;
 }
 
+/* 2. استایل آیکون خانه (mdi-home) - اکنون مشکی و داخل کادر سفید قرار می‌گیرد */
 .main-row #breadcrumb i {
     position: absolute;
     right: 12px;
     top: 13px;
     font-size: 25px;
-    color: #ababab;
+    color: #000000 !important; /* رنگ آیکون مشکی */
     border-radius: 20px;
     width: 30px;
     height: 30px;
@@ -3624,13 +3626,23 @@ aside.main-row-bg .card-product-horizontal .card-product-horizontal-content {
     text-align: center;
 }
 
-.main-row #breadcrumb li.breadcrumb-item a {
-    color: #666666;
+/* 3. استایل آیتم‌های لیست (ایجاد مستطیل سفید و متن مشکی) */
+.main-row #breadcrumb li.breadcrumb-item {
+    /* پس‌زمینه سفید و استایل کادر مستطیلی */
+    background-color: #ffffff !important;
+    color: #000000 !important; /* رنگ متن آیتم‌های غیرلینک (صفحه جاری) مشکی */
+    padding: 5px 8px !important; /* ایجاد فاصله داخلی */
+    border-radius: 3px !important; /* گوشه‌های گرد */
+    margin-left: 4px !important; /* فاصله بین مستطیل‌ها */
+    display: inline-block !important; /* برای اعمال padding و background */
 }
 
-.main-row #breadcrumb li.breadcrumb-item {
-    color: #aaa;
+/* 4. استایل لینک‌ها (تغییر رنگ متن لینک‌ها به مشکی) */
+.main-row #breadcrumb li.breadcrumb-item a {
+    color: #000000 !important; /* رنگ متن لینک‌ها مشکی شد */
+    text-decoration: none !important; /* حذف خط زیرین لینک (اختیاری) */
 }
+
 
 .widget-product-categories {
     width: 100%;
@@ -6620,23 +6632,32 @@ main.single-product .product .gallery-items li img:hover {
     display: inline-block;
 }
 
+/* استایل‌های جدید برای ایجاد کادر سفید و متن مشکی در ویژگی‌های محصول */
 .product .product-usp .product-feature .product-feature-col a.product-feature-item {
     align-items: center;
-    color: #9b9b9b;
+    /* رنگ متن را به مشکی تغییر دادیم و پس‌زمینه سفید اضافه کردیم */
+    color: #000000 !important;
+    background-color: #ffffff !important; /* پس‌زمینه سفید */
     font-size: 0.7rem;
     display: block;
     text-align: right;
     position: relative;
-    padding: 0 65px 0 10px;
+    padding: 12px 65px 12px 10px !important; /* افزایش padding عمودی برای فضای بهتر */
+    border-radius: 4px !important; /* گوشه‌های گرد اختیاری */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* سایه بسیار خفیف برای تفکیک بهتر از پس‌زمینه اصلی */
 }
 
+/* استایل عکس (آیکون) - برای اطمینان از نمایش درست در کادر جدید */
 .product .product-usp .product-feature .product-feature-col a.product-feature-item img {
     width: 40px;
     height: 40px;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 50%; /* برای سنتر کردن عمودی */
+    transform: translateY(-50%); /* برای سنتر کردن عمودی دقیق */
+    right: 10px; /* تنظیم موقعیت افقی آیکون به سمت راست با کمی فاصله */
+    border-radius: 50%; /* اگر آیکون‌ها دایره‌ای هستند */
 }
+
 
 .tabs {
     margin-top: 39px;
@@ -9855,5 +9876,81 @@ body.account_page::before {
 
     /* 3. (اختیاری) اگر می‌خواهید مطمئن شوید که کانتینر به اندازه کافی فضا دارد */
     width: 100%;
+}
+
+.my-custom-add-button {
+    width: 100%;
+    border-radius: 20px; /* گوشه های گرد شبیه عکس شما */
+    font-size: 14px;
+    margin-top: 10px;
+    border-color: #f5f5f5;
+    background-color: #651fff; /* رنگ بنفش روشن دکمه شما */
+    transition: all .2s ease;
+    /* برای اطمینان از اینکه دکمه لینک نیست و مستقیما فرم را سابمیت می‌کند */
+    border: 1px solid transparent;
+    cursor: pointer;
+    padding: 12px 10px; /* تنظیم پدینگ برای تناسب بیشتر */
+}
+
+.my-custom-add-button:hover {
+    opacity: 0.7;
+}
+
+.my-custom-add-button:focus {
+    box-shadow: none;
+}
+
+
+/* کلاس اصلی برای کانتینر فرم */
+.comment-form-container {
+    /* حداکثر عرض فرم برای خوانایی بهتر در دسکتاپ */
+    max-width: 600px;
+    /* وسط‌چین کردن فرم در صفحه */
+    margin: 30px auto;
+    /* پدینگ داخلی */
+    padding: 25px;
+    /* پس‌زمینه سفید */
+    background-color: #ffffff;
+    /* حاشیه گرد ملایم */
+    border-radius: 10px;
+    /* سایه ملایم برای جلوه سه‌بعدی */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    /* یک حاشیه بسیار روشن برای تمیزی بیشتر */
+    border: 1px solid #f0f0f0;
+}
+
+/* استایل‌دهی دکمه ارسال */
+.comment-form-container button[type="submit"] {
+    /* دکمه تمام‌عرض */
+    width: 100%;
+    /* پدینگ و اندازه فونت */
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    /* رنگ آبی به عنوان رنگ اصلی */
+    background-color: #3e00c7;
+    color: white;
+    /* حذف حاشیه پیش‌فرض */
+    border: none;
+    /* گرد کردن گوشه‌های دکمه */
+    border-radius: 5px;
+    /* فضای خالی بالای دکمه */
+    margin-top: 20px;
+    /* نشانگر موس به حالت دست */
+    cursor: pointer;
+    /* انتقال نرم برای انیمیشن‌ها */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* افکت هاور (هنگام بردن موس روی دکمه) */
+.comment-form-container button[type="submit"]:hover {
+    background-color: #0056b3;
+    /* یک حرکت جزئی به بالا */
+    transform: translateY(-2px);
+}
+
+/* از آنجایی که شما از crispy استفاده می‌کنید، برای تضمین فاصله بین فیلدها */
+.comment-form-container .form-group {
+    margin-bottom: 15px;
 }
 

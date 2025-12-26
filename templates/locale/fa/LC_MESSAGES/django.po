@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-21 18:45+0330\n"
-"PO-Revision-Date: 2025-12-21 18:48+0330\n"
+"POT-Creation-Date: 2025-12-26 21:47+0330\n"
+"PO-Revision-Date: 2025-12-26 23:13+0330\n"
 "Last-Translator:   <m.afroogh25@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -343,3 +343,54 @@ msgstr "سبد خرید"
 #: .\partials\navbar.html:85
 msgid "logout"
 msgstr "خروج"
+
+#: .\partials\product_actions.html:10
+msgid "popular"
+msgstr "محبوب"
+
+#: .\partials\product_actions.html:17
+msgid "subscription"
+msgstr "اشتراک"
+
+#: .\partials\product_actions.html:28
+msgid "share"
+msgstr "به اشتراک بگذارید"
+
+#: .\partials\product_actions.html:37
+msgid "You can share this page with your friends using the methods below."
+msgstr ""
+"شما می‌توانید با استفاده از روش‌های زیر، این صفحه را با دوستان خود به اشتراک"
+" بگذارید."
+
+#: .\partials\product_actions.html:41
+msgid "Send by email"
+msgstr "از طریق ایمیل ارسال کنید"
+
+#: .\partials\product_actions.html:49
+#| msgid "Please Confirm email"
+msgid "send email"
+msgstr "ارسال ایمیل"
+
+#: .\partials\product_actions.html:95
+msgid "notification"
+msgstr "اطلاع رسانی"
+
+#: .\partials\product_actions.html:107
+msgid "let me know"
+msgstr "به من اطلاع بده"
+
+#: .\partials\product_actions.html:115
+msgid "through:"
+msgstr "از طریق :"
+
+#: .\partials\product_actions.html:124
+msgid "email to : "
+msgstr "ایمیل به :"
+
+#: .\partials\product_actions.html:130
+msgid "registration"
+msgstr "ثبت نام"
+
+#: .\partials\product_actions.html:132
+msgid "return"
+msgstr "بازگشت"

@@ -3880,8 +3880,33 @@ tbody.collapse.show {
 }
 
 .nav-tabs .nav-item {
-  margin-bottom: -1px;
+  margin-bottom: -1px; /* این خط را حفظ می‌کنیم زیرا برای همپوشانی صحیح تب‌ها لازم است */
 }
+
+/* استایل‌دهی برای آیتم تَب (معمولاً تگ <a> درون nav-item) */
+.nav-tabs .nav-item a {
+    /* تنظیمات کادر سفید */
+    background-color: #ffffff !important;
+    color: #000000 !important; /* متن مشکی */
+
+    /* تنظیمات مرزی برای شبیه سازی تب جدا شده */
+    border: 1px solid #dee2e6 !important; /* حاشیه خاکستری روشن */
+    border-bottom: none !important; /* حذف مرز پایینی برای اتصال به محتوای زیرین */
+    border-radius: 8px 8px 0 0 !important; /* گرد کردن گوشه‌های بالایی */
+
+    /* تنظیمات متنی */
+    padding: 10px 15px !important; /* پدینگ مناسب */
+    font-weight: 500 !important;
+}
+
+/* استایل آیتم فعال (Active) برای اینکه به خوبی در کادر سفید قرار گیرد */
+.nav-tabs .nav-item a.active {
+    background-color: #ffffff !important; /* فعال هم سفید بماند */
+    color: #000000 !important; /* متن مشکی یا رنگ تأکیدی دیگر */
+    border-bottom: 1px solid #ffffff !important; /* برای اینکه مرز پایینی محو شود و به محتوا متصل شود */
+    z-index: 2 !important; /* اطمینان از اینکه بالاتر از محتوا قرار گیرد */
+}
+
 
 .nav-tabs .nav-link {
   border: 1px solid transparent;

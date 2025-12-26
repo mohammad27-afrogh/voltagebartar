@@ -1,37 +1,497 @@
-<h1>{{ product.name }}</h1>
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load persian_translation_tags %}
+{% load humanize %}
 
-<h1>{{ product.category }}</h1>
-<h1>{{ product.brand }}</h1>
-<h1>{{ product.date_time_create }}</h1>
-------------------
-<h1>{{ product.features.ingredients }}</h1>
-<h1>{{ product.features.usage_instructions }}</h1>
-------------------
-<h1>{{ product.inventory.get_status_display }}</h1>
-<h1>{{ product.inventory.inventory }}</h1>
-------------------
-<h1>{{ product.successful_sales_count }}</h1>
-<h1>{{ product.base_price }}</h1>
 
-<form action="{% url 'cart:cart_add' product.id %}" method="POST">
-    {% csrf_token %}
-    <input type="number" name="quantity" id="qty" value="1" min="1">
-    <button type="submit">add to cart</button>
-</form>
-------------------
-<h1>{{ product.short_description }}</h1>
-<h1>{{ product.description }}</h1>
-------------------
+{% block page_title %}
+    {% trans 'sabzeonline' %}
+{% endblock page_title %}
 
-{% for comment in comments %}
-	<h1>{{ comment.user.username }}</h1>
-    <h1>{{ comment.time_release_comment }}</h1>
-    <h1>{{ comment.body_comment }}</h1>
-{% endfor %}
--------------------
 
-<form action="" method="POST">
-    {% csrf_token %}
-    {{ comment_form.as_p }}
-    <button type="submit">send</button>
-</form>
+{% block content %}
+
+    {% include 'partials/navbar.html' %}
+
+    <!-- arshive-product----------------------->
+    <div class="container-main">
+        <div class="d-block">
+            <div class="page-content page-row">
+                <div class="main-row">
+                    <div id="breadcrumb">
+                        <i class="mdi mdi-home"></i>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'home' %}">{% trans 'home' %}</a></li>
+                                {% for breadcrumb_category in breadcrumb_categories %}
+                                	{% if breadcrumb_category.get_absolute_url %}
+                                        <li class="breadcrumb-item">
+                                            <a href="{{ breadcrumb_category.get_absolute_url }}">{{ breadcrumb_category.name }}</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="breadcrumb-item active" aria-current="page">{{ breadcrumb_category.name }}</li>
+                                	{% endif %}
+                                {% endfor %}
+                                <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <br>
+                    <div class="col-lg">
+                        <div class="product type-product">
+                            <div class="col-lg-5 col-xs-12 pr d-block" style="padding: 0;">
+                                <section class="product-gallery">
+                                    <div class="gallery">
+                                        {% include 'partials/product_actions.html' %}
+                                        <div class="gallery-item">
+                                            <div class="gallery-img">
+                                                <a href="#">
+                                                    {% if product.cover_product %}
+                                                        <img class="zoom-img" id="img-product-zoom"
+                                                            src="{{ product.cover_product.url }}"
+                                                            data-zoom-image="{{ product.cover_product.url }}"
+                                                            width="411" />
+                                                    {% else %}
+                                                        <img class="zoom-img" id="img-product-zoom"
+                                                            src="{% static 'img/products/no_product_image.jpg' %}"
+                                                            data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
+                                                            width="411" />
+                                                    {% endif %}
+                                                    <div id="gallery_01f" style="width:420px;float:right;">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            </section>
+                        </div>
+                        <div class="col-lg-7 col-xs-12 pl mt-5 d-block">
+                            <section class="product-info">
+                                <div class="product-headline">
+                                    <h1 class="product-title">
+                                        {{ product.name }}
+                                    </h1>
+                                    <div class="product-guaranteed text-success">
+                                        {{ product.successful_sales_count }}
+                                        <span>{% trans 'successful sale' %}</span>
+                                    </div>
+                                </div>
+                                <div class="product-attributes">
+                                    <div class="product-config">
+                                        <span class="product-title-en">{{ product.slug }}</span>
+                                        <div class="product-rate">
+                                            <i class="fa fa-star active"></i>
+                                            <i class="fa fa-star active"></i>
+                                            <i class="fa fa-star active"></i>
+                                            <i class="fa fa-star active"></i>
+                                            <i class="fa fa-star active"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-config-wrapper">
+                                    <div class="product-directory">
+                                        <ul>
+                                            <li>
+                                                <span>
+                                                    <i class="fa fa-archive"></i> {% trans 'Category:' %}
+                                                </span>
+                                                {% for breadcrumb_category in breadcrumb_categories %}
+                                                    <a href="{{ breadcrumb_category.get_absolute_url }}"
+                                                       class="product-link product-cat-title">{{ breadcrumb_category.name }}</a>
+                                                {% endfor %}
+                                            </li>
+                                            <li>
+                                                <span>
+                                                    <i class="fa fa-tags"></i> {% trans 'Tag:' %}
+                                                </span>
+                                                <a href="#" class="product-link product-tag-title">{{ product.tags }}</a>
+                                            </li>
+                                            <li>
+                                                {% if product.brand %}
+                                                    <span>
+                                                        {% trans 'Brand:' %}
+                                                    </span>
+                                                    <a href="#" class="product-link product-tag-title">{{ product.brand.name }}</a>
+                                                {% endif %}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col=lg-6 col-md-6 col-xs-12 pr">
+                                        {% if features %}
+                                            <div class="product-params pt-3">
+                                                <ul data-title="{% trans 'Product features' %}">
+
+                                                    {% if features.weight %}
+                                                    <li>
+                                                        <span>{% trans 'Weight' %}</span>
+                                                        <span>{{ features.weight }} {{ features.get_weight_unit_display }}</span>
+                                                    </li>
+                                                    {% endif %}
+
+                                                    {% if features.Length %}
+                                                    <li>
+                                                        <span>{% trans 'Length' %}</span>
+                                                        <span>{{ features.Length }} {{ features.get_Length_unit_display }}</span>
+                                                    </li>
+                                                    {% endif %}
+
+                                                    {% if features.Width %}
+                                                    <li>
+                                                        <span>{% trans 'Width' %}</span>
+                                                        <span>{{ features.Width }} {{ features.get_Width_unit_display }}</span>
+                                                    </li>
+                                                    {% endif %}
+
+                                                    {% if features.Height %}
+                                                    <li>
+                                                        <span>{% trans 'Height' %}</span>
+                                                        <span>{{ features.Height }} {{ features.get_Height_unit_display }}</span>
+                                                    </li>
+                                                    {% endif %}
+
+                                                    {% if features.pot_size %}
+                                                    <li>
+                                                        <span>{% trans 'Pot Size' %}</span>
+                                                        <span>{{ features.pot_size }}</span>
+                                                    </li>
+                                                    {% endif %}
+
+                                                    {% if features.number %}
+                                                    <li>
+                                                        <span>{% trans 'Quantity' %}</span>
+                                                        <span>{{ features.number }} {{ features.get_unit_counting_display }}</span>
+                                                    </li>
+                                                    {% endif %}
+
+                                                    {% if features.ingredients %}
+                                                    <li>
+                                                        <span>{% trans 'Ingredients' %}</span>
+                                                        <span>{{ features.ingredients }}</span>
+                                                    </li>
+                                                    {% endif %}
+
+                                                </ul>
+
+                                            </div>
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="col=lg-6 col-md-6 col-xs-12 pr">
+                                        <div class="product-seller-info">
+                                            <div class="seller-info-changable">
+                                                {% if inventory %}
+                                                    <div class="product-seller-row price">
+                                                        <span class="title">{% trans 'price: ' %}</span>
+                                                        <span class="product-name">
+                                                            <span class="amount">
+                                                                {{ product.final_price|intcomma:False|translate_number }}
+                                                                <span>{% trans '$' %}</span>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                    <form action="{% url 'cart:cart_add' product.id %}" method="POST">
+                                                        {% csrf_token %}
+                                                        <div class="product-seller-row guarantee">
+                                                            <span class="title mt-3">{% trans 'quantity:' %}</span>
+                                                            <div class="quantity pl">
+                                                                <input type="number" name="quantity" id="qty" value="1" min="1">
+                                                                <div class="quantity-nav">
+                                                                    <div class="quantity-button quantity-up">+</div>
+                                                                    <div class="quantity-button quantity-down">-</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-seller-row add-to-cart">
+                                                            <button type="submit" class="my-custom-add-button btn btn-primary">
+                                                                <span class="btn-add-to-cart-txt">{% trans 'add to cart' %}</span>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                {% else %}
+                                                    <div class="product-seller-row price">
+                                                        <span class="title">{% trans 'price:' %}</span>
+                                                        <span href="#" class="product-name">
+                                                            <span class="unavailable">{% trans 'non-existent' %}</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="product-seller-row add-to-cart">
+                                                        <a href="#" class="btn-add-to-cart Let-me-know btn btn-primary">
+                                                            <span class="btn-add-to-cart-txt">{% trans 'Notify me when available' %}</span>
+                                                        </a>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class="product-usp">
+                            <div class="product-feature">
+                                <div class="product-feature-col">
+                                    <a href="#" class="product-feature-item">
+                                        <img src="{% static 'img/page-single-product/delivery.svg' %}">
+                                        {% trans 'Possibility of delivery' %}
+                                        <br>
+                                        {% trans 'Express' %}
+                                    </a>
+                                </div>
+                                <div class="product-feature-col">
+                                    <a href="{% url 'aboutus' %}" class="product-feature-item">
+                                        <img src="{% static 'img/page-single-product/contact-us.svg' %}">
+                                        {% trans '7 days a week' %}
+                                        <br>
+                                        {% trans '24 hours' %}
+                                    </a>
+                                </div>
+                                <div class="product-feature-col">
+                                    <a href="#" class="product-feature-item">
+                                        <img src="{% static 'img/page-single-product/payment-terms.svg' %}">
+                                        {% trans 'Possibility of' %}
+                                        <br>
+                                        {% trans 'payment on site' %}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tabs">
+                <div class="tab-box">
+                    <ul class="tab nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="Review-tab" data-toggle="tab" href="#Review" role="tab"
+                                aria-controls="Review" aria-selected="true">
+                                <i class="mdi mdi-glasses"></i>
+                                {% trans 'review' %}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="Specifications-tab" data-toggle="tab" href="#Specifications"
+                                role="tab" aria-controls="Specifications" aria-selected="false">
+                                <i class="mdi mdi-format-list-checks"></i>
+                                {% trans 'Specifications' %}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="User-comments-tab" data-toggle="tab" href="#User-comments"
+                                role="tab" aria-controls="User-comments" aria-selected="false">
+                                <i class="mdi mdi-comment-text-multiple-outline"></i>
+                                {% trans 'User comments' %}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="question-and-answer-tab" data-toggle="tab"
+                                href="#question-and-answer" role="tab" aria-controls="question-and-answer"
+                                aria-selected="false">
+                                <i class="mdi mdi-comment-question-outline"></i>
+                                {% trans 'question and answer' %}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg">
+                    <div class="tabs-content">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="Review" role="tabpanel"
+                                aria-labelledby="Review-tab">
+                                <h2 class="params-headline">{% trans 'Overview' %}</h2>
+                                <section class="content-expert-summary">
+                                    <div class="mask pm-3">
+                                        <div class="mask-text">
+                                            {% if features.care_tips %}
+                                                    <h3>{% trans 'Care Tips' %}</h3>
+                                                    <div>{{ features.care_tips|safe }}</div> {# استفاده از |safe برای نمایش محتوای RichTextField #}
+                                            {% endif %}
+
+                                            {% if features.usage_instructions %}
+                                                <h3>{% trans 'Usage Instructions' %}</h3>
+                                                <div>{{ features.usage_instructions|safe }}</div>
+                                            {% endif %}
+                                        </div>
+                                        <a href="#" class="mask-handler">
+                                            <span class="show-more">{% trans '+ Continue reading' %}</span>
+                                            <span class="show-less">{% trans '- close' %}</span>
+                                        </a>
+                                        <div class="shadow-box"></div>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="tab-pane fade" id="Specifications" role="tabpanel"
+                                aria-labelledby="Specifications-tab">
+                                <article>
+                                    <h2 class="params-headline">{% trans 'Technical specifications' %}
+                                        <span>{{ product.slug }}</span>
+                                    </h2>
+                                        <section>
+                                            <ul class="params-list">
+                                                <li class="params-list-item">
+                                                    {% if features.weight %}
+                                                        <div class="params-list-key">
+                                                            <span class="block">{% trans 'Weight' %}</span>
+                                                        </div>
+                                                        <div class="params-list-value">
+                                                            <span class="block">
+                                                                {{ features.weight }} {{ features.get_weight_unit_display }}
+                                                            </span>
+                                                        </div>
+                                                    {% endif %}
+                                                </li>
+                                                <li class="params-list-item">
+                                                    {% if features.Length %}
+                                                        <div class="params-list-key">
+                                                            <span class="block">{% trans 'Length' %}</span>
+                                                        </div>
+                                                        <div class="params-list-value">
+                                                            <span class="block">
+                                                                {{ features.Length }} {{ features.get_Length_unit_display }}
+                                                            </span>
+                                                        </div>
+                                                    {% endif %}
+                                                </li>
+                                                <li class="params-list-item">
+                                                    {% if features.Width %}
+                                                        <div class="params-list-key">
+                                                            <span class="block">{% trans 'Width' %}</span>
+                                                        </div>
+                                                        <div class="params-list-value">
+                                                            <span class="block">
+                                                                {{ features.Width }} {{ features.get_Width_unit_display }}
+                                                            </span>
+                                                        </div>
+                                                    {% endif %}
+                                                </li>
+                                                <li class="params-list-item">
+                                                    {% if features.Height %}
+                                                        <div class="params-list-key">
+                                                            <span class="block">{% trans 'Height' %}</span>
+                                                        </div>
+                                                        <div class="params-list-value">
+                                                            <span class="block">
+                                                                {{ features.Height }} {{ features.get_Height_unit_display }}
+                                                            </span>
+                                                        </div>
+                                                    {% endif %}
+                                                </li>
+                                                <li class="params-list-item">
+                                                    {% if features.pot_size %}
+                                                        <div class="params-list-key">
+                                                            <span class="block">{% trans 'Pot Size' %}</span>
+                                                        </div>
+                                                        <div class="params-list-value">
+                                                            <span class="block">
+                                                                {{ features.pot_size }}
+                                                            </span>
+                                                        </div>
+                                                    {% endif %}
+                                                </li>
+                                                <li class="params-list-item">
+                                                    {% if features.number %}
+                                                        <div class="params-list-key">
+                                                            <span class="block">{% trans 'Quantity' %}</span>
+                                                        </div>
+                                                        <div class="params-list-value">
+                                                            <span class="block">
+                                                                {{ features.number }} {{ features.get_unit_counting_display }}
+                                                            </span>
+                                                        </div>
+                                                    {% endif %}
+                                                </li>
+                                                <li class="params-list-item">
+                                                    {% if features.ingredients %}
+                                                        <div class="params-list-key">
+                                                            <span class="block">{% trans 'Ingredients' %}</span>
+                                                        </div>
+                                                        <div class="params-list-value">
+                                                            <span class="block">
+                                                               {{ features.ingredients }}
+                                                            </span>
+                                                        </div>
+                                                    {% endif %}
+                                                </li>
+                                            </ul>
+                                        </section>
+                                </article>
+                            </div>
+                            <div class="tab-pane fade" id="User-comments" role="tabpanel"
+                                aria-labelledby="User-comments-tab">
+                                <div class="comments">
+                                    <h2 class="params-headline">{% trans 'User comments to:' %}
+                                        <span>{{ product.slug }}</span>
+                                    </h2>
+                                    <form action="" method="POST" class="comment-form-container">
+                                        {% csrf_token %}
+                                        <p>{{ comment_form|crispy }}</p>
+                                        <h4>{{ comment.is_active }}</h4>
+                                        <button type="submit">{% trans 'Register a comment' %}</button>
+                                    </form>
+                                    <div class="comments-summary">
+                                        <div class="product-comment-list">
+                                            <ul class="comment-list">
+                                                {% for comment in comments %}
+                                                    <li>
+                                                        <div class="col-lg-3 pr">
+                                                            <section>
+                                                                <div class="comments-user-shopping">{{ comment.user.username }}
+                                                                    <div class="cell-date">
+                                                                        {{ comment.time_release_comment }}
+                                                                    </div>
+                                                                    <div class="message-light">
+                                                                        {% if comment.is_active %}
+                                                                            <i class="fa fa-thumbs-o-up"></i>
+                                                                                {% trans 'I recommend purchasing this product.' %}
+                                                                        {% else %}
+                                                                            <i class="fa fa-thumbs-o-down"></i>
+                                                                                {% trans 'I do not recommend purchasing this product.' %}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                            </section>
+                                                        </div>
+                                                        <div class="col-lg-9 pl">
+                                                            <div class="article">
+                                                                <ul class="comment-text">
+                                                                    <div class="header">
+                                                                        <p>{{ comment.body_comment|safe }}</p>
+                                                                    </div>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="question-and-answer" role="tabpanel"
+                                aria-labelledby="question-and-answer-tab">
+                                <div class="faq">
+                                    <h2 class="params-headline">{% trans 'Questions and answers' %}
+                                        <span>{% trans 'Ask your question about the product.' %}</span>
+                                    </h2>
+                                    <form action="" method="POST" class="comment-form-container">
+                                        {% csrf_token %}
+                                        {{ question_form|crispy }}
+                                        <button type="submit">{% trans 'Register question' %}</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- arshive-product----------------------->
+    {% include 'partials/footer.html' %}
+
+{% endblock content %}
+
+{% block body_class %}
+    account_page
+{% endblock body_class %}
