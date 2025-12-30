@@ -9,6 +9,7 @@ from taggit.managers import TaggableManager
 from ckeditor.fields import RichTextField
 from decimal import Decimal, ROUND_HALF_UP
 
+
 class Product(models.Model):
     PRODUCT_TYPE = [
         ('FL', _('Flower')),
@@ -27,12 +28,16 @@ class Product(models.Model):
     name = models.CharField(_('name'), max_length=200)
     slug = models.SlugField(_('slug'), unique=True, blank=True, null=False)
     sku = models.CharField(_('sku'), max_length=150, unique=True, blank=True, null=True)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='products', verbose_name=_('category'))
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='products',
+                                 verbose_name=_('category'))
     product_type = models.CharField(_('product_type'), max_length=4, choices=PRODUCT_TYPE)
     cover_product = models.ImageField(_('cover_product'), upload_to='product/product_covers/', blank=True, null=True)
-    features = models.ForeignKey('Features', on_delete=models.CASCADE, related_name='product', verbose_name=_('features'))
-    brand = models.ForeignKey('Brand', on_delete=models.SET_NULL, blank=True, null=True, related_name='products', verbose_name=_('brand'))
-    inventory = models.ForeignKey('Inventory', on_delete=models.CASCADE, blank=True, null=True, related_name='inventory_link', verbose_name=_('inventory'))
+    features = models.ForeignKey('Features', on_delete=models.CASCADE, related_name='product',
+                                 verbose_name=_('features'))
+    brand = models.ForeignKey('Brand', on_delete=models.SET_NULL, blank=True, null=True, related_name='products',
+                              verbose_name=_('brand'))
+    inventory = models.ForeignKey('Inventory', on_delete=models.CASCADE, blank=True, null=True,
+                                  related_name='inventory_link', verbose_name=_('inventory'))
     commodity_status = models.CharField(_('commodity_status'), max_length=3, choices=INVENTORY_STATUS, default='AVA')
     successful_sales_count = models.PositiveIntegerField(_('successful_sales_count'), default=0)
     base_price = models.DecimalField(_('base_price'), max_digits=10, decimal_places=2)
@@ -79,8 +84,10 @@ class Product(models.Model):
         else:
             return base_price
 
+
 class Discount(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='discounts', verbose_name=_('product_discounts'))
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='discounts',
+                                verbose_name=_('product_discounts'))
     discount_percentage = models.DecimalField(_('discount_percentage'), max_digits=5, decimal_places=2)
     start_date = models.DateField(_('start_date'), default=timezone.now)
     end_date = models.DateField(_('end_date'), default=timezone.now)
@@ -88,6 +95,7 @@ class Discount(models.Model):
 
     def __str__(self):
         return f'{self.product.name} - % {self.discount_percentage} discount'
+
 
 class Category(models.Model):
     name = models.CharField(_('Category name'), max_length=100, unique=True)
@@ -113,8 +121,23 @@ class Category(models.Model):
             return f"{self.parent} > {self.name}"
         return self.name
 
+    def get_all_descendants(self):
+        """
+        برمی‌گردونه تمام زیردسته‌های این دسته، در هر سطحی (بازگشتی)
+        """
+        descendants = set()
+
+        def collect_children(cat):
+            for sub in cat.subcategories.all():
+                descendants.add(sub)
+                collect_children(sub)
+
+        collect_children(self)
+        return list(descendants)
+
     def get_absolute_url(self):
         return reverse('products:category_detail', kwargs={'category_slug': self.slug})
+
 
 class Inventory(models.Model):
     INVENTORY_STATUS = [
@@ -122,12 +145,14 @@ class Inventory(models.Model):
         ('NON', _('Non-available')),
         ('SPE', _('Special')),
     ]
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_item', verbose_name=_('product_name'))
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_item',
+                                verbose_name=_('product_name'))
     status = models.CharField(_('status'), max_length=3, choices=INVENTORY_STATUS, default='AVA')
     inventory = models.PositiveIntegerField(_('inventory'), default=0)
 
     def __str__(self):
         return f'{self.product}'
+
 
 class Features(models.Model):
     PRODUCT_LIQUID_UNIT = [
@@ -147,19 +172,20 @@ class Features(models.Model):
     ]
     name_features = models.CharField(_('name_features'), max_length=100)
 
-    Length = models.DecimalField(_('Length'),decimal_places=2, max_digits=10, blank=True, null=True)
-    Length_unit = models.CharField(_('Length_unit'),max_length=20, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
+    Length = models.DecimalField(_('Length'), decimal_places=2, max_digits=10, blank=True, null=True)
+    Length_unit = models.CharField(_('Length_unit'), max_length=20, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
 
-    Width = models.DecimalField(_('Width'),decimal_places=2, max_digits=10, blank=True, null=True)
-    Width_unit = models.CharField(_('Width_unit'),max_length=20, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
+    Width = models.DecimalField(_('Width'), decimal_places=2, max_digits=10, blank=True, null=True)
+    Width_unit = models.CharField(_('Width_unit'), max_length=20, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
 
-    Height = models.DecimalField(_('Height'),decimal_places=2, max_digits=10, blank=True, null=True)
-    Height_unit = models.CharField(_('Height_unit'),max_length=20, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
+    Height = models.DecimalField(_('Height'), decimal_places=2, max_digits=10, blank=True, null=True)
+    Height_unit = models.CharField(_('Height_unit'), max_length=20, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
 
     pot_size = models.CharField(_('pot_size'), max_length=50, blank=True, null=True)
 
     number = models.DecimalField(_('number'), decimal_places=2, max_digits=10, blank=True, null=True)
-    unit_counting = models.CharField(_('unit_counting'), max_length=4, choices=PRODUCT_SOLIDS_UNIT, blank=True, null=True)
+    unit_counting = models.CharField(_('unit_counting'), max_length=4, choices=PRODUCT_SOLIDS_UNIT, blank=True,
+                                     null=True)
 
     weight = models.DecimalField(_('weight'), decimal_places=2, max_digits=10, blank=True, null=True)
     weight_unit = models.CharField(_('weight_unit'), max_length=2, choices=PRODUCT_LIQUID_UNIT, blank=True, null=True)
@@ -170,6 +196,7 @@ class Features(models.Model):
 
     def __str__(self):
         return f'{self.name_features}'
+
 
 class Order(models.Model):
     PAYMENT_STATUS = [
@@ -184,13 +211,16 @@ class Order(models.Model):
     def __str__(self):
         return f'{self.status}'
 
+
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items', verbose_name=_('items'))
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='order_items', verbose_name=_('order_items'))
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='order_items',
+                                verbose_name=_('order_items'))
     quantity = models.DecimalField(_('quantity'), max_digits=5, decimal_places=2)
 
     def __str__(self):
         return f'{self.quantity} * {self.product.name}'
+
 
 class Brand(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name=_('Brand_name'))
@@ -204,17 +234,20 @@ class Brand(models.Model):
         verbose_name_plural = 'brands'
         ordering = ['name']
 
+
 class Comment(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments', verbose_name=_('comments'))
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name=_('user'))
     time_release_comment = models.DateTimeField(_('time_release_comment'), default=timezone.now)
     update_to = models.DateTimeField(_('update_to'), auto_now=True)
     body_comment = RichTextField(_('body_comment'), )
-    answer_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, verbose_name=_('answer'))
+    answer_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True,
+                                       verbose_name=_('answer'))
     is_active = models.BooleanField(_('I recommend purchasing this product ?'), default=True)
 
     def __str__(self):
         return f'{self.product}'
+
 
 class CategorySlider(models.Model):
     title = models.CharField(_('Ad Title'), max_length=100)
@@ -238,10 +271,13 @@ class CategorySlider(models.Model):
         """بازگرداندن لینک به صفحه دسته مربوطه"""
         return self.category.get_absolute_url()
 
+
 class Questions_and_answers(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='questions', verbose_name=_('Product questions and answers'))
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='questions',
+                                verbose_name=_('Product questions and answers'))
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name=_('user'))
     time_release_question = models.DateTimeField(_('time_release_question'), default=timezone.now)
     update_to = models.DateTimeField(_('update_to'), auto_now=True)
     body_question = RichTextField(_('body_question'), )
-    answer_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, verbose_name=_('answer'))
+    answer_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True,
+                                       verbose_name=_('answer'))

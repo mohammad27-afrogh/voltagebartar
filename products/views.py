@@ -7,32 +7,43 @@ from star_ratings.models import Rating
 from .models import  Product, Comment, Category
 from .forms import CommentForm, QuestionsAndAnswersForm
 
+
+
 def product_list_view(request):
-    selected_category_slug = request.GET.get('category')
+    # مقداردهی اولیه برای حالتی که هیچ فیلتری اعمال نشده است
     products = Product.objects.all().order_by('id')
-    current_category_name = 'all products'
+    current_category_name = "همه محصولات"
+
+    selected_category_slug = request.GET.get('category')
 
     if selected_category_slug:
         try:
+            # یافتن دسته‌ای که کاربر روی آن کلیک کرده است
             category = Category.objects.get(slug__iexact=selected_category_slug)
-            # ایجاد فیلتر برای خود دسته و زیر‌دسته‌هایش
-            subcategories = category.subcategories.all()
-            products = Product.objects.filter(
-                Q(category=category) | Q(category__in=subcategories)
-            ).order_by('id')
+
+            # 1. تمام زیردسته‌های (فرزندان در هر عمقی) این دسته را پیدا کن
+            all_descendants = category.get_all_descendants()
+
+            # 2. لیست نهایی دسته‌ها شامل: خود دسته + تمام نوادگان
+            all_related_categories = [category] + all_descendants
+
+            # 3. فیلتر کردن محصولات بر اساس این لیست دسته‌ها
+            products = Product.objects.filter(category__in=all_related_categories).order_by('id')
 
             current_category_name = category.name
 
         except Category.DoesNotExist:
+            # اگر دسته‌ای با این اسلاگ پیدا نشد، لیست محصولات خالی می‌شود
             products = Product.objects.none()
-            current_category_name = f'Category "{selected_category_slug}" not found!'
+            current_category_name = "دسته مورد نظر یافت نشد"
 
     context = {
         'products': products,
+        'categories': Category.objects.all(),  # این برای نمایش منوی دسته‌بندی‌ها در نوار کناری استفاده می‌شود
         'current_category_name': current_category_name,
-        'categories': Category.objects.all(),
     }
 
+    # نام فایل قالب HTML شما (که محصولات را رندر می‌کند)
     return render(request, 'products/product_list.html', context)
 
 
@@ -137,7 +148,16 @@ def product_detail_view(request, product_slug):
 def category_detail_view(request, category_slug):
     current_category = get_object_or_404(Category, slug=category_slug)
 
-    products_in_category = Product.objects.filter(category=current_category)
+    # 1. دریافت لیست تمام دسته‌بندی‌های زیرین، از جمله خود دسته فعلی
+    # ما باید خود دسته فعلی (include_self) را نیز به لیست اضافه کنیم.
+    all_related_categories = current_category.get_all_descendants()
+    all_related_categories.append(current_category)  # اضافه کردن دسته مادر
+
+    # 2. فیلتر کردن محصولات بر اساس لیست دسته‌بندی‌های جمع‌آوری شده
+    products_in_category = Product.objects.filter(category__in=all_related_categories)
+
+    # اگر ساختار شما از فیلد 'category' در مدل محصول استفاده می‌کند که یک شیء Category است،
+    # این کوئری تمام محصولات موجود در تمام سطوح زیرین آن دسته را برمی‌گرداند.
 
     context = {
         'category': current_category,
@@ -145,4 +165,3 @@ def category_detail_view(request, category_slug):
     }
 
     return render(request, 'products/product_list.html', context)
-

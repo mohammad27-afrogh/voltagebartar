@@ -122,7 +122,7 @@
                                         {% for sub_cat in parent_cat.subcategories.all %}
                                             <li class="menu-mega-item menu-item-type-mega-menu">
                                                 {% if sub_cat.subcategories.all %}
-                                                	<a href="#" class="mega-menu-link has-sub-level-three">
+                                                	<a href="{% url 'products:category_detail' category_slug=sub_cat.slug %}" class="mega-menu-link has-sub-level-three">
                                                         {{ sub_cat.name }} <i class="fa fa-angle-left"></i>
                                                     </a>
                                                     <ul class="sub-menu is-mega-menu maga-menu-level-three">
