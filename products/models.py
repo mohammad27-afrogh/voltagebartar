@@ -1,3 +1,6 @@
+from typing import Any
+
+from _decimal import Decimal
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth import get_user_model
@@ -73,7 +76,7 @@ class Product(models.Model):
 
     @property
     def final_price(self):
-        best_discount = self.active_discounts.order_by('-discount_percentage').first()
+        best_discount = self.discounts.order_by('-discount_percentage').first()
 
         base_price = Decimal(self.base_price)
 
@@ -83,6 +86,22 @@ class Product(models.Model):
             return discounted_price.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
         else:
             return base_price
+
+    @property
+    def active_discounts(self):
+        """
+        محاسبه و برگرداندن دیکشنری تخفیف فعال مورد نیاز تمپلیت.
+        """
+        active_discount_obj = self.discounts.filter(is_active=True).first()
+
+        if active_discount_obj:
+            return {
+                'discount_percentage': active_discount_obj.discount_percentage,
+                # اگر فیلدهای دیگری لازم است، اینجا اضافه کنید
+            }
+        else:
+            # برگرداندن یک شیء قابل پیمایش (مانند دیکشنری خالی)
+            return {}
 
 
 class Discount(models.Model):
