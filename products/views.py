@@ -2,9 +2,12 @@ from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.conf import settings
 from django.db.models import Q
+from django.db.models import Min, Max
 from star_ratings.models import Rating
+from datetime import timedelta
+from django.utils import timezone
 
-from .models import  Product, Comment, Category
+from .models import  Product, Comment, Category, Brand
 from .forms import CommentForm, QuestionsAndAnswersForm
 
 
@@ -156,12 +159,40 @@ def category_detail_view(request, category_slug):
     # 2. فیلتر کردن محصولات بر اساس لیست دسته‌بندی‌های جمع‌آوری شده
     products_in_category = Product.objects.filter(category__in=all_related_categories)
 
+    # فیلتر برای یافتن فرزندان مستقیم
+    child_categories = Category.objects.filter(parent=current_category)
+
+    # ************ منطق جدید: فیلتر برندهای مرتبط ************
+
+    # استخراج برندهای منحصر به فرد از کوئری محصولات موجود
+    related_brand_ids = products_in_category.values_list('brand_id', flat=True).distinct()
+
+    # بازیابی اشیاء Brand با استفاده از IDهای منحصر به فرد به دست آمده
+    # (این فرض را می‌کند که مدل Product شما دارای فیلد 'brand_id' است که به مدل Brand اشاره دارد)
+    related_brands = Brand.objects.filter(id__in=related_brand_ids)
+
+    price_range = products_in_category.aggregate(min_price=Min('base_price'), max_price=Max('base_price'))
+
+    default_time = timezone.now()
+    one_month_ago = default_time - timedelta(days=30)
+
+    new_products = (products_in_category.filter(Q(date_time_create__gte=one_month_ago) &
+                                              Q(date_time_create__lte=default_time))
+                       .prefetch_related('discounts')  # *** اصلاح: اضافه کردن prefetch_related ***
+                       )
+
+
     # اگر ساختار شما از فیلد 'category' در مدل محصول استفاده می‌کند که یک شیء Category است،
     # این کوئری تمام محصولات موجود در تمام سطوح زیرین آن دسته را برمی‌گرداند.
 
     context = {
         'category': current_category,
         'products': products_in_category,
+        'child_categories': child_categories,
+        'brands': related_brands,
+        'min_price': price_range['min_price'],
+        'max_price': price_range['max_price'],
+        'new_products': new_products,
     }
 
     return render(request, 'products/product_list.html', context)
