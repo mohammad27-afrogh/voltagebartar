@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.conf import settings
-from django.db.models import Q
-from django.db.models import Min, Max
+from django.db.models import Q, Count
+from django.db.models import Min, Max, Avg
 from star_ratings.models import Rating
 from datetime import timedelta
 from django.utils import timezone
@@ -195,7 +195,20 @@ def category_detail_view(request, category_slug):
         product.active_discount = product.discounts.filter(is_active=True).first()
 
     Number_of_visits = products_in_category.order_by('-view_count')
-    
+
+    popular_active_products = products_in_category.annotate(
+    # 1. ایجاد یک فیلد جدید به نام 'active_comment_count'
+    active_comment_count=Count(
+        'comments',  # نام رابطه معکوس به مدل Comment
+        
+        # 2. شرط فیلتر کردن در حین شمارش: فقط نظراتی که is_active=True دارند
+        filter=Q(comments__is_active=True) 
+            )
+        ).filter(
+            # 3. فیلتر نهایی: فقط محصولاتی که تعداد نظرات فعالشان > 5 است
+            active_comment_count__gte=5
+        ).order_by('-active_comment_count')
+
     # اگر ساختار شما از فیلد 'category' در مدل محصول استفاده می‌کند که یک شیء Category است،
     # این کوئری تمام محصولات موجود در تمام سطوح زیرین آن دسته را برمی‌گرداند.
 
@@ -211,6 +224,7 @@ def category_detail_view(request, category_slug):
         'products_most_expensive': products_most_expensive,
         'successful_sale_products': successful_sale_products,
         'Number_of_visits': Number_of_visits,
+        'popular_active_products': popular_active_products,
     }
 
     return render(request, 'products/product_list.html', context)
