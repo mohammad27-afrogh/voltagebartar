@@ -17,6 +17,7 @@ class ProductAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         'slug',
         'category',
         'successful_sales_count',
+        'view_count',
         'base_price',
         'date_time_create',
     ]

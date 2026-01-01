@@ -51,6 +51,20 @@ class Product(models.Model):
     tags = TaggableManager(_('tags'))
     date_time_create = models.DateTimeField(_('date_time_create'), default=timezone.now)
     date_time_modified = models.DateTimeField(_('date_time_modified'), auto_now=True)
+    # ویژگی برای ذخیره تعداد بازدیدها
+    view_count = models.IntegerField(
+        default=0, # مقدار پیش‌فرض صفر
+        verbose_name=_('Number of visits')
+    )
+    
+    def __str__(self):
+        return self.name
+
+    # متد کمکی برای افزایش بازدید هنگام فراخوانی
+    def increment_view_count(self):
+        self.view_count += 1
+        self.save(update_fields=['view_count'])
+
 
     def __str__(self):
         return f'{self.name}'

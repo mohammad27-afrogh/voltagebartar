@@ -63,6 +63,8 @@ def product_detail_view(request, product_slug):
         slug=product_slug
     )
 
+    product.increment_view_count()
+
     product_comments = product.comments.all()  # نظرات همچنان با کوئری جداگانه لود می‌شوند (که برای لیست نظرات استاندارد است)
 
     # --- ۲. محاسبه زنجیره Breadcrumb در View ---
@@ -184,6 +186,16 @@ def category_detail_view(request, category_slug):
     products_cheapest = products_in_category.order_by('base_price')
     products_most_expensive = products_in_category.order_by('-base_price')
 
+
+    successful_sale_products = products_in_category.order_by('-successful_sales_count')
+
+    # *** اصلاح: اضافه کردن ویژگی active_discount ***
+    for product in successful_sale_products:
+        # این خط، اولین تخفیف فعال را پیدا کرده و به عنوان active_discount اضافه می‌کند
+        product.active_discount = product.discounts.filter(is_active=True).first()
+
+    Number_of_visits = products_in_category.order_by('-view_count')
+    
     # اگر ساختار شما از فیلد 'category' در مدل محصول استفاده می‌کند که یک شیء Category است،
     # این کوئری تمام محصولات موجود در تمام سطوح زیرین آن دسته را برمی‌گرداند.
 
@@ -197,6 +209,8 @@ def category_detail_view(request, category_slug):
         'new_products': new_products,
         'products_cheapest': products_cheapest,
         'products_most_expensive': products_most_expensive,
+        'successful_sale_products': successful_sale_products,
+        'Number_of_visits': Number_of_visits,
     }
 
     return render(request, 'products/product_list.html', context)

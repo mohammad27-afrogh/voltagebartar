@@ -19,6 +19,7 @@ class ProductForm(forms.ModelForm):
             'name',
             'slug',
             'sku',
+            'view_count',
             'category',
             'product_type',
             'successful_sales_count',
