@@ -6,6 +6,8 @@ from django.utils import timezone
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
+from django.core.cache import cache
+from django.utils import timezone
 
 from datetime import date
 from taggit.managers import TaggableManager
@@ -76,7 +78,14 @@ class Product(models.Model):
 
     @property
     def final_price(self):
-        best_discount = self.discounts.order_by('-discount_percentage').first()
+        today = timezone.now().date() # تاریخ امروز
+
+        # پیدا کردن بهترین تخفیف که در حال حاضر فعال است
+        best_discount = self.discounts.filter(
+            is_active=True,
+            start_date__lte=today,
+            end_date__gte=today
+        ).order_by('-discount_percentage').first()
 
         base_price = Decimal(self.base_price)
 
@@ -115,6 +124,22 @@ class Discount(models.Model):
     def __str__(self):
         return f'{self.product.name} - % {self.discount_percentage} discount'
 
+    def save(self, *args, **kwargs):
+        # 1. اجرای عملیات ذخیره‌سازی اصلی
+        super().save(*args, **kwargs)
+
+        # 2. پاکسازی کش محصول مرتبط
+        # این کار تضمین می‌کند که هرگاه تخفیفی تغییر کرد، قیمت مجدداً محاسبه شود.
+
+        product_pk = self.product.pk
+
+        # پاک کردن کش قیمت نهایی محصول (از متد final_price در مدل Product)
+        cache.delete(f'product_final_price_{product_pk}')
+
+        # پاک کردن کش‌های مربوط به نمایش لیست محصول و جزئیات محصول
+        # (که احتمالاً در Viewها کش شده‌اند)
+        cache.delete(f'product_detail_{product_pk}')
+        cache.delete(f'product_list_data')  # اگر لیست کلی را کش کرده‌اید
 
 class Category(models.Model):
     name = models.CharField(_('Category name'), max_length=100, unique=True)
