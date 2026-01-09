@@ -431,12 +431,42 @@ $(document).ready(function (e) {
         $('.custom-select-ui select').niceSelect();
     }
     // nice-select-----------------------------------
-    //    price-range--------------------------------
-    var nonLinearStepSlider = document.getElementById('slider-non-linear-step');
+    // // //    price-range--------------------------------
+    // var nonLinearStepSlider = document.getElementById('slider-non-linear-step');
+
+    // if ($('#slider-non-linear-step').length) {
+    //     noUiSlider.create(nonLinearStepSlider, {
+    //         start: [0, 5000000],
+    //         connect: true,
+    //         direction: 'rtl',
+    //         format: wNumb({
+    //             decimals: 0,
+    //             thousand: ','
+    //         }),
+    //         range: {
+    //             'min': [0],
+    //             '10%': [500, 500],
+    //             '50%': [40000, 1000],
+    //             'max': [10000000]
+    //         }
+    //     });
+    //     var nonLinearStepSliderValueElement = document.getElementById('slider-non-linear-step-value');
+
+    //     nonLinearStepSlider.noUiSlider.on('update', function (values) {
+    //         nonLinearStepSliderValueElement.innerHTML = values.join(' - ');
+    //     });
+    // }    
+    // // //    price-range--------------------------
+
+    // price-range --------------------------------
+var nonLinearStepSlider = document.getElementById('slider-non-linear-step');
 
     if ($('#slider-non-linear-step').length) {
+        var minPrice = parseInt($('#price-min').val()) || 0; // ورودی مخفی قیمت حداقل
+        var maxPrice = parseInt($('#price-max').val()) || 5000000; // ورودی مخفی قیمت حداکثر
+
         noUiSlider.create(nonLinearStepSlider, {
-            start: [0, 5000000],
+            start: [minPrice, maxPrice],
             connect: true,
             direction: 'rtl',
             format: wNumb({
@@ -444,19 +474,54 @@ $(document).ready(function (e) {
                 thousand: ','
             }),
             range: {
-                'min': [0],
-                '10%': [500, 500],
-                '50%': [40000, 1000],
-                'max': [10000000]
+                'min': [minPrice],
+                'max': [maxPrice]
             }
         });
+
         var nonLinearStepSliderValueElement = document.getElementById('slider-non-linear-step-value');
 
         nonLinearStepSlider.noUiSlider.on('update', function (values) {
             nonLinearStepSliderValueElement.innerHTML = values.join(' - ');
+            var min = Number(values[0].replace(/,/g, ''));
+            var max = Number(values[1].replace(/,/g, ''));
+            $('#price-min').val(min); // مقدار جدید برای قیمت حداقل
+            $('#price-max').val(max); // مقدار جدید برای قیمت حداکثر
         });
     }
-    //    price-range--------------------------
+    $(document).ready(function() {
+    // ... کدهای قبلی اسلایدر ...
+    
+    // **جدید: مدیریت دکمه اعمال فیلتر**
+    $('#apply-price-filter').on('click', function(e) {
+        e.preventDefault(); // جلوگیری از ارسال مجدد فرم به روش سنتی
+
+        // 1. خواندن مقادیر نهایی از inputهای مخفی که در 'update' آپدیت شده‌اند
+        var finalMin = $('#price-min').val();
+        var finalMax = $('#price-max').val();
+
+        // 2. فعال کردن حالت لودینگ (اگر لازم است)
+        // نمایش یک اسپینر یا اضافه کردن کلاس لودینگ به بخش محتوا
+        $('.shop-archive-content').addClass('loading-overlay'); 
+
+        // 3. فراخوانی تابع اصلی که محصولات را فیلتر می‌کند
+        // **شما باید نام تابع واقعی خود را جایگزین کنید:**
+        filterProducts(finalMin, finalMax); 
+    });
+    
+    // اگر از دکمه "اعمال" استفاده می‌کنید، ایونت 'update' اسلایدر را حذف کنید
+    // تا فقط با کلیک روی "اعمال" فیلتر انجام شود.
+    // در این صورت، خط زیر از کد قبلی شما باید حذف شود یا کامنت شود:
+    /* 
+    nonLinearStepSlider.noUiSlider.on('update', function (values) {
+        // ... فقط آپدیت نمایش متن ...
+        nonLinearStepSliderValueElement.innerHTML = values.join(' - '); 
+        // ... حذف کردن کد آپدیت inputها ...
+    });
+    */
+});
+
+
 
     //    quantity-selector--------------------
     jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.quantity input');

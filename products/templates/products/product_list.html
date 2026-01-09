@@ -106,13 +106,19 @@
                                             </div>
                                             <div class="filter-range mt-2 mb-2 pr">
                                                 <span>{% trans 'price: ' %}</span>
-                                                <span class="example-val"
-                                                      id="slider-non-linear-step-value">
+                                                <span class="example-val" id="slider-non-linear-step-value">
                                                     {{ min_price|intcomma:False|translate_number }} -
                                                     {{ max_price|intcomma:False|translate_number }}
                                                 </span>
                                                 {% trans '$' %}
                                             </div>
+                                            <div class="mt-2 pl">
+                                                <button class="btn btn-range">
+                                                    {% trans 'apply' %}
+                                                </button>
+                                            </div>
+                                            <input type="hidden" id="price-min" value="{{ min_price }}">
+                                            <input type="hidden" id="price-max" value="{{ max_price }}">
                                         </form>
                                     </div>
                                 </div>

@@ -176,7 +176,7 @@ def category_detail_view(request, category_slug):
     price_range = products_in_category.aggregate(min_price=Min('base_price'), max_price=Max('base_price'))
 
     default_time = timezone.now()
-    one_month_ago = default_time - timedelta(days=30)
+    one_month_ago = default_time - timedelta(days=60)
 
     new_products = (products_in_category.filter(Q(date_time_create__gte=one_month_ago) &
                                               Q(date_time_create__lte=default_time))
