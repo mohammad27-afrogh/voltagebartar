@@ -191,7 +191,7 @@
                                                             </span>
                                                         </span>
                                                     </div>
-                                                    <form action="{% url 'cart:cart_add' product.id %}" method="POST">
+                                                    <form action="{% url 'cart:cart_add' product.slug %}" method="POST">
                                                         {% csrf_token %}
                                                         <div class="product-seller-row guarantee">
                                                             <span class="title mt-3">{% trans 'quantity:' %}</span>

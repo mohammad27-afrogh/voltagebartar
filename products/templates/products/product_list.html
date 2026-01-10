@@ -197,17 +197,20 @@
                                                         <!-- استفاده از ویژگی‌های تخفیف مستقیم روی product -->
                                                         <span>{{ product.active_discounts.discount_percentage|intcomma:False|translate_number }} %</span>
                                                     </div>
-                                                    <!-- <img src="{{ product.cover_product }}" alt="{{ product.name }}"> -->
                                                      {% if product.cover_product %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{{ product.cover_product.url }}"
-                                                            data-zoom-image="{{ product.cover_product.url }}"
-                                                            width="411" />
+                                                        <a href="{% url 'products:product_detail_by_slug' product.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{{ product.cover_product.url }}"
+                                                                data-zoom-image="{{ product.cover_product.url }}"
+                                                                width="411" />
+                                                        </a>
                                                     {% else %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{% static 'img/products/no_product_image.jpg' %}"
-                                                            data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
-                                                            width="411" />
+                                                        <a href="{% url 'products:product_detail_by_slug' product.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{% static 'img/products/no_product_image.jpg' %}"
+                                                                data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
+                                                                width="411" />
+                                                        </a>
                                                     {% endif %}
                                                     <div id="gallery_01f" style="width:420px;float:right;">
                                                 </a>
@@ -244,15 +247,19 @@
                                                     </div>
                                                     <!-- <img src="{{ product.cover_product }}" alt="{{ product.name }}"> -->
                                                      {% if product.cover_product %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{{ product.cover_product.url }}"
-                                                            data-zoom-image="{{ product.cover_product.url }}"
-                                                            width="411" />
+                                                        <a href="{% url 'products:product_detail_by_slug' product.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{{ product.cover_product.url }}"
+                                                                data-zoom-image="{{ product.cover_product.url }}"
+                                                                width="411" />
+                                                        </a>
                                                     {% else %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{% static 'img/products/no_product_image.jpg' %}"
-                                                            data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
-                                                            width="411" />
+                                                        <a href="{% url 'products:product_detail_by_slug' product.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{% static 'img/products/no_product_image.jpg' %}"
+                                                                data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
+                                                                width="411" />
+                                                        </a>
                                                     {% endif %}
                                                     <div id="gallery_01f" style="width:420px;float:right;">
                                                 </a>
@@ -298,17 +305,20 @@
                                                         <!-- استفاده از ویژگی‌های تخفیف مستقیم روی successful_sale_product -->
                                                         <span>{{ successful_sale_product.active_discounts.discount_percentage|intcomma:False|translate_number }} %</span>
                                                     </div>
-                                                    <!-- <img src="{{ successful_sale_product.cover_product }}" alt="{{ successful_sale_product.name }}"> -->
-                                                     {% if successful_sale_product.cover_product %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{{ successful_sale_product.cover_product.url }}"
-                                                            data-zoom-image="{{ product.cover_product.url }}"
-                                                            width="411" />
+                                                    {% if successful_sale_product.cover_product %}
+                                                        <a href="{% url 'products:product_detail_by_slug' successful_sale_product.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{{ successful_sale_product.cover_product.url }}"
+                                                                data-zoom-image="{{ product.cover_product.url }}"
+                                                                width="411" />
+                                                        </a>
                                                     {% else %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{% static 'img/products/no_product_image.jpg' %}"
-                                                            data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
-                                                            width="411" />
+                                                        <a href="{% url 'products:product_detail_by_slug' successful_sale_product.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{% static 'img/products/no_product_image.jpg' %}"
+                                                                data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
+                                                                width="411" />
+                                                        </a>
                                                     {% endif %}
                                                     <div id="gallery_01f" style="width:420px;float:right;">
                                                 </a>
@@ -343,17 +353,20 @@
                                                             class="fa fa-star active"></i><i
                                                             class="fa fa-star active"></i><i class="fa fa-star"></i>
                                                     </div>
-                                                    <!-- <img src="{{ successful_sale_product.cover_product }}" alt="{{ successful_sale_product.name }}"> -->
                                                     {% if successful_sale_product.cover_product %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{{ successful_sale_product.cover_product.url }}"
-                                                            data-zoom-image="{{ product.cover_product.url }}"
-                                                            width="411" />
+                                                        <a href="{% url 'products:product_detail_by_slug' successful_sale_product.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{{ successful_sale_product.cover_product.url }}"
+                                                                data-zoom-image="{{ product.cover_product.url }}"
+                                                                width="411" />
+                                                        </a>
                                                     {% else %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{% static 'img/products/no_product_image.jpg' %}"
-                                                            data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
-                                                            width="411" />
+                                                        <a href="{% url 'products:product_detail_by_slug' successful_sale_product.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{% static 'img/products/no_product_image.jpg' %}"
+                                                                data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
+                                                                width="411" />
+                                                        </a>
                                                     {% endif %}
                                                     <div id="gallery_01f" style="width:420px;float:right;">
                                                 </a>
@@ -400,17 +413,20 @@
                                                         <!-- استفاده از ویژگی‌های تخفیف مستقیم روی product_popular -->
                                                         <span>{{ product_popular.active_discounts.discount_percentage|intcomma:False|translate_number }} %</span>
                                                     </div>
-                                                    <!-- <img src="{{ product_popular.cover_product }}" alt="{{ product_popular.name }}"> -->
                                                     {% if product_popular.cover_product %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{{ product_popular.cover_product.url }}"
-                                                            data-zoom-image="{{ product.cover_product.url }}"
-                                                            width="411" />
+                                                        <a href="{% url 'products:product_detail_by_slug' product_popular.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{{ product_popular.cover_product.url }}"
+                                                                data-zoom-image="{{ product.cover_product.url }}"
+                                                                width="411" />
+                                                        </a>
                                                     {% else %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{% static 'img/products/no_product_image.jpg' %}"
-                                                            data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
-                                                            width="411" />
+                                                        <a href="{% url 'products:product_detail_by_slug' product_popular.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{% static 'img/products/no_product_image.jpg' %}"
+                                                                data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
+                                                                width="411" />
+                                                        </a>
                                                     {% endif %}
                                                     <div id="gallery_01f" style="width:420px;float:right;">
                                                 </a>
@@ -445,17 +461,20 @@
                                                             class="fa fa-star active"></i><i
                                                             class="fa fa-star active"></i><i class="fa fa-star"></i>
                                                     </div>
-                                                    <!-- <img src="{{ product_popular.cover_product }}" alt="{{ product_popular.name }}"> -->
-                                                     {% if product_popular.cover_product %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{{ product_popular.cover_product.url }}"
-                                                            data-zoom-image="{{ product.cover_product.url }}"
-                                                            width="411" />
+                                                    {% if product_popular.cover_product %}
+                                                        <a href="{% url 'products:product_detail_by_slug' product_popular.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{{ product_popular.cover_product.url }}"
+                                                                data-zoom-image="{{ product.cover_product.url }}"
+                                                                width="411" />
+                                                        </a>
                                                     {% else %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{% static 'img/products/no_product_image.jpg' %}"
-                                                            data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
-                                                            width="411" />
+                                                        <a href="{% url 'products:product_detail_by_slug' product_popular.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{% static 'img/products/no_product_image.jpg' %}"
+                                                                data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
+                                                                width="411" />
+                                                        </a>
                                                     {% endif %}
                                                     <div id="gallery_01f" style="width:420px;float:right;">
                                                 </a>
@@ -502,17 +521,20 @@
                                                         <!-- استفاده از ویژگی‌های تخفیف مستقیم روی new_product -->
                                                         <span>{{ new_product.active_discounts.discount_percentage|intcomma:False|translate_number }} %</span>
                                                     </div>
-                                                    <!-- <img src="{{ new_product.cover_product }}" alt="{{ new_product.name }}"> -->
-                                                     {% if new_product.cover_product %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{{ new_product.cover_product.url }}"
-                                                            data-zoom-image="{{ product.cover_product.url }}"
-                                                            width="411" />
+                                                    {% if new_product.cover_product %}
+                                                        <a href="{% url 'products:product_detail_by_slug' new_product.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{{ new_product.cover_product.url }}"
+                                                                data-zoom-image="{{ product.cover_product.url }}"
+                                                                width="411" />
+                                                        </a>
                                                     {% else %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{% static 'img/products/no_product_image.jpg' %}"
-                                                            data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
-                                                            width="411" />
+                                                        <a href="{% url 'products:product_detail_by_slug' new_product.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{% static 'img/products/no_product_image.jpg' %}"
+                                                                data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
+                                                                width="411" />
+                                                        </a>
                                                     {% endif %}
                                                     <div id="gallery_01f" style="width:420px;float:right;">
                                                 </a>
@@ -547,17 +569,20 @@
                                                             class="fa fa-star active"></i><i
                                                             class="fa fa-star active"></i><i class="fa fa-star"></i>
                                                     </div>
-                                                    <!-- <img src="{{ new_product.cover_product }}" alt="{{ new_product.name }}"> -->
-                                                     {% if new_product.cover_product %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{{ new_product.cover_product.url }}"
-                                                            data-zoom-image="{{ product.cover_product.url }}"
-                                                            width="411" />
+                                                    {% if new_product.cover_product %}
+                                                        <a href="{% url 'products:product_detail_by_slug' new_product.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{{ new_product.cover_product.url }}"
+                                                                data-zoom-image="{{ product.cover_product.url }}"
+                                                                width="411" />
+                                                        </a>
                                                     {% else %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{% static 'img/products/no_product_image.jpg' %}"
-                                                            data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
-                                                            width="411" />
+                                                        <a href="{% url 'products:product_detail_by_slug' new_product.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{% static 'img/products/no_product_image.jpg' %}"
+                                                                data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
+                                                                width="411" />
+                                                        </a>
                                                     {% endif %}
                                                     <div id="gallery_01f" style="width:420px;float:right;">
                                                 </a>
@@ -604,17 +629,20 @@
                                                         <!-- استفاده از ویژگی‌های تخفیف مستقیم روی new_product -->
                                                         <span>{{ cheapest.active_discounts.discount_percentage|intcomma:False|translate_number }} %</span>
                                                     </div>
-                                                    <!-- <img src="{{ cheapest.cover_product }}" alt="{{ cheapest.name }}"> -->
-                                                     {% if cheapest.cover_product %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{{ cheapest.cover_product.url }}"
-                                                            data-zoom-image="{{ product.cover_product.url }}"
-                                                            width="411" />
+                                                    {% if cheapest.cover_product %}
+                                                        <a href="{% url 'products:product_detail_by_slug' cheapest.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{{ cheapest.cover_product.url }}"
+                                                                data-zoom-image="{{ product.cover_product.url }}"
+                                                                width="411" />
+                                                        </a>
                                                     {% else %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{% static 'img/products/no_product_image.jpg' %}"
-                                                            data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
-                                                            width="411" />
+                                                        <a href="{% url 'products:product_detail_by_slug' cheapest.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{% static 'img/products/no_product_image.jpg' %}"
+                                                                data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
+                                                                width="411" />
+                                                        </a>
                                                     {% endif %}
                                                     <div id="gallery_01f" style="width:420px;float:right;">
                                                 </a>
@@ -649,17 +677,20 @@
                                                             class="fa fa-star active"></i><i
                                                             class="fa fa-star active"></i><i class="fa fa-star"></i>
                                                     </div>
-                                                    <!-- <img src="{{ cheapest.cover_product }}" alt="{{ cheapest.name }}"> -->
-                                                     {% if cheapest.cover_product %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{{ cheapest.cover_product.url }}"
-                                                            data-zoom-image="{{ product.cover_product.url }}"
-                                                            width="411" />
+                                                    {% if cheapest.cover_product %}
+                                                        <a href="{% url 'products:product_detail_by_slug' cheapest.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{{ cheapest.cover_product.url }}"
+                                                                data-zoom-image="{{ product.cover_product.url }}"
+                                                                width="411" />
+                                                        </a>
                                                     {% else %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{% static 'img/products/no_product_image.jpg' %}"
-                                                            data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
-                                                            width="411" />
+                                                        <a href="{% url 'products:product_detail_by_slug' cheapest.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{% static 'img/products/no_product_image.jpg' %}"
+                                                                data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
+                                                                width="411" />
+                                                        </a>
                                                     {% endif %}
                                                     <div id="gallery_01f" style="width:420px;float:right;">
                                                 </a>
@@ -706,17 +737,20 @@
                                                         <!-- استفاده از ویژگی‌های تخفیف مستقیم روی new_product -->
                                                         <span>{{ most_expensive.active_discounts.discount_percentage|intcomma:False|translate_number }} %</span>
                                                     </div>
-                                                    <!-- <img src="{{ most_expensive.cover_product }}" alt="{{ most_expensive.name }}"> -->
-                                                     {% if most_expensive.cover_product %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{{ most_expensive.cover_product.url }}"
-                                                            data-zoom-image="{{ product.cover_product.url }}"
-                                                            width="411" />
+                                                    {% if most_expensive.cover_product %}
+                                                        <a href="{% url 'products:product_detail_by_slug' most_expensive.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{{ most_expensive.cover_product.url }}"
+                                                                data-zoom-image="{{ product.cover_product.url }}"
+                                                                width="411" />
+                                                        </a>
                                                     {% else %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{% static 'img/products/no_product_image.jpg' %}"
-                                                            data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
-                                                            width="411" />
+                                                        <a href="{% url 'products:product_detail_by_slug' most_expensive.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{% static 'img/products/no_product_image.jpg' %}"
+                                                                data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
+                                                                width="411" />
+                                                        </a>
                                                     {% endif %}
                                                     <div id="gallery_01f" style="width:420px;float:right;">
                                                 </a>
@@ -751,17 +785,20 @@
                                                             class="fa fa-star active"></i><i
                                                             class="fa fa-star active"></i><i class="fa fa-star"></i>
                                                     </div>
-                                                    <!-- <img src="{{ most_expensive.cover_product }}" alt="{{ most_expensive.name }}"> -->
-                                                     {% if most_expensive.cover_product %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{{ most_expensive.cover_product.url }}"
-                                                            data-zoom-image="{{ product.cover_product.url }}"
-                                                            width="411" />
+                                                    {% if most_expensive.cover_product %}
+                                                        <a href="{% url 'products:product_detail_by_slug' most_expensive.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{{ most_expensive.cover_product.url }}"
+                                                                data-zoom-image="{{ product.cover_product.url }}"
+                                                                width="411" />
+                                                        </a>
                                                     {% else %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{% static 'img/products/no_product_image.jpg' %}"
-                                                            data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
-                                                            width="411" />
+                                                        <a href="{% url 'products:product_detail_by_slug' most_expensive.slug %}">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{% static 'img/products/no_product_image.jpg' %}"
+                                                                data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
+                                                                width="411" />
+                                                        </a>
                                                     {% endif %}
                                                     <div id="gallery_01f" style="width:420px;float:right;">
                                                 </a>

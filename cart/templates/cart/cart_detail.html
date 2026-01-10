@@ -1,3 +1,175 @@
-{% for item in cart %}
-	{{ item.product_obj.name}}
-{% endfor %}
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load persian_translation_tags %}
+{% load humanize %}
+
+
+{% block page_title %}
+    {% trans 'sabzeonline' %}
+{% endblock page_title %}
+
+
+
+{% block content %}
+
+    {% include 'partials/navbar.html' %}
+
+    <!-- cart---------------------------------->
+    <div class="container-main">
+        <div class="d-block">
+            <div class="main-row">
+                <div id="breadcrumb">
+                    <i class="mdi mdi-home"></i>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">{% trans 'home' %}</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{% trans 'cart' %}</li>
+                        </ol>
+                    </nav>
+                </div>
+                <section class="cart-home">
+                    <div class="post-item-cart d-block order-2">
+                        <div class="content-page">
+                            <div class="cart-form">
+                                {% if cart %}
+                                    <table class="table-cart cart table table-borderless">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="product-cart-name">{% trans 'product name' %}</th>
+                                                <th scope="col" class="product-cart-price">{% trans 'price' %}</th>
+                                                <th scope="col" class="product-cart-quantity">{% trans 'product quantity' %}</th>
+                                                <th scope="col" class="product-cart-Total">{% trans 'total' %}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for item in cart %}
+                                                <tr>
+                                                    <th scope="row" class="product-cart-name">
+                                                        <div class="product-thumbnail-img">
+                                                            {% if item.product_obj.cover_product %}
+                                                                    <img class="zoom-img" id="img-product-zoom"
+                                                                        src="{{ item.product_obj.cover_product.url }}"
+                                                                        data-zoom-image="{{ product.cover_product.url }}"
+                                                                        width="411" />
+                                                            {% else %}
+                                                                    <img class="zoom-img" id="img-product-zoom"
+                                                                        src="{% static 'img/products/no_product_image.jpg' %}"
+                                                                        data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
+                                                                        width="411" />
+                                                            {% endif %}
+                                                            <div class="product-remove">
+                                                                <a href="{% url 'cart:cart_remove' item.product_obj.slug %}"
+                                                                class="remove">
+                                                                    <i class="mdi mdi-close"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-title">
+                                                            <a href="{% url 'products:product_detail_by_slug' item.product_obj.slug %}">
+                                                            {{ item.product_obj.name }}
+                                                            </a>
+                                                        </div>
+                                                    </th>
+                                                    <td class="product-cart-price">
+                                                        <span class="amount">{{ item.product_obj.final_price|intcomma:False|translate_number }}
+                                                            <span>{% trans '$' %}</span>
+                                                        </span>
+                                                    </td>
+                                                    <td class="product-cart-quantity">
+                                                        <div class="required-number before">
+                                                            <form class="d-flex" method="POST" action="{% url 'cart:cart_add' item.product_obj.slug %}">
+                                                                {% csrf_token %}
+                                                                <div class="quantity">
+                                                                    <input
+                                                                        type="number"
+                                                                        class="quantity-input"
+                                                                        name="quantity"
+                                                                        id="qty-1"
+                                                                        value="{{ item.quantity }}"
+                                                                        min="1"
+                                                                    >
+                                                                </div>
+                                                                {{ item.product_update_quantity_form.inplace }}
+                                                                <button type="submit"><i class="fa fa-refresh"></i></button>
+                                                            </form>
+                                                        </div>
+                                                    </td>
+                                                    <td class="product-cart-Total">
+                                                        <span class="amount">{{ item.total_price|intcomma:False|translate_number }}
+                                                            <span>{% trans '$' %}</span>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    <div class="cart-collaterals">
+                                    <div class="totals d-block">
+                                        <h3 class="Total-cart-total">{% trans 'sum total cart' %}</h3>
+                                        <div class="checkout-summary">
+                                            <ul class="checkout-summary-summary">
+                                                <li class="cart-subtotal">
+                                                    <span class="amount">{% trans 'final price: ' %}</span>
+                                                    <span>{{ cart.get_total_price|intcomma:False|translate_number }} {% trans '$' %}</span>
+                                                </li>
+                                                <li class="discount-code">
+                                                    <div class=" align-items-center">
+                                                        <div class="col-md-7 pr mt-5">
+                                                            <div class="coupon">
+                                                                <form action="#">
+                                                                    <input type="text" name="input-coupon"
+                                                                        class="input-coupon-code"
+                                                                        placeholder="كد تخفیف:">
+                                                                    <button class="btn btn-coupon"
+                                                                        type="submit">{% trans 'aplay' %}</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2 pl mt-5">
+                                                            <div class="proceed-to-checkout">
+                                                                <a href="#" class="checkout-button d-block">تسویه
+                                                                    حساب</a>
+                                                                </div>
+                                                            </div>
+                                                        <div class="col-md-2 pl mt-5">
+                                                            <div class="proceed-to-checkout">
+                                                                <a href="{% url 'cart:cart_clear' %}" class="checkout-button d-block">
+                                                                    {% trans 'Empty shopping cart' %}
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="col=lg-3.5 col-md-3.5 col-xs-12 pr"
+                                        <h3>
+                                            {% trans 'محصولی یافت نشد! لطفا از هر بخشی که میخواین محصول مورد نیاز خود را انتخاب و به سبد خرید اضافه کنید.' %}
+                                        </h3>
+                                        <div class="product-seller-row add-to-cart">
+                                            <a type="button" 
+                                            href="{% url 'products:product_list' %}" 
+                                            class="my-custom-add-button btn btn-primary">
+                                                <span class="btn-add-to-cart-txt">
+                                                    {% trans 'Go Shopping' %}
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- cart---------------------------------->
+
+    {% include 'partials/footer.html' %}
+
+{% endblock content %}

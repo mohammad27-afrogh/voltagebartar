@@ -18,10 +18,10 @@ def cart_detail_view(request):
     })
 
 @require_POST
-def add_to_cart_view(request, product_id):
+def add_to_cart_view(request, product_slug):
     cart = Cart(request)
 
-    product = get_object_or_404(Product, id=product_id)
+    product = get_object_or_404(Product, slug=product_slug)
     form = AddToCartProductForm(request.POST)
 
     if form.is_valid():
@@ -31,10 +31,10 @@ def add_to_cart_view(request, product_id):
 
     return redirect('cart:Cart_detail')
 
-def remove_from_cart(request, product_id):
+def remove_from_cart(request, product_slug):
     cart = Cart(request)
 
-    product = get_object_or_404(Product, id=product_id)
+    product = get_object_or_404(Product, slug=product_slug)
     cart.remove(product)
 
     return redirect('cart:Cart_detail')
