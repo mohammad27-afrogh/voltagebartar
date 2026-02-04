@@ -1,0 +1,308 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-04 19:02+0330\n"
+"PO-Revision-Date: 2026-02-04 19:38+0330\n"
+"Last-Translator:   <m.afroogh25@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.10.2\n"
+
+#: .\templates\pages\privacy.html:7
+msgid "privacy page"
+msgstr "حریم خصوصی"
+
+#: .\templates\pages\privacy.html:26
+msgid "Green Online Store Terms, Conditions, and Privacy Policies"
+msgstr "شرایط، ضوابط و سیاست‌های حفظ حریم خصوصی فروشگاه سبز آنلاین "
+
+#: .\templates\pages\privacy.html:28
+msgid "1. General rules"
+msgstr "۱. قوانین عمومی"
+
+#: .\templates\pages\privacy.html:29
+msgid ""
+"Sabz Online Online Store is subject to the laws of the Islamic Republic of "
+"Iran, the E-Commerce Law, and the Consumer Rights Protection Law. Using the "
+"services of this site means accepting all the rules and regulations stated "
+"on this page.Any changes to these rules will be notified through this page, "
+"and users' continued use of the site constitutes approval and acceptance of "
+"the new changes."
+msgstr ""
+"فروشگاه اینترنتی سبز آنلاین تابع قوانین جمهوری اسلامی ایران، قانون تجارت "
+"الکترونیک و قانون حمایت از حقوق مصرف‌کننده است. استفاده از خدمات این سایت به"
+" منزله پذیرش کلیه قوانین و مقررات مندرج در این صفحه می‌باشد. هرگونه تغییر در"
+" این قوانین از طریق همین صفحه اطلاع‌رسانی خواهد شد و ادامه استفاده کاربران "
+"از سایت به منزله تأیید و پذیرش تغییرات جدید است."
+
+#: .\templates\pages\privacy.html:31
+msgid "2. Registering and processing orders"
+msgstr "۲. ثبت و پردازش سفارشات"
+
+#: .\templates\pages\privacy.html:32
+msgid ""
+"• It is mandatory to complete the order form with correct and complete "
+"information; incomplete or incorrect information may cause delays or "
+"inability to deliver."
+msgstr ""
+"• تکمیل فرم سفارش با اطلاعات صحیح و کامل الزامی است؛ اطلاعات ناقص یا نادرست "
+"ممکن است باعث تأخیر یا عدم امکان تحویل شود."
+
+#: .\templates\pages\privacy.html:33
+msgid ""
+"• Adding an item to the shopping cart does not in any way mean reserving the"
+" item, and the price or availability may change before final registration."
+msgstr ""
+"• افزودن کالا به سبد خرید به هیچ وجه به معنای رزرو کالا نیست و قیمت یا "
+"موجودی کالا ممکن است قبل از ثبت نهایی تغییر کند."
+
+#: .\templates\pages\privacy.html:34
+msgid ""
+"• If the desired flower type or color is not available in the current "
+"season, the customer will be contacted and the closest model will be "
+"substituted with their coordination. If the price of the product is "
+"different, the difference will be calculated and refunded in full."
+msgstr ""
+"• در صورتی که نوع یا رنگ گل مورد نظر در فصل جاری موجود نباشد، با مشتری تماس "
+"گرفته شده و با هماهنگی ایشان نزدیک ترین مدل جایگزین خواهد شد. در صورت مغایرت"
+" قیمت محصول، مابه التفاوت محاسبه و وجه به طور کامل مسترد خواهد شد."
+
+#: .\templates\pages\privacy.html:35
+msgid ""
+"• In the event of a problem with the final processing of the order (such as "
+"out of stock or customer cancellation), the amount paid will be returned to "
+"the customer's account within 2 to 12 business hours."
+msgstr ""
+"• در صورت بروز مشکل در پردازش نهایی سفارش (مانند اتمام موجودی یا انصراف "
+"مشتری)، مبلغ پرداخت شده ظرف ۲ تا ۱۲ ساعت کاری به حساب مشتری بازگردانده خواهد"
+" شد."
+
+#: .\templates\pages\privacy.html:37
+msgid "3. Pricing and Taxes"
+msgstr "۳. قیمت‌گذاری و مالیات"
+
+#: .\templates\pages\privacy.html:38
+msgid ""
+"Product prices are determined based on customer-centric principles and "
+"current market rates, and unreasonable increases in costs are avoided as "
+"much as possible. All prices are expertly calculated and include value-added"
+" taxes and duties; no separate fee is charged from the customer in this "
+"regard.If prices change, new items can only be applied before the order is "
+"placed and final payment is made."
+msgstr ""
+"قیمت محصولات بر اساس اصول مشتری مداری و نرخ های روز بازار تعیین می شود و تا "
+"حد امکان از افزایش غیرمنطقی هزینه ها جلوگیری می شود. تمامی قیمت ها به صورت "
+"کارشناسی محاسبه شده و شامل مالیات و عوارض ارزش افزوده است؛ در این خصوص هیچ "
+"هزینه جداگانه ای از مشتری دریافت نمی شود. در صورت تغییر قیمت ها، اعمال اقلام"
+" جدید فقط قبل از ثبت سفارش و پرداخت نهایی امکان پذیر است."
+
+#: .\templates\pages\privacy.html:40
+msgid "4. Payment and order return"
+msgstr "۴. پرداخت و بازگشت سفارش"
+
+#: .\templates\pages\privacy.html:41
+msgid "Payment methods"
+msgstr "روش های پرداخت"
+
+#: .\templates\pages\privacy.html:42
+msgid ""
+"• Online payment through the official bank portal after placing the order."
+msgstr "• پرداخت آنلاین از طریق درگاه رسمی بانک پس از ثبت سفارش."
+
+#: .\templates\pages\privacy.html:43
+msgid ""
+"• Payment in person at the delivery location in cash or using a card reader "
+"attached to the delivery courier."
+msgstr ""
+"• پرداخت حضوری در محل تحویل به صورت نقدی یا با استفاده از دستگاه کارتخوان "
+"متصل به پیک تحویل."
+
+#: .\templates\pages\privacy.html:45
+msgid "Quality assurance and return policy"
+msgstr "تضمین کیفیت و سیاست بازگشت کالا"
+
+#: .\templates\pages\privacy.html:46
+msgid ""
+"The quality, freshness, and health of the flowers and plants are guaranteed."
+" If customers are not satisfied with the quality or the product is damaged "
+"upon delivery, they can return the product unconditionally before the "
+"courier returns and receive a full refund.Products whose packaging is open "
+"or damaged (such as soil or opened fertilizer) cannot be returned after "
+"delivery."
+msgstr ""
+"کیفیت، تازگی و سلامت گل‌ها و گیاهان تضمین شده است. در صورت عدم رضایت مشتریان"
+" از کیفیت یا آسیب دیدن محصول هنگام تحویل، می‌توانند قبل از مراجعه پیک، محصول"
+" را بدون قید و شرط مرجوع کرده و مبلغ پرداختی را به طور کامل دریافت کنند. "
+"محصولاتی که بسته‌بندی آنها باز یا آسیب دیده باشد (مانند خاک یا کود باز شده) "
+"پس از تحویل قابل بازگشت نیستند."
+
+#: .\templates\pages\privacy.html:48
+msgid "5. Shipping and delivery of goods"
+msgstr "۵. حمل و تحویل کالا"
+
+#: .\templates\pages\privacy.html:49
+msgid ""
+"• Orders are shipped to all parts of the country, and the shipping cost is "
+"calculated based on weight, distance, and type of shipment (courier or "
+"freight)."
+msgstr ""
+"• سفارش ها به تمام نقاط کشور ارسال می شوند و هزینه ارسال بر اساس وزن، مسافت "
+"و نوع ارسال (پیک یا باربری) محاسبه می شود."
+
+#: .\templates\pages\privacy.html:50
+msgid ""
+"• Shipping costs will be included in the invoice before the order is finally"
+" placed. Any additional charges upon delivery will be considered a violation"
+" and must be reported to the sales experts."
+msgstr ""
+"• هزینه ارسال، قبل از ثبت نهایی سفارش در فاکتور درج خواهد شد. هرگونه هزینه "
+"اضافی هنگام تحویل، تخلف محسوب شده و باید به کارشناسان فروش گزارش شود."
+
+#: .\templates\pages\privacy.html:51
+msgid ""
+"• The customer is required to check the physical condition of the goods in "
+"the presence of the delivery officer and refuse to accept delivery if a "
+"problem is found. In this case, re-delivery will be free of charge."
+msgstr ""
+"• مشتری موظف است سلامت فیزیکی کالا را در حضور مامور تحویل بررسی و در صورت "
+"مشاهده مشکل از تحویل گرفتن آن خودداری کند. در این صورت، تحویل مجدد رایگان "
+"خواهد بود."
+
+#: .\templates\pages\privacy.html:52
+msgid ""
+"• Orders exceeding 30 million rials or shipped via freight must be paid for "
+"offline (online or card-to-card) before shipping."
+msgstr ""
+"• سفارش‌هایی که مبلغ آنها بیش از 30 میلیون ریال است یا از طریق باربری ارسال "
+"می‌شوند، باید قبل از ارسال، هزینه آنها به صورت آفلاین (آنلاین یا کارت به "
+"کارت) پرداخت شود."
+
+#: .\templates\pages\privacy.html:54
+msgid "6. Electronic communications"
+msgstr "۶. ارتباطات الکترونیکی"
+
+#: .\templates\pages\privacy.html:55
+msgid ""
+"Placing an order or using the online green services means agreeing to "
+"receive promotional messages via email, text message or phone call. The "
+"email address and phone number registered by the user are considered the "
+"official basis for communication. Users can disable the receipt of "
+"promotional SMS messages in the user account section.All text messages are "
+"sent only through the official site system, and messages sent from other "
+"numbers under the name Sabz Online are considered a violation and abuse and "
+"must be reported for legal action."
+msgstr ""
+"ثبت سفارش یا استفاده از خدمات سبز آنلاین به منزله موافقت با دریافت پیام‌های "
+"تبلیغاتی از طریق ایمیل، پیامک یا تماس تلفنی است. آدرس ایمیل و شماره تلفن ثبت"
+" شده توسط کاربر، مبنای رسمی ارتباط محسوب می‌شود. کاربران می‌توانند در بخش "
+"حساب کاربری، دریافت پیامک‌های تبلیغاتی را غیرفعال کنند. تمامی پیامک‌ها فقط "
+"از طریق سامانه رسمی سایت ارسال می‌شوند و پیام‌های ارسالی از شماره‌های دیگر "
+"تحت نام سبز آنلاین تخلف و سوءاستفاده محسوب شده و باید برای پیگیری قانونی "
+"گزارش شوند."
+
+#: .\templates\pages\privacy.html:57
+msgid "7. Privacy Policy"
+msgstr "۷. سیاست حفظ حریم خصوصی"
+
+#: .\templates\pages\privacy.html:59
+msgid ""
+"• Sabz Online is committed to protecting users' personal information and not"
+" exploiting any of the recorded data without consent or a legal order."
+msgstr ""
+"• سبز آنلاین متعهد به حفاظت از اطلاعات شخصی کاربران و عدم سوءاستفاده از هیچ "
+"یک از داده‌های ثبت شده بدون رضایت یا حکم قانونی است."
+
+#: .\templates\pages\privacy.html:60
+msgid ""
+"• User information is used solely to process orders, notify purchase status,"
+" and provide better service."
+msgstr ""
+"• اطلاعات کاربر صرفاً برای پردازش سفارشات، اطلاع رسانی وضعیت خرید و ارائه "
+"خدمات بهتر استفاده می شود."
+
+#: .\templates\pages\privacy.html:61
+msgid ""
+"• Advertising purposes are only carried out with the consent of users and "
+"can be revoked at any time."
+msgstr ""
+"• اهداف تبلیغاتی تنها با رضایت کاربران انجام می‌شود و در هر زمانی قابل لغو "
+"است."
+
+#: .\templates\pages\privacy.html:62
+msgid ""
+"• Users are responsible for maintaining the confidentiality of their account"
+" and password, and all activities that occur under their username are their "
+"responsibility."
+msgstr ""
+"• کاربران مسئول حفظ محرمانگی حساب کاربری و رمز عبور خود هستند و تمامی "
+"مسئولیت فعالیت هایی که تحت نام کاربری آنها انجام می شود، بر عهده آنهاست."
+
+#: .\templates\pages\privacy.html:63
+msgid ""
+"• All written content, graphics, images and information on the site are "
+"considered the intellectual property of Sabz Online. Their commercial use or"
+" republishing without written permission is prohibited and the company "
+"reserves the right to pursue legal action."
+msgstr ""
+"• تمامی محتوای نوشتاری، گرافیک، تصاویر و اطلاعات موجود در سایت، دارایی معنوی"
+" سبز آنلاین محسوب می‌شوند. استفاده تجاری یا بازنشر آنها بدون اجازه کتبی "
+"ممنوع است و شرکت حق پیگیری قانونی را برای خود محفوظ می‌دارد."
+
+#: .\templates\pages\privacy.html:66
+msgid "8. Dispute resolution and complaint handling"
+msgstr "۸. حل اختلاف و رسیدگی به شکایات"
+
+#: .\templates\pages\privacy.html:67
+msgid ""
+"In the event of any dispute between the user and Sabz Online, the matter "
+"will first be reviewed through site support and, in the event of "
+"disagreement, will be pursued through legal authorities in accordance with "
+"the current regulations of the Islamic Republic of Iran."
+msgstr ""
+"در صورت بروز هرگونه اختلاف بین کاربر و سبز آنلاین، موضوع ابتدا از طریق "
+"پشتیبانی سایت بررسی و در صورت عدم توافق، از طریق مراجع قانونی مطابق با "
+"مقررات جاری جمهوری اسلامی ایران پیگیری خواهد شد."
+
+#: .\templates\pages\privacy.html:69
+msgid "9. Change of rules and update date"
+msgstr "۹. تغییر قوانین و تاریخ به‌روزرسانی"
+
+#: .\templates\pages\privacy.html:70
+msgid ""
+"Sabz Online may update these terms and conditions to improve services or "
+"change legal conditions. The last revision date is listed at the top of this"
+" page."
+msgstr ""
+"سبز آنلاین ممکن است این شرایط و ضوابط را برای بهبود خدمات یا تغییر شرایط "
+"قانونی به‌روزرسانی کند. تاریخ آخرین به‌روزرسانی در بالای این صفحه ذکر شده "
+"است."
+
+#: .\templates\pages\privacy.html:72
+msgid "Contact green online"
+msgstr "با سبز آنلاین تماس بگیرید"
+
+#: .\templates\pages\privacy.html:73
+msgid "• Support phone: [Support center contact number]"
+msgstr "• تلفن پشتیبانی: [شماره تماس مرکز پشتیبانی]"
+
+#: .\templates\pages\privacy.html:74
+msgid "• Official email: [site email address]"
+msgstr "• ایمیل رسمی: [آدرس ایمیل سایت]"
+
+#: .\templates\pages\privacy.html:75
+msgid "• Central store address: [Physical address]"
+msgstr "• آدرس فروشگاه مرکزی: [آدرس فیزیکی]"
+
+#: .\templates\pages\privacy.html:77
+msgid "Wishing you greenery and freshness in your home 🌱"
+msgstr "با آرزوی سرسبزی و طراوت در خانه‌هایتان 🌱"
