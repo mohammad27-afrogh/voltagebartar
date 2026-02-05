@@ -1,0 +1,161 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load persian_translation_tags %}
+{% load humanize %}
+
+
+{% block page_title %}
+    {% trans 'profile page' %}
+{% endblock page_title %}
+
+
+{% block content %}
+
+    {% include 'partials/navbar.html' %}
+
+    <!-- profile------------------------------->
+    <div class="container-main">
+        <div class="d-block">
+            <section class="profile-home">
+                <div class="col-lg">
+                    <div class="post-item-profile order-1 d-block">
+                        <div class="col-lg-3 col-md-3 col-xs-12 pr">
+                            <div class="sidebar-profile sidebar-navigation">
+                                <section class="profile-box">
+                                    <header class="profile-box-header-inline">
+                                        <div class="profile-avatar user-avatar profile-img">
+                                            <img src="{% static 'img/profile.png' %}">
+                                        </div>
+                                    </header>
+                                    {% if user.phone_number %}
+                                        <footer class="profile-box-content-footer">
+                                            <span class="profile-box-nameuser">{{ username }}</span>
+                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_date_str }}</span>
+                                            <span class="profile-box-phone">{% trans 'mobile number : ' %} {{ phone_number }}</span>
+                                            <div class="profile-box-tabs">
+                                                <a href="{% url 'account_logout' %}" class="profile-box-tab-sign-out"><i
+                                                        class="mdi mdi-logout-variant"></i>{% trans 'log out account page' %}</a>
+                                            </div>
+                                        </footer>
+                                    {% else %}
+                                        <footer class="profile-box-content-footer">
+                                            <span class="profile-box-nameuser">{{ username }}</span>
+                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_date_str }}</span>
+                                            <span class="profile-box-phone">{% trans 'mobile number : Not registered yet' %}</span>
+                                            <div class="profile-box-tabs">
+                                                <a href="{% url 'account_logout' %}" class="profile-box-tab-sign-out"><i
+                                                        class="mdi mdi-logout-variant"></i>{% trans 'log out account page' %}</a>
+                                            </div>
+                                        </footer>
+                                    {% endif %}
+                                </section>
+                                <section class="profile-box">
+                                    <ul class="profile-account-navs">
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="{% url 'order:profile' %}" class=""><i class="mdi mdi-account-outline"></i>
+                                            {% trans 'profile' %}
+                                            </a>
+                                        </li>
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="{% url 'order:profile_order' %}" class=""><i class="mdi mdi-cart"></i>
+                                            {% trans 'All orders' %}
+                                            </a>
+                                        </li>
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="{% url 'order:profile_favorites' %}" class=""><i class="mdi mdi-heart"></i>
+                                               {% trans 'Favorites list' %}
+                                            </a>
+                                        </li>
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="{% url 'order:profile_address' %}" class="active"><i class="mdi mdi-map-outline"></i>
+                                               {% trans 'Addresses' %}
+                                            </a>
+                                        </li>
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="{% url 'order:profile_comment' %}" class=""><i class="mdi mdi-email-open-outline"></i>
+                                               {%  trans 'Comments' %}
+                                            </a>
+                                        </li>
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="#" class=""><i class="mdi mdi-tooltip-text-outline"></i>
+                                               {% trans 'Account information' %}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12 pl">
+                            <div class="profile-content">
+                                <div class="profile-stats">
+                                    {% for order_addres in order_address %}
+                                        {% for addres in order_addres.items.all %}
+                                            <div class="profile-address">
+                                                <div class="box-header">
+                                                    <span class="box-title">{% trans 'Our address' %}</span>
+                                                </div>
+                                                <div class="profile-address-item">
+                                                    <div class="profile-address-item-top">
+                                                        <div class="profile-address-item-title">{{ order_addres.province_address }}، {{ order_addres.city_address }}</div>
+                                                        <div class="ui-more">
+                                                            <button class="btn-remove-address btn btn-danger"
+                                                                type="submit">{% trans 'delete' %}</button>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="profile-address-content">
+                                                        <ul class="profile-address-info">
+                                                            <li>
+                                                                <div class="profile-address-info-item location">
+                                                                    <i class="mdi mdi-map-outline"></i>
+                                                                    {{ order_addres.province_address }}، {{ order_addres.city_address }}
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="profile-address-info-item location">
+                                                                    <i class="mdi mdi-email-outline"></i>
+                                                                    {{ order_addres.postal_code }}
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="profile-address-info-item location">
+                                                                    <i class="mdi mdi-phone"></i>
+                                                                    {{ order_addres.phone_number }}
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="profile-address-info-item location">
+                                                                    <i class="mdi mdi-account"></i>
+                                                                    {{ order_addres.province_address }}، {{ order_addres.city_address }}
+                                                                </div>
+                                                            </li>
+                                                            <li class="location-link">
+                                                                <a href="#" class="edit-address-link">{% trans 'edit address' %}</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- profile------------------------------->
+
+
+    {% include 'partials/footer.html' %}
+
+{% endblock content %}
+
+
+{% block body_class %}
+    account_page
+{% endblock body_class %}
