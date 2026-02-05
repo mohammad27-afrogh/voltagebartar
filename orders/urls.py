@@ -1,9 +1,15 @@
 from django.urls import path, include
 
-from .views import order_create_view
+from .import views
 
 app_name = 'order'
 
 urlpatterns = [
-    path('create/', order_create_view, name='order_create'),
+    path('create/', views.order_create_view, name='order_create'),
+    path('profile/', views.profile_view, name='profile'),
+    path('profile_order/', views.profile_order_view, name='profile_order'),
+    path('profile_favorites/', views.profile_favorites_view, name='profile_favorites'),
+    path('profile_address/', views.profile_address_view, name='profile_address'),
+    # path('address_delete/', views.remove_from_profile_address, name='remove_profile_address'),
+    path('profile_comment/', views.profile_comment_view, name='profile_comment'),
 ]
