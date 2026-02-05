@@ -15,7 +15,7 @@ class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         'national_number',
         'province_address',
         'city_address',
-        'exact_address',
+        'postal_code',
         'date_time_create',
         'is_paid',
     ]
@@ -31,4 +31,5 @@ class OrderItemAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         'product',
         'quantity',
         'price',
+        'date_time_create',
     ]

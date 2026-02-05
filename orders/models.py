@@ -18,6 +18,7 @@ class Order(models.Model):
     province_address = models.ForeignKey(Province, on_delete=models.CASCADE, verbose_name=_('province'))
     city_address = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name=_('city'))
     exact_address = models.CharField(_('exact address'), max_length=700)
+    postal_code = models.IntegerField(_('postal code'), null=True, max_length=10)
     email = models.EmailField(_('email'))
     order_notes = RichTextField(_('order notes'))
     date_time_create = models.DateTimeField(_('date_time_create'), default=timezone.now)
@@ -25,7 +26,7 @@ class Order(models.Model):
 
 
     def __str__(self):
-        return f'Order {self.id}'
+        return f'{self.user}'
 
     def get_total_price(self):
         return sum(item.quantity * item.price for item in self.items.all())
@@ -35,6 +36,7 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='ordered_items', verbose_name=_('product'))
     quantity = models.PositiveIntegerField(_('quantity'), default=1)
     price = models.PositiveIntegerField(_('price'))
+    date_time_create = models.DateTimeField(_('date_time_create'), default=timezone.now)
 
     def __str__(self):
         return f'OrderItem {self.id}: {self.product} * {self.quantity} (price:{self.price})'

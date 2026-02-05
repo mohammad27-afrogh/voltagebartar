@@ -12,6 +12,7 @@ class OrderForm(forms.ModelForm):
             'province_address',
             'city_address',
             'exact_address',
+            'postal_code',
             'email',
             'order_notes',
         ]
