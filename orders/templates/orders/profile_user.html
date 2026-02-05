@@ -1,0 +1,176 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load persian_translation_tags %}
+{% load humanize %}
+
+
+{% block page_title %}
+    {% trans 'profile page' %}
+{% endblock page_title %}
+
+
+{% block content %}
+
+    {% include 'partials/navbar.html' %}
+
+    <!-- profile------------------------------->
+    <div class="container-main">
+        <div class="d-block">
+            <section class="profile-home">
+                <div class="col-lg">
+                    <div class="post-item-profile order-1 d-block">
+                        <div class="col-lg-3 col-md-3 col-xs-12 pr">
+                            <div class="sidebar-profile sidebar-navigation">
+                                <section class="profile-box">
+                                    <header class="profile-box-header-inline">
+                                        <div class="profile-avatar user-avatar profile-img">
+                                            <img src="{% static 'img/profile.png' %}">
+                                        </div>
+                                    </header>
+                                    {% if user.phone_number %}
+                                        <footer class="profile-box-content-footer">
+                                            <span class="profile-box-nameuser">{{ username }}</span>
+                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_date_str }}</span>
+                                            <span class="profile-box-phone">{% trans 'mobile number : ' %} {{ phone_number }}</span>
+                                            <div class="profile-box-tabs">
+                                                <a href="{% url 'account_logout' %}" class="profile-box-tab-sign-out"><i
+                                                        class="mdi mdi-logout-variant"></i>{% trans 'log out account page' %}</a>
+                                            </div>
+                                        </footer>
+                                    {% else %}
+                                        <footer class="profile-box-content-footer">
+                                            <span class="profile-box-nameuser">{{ username }}</span>
+                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_date_str }}</span>
+                                            <span class="profile-box-phone">{% trans 'mobile number : Not registered yet' %}</span>
+                                            <div class="profile-box-tabs">
+                                                <a href="{% url 'account_logout' %}" class="profile-box-tab-sign-out"><i
+                                                        class="mdi mdi-logout-variant"></i>{% trans 'log out account page' %}</a>
+                                            </div>
+                                        </footer>
+                                    {% endif %}
+                                </section>
+                                <section class="profile-box">
+                                    <ul class="profile-account-navs">
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="{% url 'order:profile' %}" class="active"><i class="mdi mdi-account-outline"></i>
+                                            {% trans 'profile' %}
+                                            </a>
+                                        </li>
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="{% url 'order:profile_order' %}" class=""><i class="mdi mdi-cart"></i>
+                                            {% trans 'All orders' %}
+                                            </a>
+                                        </li>
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="{% url 'order:profile_favorites' %}" class=""><i class="mdi mdi-heart"></i>
+                                               {% trans 'Favorites list' %}
+                                            </a>
+                                        </li>
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="{% url 'order:profile_address' %}" class=""><i class="mdi mdi-map-outline"></i>
+                                               {% trans 'Addresses' %}
+                                            </a>
+                                        </li>
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="{% url 'order:profile_comment' %}" class=""><i class="mdi mdi-email-open-outline"></i>
+                                               {%  trans 'Comments' %}
+                                            </a>
+                                        </li>
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="#" class=""><i class="mdi mdi-tooltip-text-outline"></i>
+                                               {% trans 'Account information' %}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12 pl">
+                            <div class="profile-content" id="profile">
+                                <div class="profile-stats">
+                                    <table class="table table-profile">
+                                        <tbody>
+                                            <tr>
+                                                <td class="w-50">
+                                                    <div class="title">نام و نام خانوادگی:</div>
+                                                    <div class="value">حسن شجاعی</div>
+                                                </td>
+                                                <td>
+                                                    <div class="title">پست الکترونیک :</div>
+                                                    <div class="value">info@digismart.com</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="title">شماره تلفن همراه:</div>
+                                                    <div class="value">*******0991</div>
+                                                </td>
+                                                <td>
+                                                    <div class="title">تاریخ عضویت:</div>
+                                                    <div class="value">۱۳۹۹/۰۱/۱۲</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="title"> دریافت خبرنامه :</div>
+                                                    <div class="value">بله</div>
+                                                </td>
+                                                <td>
+                                                    <div class="title"> کد ملی :</div>
+                                                    <div class="value">-</div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="profile">
+                                        <ul class="mb-0">
+                                            <li class="profile-item">
+                                                <div class="title">نام و نام خانوادگی:</div>
+                                                <div class="value">حسن شجاعی</div>
+                                            </li>
+                                            <li class="profile-item">
+                                                <div class="title">پست الکترونیک :</div>
+                                                <div class="value">info@digismart.com</div>
+                                            </li>
+                                            <li class="profile-item">
+                                                <div class="title">شماره تلفن همراه:</div>
+                                                <div class="value">*******0991</div>
+                                            </li>
+                                            <li class="profile-item">
+                                                <div class="title">تاریخ عضویت:</div>
+                                                <div class="value">۱۳۹۹/۰۱/۱۲</div>
+                                            </li>
+                                            <li class="profile-item">
+                                                <div class="title"> دریافت خبرنامه :</div>
+                                                <div class="value">بله</div>
+                                            </li>
+                                            <li class="profile-item">
+                                                <div class="title"> کد ملی :</div>
+                                                <div class="value">-</div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="profile-edit-action">
+                                        <a href="#" class="link-spoiler-edit btn btn-secondary">ویرایش اطلاعات</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- profile------------------------------->
+
+
+    {% include 'partials/footer.html' %}
+
+{% endblock content %}
+
+
+{% block body_class %}
+    account_page
+{% endblock body_class %}
