@@ -4,9 +4,9 @@ from django.contrib import messages
 from django.utils.translation import gettext as _
 
 import jdatetime
-from .forms import OrderForm
+from .forms import OrderForm, ProfileFormBasic, ProfileFormLocations
 from cart.cart import Cart
-from .models import OrderItem, Order
+from .models import OrderItem, Order, Profile
 
 @login_required
 def order_create_view(request):
@@ -47,39 +47,65 @@ def profile_view(request):
     # 1. دسترسی به شیء کاربر احراز هویت شده
     current_user = request.user
     
-    # 2. استخراج نام کاربری (Username) یا نام اصلی (First Name)
-    # اگر نام کاربری را می‌خواهید:
-    username = current_user.username
+    profile, created  = Profile.objects.get_or_create(user=current_user)
 
-    
-    # 1. گرفتن تاریخ میلادی
-    gregorian_join_date = current_user.date_joined 
-    
-    # 2. تبدیل به شمسی (Jalali)
-    # اگر date_joined از نوع None نباشد
+    username = current_user
+
+    # گرفتن تاریخ ثبت نام کاربر
+    gregorian_join_date = current_user.date_joined  
+    jalali_join_date_str = "تاریخ نامشخص"
+
     if gregorian_join_date:
-        # تبدیل به آبجکت JalaliDate/JalaliDateTime
-        jalali_date = jdatetime.datetime.fromgregorian(datetime=gregorian_join_date)
-        
-        # تبدیل به رشته شمسی با فرمت دلخواه (مثلاً 1404/11/15)
-        jalali_date_str = jalali_date.strftime("%Y/%m/%d") 
-    else:
-        jalali_date_str = "تاریخ نامشخص"
+        jalali_join_date = jdatetime.datetime.fromgregorian(datetime=gregorian_join_date)
+        # فرمت تاریخ: سال/ماه/روز ساعت:دقیقه
+        jalali_join_date_str = jalali_join_date.strftime("%Y/%m/%d %H:%M:%S")
 
-    # اگر نام و نام خانوادگی ثبت شده در مدل User را می‌خواهید:
-    first_name = current_user.first_name
-    last_name = current_user.last_name
+
+    # گرفتن تاریخ آپدیت ویرایش پروفایل کاربر
+    gregorian_profile_date = profile.date_time_modified
+    jalali_profile_date_str = "تاریخ نامشخص"
+    if gregorian_profile_date:
+        jalali_profile_date = jdatetime.datetime.fromgregorian(datetime=gregorian_profile_date)
+        # فرمت دلخواه: سال/ماه/روز ساعت:دقیقه
+        jalali_profile_date_str = jalali_profile_date.strftime("%Y/%m/%d %H:%M")
+
+    incomplete_fields = []
+    if not profile.first_name:
+        incomplete_fields.append(_('first_name'))
+    if not profile.last_name:
+        incomplete_fields.append(_('last_name'))
+    if not profile.phone_number:
+        incomplete_fields.append(_('phone_number'))
+    if not profile.national_number:
+        incomplete_fields.append(_('national_number'))
+    if not profile.Receive_the_newsletter:
+        incomplete_fields.append(_('Receive_the_newsletter'))
+    if not profile.email:
+        incomplete_fields.append(_('email'))
+
     
     # 3. ارسال داده‌ها به قالب (Template)
     context = {
         'username': username,
-        'jalali_date_str': jalali_date_str,
-        'first_name': first_name,
-        'last_name': last_name
+        'profile': profile,
+        'incomplete_fields': incomplete_fields,
+        'jalali_join_date_str': jalali_join_date_str,
+        'jalali_profile_date_str': jalali_profile_date_str
     }
     
     return render(request, 'orders/profile_user.html', context)
 
+
+def profile_user_create_view(request):
+
+    return render(request, 'orders/profile_create.html')
+
+# @login_required
+# def profile_user_edit_view(request):
+#     # 1. دسترسی به شیء کاربر احراز هویت شده
+#     current_user = request.user
+
+#     return render(request, 'orders/profile_user_edit.html')
 
 @login_required
 def profile_order_view(request):
