@@ -1,7 +1,7 @@
 from django.contrib import admin
 from jalali_date.admin import ModelAdminJalaliMixin
 
-from .models import Order, OrderItem
+from .models import Order, OrderItem, Profile
 
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
@@ -32,4 +32,22 @@ class OrderItemAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         'quantity',
         'price',
         'date_time_create',
+    ]
+
+@admin.register(Profile)
+class ProfileAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
+    list_display = [
+        'first_name',
+        'last_name',
+        'phone_number',
+        'national_number',
+        'province_address',
+        'city_address',
+        'exact_address',
+        'postal_code',
+        'email',
+        'order_notes',
+        'date_time_create',
+        'date_time_modified',
+        'Receive_the_newsletter'
     ]

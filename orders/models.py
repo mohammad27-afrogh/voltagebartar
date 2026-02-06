@@ -40,3 +40,23 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f'OrderItem {self.id}: {self.product} * {self.quantity} (price:{self.price})'
+
+class Profile(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=_('user'))
+    first_name = models.CharField(_('first name'), max_length=100)
+    last_name = models.CharField(_('last name'), max_length=200)
+    phone_number = PhoneNumberField(_('phone number'))
+    national_number = models.CharField(_('national number'), max_length=10)
+    province_address = models.ForeignKey(Province, on_delete=models.CASCADE, null=True, verbose_name=_('province'))
+    city_address = models.ForeignKey(City, on_delete=models.CASCADE, null=True, verbose_name=_('city'))
+    exact_address = models.CharField(_('exact address'), max_length=700)
+    postal_code = models.IntegerField(_('postal code'), null=True, max_length=10)
+    email = models.EmailField(_('email'))
+    order_notes = RichTextField(_('order notes'))
+    date_time_create = models.DateTimeField(_('date_time_create'), default=timezone.now)
+    date_time_modified = models.DateTimeField(_('date_time_modified'), auto_now=True)
+    Receive_the_newsletter = models.BooleanField(_('Receive the newsletter'), default=True)
+
+
+    def __str__(self):
+        return f"Profile of {self.user.username}"
