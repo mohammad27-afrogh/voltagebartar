@@ -29,11 +29,11 @@
                                             <img src="{% static 'img/profile.png' %}">
                                         </div>
                                     </header>
-                                    {% if user.phone_number %}
+                                    {% if profile.phone_number %}
                                         <footer class="profile-box-content-footer">
-                                            <span class="profile-box-nameuser">{{ username }}</span>
-                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_date_str }}</span>
-                                            <span class="profile-box-phone">{% trans 'mobile number : ' %} {{ phone_number }}</span>
+                                            <span class="profile-box-nameuser">{{ profile.first_name }} {{ profile.last_name }}</span>
+                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_join_date_str }}</span>
+                                            <span class="profile-box-phone">{% trans 'mobile number : ' %} {{ profile.phone_number }}</span>
                                             <div class="profile-box-tabs">
                                                 <a href="{% url 'account_logout' %}" class="profile-box-tab-sign-out"><i
                                                         class="mdi mdi-logout-variant"></i>{% trans 'log out account page' %}</a>
@@ -41,8 +41,8 @@
                                         </footer>
                                     {% else %}
                                         <footer class="profile-box-content-footer">
-                                            <span class="profile-box-nameuser">{{ username }}</span>
-                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_date_str }}</span>
+                                            <span class="profile-box-nameuser">{{ profile.first_name }} {{ profile.last_name }}</span>
+                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_join_date_str }}</span>
                                             <span class="profile-box-phone">{% trans 'mobile number : Not registered yet' %}</span>
                                             <div class="profile-box-tabs">
                                                 <a href="{% url 'account_logout' %}" class="profile-box-tab-sign-out"><i
@@ -89,73 +89,61 @@
                         </div>
                         <div class="col-lg-9 col-md-9 col-xs-12 pl">
                             <div class="profile-content" id="profile">
+                                {% if incomplete_fields %}
+                                    <div class="profile-stats"></div>
+                                        <div class="table table-profile">
+                                            <div class="title">{% trans 'Please complete your details.' %}</div>
+                                            <div class="value">
+                                                <ul>
+                                                    {% for field in incomplete_fields %}
+                                                        <li>{{ field }}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                            <a href="{% url 'order:profile_create' %}" class="link-spoiler-edit btn btn-secondary">{% trans 'Completion of specifications' %}</a>
+                                        </div>
+                                    </div>
+                                {% else %}
                                 <div class="profile-stats">
                                     <table class="table table-profile">
                                         <tbody>
                                             <tr>
                                                 <td class="w-50">
-                                                    <div class="title">نام و نام خانوادگی:</div>
-                                                    <div class="value">حسن شجاعی</div>
+                                                    <div class="title">{% trans 'Name and surname : ' %}</div>
+                                                    <div class="value">{{ profile.first_name }} {{ profile.last_name }}</div>
                                                 </td>
                                                 <td>
-                                                    <div class="title">پست الکترونیک :</div>
-                                                    <div class="value">info@digismart.com</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="title">شماره تلفن همراه:</div>
-                                                    <div class="value">*******0991</div>
-                                                </td>
-                                                <td>
-                                                    <div class="title">تاریخ عضویت:</div>
-                                                    <div class="value">۱۳۹۹/۰۱/۱۲</div>
+                                                    <div class="title">{% trans 'email : ' %}</div>
+                                                    <div class="value">{{ profile.email }}</div>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <div class="title"> دریافت خبرنامه :</div>
-                                                    <div class="value">بله</div>
+                                                    <div class="title">{% trans 'Phone number : ' %}</div>
+                                                    <div class="value">{{ profile.phone_number }}</div>
                                                 </td>
                                                 <td>
-                                                    <div class="title"> کد ملی :</div>
-                                                    <div class="value">-</div>
+                                                    <div class="title">{% trans 'Profile update date : ' %}</div>
+                                                    <div class="value">{{ jalali_profile_date_str }}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="title">{% trans 'Receive the newsletter : ' %}</div>
+                                                    <div class="value">{{ profile.Receive_the_newsletter }}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="title">{% trans 'National code : ' %}</div>
+                                                    <div class="value">{{ profile.national_number }}</div>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <div class="profile">
-                                        <ul class="mb-0">
-                                            <li class="profile-item">
-                                                <div class="title">نام و نام خانوادگی:</div>
-                                                <div class="value">حسن شجاعی</div>
-                                            </li>
-                                            <li class="profile-item">
-                                                <div class="title">پست الکترونیک :</div>
-                                                <div class="value">info@digismart.com</div>
-                                            </li>
-                                            <li class="profile-item">
-                                                <div class="title">شماره تلفن همراه:</div>
-                                                <div class="value">*******0991</div>
-                                            </li>
-                                            <li class="profile-item">
-                                                <div class="title">تاریخ عضویت:</div>
-                                                <div class="value">۱۳۹۹/۰۱/۱۲</div>
-                                            </li>
-                                            <li class="profile-item">
-                                                <div class="title"> دریافت خبرنامه :</div>
-                                                <div class="value">بله</div>
-                                            </li>
-                                            <li class="profile-item">
-                                                <div class="title"> کد ملی :</div>
-                                                <div class="value">-</div>
-                                            </li>
-                                        </ul>
-                                    </div>
                                     <div class="profile-edit-action">
-                                        <a href="#" class="link-spoiler-edit btn btn-secondary">ویرایش اطلاعات</a>
+                                        <a href="{% url 'order:profile_create' %}" class="link-spoiler-edit btn btn-secondary">{% trans 'Edit information' %}</a>
                                     </div>
                                 </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
