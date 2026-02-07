@@ -169,15 +169,75 @@ def profile_favorites_view(request):
 
 @login_required
 def profile_address_view(request):
+    # 1. دسترسی به شیء کاربر احراز هویت شده
+    current_user = request.user
+    username = current_user
+    profile, created  = Profile.objects.get_or_create(user=current_user)
 
-    order_address = Order.objects.prefetch_related('items').all()
+    incomplete_fields_address = []
+    if not profile.phone_number:
+        incomplete_fields.append(_('phone_number'))
+    if not profile.province_address:
+        incomplete_fields.append(_('province_address'))
+    if not profile.city_address:
+        incomplete_fields.append(_('city_address'))
+    if not profile.exact_address:
+        incomplete_fields.append(_('exact_address'))
+    if not profile.postal_code:
+        incomplete_fields.append(_('postal_code'))
+    if not profile.order_notes:
+        incomplete_fields.append(_('order_notes'))
+
+    # گرفتن تاریخ ثبت نام کاربر
+    gregorian_join_date = current_user.date_joined  
+    jalali_join_date_str = "تاریخ نامشخص"
+
+    if gregorian_join_date:
+        jalali_join_date = jdatetime.datetime.fromgregorian(datetime=gregorian_join_date)
+        # فرمت تاریخ: سال/ماه/روز ساعت:دقیقه
+        jalali_join_date_str = jalali_join_date.strftime("%Y/%m/%d %H:%M:%S")
 
     context = {
-        'order_address': order_address,
+        'profile': profile,
+        'username': username,
+        'incomplete_fields_address': incomplete_fields_address,
+        'jalali_join_date_str': jalali_join_date_str,
     }
 
     return render(request, 'orders/profile_address.html', context)
 
+
+def profile_address_edit_view(request):
+    # 1. دسترسی به شیء کاربر احراز هویت شده
+    current_user = request.user
+    username = current_user
+    profile, created  = Profile.objects.get_or_create(user=current_user)
+
+    # گرفتن تاریخ ثبت نام کاربر
+    gregorian_join_date = current_user.date_joined  
+    jalali_join_date_str = "تاریخ نامشخص"
+
+    if gregorian_join_date:
+        jalali_join_date = jdatetime.datetime.fromgregorian(datetime=gregorian_join_date)
+        # فرمت تاریخ: سال/ماه/روز ساعت:دقیقه
+        jalali_join_date_str = jalali_join_date.strftime("%Y/%m/%d %H:%M:%S")
+
+    if request.method == 'POST':
+        form = ProfileFormLocations(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('order:profile_address'))
+    else:
+        form = ProfileFormLocations(instance=profile)
+
+
+    context = {
+        'profile': profile,
+        'jalali_join_date_str': jalali_join_date_str,
+        'form': form,
+    }
+
+    return render(request, 'orders/profile_address_edit.html', context)
 
 # @login_required
 # def remove_from_profile_address(request, current_user):

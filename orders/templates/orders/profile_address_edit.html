@@ -54,7 +54,7 @@
                                 <section class="profile-box">
                                     <ul class="profile-account-navs">
                                         <li class="profile-account-nav-item navigation-link-dashboard">
-                                            <a href="{% url 'order:profile' %}" class=""><i class="mdi mdi-account-outline"></i>
+                                            <a href="{% url 'order:profile' %}" class="active"><i class="mdi mdi-account-outline"></i>
                                             {% trans 'profile' %}
                                             </a>
                                         </li>
@@ -69,7 +69,7 @@
                                             </a>
                                         </li>
                                         <li class="profile-account-nav-item navigation-link-dashboard">
-                                            <a href="{% url 'order:profile_address' %}" class="active"><i class="mdi mdi-map-outline"></i>
+                                            <a href="{% url 'order:profile_address' %}" class=""><i class="mdi mdi-map-outline"></i>
                                                {% trans 'Addresses' %}
                                             </a>
                                         </li>
@@ -88,70 +88,14 @@
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-9 col-xs-12 pl">
-                            <div class="profile-content">
-                                {% if incomplete_fields_address|length == 6 %}
-                                    <div class="profile-stats"></div>
-                                        <div class="table table-profile">
-                                            <div class="title">{% trans 'Please complete your details.' %}</div>
-                                            <div class="value">
-                                                <ul>
-                                                    {% for field in incomplete_fields %}
-                                                        <li>{{ field }}</li>
-                                                    {% endfor %}
-                                                </ul>
-                                            </div>
-                                            <a href="{% url 'order:profile_create' %}" class="link-spoiler-edit btn btn-secondary">{% trans 'Completion of specifications' %}</a>
-                                        </div>
-                                    </div>
-                                {% else %}
-                                    <div class="profile-stats">
-                                        <div class="profile-address">
-                                            <div class="box-header">
-                                                <span class="box-title">{% trans 'Our address' %}</span>
-                                            </div>
-                                            <div class="profile-address-item">
-                                                <div class="profile-address-item-top">
-                                                    <div class="profile-address-item-title">{{ profile.province_address }}</div>
-                                                    <div class="ui-more">
-                                                        <button class="btn-remove-address btn btn-danger"
-                                                            type="submit">{% trans 'delete' %}</button>
-                                                    </div>
-                                                </div>
-                                                <div class="profile-address-content">
-                                                    <ul class="profile-address-info">
-                                                        <li>
-                                                            <div class="profile-address-info-item location">
-                                                                <i class="mdi mdi-map-outline"></i>
-                                                                {{ profile.city_address }}
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="profile-address-info-item location">
-                                                                <i class="mdi mdi-email-outline"></i>
-                                                                {{ profile.postal_code }}
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="profile-address-info-item location">
-                                                                <i class="mdi mdi-phone"></i>
-                                                                {{ profile.phone_number }}
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="profile-address-info-item location">
-                                                                <i class="mdi mdi-account"></i>
-                                                                {{ profile.exact_address }}
-                                                            </div>
-                                                        </li>
-                                                        <li class="location-link">
-                                                            <a href="{% url 'order:address_edit' %}" class="edit-address-link">{% trans 'edit address' %}</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endif %}
+                            <div class="profile-content" id="profile"
+                                <h3>{% trans 'Edit address details' %}</h3>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        {{ form|crispy }}
+                                        <button type="submit" class="my-custom-add-button btn btn-primary">{% trans 'Save changes' %}</button>
+                                    </form>
+                                    <br><a href="{% url 'order:profile_address' %}">{% trans 'Back to profile address' %}</a>
                             </div>
                         </div>
                     </div>
