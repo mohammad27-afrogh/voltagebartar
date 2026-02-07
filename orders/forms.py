@@ -29,6 +29,9 @@ class ProfileFormBasic(forms.ModelForm):
             'email',
             'Receive_the_newsletter',
         ]
+        widgets = {
+            'Receive_the_newsletter': forms.CheckboxInput()
+        }
 
 
 class ProfileFormLocations(forms.ModelForm):

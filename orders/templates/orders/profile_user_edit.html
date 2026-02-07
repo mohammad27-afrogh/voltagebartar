@@ -88,66 +88,14 @@
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-9 col-xs-12 pl">
-                            <div class="profile-content" id="profile">
-                                {% if incomplete_fields|length == 6 %}
-                                    <div class="profile-stats"></div>
-                                        <div class="table table-profile">
-                                            <div class="title">{% trans 'Please complete your details.' %}</div>
-                                            <div class="value">
-                                                <ul>
-                                                    {% for field in incomplete_fields %}
-                                                        <li>{{ field }}</li>
-                                                    {% endfor %}
-                                                </ul>
-                                            </div>
-                                            <a href="{% url 'order:profile_create' %}" class="link-spoiler-edit btn btn-secondary">{% trans 'Completion of specifications' %}</a>
-                                        </div>
-                                    </div>
-                                {% else %}
-                                <div class="profile-stats">
-                                    <table class="table table-profile">
-                                        <tbody>
-                                            <tr>
-                                                <td class="w-50">
-                                                    <div class="title">{% trans 'Name and surname : ' %}</div>
-                                                    <div class="value">{{ profile.first_name }} {{ profile.last_name }}</div>
-                                                </td>
-                                                <td>
-                                                    <div class="title">{% trans 'email : ' %}</div>
-                                                    <div class="value">{{ profile.email }}</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="title">{% trans 'Phone number : ' %}</div>
-                                                    <div class="value">{{ profile.phone_number }}</div>
-                                                </td>
-                                                <td>
-                                                    <div class="title">{% trans 'Profile update date : ' %}</div>
-                                                    <div class="value">{{ jalali_profile_date_str }}</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="title">{% trans 'Receive the newsletter : ' %}</div>
-                                                {% if profile.Receive_the_newsletter == True %}
-                                                    <div class="value">{% trans 'Yes' %}</div>
-                                                {% else %}
-                                                    <div class="value">{% trans 'No' %}</div>
-                                                {% endif %}
-                                                </td>
-                                                <td>
-                                                    <div class="title">{% trans 'National code : ' %}</div>
-                                                    <div class="value">{{ profile.national_number }}</div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="profile-edit-action">
-                                        <a href="{% url 'order:profile_user_edit' %}" class="link-spoiler-edit btn btn-secondary">{% trans 'Edit information' %}</a>
-                                    </div>
-                                </div>
-                                {% endif %}
+                            <div class="profile-content" id="profile"
+                                <h3>{% trans 'Edit profile details' %}</h3>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        {{ form|crispy }}
+                                        <button type="submit" class="my-custom-add-button btn btn-primary">{% trans 'Save changes' %}</button>
+                                    </form>
+                                    <br><a href="{% url 'order:profile' %}">{% trans 'Back to profile' %}</a>
                             </div>
                         </div>
                     </div>

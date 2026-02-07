@@ -12,4 +12,6 @@ urlpatterns = [
     path('profile_address/', views.profile_address_view, name='profile_address'),
     # path('address_delete/', views.remove_from_profile_address, name='remove_profile_address'),
     path('profile_comment/', views.profile_comment_view, name='profile_comment'),
+    path('profile_create/', views.profile_user_create_view, name='profile_create'),
+    path('profile/edit/', views.profile_user_edit_view, name='profile_user_edit'),
 ]

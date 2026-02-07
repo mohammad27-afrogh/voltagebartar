@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils.translation import gettext as _
+from django.urls import reverse
 
 import jdatetime
 from .forms import OrderForm, ProfileFormBasic, ProfileFormLocations
@@ -100,12 +101,43 @@ def profile_user_create_view(request):
 
     return render(request, 'orders/profile_create.html')
 
-# @login_required
-# def profile_user_edit_view(request):
-#     # 1. دسترسی به شیء کاربر احراز هویت شده
-#     current_user = request.user
 
-#     return render(request, 'orders/profile_user_edit.html')
+
+@login_required
+def profile_user_edit_view(request):
+    # 1. دسترسی به شیء کاربر احراز هویت شده
+    current_user = request.user
+    username = current_user
+    profile, created  = Profile.objects.get_or_create(user=current_user)
+
+    # گرفتن تاریخ ثبت نام کاربر
+    gregorian_join_date = current_user.date_joined  
+    jalali_join_date_str = "تاریخ نامشخص"
+
+    if gregorian_join_date:
+        jalali_join_date = jdatetime.datetime.fromgregorian(datetime=gregorian_join_date)
+        # فرمت تاریخ: سال/ماه/روز ساعت:دقیقه
+        jalali_join_date_str = jalali_join_date.strftime("%Y/%m/%d %H:%M:%S")
+
+
+    if request.method == 'POST':
+        form = ProfileFormBasic(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('order:profile'))
+    else:
+        form = ProfileFormBasic(instance=profile)
+
+    context = {
+        'profile': profile,
+        'username': username,
+        'form': form,
+        'jalali_join_date_str': jalali_join_date_str,
+    }
+
+    return render(request, 'orders/profile_user_edit.html', context)
+
+
 
 @login_required
 def profile_order_view(request):
