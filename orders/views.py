@@ -140,17 +140,91 @@ def profile_user_edit_view(request):
 
 
 @login_required
-def profile_order_view(request):
+def profile_orders_view(request):
     # 1. دسترسی به شیء کاربر احراز هویت شده
     current_user = request.user
+    username = current_user
+    profile, created  = Profile.objects.get_or_create(user=current_user)
+
+    order = get_object_or_404(
+        Order.objects.select_related('city_address', 'province_address'),
+        user=current_user
+    )
+
+    # گرفتن تاریخ ثبت نام کاربر
+    gregorian_join_date = current_user.date_joined  
+    jalali_join_date_str = "تاریخ نامشخص"
+
+    if gregorian_join_date:
+        jalali_join_date = jdatetime.datetime.fromgregorian(datetime=gregorian_join_date)
+        # فرمت تاریخ: سال/ماه/روز ساعت:دقیقه
+        jalali_join_date_str = jalali_join_date.strftime("%Y/%m/%d %H:%M:%S")
     
     orders_whit_items = Order.objects.prefetch_related('items').all()
 
+    if order.city_address == 'Tehra':
+        total_price_city = order.get_total_price()
+    else:
+        total_price_city = order.get_total_price() + 500000
+
     context = {
+        'username': username,
+        'profile': profile,
+        'jalali_join_date_str': jalali_join_date_str,
         'orders_whit_items': orders_whit_items,
+        'total_price_city': total_price_city,
     }
 
     return render(request, 'orders/profile_order.html', context)
+
+
+@login_required
+def profile_order_view(request):
+    current_user = request.user
+    username = current_user
+    # 1. پیدا کردن شیء ORDER تکی با استفاده از get_object_or_404
+    # این شیء تکی (object) دارای فیلدهای آدرس است.
+    # ما از select_related برای بهینه‌سازی دسترسی به آدرس‌ها استفاده می‌کنیم.
+
+    order = get_object_or_404(
+        Order.objects.select_related('city_address', 'province_address'),
+        user=current_user
+    )
+
+    profile, created  = Profile.objects.get_or_create(user=current_user)
+
+    # گرفتن تاریخ ثبت نام کاربر
+    gregorian_join_date = current_user.date_joined  
+    jalali_join_date_str = "تاریخ نامشخص"
+
+    if gregorian_join_date:
+        jalali_join_date = jdatetime.datetime.fromgregorian(datetime=gregorian_join_date)
+        # فرمت تاریخ: سال/ماه/روز ساعت:دقیقه
+        jalali_join_date_str = jalali_join_date.strftime("%Y/%m/%d %H:%M:%S")
+
+    order_items_product = order.items.select_related('product').all()
+
+
+    if order.city_address == 'Tehra':
+        total_price_city = order.get_total_price()
+    else:
+        total_price_city = order.get_total_price() + 500000
+
+
+
+    context = {
+        'username': username,
+        'profile': profile,
+        'jalali_join_date_str': jalali_join_date_str,
+        'order': order,
+        'order_items_product': order_items_product,
+        'total_price_city': total_price_city,
+    }
+
+    
+    return render(request, 'orders/profile_order_view.html', context)
+
+
 
 
 @login_required

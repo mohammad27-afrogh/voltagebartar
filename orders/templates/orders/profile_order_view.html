@@ -1,0 +1,208 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load persian_translation_tags %}
+{% load humanize %}
+
+
+{% block page_title %}
+    {% trans 'profile page' %}
+{% endblock page_title %}
+
+
+{% block content %}
+
+    {% include 'partials/navbar.html' %}
+
+    <!-- profile------------------------------->
+    <div class="container-main">
+        <div class="d-block">
+            <section class="profile-home">
+                <div class="col-lg">
+                    <div class="post-item-profile order-1 d-block">
+                        <div class="col-lg-3 col-md-3 col-xs-12 pr">
+                            <div class="sidebar-profile sidebar-navigation">
+                                <section class="profile-box">
+                                    <header class="profile-box-header-inline">
+                                        <div class="profile-avatar user-avatar profile-img">
+                                            <img src="{% static 'img/profile.png' %}">
+                                        </div>
+                                    </header>
+                                    {% if profile.phone_number %}
+                                        <footer class="profile-box-content-footer">
+                                            <span class="profile-box-nameuser">{{ profile.first_name }} {{ profile.last_name }}</span>
+                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_join_date_str }}</span>
+                                            <span class="profile-box-phone">{% trans 'mobile number : ' %} {{ profile.phone_number }}</span>
+                                            <div class="profile-box-tabs">
+                                                <a href="{% url 'account_logout' %}" class="profile-box-tab-sign-out"><i
+                                                        class="mdi mdi-logout-variant"></i>{% trans 'log out account page' %}</a>
+                                            </div>
+                                        </footer>
+                                    {% else %}
+                                        <footer class="profile-box-content-footer">
+                                            <span class="profile-box-nameuser">{{ profile.first_name }} {{ profile.last_name }}</span>
+                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_join_date_str }}</span>
+                                            <span class="profile-box-phone">{% trans 'mobile number : Not registered yet' %}</span>
+                                            <div class="profile-box-tabs">
+                                                <a href="{% url 'account_logout' %}" class="profile-box-tab-sign-out"><i
+                                                        class="mdi mdi-logout-variant"></i>{% trans 'log out account page' %}</a>
+                                            </div>
+                                        </footer>
+                                    {% endif %}
+                                </section>
+                                <section class="profile-box">
+                                    <ul class="profile-account-navs">
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="{% url 'order:profile' %}" class=""><i class="mdi mdi-account-outline"></i>
+                                            {% trans 'profile' %}
+                                            </a>
+                                        </li>
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="{% url 'order:profile_order' %}" class="active"><i class="mdi mdi-cart"></i>
+                                            {% trans 'All orders' %}
+                                            </a>
+                                        </li>
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="{% url 'order:profile_favorites' %}" class=""><i class="mdi mdi-heart"></i>
+                                               {% trans 'Favorites list' %}
+                                            </a>
+                                        </li>
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="{% url 'order:profile_address' %}" class=""><i class="mdi mdi-map-outline"></i>
+                                               {% trans 'Addresses' %}
+                                            </a>
+                                        </li>
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="{% url 'order:profile_comment' %}" class=""><i class="mdi mdi-email-open-outline"></i>
+                                               {%  trans 'Comments' %}
+                                            </a>
+                                        </li>
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="#" class=""><i class="mdi mdi-tooltip-text-outline"></i>
+                                               {% trans 'Account information' %}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12 pl">
+                            <div class="profile-content">
+                                <div class="profile-stats">
+                                    <div class="table-order-view">
+                                        <h2 class="order-view-title mt-4 mb-3">{% trans 'Order details' %}</h2>
+                                        {% for order_item_product in order_items_product %}
+                                            <table class="table table-borderless">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">{% trans 'Product name' %}</th>
+                                                        <th scope="col">{% trans 'total' %}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="product-name">{{ order_item_product.product.name }}</td>
+                                                        <td class="product-total">
+                                                            <span class="amount">
+                                                                <span>{% trans '$' %}</span>
+                                                                {{ order_item_product.product.final_price|intcomma:False|translate_number }}
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th scope="row">{% trans 'total' %}</th>
+                                                        <td>
+                                                            <span class="amount">
+                                                                <span>{% trans '$' %}</span>
+                                                                {{ total_price_city|intcomma:False|translate_number }}
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">{% trans 'Shipping' %}</th>
+                                                        {% if order.city_address == 'Tehran' %}
+                                                            <td>{% trans 'Free transportation in Tehran province' %}</td>
+                                                        {% else %}
+                                                            <td>{% trans 'Transportation to other provinces 500,000 Tomans' %}</td>
+                                                        {% endif %}
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">{% trans 'Payment method ' %}</th>
+                                                        <td>{% trans 'Direct bank transfer' %}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">{% trans 'quantity' %}</th>
+                                                            <td>{{ order_item_product.quantity }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">{% trans 'Final price' %}</th>
+                                                        <td>
+                                                            <span class="amount">
+                                                                <span>{% trans '$' %}</span>
+                                                                {{ total_price_city|intcomma:False|translate_number }}
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        {% endfor %}
+                                        <br>
+                                        <br>
+                                        <div class="order-view-customer">
+                                            <div class="box-header">
+                                                <span class="box-title">{% trans 'Our address' %}</span>
+                                            </div>
+                                            <div class="profile-address-item">
+                                                <div class="profile-address-content">
+                                                    <ul class="profile-address-info">
+                                                        <li>
+                                                            <div class="profile-address-info-item location">
+                                                                <span class="title-address">{% trans 'adress : ' %}</span>
+                                                                {{ order.province_address }} | {{ order.city_address }}
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="profile-address-info-item location">
+                                                                <span class="title-address">{% trans 'email : ' %}</span>
+                                                                {{ order.email }}
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="profile-address-info-item location">
+                                                                <span class="title-address">{% trans 'phone number : ' %}</span>
+                                                                {{ order.phone_number }}
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="profile-address-info-item location">
+                                                                <span class="title-address">{% trans 'postal code : ' %}</span>
+                                                                {{ order.postal_code }}
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- profile------------------------------->
+
+
+    {% include 'partials/footer.html' %}
+
+{% endblock content %}
+
+
+{% block body_class %}
+    account_page
+{% endblock body_class %}

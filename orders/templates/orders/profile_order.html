@@ -29,11 +29,11 @@
                                             <img src="{% static 'img/profile.png' %}">
                                         </div>
                                     </header>
-                                    {% if user.phone_number %}
+                                    {% if profile.phone_number %}
                                         <footer class="profile-box-content-footer">
-                                            <span class="profile-box-nameuser">{{ username }}</span>
-                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_date_str }}</span>
-                                            <span class="profile-box-phone">{% trans 'mobile number : ' %} {{ phone_number }}</span>
+                                            <span class="profile-box-nameuser">{{ profile.first_name }} {{ profile.last_name }}</span>
+                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_join_date_str }}</span>
+                                            <span class="profile-box-phone">{% trans 'mobile number : ' %} {{ profile.phone_number }}</span>
                                             <div class="profile-box-tabs">
                                                 <a href="{% url 'account_logout' %}" class="profile-box-tab-sign-out"><i
                                                         class="mdi mdi-logout-variant"></i>{% trans 'log out account page' %}</a>
@@ -41,8 +41,8 @@
                                         </footer>
                                     {% else %}
                                         <footer class="profile-box-content-footer">
-                                            <span class="profile-box-nameuser">{{ username }}</span>
-                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_date_str }}</span>
+                                            <span class="profile-box-nameuser">{{ profile.first_name }} {{ profile.last_name }}</span>
+                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_join_date_str }}</span>
                                             <span class="profile-box-phone">{% trans 'mobile number : Not registered yet' %}</span>
                                             <div class="profile-box-tabs">
                                                 <a href="{% url 'account_logout' %}" class="profile-box-tab-sign-out"><i
@@ -94,11 +94,11 @@
                                         <table class="table table-profile-orders">
                                             <thead class="thead-light">
                                                 <tr>
-                                                    <th scope="col">شماره سفارش</th>
-                                                    <th scope="col">تاریخ ثبت سفارش</th>
-                                                    <th scope="col">وضعیت</th>
-                                                    <th scope="col">مجموع</th>
-                                                    <th scope="col">جزئیات</th>
+                                                    <th scope="col">{% trans 'order number' %}</th>
+                                                    <th scope="col">{% trans 'Order registration date' %}</th>
+                                                    <th scope="col">{% trans 'status' %}</th>
+                                                    <th scope="col">{% trans 'total' %}</th>
+                                                    <th scope="col">{% trans 'Details' %}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -113,12 +113,17 @@
                                                                 <td class="Waiting" style="color: orange;">{% trans 'waiting' %}</td>
                                                             {% endif %}
                                                             <td class="totla">
-                                                                <span class="amount">{{ item.price }}
+                                                                <span class="amount">{{ total_price_city|intcomma:False|translate_number }}
                                                                     <span>{% trans '$' %}</span>
                                                                 </span>
                                                             </td>
-                                                            <td class="detail"><a href="#"
-                                                                    class="btn btn-secondary d-block">{% trans 'view' %}</a></td>
+                                                            <td class="detail">
+                                                                <button type="submit", method="POST">
+                                                                    <a href="{% url 'order:order_view' %}"
+                                                                        class="btn btn-secondary d-block">{% trans 'view' %}
+                                                                    </a>
+                                                                </button>
+                                                            </td>
                                                         </tr>
                                                     {% endfor %}
                                                 {% endfor %}
