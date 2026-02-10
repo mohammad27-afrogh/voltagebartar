@@ -91,62 +91,69 @@
                             <div class="profile-content">
                                 <div class="profile-stats">
                                     <div class="profile-comment">
-                                        <table class="table table-borderless table-profile-comment">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col"></th>
-                                                    <th scope="col">{% trans 'product name' %}</th>
-                                                    <th scope="col">{% trans 'opinion' %}</th>
-                                                    <th scope="col">{% trans 'status' %}</th>
-                                                    <th scope="col">{% trans 'Operation' %}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {% for comment_user in comments_user %}
+                                        {% if comments_user %}
+                                            <table class="table table-borderless table-profile-comment">
+                                                <thead>
                                                     <tr>
-                                                        <th scope="row" class="th-img">
-                                                            <div class="thumb-img">
-                                                                <a href="#">
-                                                                    {% if comment_user.product.cover_product %}
-                                                                        <img class="zoom-img" id="img-product-zoom"
-                                                                            src="{{ comment_user.product.cover_product }}"
-                                                                            data-zoom-image="{{ comment_user.product.cover_product }}"
-                                                                            width="411" />
-                                                                    {% else %}
-                                                                        <img class="zoom-img" id="img-product-zoom"
-                                                                            src="{% static 'img/products/no_product_image.jpg' %}"
-                                                                            data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
-                                                                            width="411" />
-                                                                    {% endif %}
-                                                                    <div id="gallery_01f" style="width:420px;float:right;">
-                                                                </a>
-                                                            </div>
-                                                        </th>
-                                                        <td>
-                                                            {{ comment_user.product.name }}
-                                                        </td>
-                                                        <td>{{ comment_user.body_comment }}</td>
-                                                        <td>
-                                                            {% if comment_user.is_active == True %}
-                                                                <span class="profile-comment-status-approved">{% trans 'Recommend buying this product' %}</span>
-                                                            {% else %}
-                                                                <span class="profile-comment-status-pending">{% trans 'Do not recommend purchasing this product.' %}</span>
-                                                            {% endif %}
-                                                        </td>
-                                                        <td>
-                                                            <form method="post" action="{% url 'order:comment_remove' comment_user.id %}" style="display: inline;">
-                                                                {% csrf_token %}
-                                                                <button type="submit" class="profile-comment-remove">
-                                                                    <i
-                                                                        class="fa fa-trash">
-                                                                    </i>
-                                                                </button>
-                                                            </form>
-                                                        </td>
+                                                        <th scope="col"></th>
+                                                        <th scope="col">{% trans 'product name' %}</th>
+                                                        <th scope="col">{% trans 'opinion' %}</th>
+                                                        <th scope="col">{% trans 'status' %}</th>
+                                                        <th scope="col">{% trans 'Operation' %}</th>
                                                     </tr>
-                                                {% endfor %}
-                                            </tbody>
-                                        </table>
+                                                </thead>
+                                                <tbody>
+                                                    {% for comment_user in comments_user %}
+                                                        <tr>
+                                                            <th scope="row" class="th-img">
+                                                                <div class="thumb-img">
+                                                                    <a href="#">
+                                                                        {% if comment_user.product.cover_product %}
+                                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                                src="{{ comment_user.product.cover_product }}"
+                                                                                data-zoom-image="{{ comment_user.product.cover_product }}"
+                                                                                width="411" />
+                                                                        {% else %}
+                                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                                src="{% static 'img/products/no_product_image.jpg' %}"
+                                                                                data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
+                                                                                width="411" />
+                                                                        {% endif %}
+                                                                        <div id="gallery_01f" style="width:420px;float:right;">
+                                                                    </a>
+                                                                </div>
+                                                            </th>
+                                                            <td>
+                                                                {{ comment_user.product.name }}
+                                                            </td>
+                                                            <td>{{ comment_user.body_comment }}</td>
+                                                            <td>
+                                                                {% if comment_user.is_active == True %}
+                                                                    <span class="profile-comment-status-approved">{% trans 'Recommend buying this product' %}</span>
+                                                                {% else %}
+                                                                    <span class="profile-comment-status-pending">{% trans 'Do not recommend purchasing this product.' %}</span>
+                                                                {% endif %}
+                                                            </td>
+                                                            <td>
+                                                                <form method="post" action="{% url 'order:comment_remove' comment_user.id %}" style="display: inline;">
+                                                                    {% csrf_token %}
+                                                                    <button type="submit" class="profile-comment-remove">
+                                                                        <i
+                                                                            class="fa fa-trash">
+                                                                        </i>
+                                                                    </button>
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        {% else %}
+                                            <ul>
+                                                <li>{% trans 'You have not posted a comment yet.' %}</li>
+                                                <li>{% trans 'Please visit the products section to post a comment!' %}</li>
+                                            </ul>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>

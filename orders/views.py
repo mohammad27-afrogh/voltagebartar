@@ -325,8 +325,8 @@ def profile_comment_view(request):
         # فرمت تاریخ: سال/ماه/روز ساعت:دقیقه
         jalali_join_date_str = jalali_join_date.strftime("%Y/%m/%d %H:%M:%S")
 
-    comments_user = Comment.objects.prefetch_related('user').all()
-
+    comments_user = Comment.objects.select_related('user').filter(user=current_user).all()
+    
     context = {
         'profile': profile,
         'username': username,
@@ -335,7 +335,6 @@ def profile_comment_view(request):
     }
 
     return render(request, 'orders/profile_comment.html', context)
-
 
 
 @login_required
