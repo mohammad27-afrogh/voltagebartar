@@ -295,7 +295,7 @@ class Brand(models.Model):
 
 class Comment(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments', verbose_name=_('comments'))
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name=_('user'))
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='comments_user', verbose_name=_('user'))
     time_release_comment = models.DateTimeField(_('time_release_comment'), default=timezone.now)
     update_to = models.DateTimeField(_('update_to'), auto_now=True)
     body_comment = RichTextField(_('body_comment'), )

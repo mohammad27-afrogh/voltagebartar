@@ -5508,6 +5508,17 @@ span.shipping-destination {
     background-color: #f5fff0;
 }
 
+.post-item-profile .profile-content .profile-stats .profile-comment tbody td .profile-comment-status-pending {
+    padding: 0;
+    border-radius: 3px;
+    font-size: 10px;
+    font-size: 0.714rem;
+    line-height: 19px;
+    color: #ff4d4f;
+    background-color: #f5fff0;
+
+}
+
 .post-item-profile .profile-content .profile-stats .profile-comment tbody td .profile-comment-remove {
     width: 35px;
     height: 35px;

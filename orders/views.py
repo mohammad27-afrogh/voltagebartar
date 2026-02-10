@@ -7,6 +7,7 @@ from django.urls import reverse
 import jdatetime
 from .forms import OrderForm, ProfileFormBasic, ProfileFormLocations
 from cart.cart import Cart
+from products.models import Comment
 from .models import OrderItem, Order, Profile
 
 @login_required
@@ -250,17 +251,17 @@ def profile_address_view(request):
 
     incomplete_fields_address = []
     if not profile.phone_number:
-        incomplete_fields.append(_('phone_number'))
+        incomplete_fields_address.append(_('phone_number'))
     if not profile.province_address:
-        incomplete_fields.append(_('province_address'))
+        incomplete_fields_address.append(_('province_address'))
     if not profile.city_address:
-        incomplete_fields.append(_('city_address'))
+        incomplete_fields_address.append(_('city_address'))
     if not profile.exact_address:
-        incomplete_fields.append(_('exact_address'))
+        incomplete_fields_address.append(_('exact_address'))
     if not profile.postal_code:
-        incomplete_fields.append(_('postal_code'))
+        incomplete_fields_address.append(_('postal_code'))
     if not profile.order_notes:
-        incomplete_fields.append(_('order_notes'))
+        incomplete_fields_address.append(_('order_notes'))
 
     # گرفتن تاریخ ثبت نام کاربر
     gregorian_join_date = current_user.date_joined  
@@ -324,6 +325,47 @@ def profile_address_edit_view(request):
 
 @login_required
 def profile_comment_view(request):
+    # 1. دسترسی به شیء کاربر احراز هویت شده
+    current_user = request.user
+    username = current_user
+    profile, created  = Profile.objects.get_or_create(user=current_user)
 
-    return render(request, 'orders/profile_comment.html')
+    # گرفتن تاریخ ثبت نام کاربر
+    gregorian_join_date = current_user.date_joined  
+    jalali_join_date_str = "تاریخ نامشخص"
 
+    if gregorian_join_date:
+        jalali_join_date = jdatetime.datetime.fromgregorian(datetime=gregorian_join_date)
+        # فرمت تاریخ: سال/ماه/روز ساعت:دقیقه
+        jalali_join_date_str = jalali_join_date.strftime("%Y/%m/%d %H:%M:%S")
+
+    comments_user = Comment.objects.prefetch_related('user').all()
+
+    context = {
+        'profile': profile,
+        'username': username,
+        'jalali_join_date_str': jalali_join_date_str,
+        'comments_user': comments_user,
+    }
+
+    return render(request, 'orders/profile_comment.html', context)
+
+
+
+@login_required
+def profile_comment_remove(request, comment_id):
+    # 1. یافتن کامنت مورد نظر با ID و اطمینان از مالکیت کاربر
+    try:
+        comment_to_delete = get_object_or_404(Comment, id=comment_id, user=request.user)
+    except Http404:
+        messages.error(request, "شما اجازه حذف این کامنت را ندارید یا کامنت یافت نشد.")
+        return redirect('order:profile_comment') # یا آدرس صفحه پروفایل خودتان
+
+    # 2. حذف از دیتابیس
+    comment_to_delete.delete()
+    
+    # 3. نمایش پیام موفقیت
+    messages.success(request, "کامنت با موفقیت حذف شد.")
+    
+    # 4. ریدایرکت به صفحه پروفایل (برای اطمینان از نمایش لیست به‌روز شده)
+    return redirect('order:profile_comment') # فرض می‌کنیم نام URL برای صفحه پروفایل شما 'profile_comment' است
