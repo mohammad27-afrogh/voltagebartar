@@ -89,7 +89,7 @@
                         </div>
                         <div class="col-lg-9 col-md-9 col-xs-12 pl">
                             <div class="profile-content" id="profile">
-                                {% if incomplete_fields|length == 6 %}
+                                {% if incomplete_fields|length >= 5 %}
                                     <div class="profile-stats"></div>
                                         <div class="table table-profile">
                                             <div class="title">{% trans 'Please complete your details.' %}</div>
@@ -100,7 +100,7 @@
                                                     {% endfor %}
                                                 </ul>
                                             </div>
-                                            <a href="{% url 'order:profile_create' %}" class="link-spoiler-edit btn btn-secondary">{% trans 'Completion of specifications' %}</a>
+                                            <a href="{% url 'order:profile_user_edit' %}" class="link-spoiler-edit btn btn-secondary">{% trans 'Completion of specifications' %}</a>
                                         </div>
                                     </div>
                                 {% else %}

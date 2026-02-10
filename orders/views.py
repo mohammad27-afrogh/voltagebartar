@@ -98,12 +98,6 @@ def profile_view(request):
     return render(request, 'orders/profile_user.html', context)
 
 
-def profile_user_create_view(request):
-
-    return render(request, 'orders/profile_create.html')
-
-
-
 @login_required
 def profile_user_edit_view(request):
     # 1. دسترسی به شیء کاربر احراز هویت شده
@@ -314,14 +308,6 @@ def profile_address_edit_view(request):
 
     return render(request, 'orders/profile_address_edit.html', context)
 
-# @login_required
-# def remove_from_profile_address(request, current_user):
-#     address = OrderItem(request)
-
-#     product = get_object_or_404(Order, slug=current_user)
-#     address.remove(product)
-
-#     return redirect('order:remove_profile_address')
 
 @login_required
 def profile_comment_view(request):

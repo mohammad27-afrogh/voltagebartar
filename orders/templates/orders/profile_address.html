@@ -89,18 +89,18 @@
                         </div>
                         <div class="col-lg-9 col-md-9 col-xs-12 pl">
                             <div class="profile-content">
-                                {% if incomplete_fields_address|length == 6 %}
+                                {% if incomplete_fields_address|length >= 5 %}
                                     <div class="profile-stats"></div>
                                         <div class="table table-profile">
-                                            <div class="title">{% trans 'Please complete your details.' %}</div>
+                                            <div class="title">{% trans 'Please Complete the address information.' %}</div>
                                             <div class="value">
                                                 <ul>
-                                                    {% for field in incomplete_fields %}
+                                                    {% for field in incomplete_fields_address %}
                                                         <li>{{ field }}</li>
                                                     {% endfor %}
                                                 </ul>
                                             </div>
-                                            <a href="{% url 'order:profile_create' %}" class="link-spoiler-edit btn btn-secondary">{% trans 'Completion of specifications' %}</a>
+                                            <a href="{% url 'order:address_edit' %}" class="link-spoiler-edit btn btn-secondary">{% trans 'Complete the address information' %}</a>
                                         </div>
                                     </div>
                                 {% else %}
@@ -112,10 +112,6 @@
                                             <div class="profile-address-item">
                                                 <div class="profile-address-item-top">
                                                     <div class="profile-address-item-title">{{ profile.province_address }}</div>
-                                                    <div class="ui-more">
-                                                        <button class="btn-remove-address btn btn-danger"
-                                                            type="submit">{% trans 'delete' %}</button>
-                                                    </div>
                                                 </div>
                                                 <div class="profile-address-content">
                                                     <ul class="profile-address-info">
