@@ -1,7 +1,7 @@
 from django.contrib import admin
 from jalali_date.admin import ModelAdminJalaliMixin
 
-from .models import Order, OrderItem, Profile
+from .models import Order, OrderItem, Profile, FavoriteProduct
 
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
@@ -50,4 +50,12 @@ class ProfileAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         'date_time_create',
         'date_time_modified',
         'Receive_the_newsletter'
+    ]
+
+@admin.register(FavoriteProduct)
+class FavoriteProductAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
+    list_display = [
+        'user',
+        'product',
+        'date_added',
     ]

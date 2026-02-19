@@ -60,3 +60,25 @@ class Profile(models.Model):
 
     def __str__(self):
         return f"Profile of {self.user.username}"
+
+class FavoriteProduct(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        on_delete=models.CASCADE,
+        related_name='favorites'
+    )
+    product = models.ForeignKey(
+        Product, 
+        on_delete=models.CASCADE,
+        related_name='favorited_by'
+    )
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        # اطمینان از اینکه یک کاربر فقط یک بار می‌تواند یک محصول را به علاقه‌مندی اضافه کند
+        unique_together = ('user', 'product')
+        verbose_name = "محصول مورد علاقه"
+        verbose_name_plural = "محصولات مورد علاقه"
+
+    def __str__(self):
+        return f"{self.user.username} - {self.product.name}"
