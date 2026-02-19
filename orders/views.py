@@ -3,12 +3,14 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils.translation import gettext as _
 from django.urls import reverse
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
 
 import jdatetime
 from .forms import OrderForm, ProfileFormBasic, ProfileFormLocations
 from cart.cart import Cart
-from products.models import Comment
-from .models import OrderItem, Order, Profile
+from products.models import Comment, Product
+from .models import OrderItem, Order, Profile, FavoriteProduct
 
 @login_required
 def order_create_view(request):
@@ -43,14 +45,11 @@ def order_create_view(request):
     })
 
 
-
 @login_required
 def profile_view(request):
     # 1. دسترسی به شیء کاربر احراز هویت شده
     current_user = request.user
-    
     profile, created  = Profile.objects.get_or_create(user=current_user)
-
     username = current_user
 
     # گرفتن تاریخ ثبت نام کاربر
@@ -61,7 +60,6 @@ def profile_view(request):
         jalali_join_date = jdatetime.datetime.fromgregorian(datetime=gregorian_join_date)
         # فرمت تاریخ: سال/ماه/روز ساعت:دقیقه
         jalali_join_date_str = jalali_join_date.strftime("%Y/%m/%d %H:%M:%S")
-
 
     # گرفتن تاریخ آپدیت ویرایش پروفایل کاربر
     gregorian_profile_date = profile.date_time_modified
@@ -85,7 +83,6 @@ def profile_view(request):
     if not profile.email:
         incomplete_fields.append(_('email'))
 
-    
     # 3. ارسال داده‌ها به قالب (Template)
     context = {
         'username': username,
@@ -114,7 +111,6 @@ def profile_user_edit_view(request):
         # فرمت تاریخ: سال/ماه/روز ساعت:دقیقه
         jalali_join_date_str = jalali_join_date.strftime("%Y/%m/%d %H:%M:%S")
 
-
     if request.method == 'POST':
         form = ProfileFormBasic(request.POST, instance=profile)
         if form.is_valid():
@@ -133,7 +129,6 @@ def profile_user_edit_view(request):
     return render(request, 'orders/profile_user_edit.html', context)
 
 
-
 @login_required
 def profile_orders_view(request):
     # 1. دسترسی به شیء کاربر احراز هویت شده
@@ -141,10 +136,12 @@ def profile_orders_view(request):
     username = current_user
     profile, created  = Profile.objects.get_or_create(user=current_user)
 
-    order = get_object_or_404(
-        Order.objects.select_related('city_address', 'province_address'),
+    order = Order.objects.filter(
         user=current_user
-    )
+    ).select_related('city_address', 'province_address')
+
+    # مرتب‌سازی بر اساس جدیدترین تاریخ ایجاد (با استفاده از فیلد صحیح مدل)
+    order = order.order_by('-date_time_create') # <--- این خط باید باشد
 
     # گرفتن تاریخ ثبت نام کاربر
     gregorian_join_date = current_user.date_joined  
@@ -155,19 +152,38 @@ def profile_orders_view(request):
         # فرمت تاریخ: سال/ماه/روز ساعت:دقیقه
         jalali_join_date_str = jalali_join_date.strftime("%Y/%m/%d %H:%M:%S")
     
-    orders_whit_items = Order.objects.prefetch_related('items').all()
+    orders_whit_items = Order.objects.filter(user=current_user).prefetch_related('items').all()
 
-    if order.city_address == 'Tehra':
-        total_price_city = order.get_total_price()
-    else:
-        total_price_city = order.get_total_price() + 500000
+    # 3. منطق محاسبه هزینه ارسال برای *هر سفارش* در لیست
+    # ایجاد یک دیکشنری برای نگهداری هزینه ارسال هر سفارش بر اساس ID
+    order_shipping_costs = {}
+    
+    # پیمایش روی QuerySet (که شامل تمام سفارشات است)
+    for order_price in order:
+        # برای هر سفارش تکی، محاسبات را انجام می‌دهیم (رفع AttributeError)
+        
+        # فرض می‌کنیم city_address یک ForeignKey است و نام شهر را نیاز داریم
+        city_name = getattr(order_price.city_address, 'name', None)
+        
+        shipping_cost = 0
+        
+        # محاسبه هزینه ارسال بر اساس شهر این سفارش خاص
+        if city_name == 'Tehran': # یا 'Tehra'
+            # اگر سفارش تهرانی است، هزینه ارسال برابر با مجموع قیمت آیتم‌هاست (بر اساس منطق قبلی)
+            shipping_cost = order.get_total_price() 
+        else:
+            # اگر شهر دیگری است، هزینه ارسال اضافه می‌شود
+            shipping_cost = order.get_total_price() + 500000
+            
+        # ذخیره هزینه محاسبه شده با کلید ID سفارش
+        order_shipping_costs[order.pk] = shipping_cost
 
     context = {
         'username': username,
         'profile': profile,
         'jalali_join_date_str': jalali_join_date_str,
         'orders_whit_items': orders_whit_items,
-        'total_price_city': total_price_city,
+        'total_price_city': order_shipping_costs,
     }
 
     return render(request, 'orders/profile_order.html', context)
@@ -199,13 +215,10 @@ def profile_order_view(request):
 
     order_items_product = order.items.select_related('product').all()
 
-
     if order.city_address == 'Tehra':
         total_price_city = order.get_total_price()
     else:
         total_price_city = order.get_total_price() + 500000
-
-
 
     context = {
         'username': username,
@@ -216,21 +229,18 @@ def profile_order_view(request):
         'total_price_city': total_price_city,
     }
 
-    
     return render(request, 'orders/profile_order_view.html', context)
-
-
 
 
 @login_required
 def profile_favorites_view(request):
     # 1. دسترسی به شیء کاربر احراز هویت شده
     current_user = request.user
-
-    orders = OrderItem.objects.prefetch_related('items').all()
-
+    product_queryset = Product.objects.all()
+    
     context = {
-        'orders': orders,
+        'current_user': current_user,
+        'product_queryset': product_queryset,
     }
 
     return render(request, 'orders/profile_favorites.html', context)
