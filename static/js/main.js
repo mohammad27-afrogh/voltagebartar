@@ -694,3 +694,60 @@ var nonLinearStepSlider = document.getElementById('slider-non-linear-step');
     });
     // product-img-----------------------------
 });
+
+function toggleFavorite(productId, isCurrentlyFavorite) {
+    const url = `/api/toggle-favorite/${productId}/`; // آدرس صحیح API خود را وارد کنید
+    let method;
+    let bodyData = {}; // برای POST نیاز است
+
+    if (isCurrentlyFavorite) {
+        // اگر قبلاً مورد علاقه است، با کلیک دوباره، حذف (DELETE) می‌کنیم
+        method = 'DELETE';
+    } else {
+        // اگر مورد علاقه نیست، با کلیک، اضافه (POST) می‌کنیم
+        method = 'POST';
+        // در اینجا، اگر لازم باشد داده‌ای بفرستیم، مثلاً:
+        // bodyData = { some_extra_data: 'value' }; 
+    }
+
+    fetch(url, {
+        method: method,
+        headers: {
+            // در صورت استفاده از احراز هویت مبتنی بر توکن (مثل JWT) باید توکن را اینجا قرار دهید
+            // 'Authorization': 'Bearer your_token_here', 
+            'Content-Type': 'application/json',
+            // CSRF Token برای درخواست‌های POST/PUT/DELETE در جنگو ضروری است مگر اینکه API جدا باشد
+            'X-CSRFToken': getCookie('csrftoken') // تابعی برای گرفتن کوکی CSRF
+        },
+        // فقط در متد POST بدنه‌ای ارسال می‌شود
+        body: method === 'POST' ? JSON.stringify(bodyData) : undefined 
+    })
+    .then(response => {
+        if (response.ok) {
+            // اگر پاسخ موفقیت آمیز بود (مثلاً 201 CREATED یا 204 NO CONTENT)
+            console.log(`عملیات ${method} موفقیت آمیز بود.`);
+            
+            // اینجا باید ظاهر دکمه را در صفحه به‌روز کنید (مثلاً آیکون قلب را تغییر دهید)
+            updateFavoriteButtonAppearance(productId, !isCurrentlyFavorite); 
+
+            return response.json().catch(() => ({})); // در صورت 204 پاسخ خالی است
+        } else if (response.status === 401) {
+            alert("لطفاً ابتدا وارد شوید.");
+        } else {
+            // خطاهای دیگر (مثل 400 BAD REQUEST)
+            return response.json().then(err => { throw err; });
+        }
+    })
+    .then(data => {
+        if (data && data.detail) {
+            console.log("پیام از سرور:", data.detail);
+        }
+    })
+    .catch(error => {
+        console.error('خطا در ارسال درخواست:', error);
+    });
+}
+
+// مثال استفاده:
+// فرض کنید متوجه شده‌ایم محصول با ID=45 لایک شده است (isCurrentlyFavorite = true)
+// toggleFavorite(45, true);

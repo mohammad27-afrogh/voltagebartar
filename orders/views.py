@@ -6,11 +6,19 @@ from django.urls import reverse
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 
+from rest_framework.generics import ListAPIView
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
+
 import jdatetime
 from .forms import OrderForm, ProfileFormBasic, ProfileFormLocations
 from cart.cart import Cart
 from products.models import Comment, Product
 from .models import OrderItem, Order, Profile, FavoriteProduct
+from .serializers import FavoriteProductSerializer
+
 
 @login_required
 def order_create_view(request):
@@ -232,18 +240,39 @@ def profile_order_view(request):
     return render(request, 'orders/profile_order_view.html', context)
 
 
-@login_required
-def profile_favorites_view(request):
-    # 1. دسترسی به شیء کاربر احراز هویت شده
-    current_user = request.user
-    product_queryset = Product.objects.all()
-    
-    context = {
-        'current_user': current_user,
-        'product_queryset': product_queryset,
-    }
+@api_view(['GET', 'POST', 'DELET'])
+@permission_classes([IsAuthenticated])
+def toggle_favorite_api_view(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
 
-    return render(request, 'orders/profile_favorites.html', context)
+    # دریافت 'GET' : نمایش لیست علاقه مندی های فعلی کاربر
+    if request.method == 'GET':
+        favorite = FavoriteProduct.objects.filter(user=request.user)
+        serializer = FavoriteProductSerializer(favorite, many=True)
+        return Response(serializer.data)
+
+
+    #  افزودن 'POST' : اضافه کردن محصول به لیست 
+    if request.method == 'POST':
+        # بررسی کن آیا قبلا اضافه شده است یا نه 
+        if FavoriteProduct.objects.filter(user=request.user, product=product).exists():
+            return Response({'detail: این محصول از قبل در لیست شما وجود دارد.'}, status=status.HTTP_200_OK)
+
+        # ایجاد آیتم جدید 
+        serializer = FavoriteProductSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user, product=product)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    # حذف 'DELET': حذف محصول از لیست 
+    if request.method == 'DELETE':
+        favorite_item = get_object_or_404(FavoriteProduct, user=request.user, product=product)
+        favorite_item.delete()
+        return Response({'detail: محصول با موفقیت حذف شد.'}, status=status.HTTP_204_NO_CREATED)
+
+    return Response(status=status.HTTP_405_NOT_ALLOWED)
 
 
 @login_required
