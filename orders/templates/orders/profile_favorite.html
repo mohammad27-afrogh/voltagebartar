@@ -1,0 +1,267 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load persian_translation_tags %}
+{% load humanize %}
+
+
+{% block page_title %}
+    {% trans 'profile page' %}
+{% endblock page_title %}
+
+
+{% block content %}
+
+    {% include 'partials/navbar.html' %}
+
+    <!-- profile------------------------------->
+    <div class="container-main">
+        <div class="d-block">
+            <section class="profile-home">
+                <div class="col-lg">
+                    <div class="post-item-profile order-1 d-block">
+                        <div class="col-lg-3 col-md-3 col-xs-12 pr">
+                            <div class="sidebar-profile sidebar-navigation">
+                                <section class="profile-box">
+                                    <header class="profile-box-header-inline">
+                                        <div class="profile-avatar user-avatar profile-img">
+                                            <img src="{% static 'img/profile.png' %}">
+                                        </div>
+                                    </header>
+                                    {% if profile.phone_number %}
+                                        <footer class="profile-box-content-footer">
+                                            <span class="profile-box-nameuser">{{ profile.first_name }} {{ profile.last_name }}</span>
+                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_join_date_str }}</span>
+                                            <span class="profile-box-phone">{% trans 'mobile number : ' %} {{ profile.phone_number }}</span>
+                                            <div class="profile-box-tabs">
+                                                <a href="{% url 'account_logout' %}" class="profile-box-tab-sign-out"><i
+                                                        class="mdi mdi-logout-variant"></i>{% trans 'log out account page' %}</a>
+                                            </div>
+                                        </footer>
+                                    {% else %}
+                                        <footer class="profile-box-content-footer">
+                                            <span class="profile-box-nameuser">{{ profile.first_name }} {{ profile.last_name }}</span>
+                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_join_date_str }}</span>
+                                            <span class="profile-box-phone">{% trans 'mobile number : Not registered yet' %}</span>
+                                            <div class="profile-box-tabs">
+                                                <a href="{% url 'account_logout' %}" class="profile-box-tab-sign-out"><i
+                                                        class="mdi mdi-logout-variant"></i>{% trans 'log out account page' %}</a>
+                                            </div>
+                                        </footer>
+                                    {% endif %}
+                                </section>
+                                <section class="profile-box">
+                                    <ul class="profile-account-navs">
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="{% url 'order:profile' %}" class=""><i class="mdi mdi-account-outline"></i>
+                                            {% trans 'profile' %}
+                                            </a>
+                                        </li>
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="{% url 'order:profile_order' %}" class="active"><i class="mdi mdi-cart"></i>
+                                            {% trans 'All orders' %}
+                                            </a>
+                                        </li>
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="{% url 'order:favorite_list' %}" class=""><i class="mdi mdi-heart"></i>
+                                               {% trans 'Favorites list' %}
+                                            </a>
+                                        </li>
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="{% url 'order:profile_address' %}" class=""><i class="mdi mdi-map-outline"></i>
+                                               {% trans 'Addresses' %}
+                                            </a>
+                                        </li>
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="{% url 'order:profile_comment' %}" class=""><i class="mdi mdi-email-open-outline"></i>
+                                               {%  trans 'Comments' %}
+                                            </a>
+                                        </li>
+                                        <li class="profile-account-nav-item navigation-link-dashboard">
+                                            <a href="#" class=""><i class="mdi mdi-tooltip-text-outline"></i>
+                                               {% trans 'Account information' %}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12 pl">
+                            <div class="profile-content">
+                                <div class="profile-stats">
+                                    <div class="table-favorites">
+                                        <table class="table ns-table table-profile-favorites">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" width="50"> </th>
+                                                    <th scope="col">نام محصول</th>
+                                                    <th scope="col">قیمت</th>
+                                                    <th class="actions-th"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">
+                                                        <div class="favorites-product-img">
+                                                            <img src="assets/images/slider-product/Samsung-S10Plus.jpg">
+                                                            <div class="product-rate">
+                                                                <i class="fa fa-star active"></i>
+                                                                <i class="fa fa-star active"></i>
+                                                                <i class="fa fa-star active"></i>
+                                                                <i class="fa fa-star active"></i>
+                                                                <i class="fa fa-star active"></i>
+                                                            </div>
+                                                        </div>
+                                                    </th>
+                                                    <td>
+                                                        <a href="#">سامسونگ گلکسی اس 10 پلاس – 128 گیگابایت – دو سیم
+                                                            کارت</a>
+                                                    </td>
+                                                    <td>
+                                                        <span class="amount">6,000,000
+                                                            <span>تومان</span>
+                                                        </span>
+                                                    </td>
+                                                    <td class="text-left actions">
+                                                        <a href="#" class="remove-product"><i
+                                                                class="mdi mdi-close"></i></a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="spacer"></tr>
+                                                <tr>
+                                                    <th scope="row">
+                                                        <div class="favorites-product-img">
+                                                            <img src="assets/images/slider-product/asus-laptop.jpg">
+                                                            <div class="product-rate">
+                                                                <i class="fa fa-star active"></i>
+                                                                <i class="fa fa-star active"></i>
+                                                                <i class="fa fa-star active"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                        </div>
+                                                    </th>
+                                                    <td>
+                                                        <a href="#">لپ تاپ ایسوس زِنبوک 14</a>
+                                                    </td>
+                                                    <td>
+                                                        <span class="amount">6,000,000
+                                                            <span>تومان</span>
+                                                        </span>
+                                                    </td>
+                                                    <td class="text-left actions">
+                                                        <a href="#" class="remove-product"><i
+                                                                class="mdi mdi-close"></i></a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="spacer"></tr>
+                                                <tr>
+                                                    <th scope="row">
+                                                        <div class="favorites-product-img">
+                                                            <img src="assets/images/slider-product/Avocado.jpg">
+                                                            <div class="product-rate">
+                                                                <i class="fa fa-star active"></i>
+                                                                <i class="fa fa-star active"></i>
+                                                                <i class="fa fa-star active"></i>
+                                                                <i class="fa fa-star active"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                        </div>
+                                                    </th>
+                                                    <td>
+                                                        <a href="#">آب میوه گیری پارس خزر مدل Avocado</a>
+                                                    </td>
+                                                    <td>
+                                                        <span class="amount">6,000,000
+                                                            <span>تومان</span>
+                                                        </span>
+                                                    </td>
+                                                    <td class="text-left actions">
+                                                        <a href="#" class="remove-product"><i
+                                                                class="mdi mdi-close"></i></a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="spacer"></tr>
+                                                <tr>
+                                                    <th scope="row">
+                                                        <div class="favorites-product-img">
+                                                            <img src="assets/images/slider-product/huawei.jpg">
+                                                            <div class="product-rate">
+                                                                <i class="fa fa-star active"></i>
+                                                                <i class="fa fa-star active"></i>
+                                                                <i class="fa fa-star active"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                        </div>
+                                                    </th>
+                                                    <td>
+                                                        <a href="#">هواوی پی 20 پرو 128 گیگابایت – دو سیم کارت</a>
+                                                    </td>
+                                                    <td>
+                                                        <span class="amount">6,000,000
+                                                            <span>تومان</span>
+                                                        </span>
+                                                    </td>
+                                                    <td class="text-left actions">
+                                                        <a href="#" class="remove-product"><i
+                                                                class="mdi mdi-close"></i></a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="spacer"></tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="profile-recent-fav">
+                                            <a href="#" class="img-profile-favorites">
+                                                <img src="assets/images/slider-product/Samsung-S10Plus.jpg">
+                                            </a>
+                                            <div class="profile-recent-fav-col">
+                                                <a href="#">سامسونگ گلکسی اس 10 پلاس – 128 گیگابایت – دو سیم کارت</a>
+                                            </div>
+                                            <div class="profile-recent-fav-price">
+                                                <span class="amount">6,000,000
+                                                    <span>تومان</span>
+                                                </span>
+                                            </div>
+                                            <div class="profile-recent-fav-remove">
+                                                <a href="#"><i class="mdi mdi-close"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <div class="profile-recent-fav">
+                                            <a href="#" class="img-profile-favorites">
+                                                <img src="assets/images/slider-product/huawei.jpg">
+                                            </a>
+                                            <div class="profile-recent-fav-col">
+                                                <a href="#">هواوی پی 20 پرو 128 گیگابایت – دو سیم کارت</a>
+                                            </div>
+                                            <div class="profile-recent-fav-price">
+                                                <span class="amount">6,000,000
+                                                    <span>تومان</span>
+                                                </span>
+                                            </div>
+                                            <div class="profile-recent-fav-remove">
+                                                <a href="#"><i class="mdi mdi-close"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- profile------------------------------->
+
+
+    {% include 'partials/footer.html' %}
+
+{% endblock content %}
+
+
+{% block body_class %}
+    account_page
+{% endblock body_class %}

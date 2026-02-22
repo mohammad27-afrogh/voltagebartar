@@ -17,4 +17,4 @@ class FavoriteProductSerializer(serializers.ModelSerializer):
     Suggest_product = SuggestProductComment(read_only=True)
     class Meta:
         model = FavoriteProduct
-        fields = ['product', 'date_added']
+        fields = ['product', 'Suggest_product']

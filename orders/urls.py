@@ -10,6 +10,7 @@ urlpatterns = [
     path('profile_order/', views.profile_orders_view, name='profile_order'),
     path('order_view/', views.profile_order_view, name='order_view'),
     path('toggle_favorite/<int:product_id>/', views.toggle_favorite_api_view, name='toggle_favorite'),
+    path('favorites/', views.FavoriteListView.as_view(), name='favorite_list'),
     path('profile_address/', views.profile_address_view, name='profile_address'),
     path('address/edit/', views.profile_address_edit_view, name='address_edit'),
     path('profile_comment/', views.profile_comment_view, name='profile_comment'),

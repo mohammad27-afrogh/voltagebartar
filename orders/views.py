@@ -275,6 +275,18 @@ def toggle_favorite_api_view(request, product_id):
     return Response(status=status.HTTP_405_NOT_ALLOWED)
 
 
+class FavoriteListView(ListAPIView):
+    # فقفط کاربیران لاگین شده میتونن این لیست رو ببینن
+    permission_classes = [IsAuthenticated]
+    # سریالایزری که برای نمایش هر آیتم استفاده می شود
+    serializer_class = FavoriteProductSerializer
+
+    def get_queryset(self):
+        # request  رو فیلتر میکنیم تا فقط محصولات کاربر فعلی نمایش داده بشن 
+        # request.user از طریق permission_classes  در دسترس است 
+        return FavoriteProduct.objects.filter(user=self.request.user).select_related('product')
+
+
 @login_required
 def profile_address_view(request):
     # 1. دسترسی به شیء کاربر احراز هویت شده

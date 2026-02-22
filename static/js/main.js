@@ -751,3 +751,69 @@ function toggleFavorite(productId, isCurrentlyFavorite) {
 // مثال استفاده:
 // فرض کنید متوجه شده‌ایم محصول با ID=45 لایک شده است (isCurrentlyFavorite = true)
 // toggleFavorite(45, true);
+
+function fetchUserFavorites() {
+    const userToken = 'your_jwt_token_here'; // توکن کاربر
+
+    fetch('/api/favorites/', { // آدرس جدید
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${userToken}`, // ارسال توکن برای احراز هویت
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(favoritesData => {
+        console.log("لیست علاقه‌مندی‌های کاربر:", favoritesData);
+        
+        // در اینجا باید منطق رندر کردن این لیست (favoritesData) 
+        // در صفحه HTML/UI را پیاده‌سازی کنید.
+        renderFavoritesList(favoritesData); 
+    })
+    .catch(error => {
+        console.error('خطا در دریافت لیست علاقه‌مندی‌ها:', error);
+    });
+}
+
+// فراخوانی این تابع در زمان مناسب (مثلاً هنگام لود شدن صفحه پروفایل)
+// fetchUserFavorites();
+
+function renderFavoritesList(favoritesData) {
+    const container = document.getElementById('favorites-list-container'); // فرض کنید یک div خالی با این ID در HTML دارید
+    
+    if (!container) {
+        console.error("Container element not found.");
+        return;
+    }
+    
+    container.innerHTML = ''; // پاک کردن محتویات قبلی
+
+    if (favoritesData.length === 0) {
+        container.innerHTML = '<p>لیست علاقه‌مندی‌های شما خالی است.</p>';
+        return;
+    }
+
+    favoritesData.forEach(favoriteItem => {
+        // توجه: ساختار داده‌ای که از بک‌اند می‌آید (favoritesData) بستگی به Serializer شما دارد.
+        // فرض می‌کنیم هر آیتم شامل یک آبجکت product است.
+        const product = favoriteItem.product; 
+        
+        const productElement = document.createElement('div');
+        productElement.className = 'favorite-card';
+        
+        // ساختار HTML برای نمایش هر محصول:
+        productElement.innerHTML = `
+            <h3>${product.name}</h3>
+            <p>قیمت: ${product.price} تومان</p>
+            <img src="${product.image_url}" alt="${product.name}" style="width:100px;">
+            <button onclick="toggleFavorite(${product.id})">حذف از علاقه‌مندی‌ها</button>
+        `;
+        
+        container.appendChild(productElement);
+    });
+}
