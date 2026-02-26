@@ -31,7 +31,7 @@ def product_list_view(request):
             all_related_categories = [category] + all_descendants
 
             # 3. فیلتر کردن محصولات بر اساس این لیست دسته‌ها
-            products = Product.objects.filter(category__in=all_related_categories).order_by('id')
+            products = Product.objects.filter(category__in=all_related_categories)
 
             current_category_name = category.name
 

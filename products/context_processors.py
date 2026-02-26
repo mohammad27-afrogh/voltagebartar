@@ -6,13 +6,15 @@ from django.db.models import Q
 
 
 def context_processors(request):
-    parent_categories = Category.objects.filter(parent__isnull=True).prefetch_related('subcategories').order_by('name')
+    parent_categories = Category.objects.filter(parent__isnull=True).prefetch_related('subcategories')
     return {'parent_categories': parent_categories}
 
 
 def context_processors_discount(request):
+    time_alan = timezone.now()
+
     # این بخش مخصوص اسلایدر تخفیف‌های فعال است و درست کار می‌کند
-    all_discounts = Discount.objects.filter(is_active=True).select_related('product')
+    all_discounts = Discount.objects.filter(is_active=True).filter(Q(end_date__gt=time_alan)).select_related('product')
 
     slider_discounts = list(all_discounts)[:5]
 
@@ -28,9 +30,10 @@ def context_successful_sales(request):
                         .order_by('-successful_sales_count').prefetch_related('discounts'))
 
     # *** اصلاح: اضافه کردن ویژگی active_discount ***
+    time_alan = timezone.now()
     for product in successful_sales:
         # این خط، اولین تخفیف فعال را پیدا کرده و به عنوان active_discount اضافه می‌کند
-        product.active_discount = product.discounts.filter(is_active=True).first()
+        product.active_discount = product.discounts.filter(is_active=True).filter(Q(end_date__gt=time_alan)).first()
 
     return {'successful_sales': successful_sales}
 
@@ -45,7 +48,8 @@ def context_latest_products(request):
                        )
 
     # *** اصلاح: اضافه کردن ویژگی active_discount ***
+    time_alan = timezone.now()
     for product in latest_products:
-        product.active_discount = product.discounts.filter(is_active=True).first()
+        product.active_discount = product.discounts.filter(is_active=True).filter(Q(end_date__gt=time_alan)).first()
 
     return {'latest_products': latest_products}
