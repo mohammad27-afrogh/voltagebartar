@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'locations',
     'orders',
     'persian_translate',
+    'pyment',
 ]
 
 CKEDITOR_CONFIGS = {
