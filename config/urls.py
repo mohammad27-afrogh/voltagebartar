@@ -31,4 +31,5 @@ urlpatterns = [
     path('api/', include('locations.urls')),
     path('order/', include('orders.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
+    path('pyment/', include('pyment.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
