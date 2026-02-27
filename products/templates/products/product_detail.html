@@ -5,9 +5,8 @@
 {% load persian_translation_tags %}
 {% load humanize %}
 
-
 {% block page_title %}
-    {% trans 'sabzeonline' %}
+    products
 {% endblock page_title %}
 
 
@@ -423,12 +422,19 @@
                                     <h2 class="params-headline">{% trans 'User comments to:' %}
                                         <span>{{ product.slug }}</span>
                                     </h2>
-                                    <form action="" method="POST" class="comment-form-container">
-                                        {% csrf_token %}
-                                        <p>{{ comment_form|crispy }}</p>
-                                        <h4>{{ comment.is_active }}</h4>
-                                        <button type="submit">{% trans 'Register a comment' %}</button>
-                                    </form>
+                                    {% if user.is_authenticated %}
+                                        <form action="" method="POST" class="comment-form-container">
+                                            {% csrf_token %}
+                                            <p>{{ comment_form|crispy }}</p>
+                                            <h4>{{ comment.is_active }}</h4>
+                                            <button type="submit">{% trans 'Register a comment' %}</button>
+                                        </form>
+                                    {% else %}
+                                        <li>
+                                            <p>{% trans 'لطفا برای ثبت نظر لاگین نمایید !' %}</p>
+                                            <a href="{% url 'account_login' %}" type="submit">login</a>
+                                        </li>
+                                    {% endif %}
                                     <div class="comments-summary">
                                         <div class="product-comment-list">
                                             <ul class="comment-list">
@@ -474,11 +480,18 @@
                                     <h2 class="params-headline">{% trans 'Questions and answers' %}
                                         <span>{% trans 'Ask your question about the product.' %}</span>
                                     </h2>
-                                    <form action="" method="POST" class="comment-form-container">
-                                        {% csrf_token %}
-                                        {{ question_form|crispy }}
-                                        <button type="submit">{% trans 'Register question' %}</button>
-                                    </form>
+                                    {% if user.is_authenticated %}
+                                        <form action="" method="POST" class="comment-form-container">
+                                            {% csrf_token %}
+                                            {{ question_form|crispy }}
+                                            <button type="submit">{% trans 'Register question' %}</button>
+                                        </form>
+                                    {% else %}
+                                        <li>
+                                            <p>{% trans 'لطفا برای ثبت ایجاد پرسش لاگین نمایید !' %}</p>
+                                            <a href="{% url 'account_login' %}" type="submit">login</a>
+                                        </li>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
