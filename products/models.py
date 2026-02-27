@@ -8,6 +8,7 @@ from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
 from django.core.cache import cache
 from django.utils import timezone
+from django.db.models import Q
 
 from datetime import date
 from taggit.managers import TaggableManager
@@ -115,7 +116,7 @@ class Product(models.Model):
         """
         محاسبه و برگرداندن دیکشنری تخفیف فعال مورد نیاز تمپلیت.
         """
-        active_discount_obj = self.discounts.filter(is_active=True).first()
+        active_discount_obj = self.discounts.filter(is_active=True).filter(Q(end_date__gt=timezone.now())).first()
 
         if active_discount_obj:
             return {
