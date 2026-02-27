@@ -9,6 +9,11 @@ from phonenumber_field.modelfields import PhoneNumberField
 from ckeditor.fields import RichTextField
 
 class Order(models.Model):
+    pyment_price = [
+        ('PP', _('Pyment Price')),
+        ('HD', _('House Door')),
+    ]
+
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=_('user'))
     is_paid = models.BooleanField(_('is paid'), default=False)
     first_name = models.CharField(_('first name'), max_length=100)
@@ -26,6 +31,7 @@ class Order(models.Model):
     zarinpal_authority = models.CharField(max_length=255, blank=True)
     zarinpal_ref_id = models.CharField(max_length=255, blank=True)
     zarinpal_data = models.TextField(blank=True)
+    pyment_price = models.CharField(_('other pyment price'), max_length=2, choices=pyment_price)
 
 
     def __str__(self):

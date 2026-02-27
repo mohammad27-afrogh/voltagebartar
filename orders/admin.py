@@ -13,11 +13,10 @@ class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         'first_name',
         'phone_number',
         'national_number',
-        'province_address',
-        'city_address',
         'postal_code',
         'date_time_create',
         'is_paid',
+        'pyment_price',
     ]
 
     inlines = [

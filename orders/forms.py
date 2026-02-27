@@ -6,6 +6,7 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = [
+            'pyment_price',
             'first_name',
             'last_name',
             'phone_number',
