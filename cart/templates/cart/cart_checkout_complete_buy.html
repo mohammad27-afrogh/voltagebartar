@@ -1,0 +1,141 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load persian_translation_tags %}
+{% load humanize %}
+
+
+{% block page_title %}
+    {% trans 'checkout complete cart' %}
+{% endblock page_title %}
+
+{% block body_class %}
+    account_page
+{% endblock body_class %}
+
+{% block content %}
+
+    {% include 'partials/navbar.html' %}
+
+    <!-- checkout------------------------------>
+    <div class="container-main">
+        <div class="d-block">
+            <section class="blog-checkout d-block order-1">
+                <div class="col-lg">
+                    <div class="checkout woocommerce-checkout">
+                        <div class="content-checkout">
+                            <div class="middle-container">
+                                {% if order_obj.pyment_price == 'HD' %}
+                                    <div class="col2-set" id="customer-details">
+                                        <div class="col-12">
+                                            <div class="billing-fields mt-4">
+                                                <h4 class="text-success">سفارش دریافت شد</h4>
+                                                <p class="thankyou-order-received">پرداخت با موفقیت انجام شد. سفارش شما
+                                                    با موفقیت ثبت شد و در زمان تعیین شده برای شما ارسال خواهد شد.
+                                                    از اینکه دیجی استور را برای خرید انتخاب کردید از شما سپاسگزاریم.</p>
+                                                <ul class="order-overview">
+                                                    <li class="order-overview-item">
+                                                        کد سفارش :
+                                                        <span>{{ order_obj.id }}</span>
+                                                    </li>
+                                                    <li class="order-overview-item">
+                                                        تاریخ :
+                                                        <span>{{ order_obj.date_time_create }}</span>
+                                                    </li>
+                                                    {% if pyment_price == 'HD' %}
+                                                        <li class="order-overview-item">
+                                                            روش پرداخت :
+                                                            <span>{% trans 'pyment to the House Door' %}</span>
+                                                        </li>
+                                                    {% endif %}
+                                                    <li class="order-overview-item">
+                                                        قیمت نهایی :
+                                                        <span class="amount">{{ order_obj.get_total_price }}
+                                                            <span>{% trans '$' %}</span>
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% if order_obj.pyment_price == 'PP' %}
+                                    <div class="col2-set" id="customer-details">
+                                        <div class="col-12">
+                                            <div class="billing-fields mt-4">
+                                                <h4 class="text-success">سفارش دریافت شد</h4>
+                                                <p class="thankyou-order-received">پرداخت با موفقیت انجام شد. سفارش شما
+                                                    با موفقیت ثبت شد و در زمان تعیین شده برای شما ارسال خواهد شد.
+                                                    از اینکه دیجی استور را برای خرید انتخاب کردید از شما سپاسگزاریم.</p>
+                                                <ul class="order-overview">
+                                                    <li class="order-overview-item">
+                                                        کد سفارش :
+                                                        <span>{{ order_obj.id }}</span>
+                                                    </li>
+                                                    <li class="order-overview-item">
+                                                        تاریخ :
+                                                        <span>{{ order_obj.date_time_create }}</span>
+                                                    </li>
+                                                    {% if pyment_price == 'HD' %}
+                                                        <li class="order-overview-item">
+                                                            روش پرداخت :
+                                                            <span>{% trans 'pyment to the House Door' %}</span>
+                                                        </li>
+                                                    {% endif %}
+                                                    <li class="order-overview-item">
+                                                        قیمت نهایی :
+                                                        <span class="amount">{{ order_obj.get_total_price }}
+                                                            <span>{% trans '$' %}</span>
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="col2-set" id="customer-details">
+                                        <div class="col-12">
+                                            <div class="billing-fields mt-4">
+                                                <h4 class="text-danger">سفارش دریافت نشد</h4>
+                                                <p class="thankyou-order-received">پرداخت ناموفقیت انجام شد. برای
+                                                    جلوگیری از لغو سیستمی سفارش،تا 24 ساعت آینده پرداخت را انجام دهید.
+                                                    چنانچه طی این فرایند مبلغی از حساب شما کسر شده است،طی 72 ساعت آینده
+                                                    به حساب شما باز خواهد گشت.
+                                                </p>
+                                                <ul class="order-overview">
+                                                    <li class="order-overview-item">
+                                                        کد سفارش :
+                                                        <span>DKC-57262900</span>
+                                                    </li>
+                                                    <li class="order-overview-item">
+                                                        تاریخ :
+                                                        <span>17 فروردین 1399</span>
+                                                    </li>
+                                                    <li class="order-overview-item">
+                                                        روش پرداخت :
+                                                        <span>پرداخت اینترنتی هوشمند</span>
+                                                    </li>
+                                                    <li class="order-overview-item">
+                                                        قیمت نهایی :
+                                                        <span class="amount">25,000
+                                                            <span>تومان</span>
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- checkout------------------------------>
+
+
+    {% include 'partials/footer.html' %}
+
+{% endblock content %}

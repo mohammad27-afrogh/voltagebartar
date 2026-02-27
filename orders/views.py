@@ -46,9 +46,17 @@ def order_create_view(request):
 
             cart.clear()
 
+            if order_obj.pyment_price == 'HD':
+                return render(request, 'cart/cart_checkout_complete_buy.html', context={
+                    'order_obj': order_obj,
+                })
+            else:
+                request.session['order_id'] = order_obj.id
+                return redirect('pyment_process')
+
     else:
         form = OrderForm()
-    return render (request, 'orders/order_create.html', context={
+    return render (request, 'cart/cart_checkout.html', context={
         'form': form,
     })
 
