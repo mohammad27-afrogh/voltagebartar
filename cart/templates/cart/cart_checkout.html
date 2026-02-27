@@ -7,10 +7,12 @@
 
 
 {% block page_title %}
-    {% trans 'sabzeonline' %}
+    {% trans 'checkout' %}
 {% endblock page_title %}
 
-
+{% block body_class %}
+    account_page
+{% endblock body_class %}
 
 {% block content %}
 
@@ -23,168 +25,54 @@
                 <div class="col-lg">
                     <div class="checkout woocommerce-checkout">
                         <div class="content-checkout container">
-                            <div class="notices-wrapper">
-                                <div class="col-12">
-                                    <div class="form-coupon-toggle">
-                                        <div class="info">
-                                            کد تخفیف دارید؟
-                                            <a href="#" class="showcoupon">برای نوشتن کد اینجا کلیک کنید</a>
-                                        </div>
-                                        <div class="checkout-coupon form-coupon">
-                                            <p>اگر کد تخفیف دارید، لطفا وارد کنید.</p>
-                                            <form action="#" class="form-coupon">
-                                                <div class="form-row">
-                                                    <input type="text" name="coupon-code" class="checkout-discount-code"
-                                                        placeholder="کد تخفیف">
-                                                    <div class="append pl">
-                                                        <button class="btn-append btn btn-primary" type="submit">اعمال
-                                                            تخفیف</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="middle-container">
-                                <form action="#" class="form-checkout">
-                                    <div class="col2-set" id="customer-details">
-                                        <div class="col-12">
-                                            <div class="billing-fields mt-4">
-                                                <h4>{% trans 'اطلاعات تحویل گیرنده' %}</h4>
-                                                <div class="form-checkout-row">
-                                                    <div class="validate-required">
-                                                        <td class="w-50">
-                                                            <div class="title">{% trans 'نام تحویل گیرنده : ' %}</div>
-                                                            <div class="value">{{ profile.first_name }} {{ profile.last_name }}</div>
-                                                        </td>
-                                                    </div>
+                                <div class="col2-set" id="customer-details">
+                                    <div class="col-12">
+                                        <h3 class="order-review-heading">سفارش شما</h3>
+                                        <div class="checkout-review-order">
+                                            <table class="checkout-review-order-table table table-borderless">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col" class="product-name">{% trans 'product' %}</th>
+                                                        <th scope="col" class="product-price">{% trans 'total price' %}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for item in cart %}
+                                                        <tr class="checkout-cart-item">
+                                                            <td class="product-name">{{ item.product_obj.name }}</td>
+                                                            <td class="product-price text-info">
+                                                                <span class="amount">{{ item.total_price|intcomma:False|translate_number }}
+                                                                    <span>{% trans '$' %}</span>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                                <tfoot>
 
-                                                    <div class="validate-required">
+                                                    <tr class="cart-subtotal">
+                                                        <th>{% trans 'sum total cart' %}</th>
                                                         <td>
-                                                            <div class="title">{% trans 'Phone number : ' %}</div>
-                                                            <div class="value">{{ profile.phone_number }}</div>
-                                                        </td>
-                                                    </div>
-
-                                                    <div class="validate-required">
-                                                        <div class="title">{% trans 'postal code : ' %}</div>
-                                                        <div class="profile-address-info-item location">
-                                                            <i class="mdi mdi-email-outline"></i>
-                                                            {{ profile.postal_code }}
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="validate-required">
-                                                        <div class="title">{% trans 'exact address : ' %}</div>
-                                                        <div class="profile-address-info-item location">
-                                                            <i class="mdi mdi-account"></i>
-                                                            {{ profile.province_address }} | {{ profile.city_address }} | {{ profile.exact_address }}
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="Order-another-shipping-address mt-5">
-                                                        <div class="Order-address d-inline-block">
-                                                            <button class="btn btn-block text-right collapsed"
-                                                                data-toggle="collapse" href="#collapseExample"
-                                                                role="button" aria-expanded="false"
-                                                                aria-controls="collapseExample">
-                                                                <span>سفارش به آدرس دیگری حمل شود؟</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="shipping-address">
-                                                            <div id="collapseExample" class="collapse">
-                                                                <div class="middle-container">
-                                                                    <form action="" method="post">
-                                                                        {% csrf_token %}
-                                                                        {{ address_new_cart|crispy }}
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <label for="address">توضیحات سفارش
-                                                        <span class="optional">(اختیاری)</span>
-                                                    </label>
-                                                    <textarea rows="5" cols="30" id="address"
-                                                        class="textarea-name-checkout form-control"
-                                                        placeholder="یادداشت ها درباره سفارش شما ، برای مثال نکات مهم برای تحویل بار "></textarea>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h3 class="order-review-heading">سفارش شما</h3>
-                                    <div class="checkout-review-order">
-                                        <table class="checkout-review-order-table table table-borderless">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col" class="product-name">{% trans 'product' %}</th>
-                                                    <th scope="col" class="product-price">{% trans 'total price' %}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {% for item in cart %}
-                                                    <tr class="checkout-cart-item">
-                                                        <td class="product-name">{{ item.product_obj.name }}</td>
-                                                        <td class="product-price text-info">
-                                                            <span class="amount">{{ item.total_price|intcomma:False|translate_number }}
+                                                            <span class="amount">{{ cart.get_total_price|intcomma:False|translate_number }}
                                                                 <span>{% trans '$' %}</span>
                                                             </span>
                                                         </td>
                                                     </tr>
-                                                {% endfor %}
-                                            </tbody>
-                                            <tfoot>
 
-                                                <tr class="cart-subtotal">
-                                                    <th>{% trans 'sum total cart' %}</th>
-                                                    <td>
-                                                        <span class="amount">{{ cart.get_total_price|intcomma:False|translate_number }}
-                                                            <span>{% trans '$' %}</span>
-                                                        </span>
-                                                    </td>
-                                                </tr>
-
-                                            </tfoot>
-                                        </table>
-                                        <ul class="checkout-payment-methods">
-                                            <li class="checkout-payment-method-item d-block">
-                                                <label for="#" class="outline-radio">
-                                                    <input type="radio" name="payment_method"
-                                                        id="payment-option-online">
-                                                    <span class="outline-radio-check"></span>
-                                                </label>
-                                                <label for="#" class="shipping-totals-title-row">
-                                                    <div class="shipping-totals-title">{% trans 'payment online' %}</div>
-                                                </label>
-                                            </li>
-                                            <li class="checkout-payment-method-item d-block">
-                                                <label for="#" class="outline-radio">
-                                                    <input type="radio" name="payment_method"
-                                                        id="payment-option-online">
-                                                    <span class="outline-radio-check"></span>
-                                                </label>
-                                                <label for="#" class="shipping-totals-title-row">
-                                                    <div class="shipping-totals-title">پرداخت هنگام دریافت</div>
-                                                </label>
-                                            </li>
-                                        </ul>
-                                        <div class="form-auth-row">
-                                            <label for="#" class="ui-checkbox mt-1">
-                                                <input type="checkbox" value="1" name="login" id="remember">
-                                                <span class="ui-checkbox-check"></span>
-                                            </label>
-                                            <label for="remember" class="remember-me mr-0"><a href="{% url 'privacy' %}">{% trans 'Privacy' %}</a> و
-                                                <a href="{% url 'privacy' %}">{% trans 'Terms of the rules' %}</a>
-                                                {% trans 'I have read the terms of use of the sabzeonline website services and agree to all of them.' %}<abbr class="required"
-                                                    title="ضروری" style="color:red;">*</abbr></label>
+                                                </tfoot>
+                                            </table>
                                         </div>
-                                        <button class="btn-Order btn btn-primary mt-4 mb-3" type="submit">ثبت
-                                            سفارش</button>
+                                        <div class="billing-fields mt-4">
+                                            <h4>{% trans ': وارد کردن اطلاعات تحویل گیرنده' %}</h4>
+                                            <form action="" method="post">
+                                                {% csrf_token%}
+                                                {{ form|crispy }}
+                                                <button type="submit" method="POST">send</button>
+                                            </form>
+                                        </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>

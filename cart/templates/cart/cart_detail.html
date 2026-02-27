@@ -7,9 +7,8 @@
 
 
 {% block page_title %}
-    {% trans 'sabzeonline' %}
+    {% trans 'cart detail' %}
 {% endblock page_title %}
-
 
 
 {% block content %}
@@ -129,7 +128,7 @@
                                                         </div>
                                                         <div class="col-md-2 pl mt-5">
                                                             <div class="proceed-to-checkout">
-                                                                <a href="{% url 'cart:cart_checkout' %}" class="checkout-button d-block">
+                                                                <a href="{% url 'order:order_create' %}" class="checkout-button d-block">
                                                                     {% trans 'tasvia hesab' %}
                                                                 </a>
                                                                 </div>
