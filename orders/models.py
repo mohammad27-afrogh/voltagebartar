@@ -23,6 +23,9 @@ class Order(models.Model):
     order_notes = RichTextField(_('order notes'))
     date_time_create = models.DateTimeField(_('date_time_create'), default=timezone.now)
     date_time_modified = models.DateTimeField(_('date_time_modified'), auto_now=True)
+    zarinpal_authority = models.CharField(max_length=255, blank=True)
+    zarinpal_ref_id = models.CharField(max_length=255, blank=True)
+    zarinpal_data = models.TextField(blank=True)
 
 
     def __str__(self):
