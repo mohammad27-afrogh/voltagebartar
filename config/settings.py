@@ -57,6 +57,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'phonenumber_field',
     'debug_toolbar',
+    'dal',
+    'dal_select2',
 
 #     local apps
     'accounts',
