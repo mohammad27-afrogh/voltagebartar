@@ -21,6 +21,11 @@ class ProductAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         'base_price',
         'date_time_create',
     ]
+    prepopulated_fields = {
+        'slug': ['name',]
+    }
+    autocomplete_fields = ['category', 'features', 'brand', ]
+    search_fields = ['name',]
 
     inlines = [
         CommentsInline,
@@ -35,6 +40,8 @@ class DiscountAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         'end_date',
         'is_active',
     ]
+    autocomplete_fields = ['product',]
+    search_fields = ['product',]
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -43,6 +50,10 @@ class CategoryAdmin(admin.ModelAdmin):
         'slug',
         'parent',
     ]
+    prepopulated_fields = {
+        'slug': ['name',]
+    }
+    search_fields = ['name',]
 
 @admin.register(Inventory)
 class InventoryAdmin(admin.ModelAdmin):
@@ -51,6 +62,9 @@ class InventoryAdmin(admin.ModelAdmin):
         'status',
         'inventory',
     ]
+    search_fields = ['product',]
+    autocomplete_fields = ['product',]
+
 
 @admin.register(Features)
 class FeaturesAdmin(admin.ModelAdmin):
@@ -60,6 +74,7 @@ class FeaturesAdmin(admin.ModelAdmin):
         'unit_counting',
         'ingredients',
     ]
+    search_fields = ['name_features',]
 
 @admin.register(Order)
 class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
@@ -74,12 +89,14 @@ class OrderItemAdmin(admin.ModelAdmin):
         'product',
         'quantity',
     ]
+    search_fields = ['order']
 
 @admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):
     list_display = [
         'name',
     ]
+    search_fields = ['name',]
 
 @admin.register(Comment)
 class CommentAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
