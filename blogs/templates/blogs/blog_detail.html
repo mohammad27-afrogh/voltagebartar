@@ -1,21 +1,165 @@
-<h1>{{ blog.name }}</h1>
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load persian_translation_tags %}
+{% load humanize %}
+{% load jalali_tags %}
 
-<h1>{{ blog.category }}</h1>
-------------------
-<h1>{{ blog.short_description }}</h1>
-------------------
-<h1>{{ blog.description }}</h1>
-------------------
 
-{% for comment in comments %}
-	<h1>{{ comment.user.username }}</h1>
-    <h1>{{ comment.time_release_comment }}</h1>
-    <h1>{{ comment.body_comment }}</h1>
-{% endfor %}
--------------------
+{% block page_title %}
+    {% trans 'blog page' %}
+{% endblock page_title %}
 
-<form action="" method="POST">
-    {% csrf_token %}
-    {{ comment_form.as_p }}
-    <button type="submit">send</button>
-</form>
+
+{% block content %}
+
+    {% include 'partials/navbar.html' %}
+    <!-- single-blog--------------------------->
+    <main class="main-row mb-2 mt-2 d-block">
+        <div class="container-main">
+            <div class="d-block">
+                <div class="col-lg-9 col-md-8 col-xs-12 pr mt-3">
+                    <section class="blog-home">
+                        <article class="post-item">
+                            <header class="entry-header mb-3">
+                                <div class="post-meta date">
+                                    <i class="mdi mdi-calendar-month">
+                                    </i>{{ blog.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}
+                                </div>
+                                <div class="post-meta author">
+                                    <i class="mdi mdi-account-circle-outline"></i>
+                                    {% trans 'produced by :' %} {{ blog.user }}
+                                </div>
+                                <div class="post-meta category">
+                                    <i class="mdi mdi-folder"></i>
+                                    {% for breadcrumb_category in breadcrumb_categories %}
+                                        <a href="{{ breadcrumb_category.get_absolute_url }}"
+                                            class="product-link product-cat-title">{{ breadcrumb_category.name }}</a>
+                                    {% endfor %}
+                                </div>
+                                <div class="post-meta Visit">
+                                    <i class="mdi mdi-eye"></i>
+                                    {% trans 'bazdid' %} {{ blog.view_count|intcomma:False|translate_number }}
+                                </div>
+                            </header>
+                            <div class="post-thumbnail">
+                                {% if blog.cover_blog %}
+                                    <img src="{{ blog.cover_blog.url }}"
+                                        alt="{{ blog.name }}">
+                                    </a>
+                                {% else %}
+                                    <img src="{% static 'img/products/no_product_image.jpg' %}"
+                                        alt="{{ blog.name }}">
+                                    </a>
+                                {% endif %}
+                            </div>
+                            <div class="title">
+                                <a href="#">
+                                    <h1 class="title-tag">{{ blog.name }}</h1>
+                                </a>
+                            </div>
+                            <div class="content-blog">
+                                {{ blog.description }}
+                            </div>
+                        </article>
+                        <div class="post-comments">
+                            <div class="comments-area">
+                                <h2 class="comments-title">
+                                    <i class="fa fa-comment-o"></i>
+                                    {% trans 'user comments' %}
+                                    <p class="count-comment">{{ total_comment }} {% trans 'comment' %}</p>
+                                </h2>
+                                <ol class="comment-list">
+                                    {% for comment in comments %}
+                                        <li class="comment-even">
+                                            <div class="comment-body">
+                                                <header class="comment-meta">
+                                                    <div class="comment-author">
+                                                        <img src="{% static 'img/profile.png' %}" class="avator">
+                                                        {% trans 'by :' %} {{ comment.user }} - {% trans 'in history :' %} {{ comment.time_release_comment|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}  
+                                                    </div>
+                                                </header>
+                                                <p>{{ comment.body_comment }}</p>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ol>
+                                <div class="form-comment">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="form-ui">
+                                            <div class="row">
+                                                {% if user.is_authenticated %}
+                                                    <form action="" method="POST" class="comment-form-container">
+                                                        {% csrf_token %}
+                                                        {{ comment_form|crispy }}
+                                                        <button type="submit">{% trans 'record' %}</button>
+                                                    </form>
+                                                {% else %}
+                                                    <li>
+                                                        <p>{% trans 'please create a questionnaire !' %}</p>
+                                                        <a href="{% url 'account_login' %}" type="submit">login</a>
+                                                    </li>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-lg-3 col-md-4 col-xs-12 pr mt-3 sticky-sidebar">
+                    <div class="shortcode-widget-area-sidebar">
+                        <section class="widget-posts">
+                            <div class="header-sidebar mb-3">
+                                <h3>{% trans 'latest blog' %}</h3>
+                            </div>
+                            <div class="content-sidebar">
+                                {% for new_blog in latest_blog %}
+                                    <div class="item">
+                                        <div class="item-inner">
+                                            <div class="item-thumb">
+                                                {% if new_blog.cover_blog %}
+                                                    <a href="{% url 'blog_detail_by_slug' new_blog.slug %}" class="d-block">
+                                                        <img src="{{ new_blog.cover_blog.url }}"
+                                                            alt="{{ new_blog.name}}">
+                                                    </a>
+                                                {% else %}
+                                                    <a href="{% url 'blog_detail_by_slug' new_blog.slug %}" class="d-block">
+                                                        <img src="{% static 'img/products/no_product_image.jpg' %}"
+                                                            alt="{{ new_blog.name}}">
+                                                    </a>
+                                                {% endif %}
+                                            </div>
+                                            <div class="title">
+                                                <a href="{% url 'blog_detail_by_slug' new_blog.slug %}">
+                                                    <h2 class="title-tag">
+                                                        {{ new_blog.name }}
+                                                    </h2>
+                                                </a>
+                                                <span class="post-date">
+                                                    {{ new_blog.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- single-blog--------------------------->
+
+
+    {% include 'partials/footer.html' %}
+
+{% endblock content %}
+
+
+{% block body_class %}
+    account_page
+{% endblock body_class %}
