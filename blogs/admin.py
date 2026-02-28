@@ -7,6 +7,7 @@ from .models import Blog, Category, CommentBlog
 @admin.register(Blog)
 class BlogAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = [
+        'user',
         'name',
         'slug',
         'category',

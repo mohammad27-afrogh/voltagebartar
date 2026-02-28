@@ -8,8 +8,10 @@ from taggit.managers import TaggableManager
 from ckeditor.fields import RichTextField
 
 class Blog(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='user', verbose_name=_('user'))
     name = models.CharField(_('name'), max_length=200)
     slug = models.SlugField(_('slug'), unique=True, blank=True, null=False)
+    view_count = models.IntegerField(_('view count blog'), default=0)
     category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='blogs', verbose_name=_('category'))
     cover_blog = models.ImageField(_('cover_blog'), upload_to='blog/blog_covers/', blank=True)
     short_description = models.CharField(_('short_description'), max_length=100)
