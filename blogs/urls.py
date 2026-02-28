@@ -1,8 +1,8 @@
 from django.urls import path, include
 
-from.views import BlogsPageView, blog_detail_view
+from.views import blog_page_view, blog_detail_view
 
 urlpatterns = [
-    path('', BlogsPageView.as_view(), name='blogs'),
+    path('', blog_page_view, name='blogs'),
     path('<slug:blog_slug>/', blog_detail_view, name='blog_detail_by_slug'),
 ]
