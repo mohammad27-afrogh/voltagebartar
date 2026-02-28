@@ -28,8 +28,15 @@ urlpatterns = [
     path('products/', include('products.urls', namespace='products')),
     path('blogs/', include('blogs.urls')),
     path('cart/', include('cart.urls')),
-    path('api/', include('locations.urls')),
+    path('locations/', include('locations.urls', namespace='locations')),
     path('order/', include('orders.urls')),
-    path('__debug__/', include('debug_toolbar.urls')),
+    # path('__debug__/', include('debug_toolbar.urls')),
     path('pyment/', include('pyment.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ]

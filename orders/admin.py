@@ -18,6 +18,7 @@ class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         'is_paid',
         'pyment_price',
     ]
+    autocomplete_fields = ['province_address', 'city_address', ]
 
     inlines = [
         OrderItemInline,
@@ -50,6 +51,7 @@ class ProfileAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         'date_time_modified',
         'Receive_the_newsletter'
     ]
+    autocomplete_fields = ['province_address', 'city_address']
 
 @admin.register(FavoriteProduct)
 class FavoriteProductAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):

@@ -13,7 +13,7 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 
 import jdatetime
-from .forms import OrderForm, ProfileFormBasic, ProfileFormLocations
+from .forms import AddressFormOrder, ProfileFormBasic, ProfileFormLocations
 from cart.cart import Cart
 from products.models import Comment, Product
 from .models import OrderItem, Order, Profile, FavoriteProduct
@@ -29,7 +29,7 @@ def order_create_view(request):
         return redirect('cart:Cart_detail')
 
     if request.method == 'POST':
-        form = OrderForm(request.POST)
+        form = AddressFormOrder(request.POST)
         if form.is_valid():
             order_obj = form.save(commit=False)
             order_obj.user = request.user
@@ -55,7 +55,7 @@ def order_create_view(request):
                 return redirect('pyment_process')
 
     else:
-        form = OrderForm()
+        form = AddressFormOrder()
     return render (request, 'cart/cart_checkout.html', context={
         'form': form,
     })
