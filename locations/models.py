@@ -23,4 +23,4 @@ class City(models.Model):
         unique_together = ('province', 'name')
 
     def __str__(self):
-        return f'{self.name} ({self.province.name})'
+        return f'{self.name}'

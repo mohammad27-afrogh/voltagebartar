@@ -5,7 +5,8 @@ from .models import Province, City
 @admin.register(Province)
 class ProvinceAdmin(admin.ModelAdmin):
     list_display = ('name',)
-    search_fields = ('name',)
+    search_fields = ['name', ]
+
 
 @admin.register(City)
 class CityAdmin(admin.ModelAdmin):
@@ -14,4 +15,5 @@ class CityAdmin(admin.ModelAdmin):
         'province',
     )
     list_filter = ('province',)
-    search_fields = ('name',)
+    search_fields = ['name', ]
+    autocomplete_fields = ['province', ]
