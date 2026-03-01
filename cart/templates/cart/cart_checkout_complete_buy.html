@@ -30,27 +30,28 @@
                                     <div class="col2-set" id="customer-details">
                                         <div class="col-12">
                                             <div class="billing-fields mt-4">
-                                                <h4 class="text-success">سفارش دریافت شد</h4>
-                                                <p class="thankyou-order-received">پرداخت با موفقیت انجام شد. سفارش شما
-                                                    با موفقیت ثبت شد و در زمان تعیین شده برای شما ارسال خواهد شد.
-                                                    از اینکه دیجی استور را برای خرید انتخاب کردید از شما سپاسگزاریم.</p>
+                                                <h3 class="text-success">{% trans 'order received' %}</h3>
+                                                <p class="thankyou-order-received">
+                                                    {% trans 'payment succeeded your order will be recorded successfully and will be sent to you at the time specified .' %}
+                                                    {% trans 'thank you for choosing to buy green .' %}
+                                                </p>
                                                 <ul class="order-overview">
                                                     <li class="order-overview-item">
-                                                        کد سفارش :
+                                                       {% trans 'order code :' %}
                                                         <span>{{ order_obj.id }}</span>
                                                     </li>
                                                     <li class="order-overview-item">
-                                                        تاریخ :
+                                                        {% trans 'date :' %}
                                                         <span>{{ order_obj.date_time_create }}</span>
                                                     </li>
                                                     {% if pyment_price == 'HD' %}
                                                         <li class="order-overview-item">
-                                                            روش پرداخت :
+                                                           {% trans 'payment method :' %}
                                                             <span>{% trans 'pyment to the House Door' %}</span>
                                                         </li>
                                                     {% endif %}
                                                     <li class="order-overview-item">
-                                                        قیمت نهایی :
+                                                       {% trans 'final price :' %}
                                                         <span class="amount">{{ order_obj.get_total_price }}
                                                             <span>{% trans '$' %}</span>
                                                         </span>
@@ -63,27 +64,28 @@
                                     <div class="col2-set" id="customer-details">
                                         <div class="col-12">
                                             <div class="billing-fields mt-4">
-                                                <h4 class="text-success">سفارش دریافت شد</h4>
-                                                <p class="thankyou-order-received">پرداخت با موفقیت انجام شد. سفارش شما
-                                                    با موفقیت ثبت شد و در زمان تعیین شده برای شما ارسال خواهد شد.
-                                                    از اینکه دیجی استور را برای خرید انتخاب کردید از شما سپاسگزاریم.</p>
+                                                <h3 class="text-success">{% trans 'order received' %}</h3>
+                                                <p class="thankyou-order-received">
+                                                    {% trans 'payment succeeded your order will be recorded successfully and will be sent to you at the time specified .' %}
+                                                    {% trans 'thank you for choosing to buy green .' %}
+                                                </p>
                                                 <ul class="order-overview">
                                                     <li class="order-overview-item">
-                                                        کد سفارش :
+                                                        {% trans 'order code :' %}
                                                         <span>{{ order_obj.id }}</span>
                                                     </li>
                                                     <li class="order-overview-item">
-                                                        تاریخ :
+                                                        {% trans 'date :' %}
                                                         <span>{{ order_obj.date_time_create }}</span>
                                                     </li>
-                                                    {% if pyment_price == 'HD' %}
+                                                    {% if pyment_price == 'PP' %}
                                                         <li class="order-overview-item">
-                                                            روش پرداخت :
+                                                            {% trans 'payment method :' %}
                                                             <span>{% trans 'pyment to the House Door' %}</span>
                                                         </li>
                                                     {% endif %}
                                                     <li class="order-overview-item">
-                                                        قیمت نهایی :
+                                                        {% trans 'final price :' %}
                                                         <span class="amount">{{ order_obj.get_total_price }}
                                                             <span>{% trans '$' %}</span>
                                                         </span>
@@ -96,29 +98,35 @@
                                     <div class="col2-set" id="customer-details">
                                         <div class="col-12">
                                             <div class="billing-fields mt-4">
-                                                <h4 class="text-danger">سفارش دریافت نشد</h4>
-                                                <p class="thankyou-order-received">پرداخت ناموفقیت انجام شد. برای
-                                                    جلوگیری از لغو سیستمی سفارش،تا 24 ساعت آینده پرداخت را انجام دهید.
-                                                    چنانچه طی این فرایند مبلغی از حساب شما کسر شده است،طی 72 ساعت آینده
-                                                    به حساب شما باز خواهد گشت.
+                                                <h3 class="text-danger">{% trans 'order not received' %}</h3>
+                                                <p class="thankyou-order-received">
+                                                {% trans 'failed payment .to avoid ordering the system , carry out the payment until the next 24 hours .' %}
+                                                {% trans 'if your account is deducted , your account will be back in the next 72 hours .' %}
                                                 </p>
                                                 <ul class="order-overview">
                                                     <li class="order-overview-item">
-                                                        کد سفارش :
-                                                        <span>DKC-57262900</span>
+                                                        {% trans 'order code :' %}
+                                                        <span>{{ order_obj.id }}</span>
                                                     </li>
                                                     <li class="order-overview-item">
-                                                        تاریخ :
-                                                        <span>17 فروردین 1399</span>
+                                                        {% trans 'date :' %}
+                                                        <span>{{ order_obj.date_time_create }}</span>
                                                     </li>
+                                                    {% if pyment_price == 'HD' %}
+                                                        <li class="order-overview-item">
+                                                            {% trans 'payment method :' %}
+                                                            <span>{% trans 'pyment to the House Door' %}</span>
+                                                        </li>
+                                                    {% else %}
+                                                        <li class="order-overview-item">
+                                                            {% trans 'payment method :' %}
+                                                            <span>{% trans 'smart internet payment' %}</span>
+                                                        </li>
+                                                    {% endif %}
                                                     <li class="order-overview-item">
-                                                        روش پرداخت :
-                                                        <span>پرداخت اینترنتی هوشمند</span>
-                                                    </li>
-                                                    <li class="order-overview-item">
-                                                        قیمت نهایی :
-                                                        <span class="amount">25,000
-                                                            <span>تومان</span>
+                                                        {% trans 'final price :' %}
+                                                        <span class="amount">{{ order_obj.get_total_price }}
+                                                            <span>{% trans '$' %}</span>
                                                         </span>
                                                     </li>
                                                 </ul>
