@@ -28,7 +28,7 @@
                             <div class="middle-container">
                                 <div class="col2-set" id="customer-details">
                                     <div class="col-12">
-                                        <h3 class="order-review-heading">سفارش شما</h3>
+                                        <h3 class="order-review-heading">{% trans 'your order' %}</h3>
                                         <div class="checkout-review-order">
                                             <table class="checkout-review-order-table table table-borderless">
                                                 <thead>
@@ -62,13 +62,21 @@
 
                                                 </tfoot>
                                             </table>
+                                            <!-- فایل HTML شما -->
+                                            <div id="shipping-alert" class="alert-container">
+                                            <span class="alert-icon">⚠️</span>
+                                            <span class="alert-title">{% trans 'attention :' %}</span>
+                                            {% trans 'cost of sending for the city' %} <span class="highlight-tehran"> {% trans 'Tehran' %} </span> {% trans 'free . for other cities , the cost of sending' %} <span class="highlight-shipping-cost"> 500,000 {% trans '$' %} </span>{% trans 'it will be.' %}
+                                            </div>
                                         </div>
                                         <div class="billing-fields mt-4">
                                             <h4>{% trans 'import receiver delivery information :' %}</h4>
                                             <form action="" method="post">
                                                 {% csrf_token%}
                                                 {{ form|crispy }}
-                                                <button type="submit" method="POST">send</button>
+                                                <button type="submit" class="my-custom-add-button btn btn-primary">
+                                                    <span class="btn-add-to-cart-txt">{% trans 'send' %}</span>
+                                                </button>
                                             </form>
                                         </div>
                                     </div>
