@@ -10,6 +10,7 @@ class OrderItemInline(admin.TabularInline):
 @admin.register(Order)
 class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = [
+        'display_order_id',
         'first_name',
         'phone_number',
         'national_number',
@@ -18,6 +19,11 @@ class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         'is_paid',
         'pyment_price',
     ]
+
+    def display_order_id(self, obj):
+        return str(obj.id)
+    display_order_id.shoit_discription = 'Order ID'
+
     autocomplete_fields = ['province_address', 'city_address', ]
 
     inlines = [

@@ -3,6 +3,8 @@ from django.conf import settings
 from django.utils.translation import gettext as _
 from django.utils import timezone
 
+from uuid import uuid4
+
 from products.models import Product
 from locations.models import Province, City
 from phonenumber_field.modelfields import PhoneNumberField
@@ -15,6 +17,7 @@ class Order(models.Model):
     ]
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=_('user'))
+    id = models.UUIDField(primary_key=True, default=uuid4)
     is_paid = models.BooleanField(_('is paid'), default=False)
     first_name = models.CharField(_('first name'), max_length=100)
     last_name = models.CharField(_('last name'), max_length=200)
@@ -38,7 +41,10 @@ class Order(models.Model):
         return f'{self.user}'
 
     def get_total_price(self):
-        return sum(item.quantity * item.price for item in self.items.all())
+        total_price = sum(item.quantity * item.price for item in self.items.all())
+
+        shipping_cost = 0 if self.province_address.name == 'تهران' else 500000
+        return total_price + shipping_cost
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items', verbose_name=_('order'))
