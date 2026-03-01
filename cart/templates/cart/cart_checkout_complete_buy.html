@@ -4,6 +4,7 @@
 {% load i18n %}
 {% load persian_translation_tags %}
 {% load humanize %}
+{% load jalali_tags %}
 
 
 {% block page_title %}
@@ -42,7 +43,7 @@
                                                     </li>
                                                     <li class="order-overview-item">
                                                         {% trans 'date :' %}
-                                                        <span>{{ order_obj.date_time_create }}</span>
+                                                        <span>{{ order_obj.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</span>
                                                     </li>
                                                     {% if pyment_price == 'HD' %}
                                                         <li class="order-overview-item">
@@ -51,8 +52,8 @@
                                                         </li>
                                                     {% endif %}
                                                     <li class="order-overview-item">
-                                                       {% trans 'final price :' %}
-                                                        <span class="amount">{{ order_obj.get_total_price }}
+                                                       {% trans 'base price :' %}
+                                                        <span class="amount">{{ order_obj.get_total_price|intcomma:False|translate_number }}
                                                             <span>{% trans '$' %}</span>
                                                         </span>
                                                     </li>
@@ -76,7 +77,7 @@
                                                     </li>
                                                     <li class="order-overview-item">
                                                         {% trans 'date :' %}
-                                                        <span>{{ order_obj.date_time_create }}</span>
+                                                        <span>{{ order_obj.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</span>
                                                     </li>
                                                     {% if pyment_price == 'PP' %}
                                                         <li class="order-overview-item">
@@ -86,7 +87,7 @@
                                                     {% endif %}
                                                     <li class="order-overview-item">
                                                         {% trans 'final price :' %}
-                                                        <span class="amount">{{ order_obj.get_total_price }}
+                                                        <span class="amount">{{ order_obj.get_total_price|intcomma:False|translate_number }}
                                                             <span>{% trans '$' %}</span>
                                                         </span>
                                                     </li>
@@ -110,7 +111,7 @@
                                                     </li>
                                                     <li class="order-overview-item">
                                                         {% trans 'date :' %}
-                                                        <span>{{ order_obj.date_time_create }}</span>
+                                                        <span>{{ order_obj.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</span>
                                                     </li>
                                                     {% if pyment_price == 'HD' %}
                                                         <li class="order-overview-item">
@@ -125,7 +126,7 @@
                                                     {% endif %}
                                                     <li class="order-overview-item">
                                                         {% trans 'final price :' %}
-                                                        <span class="amount">{{ order_obj.get_total_price }}
+                                                        <span class="amount">{{ order_obj.get_total_price|intcomma:False|translate_number }}
                                                             <span>{% trans '$' %}</span>
                                                         </span>
                                                     </li>

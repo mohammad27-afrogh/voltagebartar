@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-01 18:06+0330\n"
-"PO-Revision-Date: 2026-03-01 18:23+0330\n"
+"POT-Creation-Date: 2026-03-01 23:37+0330\n"
+"PO-Revision-Date: 2026-03-02 02:13+0330\n"
 "Last-Translator:   <m.afroogh25@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -34,6 +34,10 @@ msgstr "سبد خرید با موفقیت پاک شد."
 msgid "checkout"
 msgstr "بررسی"
 
+#: .\templates\cart\cart_checkout.html:31
+msgid "your order"
+msgstr "سفارش شما"
+
 #: .\templates\cart\cart_checkout.html:36
 msgid "product"
 msgstr "محصول"
@@ -44,9 +48,10 @@ msgstr "مجموع قیمت"
 
 #: .\templates\cart\cart_checkout.html:46
 #: .\templates\cart\cart_checkout.html:58
-#: .\templates\cart\cart_checkout_complete_buy.html:56
-#: .\templates\cart\cart_checkout_complete_buy.html:90
-#: .\templates\cart\cart_checkout_complete_buy.html:129
+#: .\templates\cart\cart_checkout.html:69
+#: .\templates\cart\cart_checkout_complete_buy.html:57
+#: .\templates\cart\cart_checkout_complete_buy.html:91
+#: .\templates\cart\cart_checkout_complete_buy.html:130
 #: .\templates\cart\cart_detail.html:76 .\templates\cart\cart_detail.html:100
 #: .\templates\cart\cart_detail.html:114
 msgid "$"
@@ -57,21 +62,45 @@ msgstr "تومان"
 msgid "sum total cart"
 msgstr "مجموع سبد خرید"
 
-#: .\templates\cart\cart_checkout.html:67
+#: .\templates\cart\cart_checkout.html:68
+msgid "attention :"
+msgstr "توجه :"
+
+#: .\templates\cart\cart_checkout.html:69
+msgid "cost of sending for the city"
+msgstr "هزینه ارسال به شهر"
+
+#: .\templates\cart\cart_checkout.html:69
+msgid "Tehran"
+msgstr "تهران"
+
+#: .\templates\cart\cart_checkout.html:69
+msgid "free . for other cities , the cost of sending"
+msgstr "رایگان است . برای سایر شهرها هزینه ارسال"
+
+#: .\templates\cart\cart_checkout.html:69
+msgid "it will be."
+msgstr "خواهد بود ."
+
+#: .\templates\cart\cart_checkout.html:73
 msgid "import receiver delivery information :"
 msgstr "وارد کردن اطلاعات تحویل گیرنده :"
 
-#: .\templates\cart\cart_checkout_complete_buy.html:10
+#: .\templates\cart\cart_checkout.html:78
+msgid "send"
+msgstr "ارسال کردن"
+
+#: .\templates\cart\cart_checkout_complete_buy.html:11
 msgid "checkout complete cart"
 msgstr "بررسی سبد خرید"
 
-#: .\templates\cart\cart_checkout_complete_buy.html:33
-#: .\templates\cart\cart_checkout_complete_buy.html:67
+#: .\templates\cart\cart_checkout_complete_buy.html:34
+#: .\templates\cart\cart_checkout_complete_buy.html:68
 msgid "order received"
 msgstr "سفارش دریافت شد"
 
-#: .\templates\cart\cart_checkout_complete_buy.html:35
-#: .\templates\cart\cart_checkout_complete_buy.html:69
+#: .\templates\cart\cart_checkout_complete_buy.html:36
+#: .\templates\cart\cart_checkout_complete_buy.html:70
 msgid ""
 "payment succeeded your order will be recorded successfully and will be sent "
 "to you at the time specified ."
@@ -79,47 +108,51 @@ msgstr ""
 "پرداخت موفقیت آمیز بود و سفارش شما با موفقیت ثبت شد و در سریعترین زمان برای "
 "شما ارسال خواهد شد ."
 
-#: .\templates\cart\cart_checkout_complete_buy.html:36
-#: .\templates\cart\cart_checkout_complete_buy.html:70
+#: .\templates\cart\cart_checkout_complete_buy.html:37
+#: .\templates\cart\cart_checkout_complete_buy.html:71
 msgid "thank you for choosing to buy green ."
 msgstr "از شما متشکریم که سبز آنلاین را انتخاب کردید ."
 
-#: .\templates\cart\cart_checkout_complete_buy.html:40
-#: .\templates\cart\cart_checkout_complete_buy.html:74
-#: .\templates\cart\cart_checkout_complete_buy.html:108
+#: .\templates\cart\cart_checkout_complete_buy.html:41
+#: .\templates\cart\cart_checkout_complete_buy.html:75
+#: .\templates\cart\cart_checkout_complete_buy.html:109
 msgid "order code :"
 msgstr "کد سفارش :"
 
-#: .\templates\cart\cart_checkout_complete_buy.html:44
-#: .\templates\cart\cart_checkout_complete_buy.html:78
-#: .\templates\cart\cart_checkout_complete_buy.html:112
+#: .\templates\cart\cart_checkout_complete_buy.html:45
+#: .\templates\cart\cart_checkout_complete_buy.html:79
+#: .\templates\cart\cart_checkout_complete_buy.html:113
 msgid "date :"
 msgstr "تاریخ :"
-
-#: .\templates\cart\cart_checkout_complete_buy.html:49
-#: .\templates\cart\cart_checkout_complete_buy.html:83
-#: .\templates\cart\cart_checkout_complete_buy.html:117
-#: .\templates\cart\cart_checkout_complete_buy.html:122
-msgid "payment method :"
-msgstr "روش پرداخت"
 
 #: .\templates\cart\cart_checkout_complete_buy.html:50
 #: .\templates\cart\cart_checkout_complete_buy.html:84
 #: .\templates\cart\cart_checkout_complete_buy.html:118
+#: .\templates\cart\cart_checkout_complete_buy.html:123
+msgid "payment method :"
+msgstr "روش پرداخت"
+
+#: .\templates\cart\cart_checkout_complete_buy.html:51
+#: .\templates\cart\cart_checkout_complete_buy.html:85
+#: .\templates\cart\cart_checkout_complete_buy.html:119
 msgid "pyment to the House Door"
 msgstr "پرداخت درب منزل"
 
-#: .\templates\cart\cart_checkout_complete_buy.html:54
-#: .\templates\cart\cart_checkout_complete_buy.html:88
-#: .\templates\cart\cart_checkout_complete_buy.html:127
+#: .\templates\cart\cart_checkout_complete_buy.html:55
+#| msgid "final price :"
+msgid "base price :"
+msgstr "قیمت نهایی"
+
+#: .\templates\cart\cart_checkout_complete_buy.html:89
+#: .\templates\cart\cart_checkout_complete_buy.html:128
 msgid "final price :"
 msgstr "قیمت نهایی"
 
-#: .\templates\cart\cart_checkout_complete_buy.html:101
+#: .\templates\cart\cart_checkout_complete_buy.html:102
 msgid "order not received"
 msgstr "سفارش دریافت نشد"
 
-#: .\templates\cart\cart_checkout_complete_buy.html:103
+#: .\templates\cart\cart_checkout_complete_buy.html:104
 msgid ""
 "failed payment .to avoid ordering the system , carry out the payment until "
 "the next 24 hours ."
@@ -127,7 +160,7 @@ msgstr ""
 "پرداخت ناموفق بود  . برای جلوگیری از لغو سیستمی سفارش, پرداخت را تا 24 ساعت "
 "آینده انجام دهید ."
 
-#: .\templates\cart\cart_checkout_complete_buy.html:104
+#: .\templates\cart\cart_checkout_complete_buy.html:105
 msgid ""
 "if your account is deducted , your account will be back in the next 72 hours"
 " ."
@@ -135,7 +168,7 @@ msgstr ""
 " چنانچه طی این فرایند مبلغی از حساب شما کسر شده است، طی 72 ساعت آینده به "
 "حساب شما باز خواهد گشت."
 
-#: .\templates\cart\cart_checkout_complete_buy.html:123
+#: .\templates\cart\cart_checkout_complete_buy.html:124
 msgid "smart internet payment"
 msgstr "پرداخت الکترونیکی "
 
