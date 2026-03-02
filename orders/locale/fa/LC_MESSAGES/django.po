@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-07 00:54+0330\n"
-"PO-Revision-Date: 2026-02-07 00:55+0330\n"
+"POT-Creation-Date: 2026-03-01 18:34+0330\n"
+"PO-Revision-Date: 2026-03-01 22:00+0330\n"
 "Last-Translator:   <m.afroogh25@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,87 +18,137 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: .\models.py:12 .\models.py:45
-msgid "user"
-msgstr "کاربر"
+#: .\forms.py:10 .\models.py:13
+msgid "Pyment Price"
+msgstr "پرداخت آنلاین"
 
-#: .\models.py:13
-msgid "is paid"
-msgstr "پرداخت میشود"
+#: .\forms.py:11 .\models.py:14
+msgid "House Door"
+msgstr "درب منزل"
 
-#: .\models.py:14 .\models.py:46
-msgid "first name"
+#: .\forms.py:14
+msgid "pyment_price"
+msgstr "پرداخت قیمت "
+
+#: .\forms.py:14
+msgid "choose how to pay..."
+msgstr "روش پرداخت را انتخاب کنید …"
+
+#: .\forms.py:15 .\views.py:90
+msgid "first_name"
 msgstr "نام"
 
-#: .\models.py:15 .\models.py:47
-msgid "last name"
+#: .\forms.py:16 .\views.py:92
+msgid "last_name"
 msgstr "نام خانوادگی"
 
-#: .\models.py:16 .\models.py:48
-msgid "phone number"
+#: .\forms.py:17 .\views.py:94 .\views.py:307
+msgid "phone_number"
 msgstr "تلفن همراه"
 
-#: .\models.py:17 .\models.py:49
-msgid "national number"
+#: .\forms.py:18 .\views.py:96
+msgid "national_number"
 msgstr "کد ملی"
 
-#: .\models.py:18 .\models.py:50
-msgid "province"
-msgstr "استان"
-
-#: .\models.py:19 .\models.py:51
-msgid "city"
-msgstr "شهرستان"
-
-#: .\models.py:20 .\models.py:52
-msgid "exact address"
-msgstr "آدرس دقیق"
-
-#: .\models.py:21 .\models.py:53
+#: .\forms.py:19 .\models.py:26 .\models.py:62
 msgid "postal code"
 msgstr "کد پستی"
 
-#: .\models.py:22 .\models.py:54 .\views.py:84
+#: .\forms.py:24
+msgid "search the province for interest..."
+msgstr "استان مورد نظر خود را جستجو کنید..."
+
+#: .\forms.py:27 .\models.py:23 .\models.py:59
+msgid "province"
+msgstr "استان"
+
+#: .\forms.py:41
+msgid "select the province first..."
+msgstr "ابتدا استان را انتخاب کنید..."
+
+#: .\forms.py:46 .\models.py:24 .\models.py:60
+msgid "city"
+msgstr "شهرستان"
+
+#: .\forms.py:50 .\views.py:313
+#| msgid "exact address"
+msgid "exact_address"
+msgstr "آدرس دقیق"
+
+#: .\forms.py:51 .\models.py:27 .\models.py:63 .\views.py:100
 msgid "email"
 msgstr "ایمیل"
 
-#: .\models.py:23 .\models.py:55
+#: .\forms.py:52 .\models.py:28 .\models.py:64
 msgid "order notes"
 msgstr "توضیحات"
 
-#: .\models.py:24 .\models.py:39 .\models.py:56
+#: .\models.py:17 .\models.py:54
+msgid "user"
+msgstr "کاربر"
+
+#: .\models.py:18
+msgid "is paid"
+msgstr "پرداخت میشود"
+
+#: .\models.py:19 .\models.py:55
+msgid "first name"
+msgstr "نام"
+
+#: .\models.py:20 .\models.py:56
+msgid "last name"
+msgstr "نام خانوادگی"
+
+#: .\models.py:21 .\models.py:57
+msgid "phone number"
+msgstr "تلفن همراه"
+
+#: .\models.py:22 .\models.py:58
+msgid "national number"
+msgstr "کد ملی"
+
+#: .\models.py:25 .\models.py:61
+msgid "exact address"
+msgstr "آدرس دقیق"
+
+#: .\models.py:29 .\models.py:48 .\models.py:65
 msgid "date_time_create"
 msgstr "تاریخ_زمان_ایجاد"
 
-#: .\models.py:25 .\models.py:57
+#: .\models.py:30 .\models.py:66
 msgid "date_time_modified"
 msgstr "تاریخ_زمان_تغییر یافته"
 
-#: .\models.py:35
+#: .\models.py:34
+msgid "other pyment price"
+msgstr "روش پرداخت قیمت"
+
+#: .\models.py:44
 msgid "order"
 msgstr "سفارش دهید"
 
-#: .\models.py:36
+#: .\models.py:45
 msgid "product"
 msgstr "محصول"
 
-#: .\models.py:37
+#: .\models.py:46 .\templates\orders\profile_order_view.html:137
 msgid "quantity"
 msgstr "تعداد"
 
-#: .\models.py:38
+#: .\models.py:47
 msgid "price"
 msgstr "قیمت"
 
-#: .\models.py:58
+#: .\models.py:67
 msgid "Receive the newsletter"
 msgstr "خبرنامه را دریافت می کنید؟"
 
 #: .\templates\orders\profile_address.html:10
+#: .\templates\orders\profile_address_edit.html:10
 #: .\templates\orders\profile_comment.html:10
-#: .\templates\orders\profile_create.html:10
-#: .\templates\orders\profile_favorites.html:10
+#: .\templates\orders\profile_favorite.html:10
 #: .\templates\orders\profile_order.html:10
+#: .\templates\orders\profile_order_view.html:10
 #: .\templates\orders\profile_user.html:10
 #: .\templates\orders\profile_user_edit.html:10
 msgid "profile page"
@@ -106,14 +156,16 @@ msgstr "صفحه پروفایل"
 
 #: .\templates\orders\profile_address.html:35
 #: .\templates\orders\profile_address.html:45
+#: .\templates\orders\profile_address_edit.html:35
+#: .\templates\orders\profile_address_edit.html:45
 #: .\templates\orders\profile_comment.html:35
 #: .\templates\orders\profile_comment.html:45
-#: .\templates\orders\profile_create.html:35
-#: .\templates\orders\profile_create.html:45
-#: .\templates\orders\profile_favorites.html:35
-#: .\templates\orders\profile_favorites.html:45
+#: .\templates\orders\profile_favorite.html:35
+#: .\templates\orders\profile_favorite.html:45
 #: .\templates\orders\profile_order.html:35
 #: .\templates\orders\profile_order.html:45
+#: .\templates\orders\profile_order_view.html:35
+#: .\templates\orders\profile_order_view.html:45
 #: .\templates\orders\profile_user.html:35
 #: .\templates\orders\profile_user.html:45
 #: .\templates\orders\profile_user_edit.html:35
@@ -122,10 +174,11 @@ msgid "Join the site : "
 msgstr "عضویت در سایت:"
 
 #: .\templates\orders\profile_address.html:36
+#: .\templates\orders\profile_address_edit.html:36
 #: .\templates\orders\profile_comment.html:36
-#: .\templates\orders\profile_create.html:36
-#: .\templates\orders\profile_favorites.html:36
+#: .\templates\orders\profile_favorite.html:36
 #: .\templates\orders\profile_order.html:36
+#: .\templates\orders\profile_order_view.html:36
 #: .\templates\orders\profile_user.html:36
 #: .\templates\orders\profile_user_edit.html:36
 msgid "mobile number : "
@@ -133,14 +186,16 @@ msgstr "تلفن همراه"
 
 #: .\templates\orders\profile_address.html:39
 #: .\templates\orders\profile_address.html:49
+#: .\templates\orders\profile_address_edit.html:39
+#: .\templates\orders\profile_address_edit.html:49
 #: .\templates\orders\profile_comment.html:39
 #: .\templates\orders\profile_comment.html:49
-#: .\templates\orders\profile_create.html:39
-#: .\templates\orders\profile_create.html:49
-#: .\templates\orders\profile_favorites.html:39
-#: .\templates\orders\profile_favorites.html:49
+#: .\templates\orders\profile_favorite.html:39
+#: .\templates\orders\profile_favorite.html:49
 #: .\templates\orders\profile_order.html:39
 #: .\templates\orders\profile_order.html:49
+#: .\templates\orders\profile_order_view.html:39
+#: .\templates\orders\profile_order_view.html:49
 #: .\templates\orders\profile_user.html:39
 #: .\templates\orders\profile_user.html:49
 #: .\templates\orders\profile_user_edit.html:39
@@ -149,86 +204,168 @@ msgid "log out account page"
 msgstr "صفحه خروج از حساب کاربری"
 
 #: .\templates\orders\profile_address.html:46
+#: .\templates\orders\profile_address_edit.html:46
 #: .\templates\orders\profile_comment.html:46
-#: .\templates\orders\profile_create.html:46
-#: .\templates\orders\profile_favorites.html:46
+#: .\templates\orders\profile_favorite.html:46
 #: .\templates\orders\profile_order.html:46
+#: .\templates\orders\profile_order_view.html:46
 #: .\templates\orders\profile_user.html:46
 #: .\templates\orders\profile_user_edit.html:46
 msgid "mobile number : Not registered yet"
 msgstr "شماره موبایل: هنوز ثبت نشده است"
 
 #: .\templates\orders\profile_address.html:58
+#: .\templates\orders\profile_address_edit.html:58
 #: .\templates\orders\profile_comment.html:58
-#: .\templates\orders\profile_create.html:58
-#: .\templates\orders\profile_favorites.html:58
+#: .\templates\orders\profile_favorite.html:58
 #: .\templates\orders\profile_order.html:58
+#: .\templates\orders\profile_order_view.html:58
 #: .\templates\orders\profile_user.html:58
 #: .\templates\orders\profile_user_edit.html:58
 msgid "profile"
 msgstr "پروفایل"
 
 #: .\templates\orders\profile_address.html:63
+#: .\templates\orders\profile_address_edit.html:63
 #: .\templates\orders\profile_comment.html:63
-#: .\templates\orders\profile_create.html:63
-#: .\templates\orders\profile_favorites.html:63
+#: .\templates\orders\profile_favorite.html:63
 #: .\templates\orders\profile_order.html:63
+#: .\templates\orders\profile_order_view.html:63
 #: .\templates\orders\profile_user.html:63
 #: .\templates\orders\profile_user_edit.html:63
 msgid "All orders"
 msgstr "سفارش ها"
 
 #: .\templates\orders\profile_address.html:68
+#: .\templates\orders\profile_address_edit.html:68
 #: .\templates\orders\profile_comment.html:68
-#: .\templates\orders\profile_create.html:68
-#: .\templates\orders\profile_favorites.html:68
+#: .\templates\orders\profile_favorite.html:68
 #: .\templates\orders\profile_order.html:68
+#: .\templates\orders\profile_order_view.html:68
 #: .\templates\orders\profile_user.html:68
 #: .\templates\orders\profile_user_edit.html:68
 msgid "Favorites list"
 msgstr "لیست علاقه مندی ها"
 
 #: .\templates\orders\profile_address.html:73
+#: .\templates\orders\profile_address_edit.html:73
 #: .\templates\orders\profile_comment.html:73
-#: .\templates\orders\profile_create.html:73
-#: .\templates\orders\profile_favorites.html:73
+#: .\templates\orders\profile_favorite.html:73
 #: .\templates\orders\profile_order.html:73
+#: .\templates\orders\profile_order_view.html:73
 #: .\templates\orders\profile_user.html:73
 #: .\templates\orders\profile_user_edit.html:73
 msgid "Addresses"
 msgstr "آدرس ها"
 
 #: .\templates\orders\profile_address.html:78
+#: .\templates\orders\profile_address_edit.html:78
 #: .\templates\orders\profile_comment.html:78
-#: .\templates\orders\profile_create.html:78
-#: .\templates\orders\profile_favorites.html:78
+#: .\templates\orders\profile_favorite.html:78
 #: .\templates\orders\profile_order.html:78
+#: .\templates\orders\profile_order_view.html:78
 #: .\templates\orders\profile_user.html:78
 #: .\templates\orders\profile_user_edit.html:78
 msgid "Comments"
 msgstr "نظرات"
 
 #: .\templates\orders\profile_address.html:83
+#: .\templates\orders\profile_address_edit.html:83
 #: .\templates\orders\profile_comment.html:83
-#: .\templates\orders\profile_create.html:83
-#: .\templates\orders\profile_favorites.html:83
+#: .\templates\orders\profile_favorite.html:83
 #: .\templates\orders\profile_order.html:83
+#: .\templates\orders\profile_order_view.html:83
 #: .\templates\orders\profile_user.html:83
 #: .\templates\orders\profile_user_edit.html:83
 msgid "Account information"
 msgstr "اطلاعات حساب"
 
-#: .\templates\orders\profile_address.html:97
+#: .\templates\orders\profile_address.html:95
+#| msgid "Please complete your details."
+msgid "Please Complete the address information."
+msgstr "لطفا اطلاعات آدرس را کامل کنید ."
+
+#: .\templates\orders\profile_address.html:103
+msgid "Complete the address information"
+msgstr "تکمیل اطلاعات نشانی"
+
+#: .\templates\orders\profile_address.html:110
+#: .\templates\orders\profile_order_view.html:156
 msgid "Our address"
 msgstr "آدرس ها"
 
-#: .\templates\orders\profile_address.html:104
-msgid "delete"
-msgstr "حذف کنید"
-
-#: .\templates\orders\profile_address.html:135
+#: .\templates\orders\profile_address.html:143
 msgid "edit address"
 msgstr "ویرایش آدرس"
+
+#: .\templates\orders\profile_address_edit.html:92
+#| msgid "edit address"
+msgid "Edit address details"
+msgstr "ویرایش جزئیات آدرس"
+
+#: .\templates\orders\profile_address_edit.html:96
+#: .\templates\orders\profile_user_edit.html:96
+msgid "Save changes"
+msgstr "ذخیره تغییرات"
+
+#: .\templates\orders\profile_address_edit.html:98
+#| msgid "exact address"
+msgid "Back to profile address"
+msgstr "بازگشت به نشانی پروفایل"
+
+#: .\templates\orders\profile_comment.html:99
+#| msgid "product"
+msgid "product name"
+msgstr "نام محصول"
+
+#: .\templates\orders\profile_comment.html:100
+msgid "opinion"
+msgstr "نظر"
+
+#: .\templates\orders\profile_comment.html:101
+#: .\templates\orders\profile_order.html:99
+msgid "status"
+msgstr "وضعیت"
+
+#: .\templates\orders\profile_comment.html:102
+msgid "Operation"
+msgstr "عملیات"
+
+#: .\templates\orders\profile_comment.html:132
+msgid "Recommend buying this product"
+msgstr "خرید این محصول را توصیه میکنم"
+
+#: .\templates\orders\profile_comment.html:134
+msgid "Do not recommend purchasing this product."
+msgstr "خرید این محصول را توصیه نمیکنم ."
+
+#: .\templates\orders\profile_comment.html:153
+msgid "You have not posted a comment yet."
+msgstr "شما هنوز هیچ نظری منتشر نکرده‌اید ."
+
+#: .\templates\orders\profile_comment.html:154
+msgid "Please visit the products section to post a comment!"
+msgstr "لطفا از بخش محصولات بازدید کنید تا نظر خود را ارسال کنید !"
+
+#: .\templates\orders\profile_order.html:97
+#| msgid "phone number"
+msgid "order number"
+msgstr "شماره سفارش"
+
+#: .\templates\orders\profile_order.html:98
+msgid "Order registration date"
+msgstr "تاریخ ثبت سفارش"
+
+#: .\templates\orders\profile_order.html:100
+#: .\templates\orders\profile_order_view.html:100
+#: .\templates\orders\profile_order_view.html:116
+msgid "total"
+msgstr "مجموع"
+
+#: .\templates\orders\profile_order.html:101
+#| msgid "email"
+msgid "Details"
+msgstr "جزئیات"
 
 #: .\templates\orders\profile_order.html:111
 msgid "paid"
@@ -239,12 +376,69 @@ msgid "waiting"
 msgstr "در انتظار"
 
 #: .\templates\orders\profile_order.html:117
+#: .\templates\orders\profile_order_view.html:108
+#: .\templates\orders\profile_order_view.html:119
+#: .\templates\orders\profile_order_view.html:144
 msgid "$"
 msgstr "تومان "
 
-#: .\templates\orders\profile_order.html:121
+#: .\templates\orders\profile_order.html:123
 msgid "view"
 msgstr "مشاهده کنید"
+
+#: .\templates\orders\profile_order_view.html:94
+msgid "Order details"
+msgstr "جزئیات سفارش"
+
+#: .\templates\orders\profile_order_view.html:99
+#| msgid "first name"
+msgid "Product name"
+msgstr "نام محصول"
+
+#: .\templates\orders\profile_order_view.html:125
+msgid "Shipping"
+msgstr "ارسال"
+
+#: .\templates\orders\profile_order_view.html:127
+msgid "Free transportation in Tehran province"
+msgstr "حمل و نقل رایگان در استان تهران"
+
+#: .\templates\orders\profile_order_view.html:129
+msgid "Transportation to other provinces 500,000 Tomans"
+msgstr "حمل و نقل به استان‌های دیگر 500,000 تومان"
+
+#: .\templates\orders\profile_order_view.html:133
+msgid "Payment method "
+msgstr "روش پرداخت"
+
+#: .\templates\orders\profile_order_view.html:134
+msgid "Direct bank transfer"
+msgstr "انتقال مستقیم بانکی"
+
+#: .\templates\orders\profile_order_view.html:141
+#| msgid "price"
+msgid "Final price"
+msgstr "قیمت نهایی"
+
+#: .\templates\orders\profile_order_view.html:163
+#| msgid "Our address"
+msgid "adress : "
+msgstr "آدرس :"
+
+#: .\templates\orders\profile_order_view.html:169
+#: .\templates\orders\profile_user.html:116
+msgid "email : "
+msgstr "ایمیل"
+
+#: .\templates\orders\profile_order_view.html:175
+#| msgid "Phone number : "
+msgid "phone number : "
+msgstr "تلفن همراه :"
+
+#: .\templates\orders\profile_order_view.html:181
+#| msgid "postal code"
+msgid "postal code : "
+msgstr "کد پستی :"
 
 #: .\templates\orders\profile_user.html:95
 msgid "Please complete your details."
@@ -258,10 +452,6 @@ msgstr "تکمیل مشخصات"
 msgid "Name and surname : "
 msgstr "نام و نام خانوادگی:"
 
-#: .\templates\orders\profile_user.html:116
-msgid "email : "
-msgstr "ایمیل"
-
 #: .\templates\orders\profile_user.html:122
 msgid "Phone number : "
 msgstr "تلفن همراه"
@@ -274,15 +464,32 @@ msgstr "تاریخ به روز رسانی پروفایل:"
 msgid "Receive the newsletter : "
 msgstr "دریافت خبرنامه:"
 
+#: .\templates\orders\profile_user.html:134
+msgid "Yes"
+msgstr "بله"
+
 #: .\templates\orders\profile_user.html:136
+msgid "No"
+msgstr "نه"
+
+#: .\templates\orders\profile_user.html:140
 msgid "National code : "
 msgstr "کد ملی:"
 
-#: .\templates\orders\profile_user.html:143
+#: .\templates\orders\profile_user.html:147
 msgid "Edit information"
 msgstr "ویرایش اطلاعات"
 
-#: .\views.py:16
+#: .\templates\orders\profile_user_edit.html:92
+msgid "Edit profile details"
+msgstr "ویرایش جزئیات پروفایل"
+
+#: .\templates\orders\profile_user_edit.html:98
+#| msgid "profile"
+msgid "Back to profile"
+msgstr "برگشت به پروفایل"
+
+#: .\views.py:28
 msgid ""
 "You cannot go to the order page. Please select your product from the store "
 "first."
@@ -290,25 +497,32 @@ msgstr ""
 "شما نمی‌توانید به صفحه سفارش بروید. لطفاً ابتدا محصول خود را از فروشگاه "
 "انتخاب کنید."
 
-#: .\views.py:74
-msgid "first_name"
-msgstr "نام"
-
-#: .\views.py:76
-msgid "last_name"
-msgstr "نام خانوادگی"
-
-#: .\views.py:78
-msgid "phone_number"
-msgstr "تلفن همراه"
-
-#: .\views.py:80
-msgid "national_number"
-msgstr "کد ملی"
-
-#: .\views.py:82
+#: .\views.py:98
 msgid "Receive_the_newsletter"
 msgstr "خبرنامه را دریافت می کنید؟"
+
+#: .\views.py:309
+#| msgid "province"
+msgid "province_address"
+msgstr "آدرس استان"
+
+#: .\views.py:311
+#| msgid "edit address"
+msgid "city_address"
+msgstr "آدرس شهر"
+
+#: .\views.py:315
+#| msgid "postal code"
+msgid "postal_code"
+msgstr "کد پستی"
+
+#: .\views.py:317
+#| msgid "order notes"
+msgid "order_notes"
+msgstr "توضیحات سفارش"
+
+#~ msgid "delete"
+#~ msgstr "حذف کنید"
 
 #~ msgid "Join Date : "
 #~ msgstr "تاریخ عضویت:"
