@@ -10,3 +10,6 @@ class AboutUsPageView(TemplateView):
 
 class PrivacyPageView(TemplateView):
     template_name = 'pages/privacy.html'
+
+class OrderRegistrationPageView(TemplateView):
+    template_name = 'pages/order_registration.html'

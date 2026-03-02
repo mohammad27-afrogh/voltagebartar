@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-04 19:02+0330\n"
-"PO-Revision-Date: 2026-02-04 19:38+0330\n"
+"POT-Creation-Date: 2026-03-02 03:18+0330\n"
+"PO-Revision-Date: 2026-03-02 03:19+0330\n"
 "Last-Translator:   <m.afroogh25@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
+
+#: .\templates\pages\order_registration.html:9
+msgid "order registration"
+msgstr "آموزش ثبت سفارش"
+
+#: .\templates\pages\order_registration.html:25
+msgid "order to log on the sabzeonline site"
+msgstr "آموزش ثبت سفارش در فروشگاه سبز آنلاین"
 
 #: .\templates\pages\privacy.html:7
 msgid "privacy page"
