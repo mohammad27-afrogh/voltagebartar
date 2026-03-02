@@ -8188,7 +8188,8 @@ span.show-less {
 }
 
 .blog-home .post-item .post-thumbnail img {
-    width: 30%;
+    width: 100%;
+    height: 20%;
 }
 
 .blog-home .post-item .title a {
@@ -9965,3 +9966,41 @@ body.account_page::before {
     margin-bottom: 15px;
 }
 
+/* فایل: main.css (یا هر نام دیگری که برای فایل CSS خود انتخاب می‌کنید) */
+
+.alert-container {
+  background-color: #fff3cd; /* زرد روشن */
+  border: 1px solid #ffeeba; /* حاشیه زرد */
+  color: #856404; /* رنگ متن قهوه ای تیره */
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  font-family: 'Arial', sans-serif; /* فونت خوانا */
+  display: flex;
+  align-items: center;
+  /* اضافه کردن icon هم میتونه با before/after انجام بشه */
+}
+
+.alert-icon {
+  margin-right: 10px;
+  font-size: 1.2em;
+  /* اگر بخواهید آیکون واقعی بگذارید، مثلاً با Font Awesome: */
+  /* font-family: 'Font Awesome 5 Free'; */
+  /* content: "\f071"; */
+  /* font-weight: 900; */
+}
+
+.alert-title {
+  font-weight: bold;
+  margin-right: 5px; /* کمی فاصله بین عنوان و متن */
+}
+
+.highlight-tehran {
+  color: #006400; /* سبز تیره */
+  font-weight: bold;
+}
+
+.highlight-shipping-cost {
+  color: #dc3545; /* قرمز */
+  font-weight: bold;
+}
