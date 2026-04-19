@@ -2,11 +2,12 @@ from .models import Category, Discount, Product
 from datetime import timedelta
 from django.utils import timezone
 
-from django.db.models import Q
+from django.db.models import Q, Prefetch
 
 
 def context_processors(request):
-    parent_categories = Category.objects.filter(parent__isnull=True).prefetch_related('subcategories')
+    parent_categories = (Category.objects.filter(parent__isnull=True).prefetch_related('subcategories', 'subcategories__subcategories'))
+
     return {'parent_categories': parent_categories}
 
 
@@ -26,14 +27,26 @@ def context_processors_discount(request):
 
 
 def context_successful_sales(request):
+    time_now = timezone.now()
+
+    active_discounts_prefetch = Prefetch(
+        'discounts',
+        queryset = Discount.objects.filter(
+            is_active = True,
+            end_date__gt=time_now,
+        ).order_by('id'),
+        to_attr = 'active_discount_list'
+    )
+
     successful_sales = (Product.objects.filter(successful_sales_count__gte=10)
-                        .order_by('-successful_sales_count').prefetch_related('discounts'))
+                        .order_by('-successful_sales_count').prefetch_related(active_discounts_prefetch))
 
     # *** اصلاح: اضافه کردن ویژگی active_discount ***
-    time_alan = timezone.now()
     for product in successful_sales:
-        # این خط، اولین تخفیف فعال را پیدا کرده و به عنوان active_discount اضافه می‌کند
-        product.active_discount = product.discounts.filter(is_active=True).filter(Q(end_date__gt=time_alan)).first()
+        if product.active_discount_list:
+            product.active_discount = product.active_discount_list[0]
+        else:
+            product.active_discount = None
 
     return {'successful_sales': successful_sales}
 
