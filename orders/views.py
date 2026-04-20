@@ -23,6 +23,7 @@ from .serializers import FavoriteProductSerializer
 @login_required
 def order_create_view(request):
     cart = Cart(request)
+    cart_items = list(cart.get_items_with_forms())
 
     if len(cart) == 0:
         messages.warning(request, _('You cannot go to the order page. Please select your product from the store first.'))
@@ -35,14 +36,17 @@ def order_create_view(request):
             order_obj.user = request.user
             order_obj.save()
 
-            for item in cart:
-                product = item['product_obj']
-                OrderItem.objects.create(
-                    order = order_obj,
-                    product = product,
-                    quantity = item['quantity'],
-                    price = product.base_price,
-                )
+            for item in cart_items:
+                product = item.get('product_obj')
+                quantity = item.get('quantity')
+
+                if product and quantity is not None:
+                    OrderItem.objects.create(
+                        order = order_obj,
+                        product = product,
+                        quantity = quantity,
+                        price = product.base_price,
+                    )
 
             cart.clear()
 
@@ -52,11 +56,12 @@ def order_create_view(request):
                 })
             else:
                 request.session['order_id'] = order_obj.id
-                return redirect('pyment_process')
+                return redirect('payment_process')
 
     else:
         form = AddressFormOrder()
     return render (request, 'cart/cart_checkout.html', context={
+        'cart_items': cart_items,
         'form': form,
     })
 
@@ -151,55 +156,13 @@ def profile_orders_view(request):
     current_user = request.user
     username = current_user
     profile, created  = Profile.objects.get_or_create(user=current_user)
-
-    order = Order.objects.filter(
-        user=current_user
-    ).select_related('city_address', 'province_address')
-
-    # مرتب‌سازی بر اساس جدیدترین تاریخ ایجاد (با استفاده از فیلد صحیح مدل)
-    order = order.order_by('-date_time_create') # <--- این خط باید باشد
-
-    # گرفتن تاریخ ثبت نام کاربر
-    gregorian_join_date = current_user.date_joined  
-    jalali_join_date_str = "تاریخ نامشخص"
-
-    if gregorian_join_date:
-        jalali_join_date = jdatetime.datetime.fromgregorian(datetime=gregorian_join_date)
-        # فرمت تاریخ: سال/ماه/روز ساعت:دقیقه
-        jalali_join_date_str = jalali_join_date.strftime("%Y/%m/%d %H:%M:%S")
     
     orders_whit_items = Order.objects.filter(user=current_user).prefetch_related('items').all()
-
-    # 3. منطق محاسبه هزینه ارسال برای *هر سفارش* در لیست
-    # ایجاد یک دیکشنری برای نگهداری هزینه ارسال هر سفارش بر اساس ID
-    order_shipping_costs = {}
-    
-    # پیمایش روی QuerySet (که شامل تمام سفارشات است)
-    for order_price in order:
-        # برای هر سفارش تکی، محاسبات را انجام می‌دهیم (رفع AttributeError)
-        
-        # فرض می‌کنیم city_address یک ForeignKey است و نام شهر را نیاز داریم
-        city_name = getattr(order_price.city_address, 'name', None)
-        
-        shipping_cost = 0
-        
-        # محاسبه هزینه ارسال بر اساس شهر این سفارش خاص
-        if city_name == 'Tehran': # یا 'Tehra'
-            # اگر سفارش تهرانی است، هزینه ارسال برابر با مجموع قیمت آیتم‌هاست (بر اساس منطق قبلی)
-            shipping_cost = order.get_total_price() 
-        else:
-            # اگر شهر دیگری است، هزینه ارسال اضافه می‌شود
-            shipping_cost = order.get_total_price() + 500000
-            
-        # ذخیره هزینه محاسبه شده با کلید ID سفارش
-        order_shipping_costs[order.pk] = shipping_cost
 
     context = {
         'username': username,
         'profile': profile,
-        'jalali_join_date_str': jalali_join_date_str,
         'orders_whit_items': orders_whit_items,
-        'total_price_city': order_shipping_costs,
     }
 
     return render(request, 'orders/profile_order.html', context)
@@ -384,7 +347,7 @@ def profile_comment_view(request):
         # فرمت تاریخ: سال/ماه/روز ساعت:دقیقه
         jalali_join_date_str = jalali_join_date.strftime("%Y/%m/%d %H:%M:%S")
 
-    comments_user = Comment.objects.select_related('user').filter(user=current_user).all()
+    comments_user = Comment.objects.select_related('user').filter(user=current_user).prefetch_related('product').all()
     
     context = {
         'profile': profile,

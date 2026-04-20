@@ -107,20 +107,16 @@
                                                         <tr>
                                                             <th scope="row" class="th-img">
                                                                 <div class="thumb-img">
-                                                                    <a href="#">
-                                                                        {% if comment_user.product.cover_product %}
-                                                                            <img class="zoom-img" id="img-product-zoom"
-                                                                                src="{{ comment_user.product.cover_product }}"
-                                                                                data-zoom-image="{{ comment_user.product.cover_product }}"
-                                                                                width="411" />
-                                                                        {% else %}
-                                                                            <img class="zoom-img" id="img-product-zoom"
-                                                                                src="{% static 'img/products/no_product_image.jpg' %}"
-                                                                                data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
-                                                                                width="411" />
-                                                                        {% endif %}
-                                                                        <div id="gallery_01f" style="width:420px;float:right;">
-                                                                    </a>
+                                                                    {% if comment_user.product.cover_product %}
+                                                                        <img class="zoom-img" id="img-product-zoom"
+                                                                            src="{{ comment_user.cover_product }}"
+                                                                            width="411" />
+                                                                    {% else %}
+                                                                        <img class="zoom-img" id="img-product-zoom"
+                                                                            src="{% static 'img/products/no_product_image.jpg' %}"
+                                                                            width="411" />
+                                                                    {% endif %}
+                                                                    <div id="gallery_01f" style="width:420px;float:right;">
                                                                 </div>
                                                             </th>
                                                             <td>

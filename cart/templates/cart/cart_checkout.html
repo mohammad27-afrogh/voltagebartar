@@ -38,7 +38,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {% for item in cart %}
+                                                    {% for item in cart_items %}
                                                         <tr class="checkout-cart-item">
                                                             <td class="product-name">{{ item.product_obj.name }}</td>
                                                             <td class="product-price text-info">
@@ -54,7 +54,7 @@
                                                     <tr class="cart-subtotal">
                                                         <th>{% trans 'sum total cart' %}</th>
                                                         <td>
-                                                            <span class="amount">{{ cart.get_total_price|intcomma:False|translate_number }}
+                                                            <span class="amount">{{ item.get_total_price|intcomma:False|translate_number }}
                                                                 <span>{% trans '$' %}</span>
                                                             </span>
                                                         </td>
