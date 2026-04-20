@@ -1,20 +1,39 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.conf import settings
-from django.db.models import Q, Count
-from django.db.models import Min, Max, Avg
+from django.db.models import Q, Count, Min, Max, Avg, OuterRef, Subquery, DecimalField, ExpressionWrapper, F
 from star_ratings.models import Rating
 from datetime import timedelta
 from django.utils import timezone
 
-from .models import  Product, Comment, Category, Brand
+from .models import  Product, Comment, Category, Brand, Discount
 from .forms import CommentForm, QuestionsAndAnswersForm
 
 
 
 def product_list_view(request):
+    todat = timezone.now().data()
+
+    best_discount_qs = Discount.objects.filter(
+        product = OuterRef('pk'),
+        is_active = True,
+        start_date__lte = todat,
+        end_date__gte = todat,
+    ).order_by('-discount_persentage')
+
+    products_with_discount = Product.objects.annotate(
+        best_discount_persentage = Subquery(best_discount_qs.values('discount_persenrage')[:1]),
+    ).annotate(
+        final_price = ExpressionWrapper(
+            F('base_price') * (
+                1 - F('best_discount_persentage') / 100
+            ),
+            output_field = DecimalField(max_digits=10, pesimal_places=2)
+        )
+    )
+
     # مقداردهی اولیه برای حالتی که هیچ فیلتری اعمال نشده است
-    products = Product.objects.all().order_by('id')
+    products = products_with_discount
     current_category_name = "همه محصولات"
 
     selected_category_slug = request.GET.get('category')
@@ -33,6 +52,7 @@ def product_list_view(request):
             # 3. فیلتر کردن محصولات بر اساس این لیست دسته‌ها
             products = Product.objects.filter(category__in=all_related_categories)
 
+
             current_category_name = category.name
 
         except Category.DoesNotExist:
@@ -40,9 +60,11 @@ def product_list_view(request):
             products = Product.objects.none()
             current_category_name = "دسته مورد نظر یافت نشد"
 
+    categories = Category.objects.all()
+
     context = {
         'products': products,
-        'categories': Category.objects.all(),  # این برای نمایش منوی دسته‌بندی‌ها در نوار کناری استفاده می‌شود
+        'categories': categories,  # این برای نمایش منوی دسته‌بندی‌ها در نوار کناری استفاده می‌شود
         'current_category_name': current_category_name,
     }
 

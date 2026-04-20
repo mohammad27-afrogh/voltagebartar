@@ -73,60 +73,13 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('product_detail_by_slug', args=[self.slug])
 
-    @property
-    def is_on_sale(self):
-        today = timezone.now().date()
-        return self.discounts.filter(
-            is_active=True,
-            start_date__lte=today,
-            end_date__gte=today,
-        ).exists()
-
-    @property
-    def active_discounts(self):
-        today = timezone.now().date()
-        return self.discounts.filter(
-            is_active=True,
-            start_date__lte=today,
-            end_date__gte=today,
-        )
 
     @property
     def final_price(self):
-        today = timezone.now().date() # تاریخ امروز
-
-        # پیدا کردن بهترین تخفیف که در حال حاضر فعال است
-        best_discount = self.discounts.filter(
-            is_active=True,
-            start_date__lte=today,
-            end_date__gte=today
-        ).order_by('-discount_percentage').first()
-
-        base_price = Decimal(self.base_price)
-
-        if best_discount:
-            discount_factor = Decimal('1') - (best_discount.discount_percentage / Decimal('100'))
-            discounted_price = base_price * discount_factor
-            return discounted_price.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
-        else:
-            return base_price
-
-    @property
-    def active_discounts(self):
-        """
-        محاسبه و برگرداندن دیکشنری تخفیف فعال مورد نیاز تمپلیت.
-        """
-        active_discount_obj = self.discounts.filter(is_active=True).filter(Q(end_date__gt=timezone.now())).first()
-
-        if active_discount_obj:
-            return {
-                'discount_percentage': active_discount_obj.discount_percentage,
-                # اگر فیلدهای دیگری لازم است، اینجا اضافه کنید
-            }
-        else:
-            # برگرداندن یک شیء قابل پیمایش (مانند دیکشنری خالی)
-            return {}
-
+        if hasattr(self, 'best_discount_persentage') and self.best_discount_persentage:
+            discount_factor = Decimal('1') - (self.best_discount_persentage / Decimal('100'))
+            return (self.base_price * discount_factor).quantize(Decimal('0.01'))
+        return self.base_price
 
 class Discount(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='discounts',
