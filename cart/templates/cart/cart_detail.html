@@ -32,7 +32,7 @@
                     <div class="post-item-cart d-block order-2">
                         <div class="content-page">
                             <div class="cart-form">
-                                {% if cart %}
+                                {% if cart_items %}
                                     <table class="table-cart cart table table-borderless">
                                         <thead>
                                             <tr>
@@ -43,7 +43,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {% for item in cart %}
+                                            {% for item in cart_items %}
                                                 <tr>
                                                     <th scope="row" class="product-cart-name">
                                                         <div class="product-thumbnail-img">

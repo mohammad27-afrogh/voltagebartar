@@ -7,14 +7,10 @@ from .forms import AddToCartProductForm
 def cart_detail_view(request):
     cart = Cart(request)
 
-    for item in cart:
-        item['product_update_quantity_form'] = AddToCartProductForm(initial={
-            'quantity': item['quantity'],
-            'inplace': True,
-        })
+    cart_items_qith_forms = cart.get_items_with_forms()
 
     return render(request, 'cart/cart_detail.html', {
-        'cart': cart,
+        'cart_items': cart_items_qith_forms,
     })
 
 @require_POST
