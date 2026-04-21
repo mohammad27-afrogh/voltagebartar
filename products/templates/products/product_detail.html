@@ -74,7 +74,8 @@
                                     </h1>
                                     <div class="product-guaranteed text-success">
                                         {{ product.successful_sales_count }}
-                                        <span>{% trans 'successful sale' %}</span>
+                                        <span>{% trans 'successful sale' %}</span> | {{ product.view_count }}
+                                        <span>{% trans 'view count' %}</span>
                                     </div>
                                 </div>
                                 <div class="product-attributes">

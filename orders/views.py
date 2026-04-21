@@ -5,6 +5,7 @@ from django.utils.translation import gettext as _
 from django.urls import reverse
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
+from django.db.models import F
 
 from rest_framework.generics import ListAPIView
 from rest_framework.decorators import api_view, permission_classes
@@ -59,6 +60,18 @@ def order_create_view(request):
             cart.clear()
 
             if order_obj.pyment_price == 'HD':
+                order_item = order_obj.items.select_related('product').all()
+
+                order_obj.status = 'PEN'
+                order_obj.is_paid = False
+                order_obj.save()
+
+                for item in order_item:
+                    if item.product:
+                        item.product.successful_sales_count = F('successful_sales_count') + item.quantity
+                        item.product.save(update_fields=['successful_sales_count'])
+                
+
                 return render(request, 'cart/cart_checkout_complete_buy.html', context={
                     'order_obj': order_obj,
                 })
