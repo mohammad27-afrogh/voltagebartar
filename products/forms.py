@@ -4,8 +4,6 @@ from .models import (Product,
                      Category,
                      Inventory,
                      Features,
-                     Order,
-                     OrderItem,
                      Brand,
                      Comment,
                      CategorySlider,
@@ -77,23 +75,6 @@ class FeaturesForm(forms.ModelForm):
             'ingredients',
             'care_tips',
             'usage_instructions',
-        ]
-
-class OrderForm(forms.ModelForm):
-    class Meta:
-        model = Order
-        fields = [
-            'status',
-            'created_at',
-        ]
-
-class OrderItemForm(forms.ModelForm):
-    class Meta:
-        model = OrderItem
-        fields = [
-            'order',
-            'product',
-            'quantity',
         ]
 
 class BrandForm(forms.ModelForm):

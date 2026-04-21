@@ -1,4 +1,5 @@
 from django.db import models
+from django.db import transaction
 from django.conf import settings
 from django.utils.translation import gettext as _
 from django.utils import timezone
@@ -15,31 +16,42 @@ class Order(models.Model):
         ('PP', _('Pyment Price')),
         ('HD', _('House Door')),
     ]
+    PAYMENT_STATUS = [
+        ('PEN', _('Pending')),
+        ('PAI', _('Paid')),
+        ('CAN', _('Cancelled')),
+        ('RET', _('Returned')),
+    ]
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=_('user'))
-    id = models.UUIDField(primary_key=True, default=uuid4)
+    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     is_paid = models.BooleanField(_('is paid'), default=False)
+    status = models.CharField(_('status'), max_length=3, choices=PAYMENT_STATUS, default='PEN')
+
     first_name = models.CharField(_('first name'), max_length=100)
     last_name = models.CharField(_('last name'), max_length=200)
     phone_number = PhoneNumberField(_('phone number'))
     national_number = models.CharField(_('national number'), max_length=10)
+
     province_address = models.ForeignKey(Province, on_delete=models.CASCADE, verbose_name=_('province'))
     city_address = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name=_('city'))
     exact_address = models.CharField(_('exact address'), max_length=700)
     postal_code = models.IntegerField(_('postal code'), null=True, max_length=10)
     email = models.EmailField(_('email'))
     order_notes = RichTextField(_('order notes'))
+
     date_time_create = models.DateTimeField(_('date_time_create'), default=timezone.now)
     date_time_modified = models.DateTimeField(_('date_time_modified'), auto_now=True)
+
     zarinpal_authority = models.CharField(max_length=255, blank=True)
     zarinpal_ref_id = models.CharField(max_length=255, blank=True)
     zarinpal_data = models.TextField(blank=True)
     pyment_price = models.CharField(_('other pyment price'), max_length=2, choices=PYMENT_PRICE_CHOICESS)
 
-
     def __str__(self):
-        return f'{self.user}'
+        return f'Order {self.id} for {self.user}'
 
+    @transaction.atomic
     def get_total_price(self):
         total_price = sum(item.quantity * item.price for item in self.items.all())
 
@@ -54,7 +66,13 @@ class OrderItem(models.Model):
     date_time_create = models.DateTimeField(_('date_time_create'), default=timezone.now)
 
     def __str__(self):
-        return f'OrderItem {self.id}: {self.product} * {self.quantity} (price:{self.price})'
+        return f'OrderItem {self.id}: {self.product.name} * {self.quantity} (price:{self.price})'
+
+    def save(self, *args, **kwargs):
+        if self.pk is None:
+            self.price = self.product.final_price
+        super().save(*args, **kwargs)
+
 
 class Profile(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=_('user'))

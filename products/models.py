@@ -210,30 +210,6 @@ class Features(models.Model):
         return f'{self.name_features}'
 
 
-class Order(models.Model):
-    PAYMENT_STATUS = [
-        ('PEN', _('Pending')),
-        ('PAI', _('Paid')),
-        ('CAN', _('Cancelled')),
-        ('RET', _('Returned')),
-    ]
-    status = models.CharField(_('status'), max_length=3, choices=PAYMENT_STATUS, default='PEN')
-    created_at = models.DateTimeField(_('created_at'), default=timezone.now)
-
-    def __str__(self):
-        return f'{self.status}'
-
-
-class OrderItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items', verbose_name=_('items'))
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='order_items',
-                                verbose_name=_('order_items'))
-    quantity = models.DecimalField(_('quantity'), max_digits=5, decimal_places=2)
-
-    def __str__(self):
-        return f'{self.quantity} * {self.product.name}'
-
-
 class Brand(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name=_('Brand_name'))
     description = RichTextField(blank=True, null=True, verbose_name=_('description'))

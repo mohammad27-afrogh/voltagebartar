@@ -17,6 +17,7 @@ class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         'postal_code',
         'date_time_create',
         'is_paid',
+        'status',
         'pyment_price',
     ]
 
