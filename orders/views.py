@@ -41,12 +41,20 @@ def order_create_view(request):
                 quantity = item.get('quantity')
 
                 if product and quantity is not None:
-                    OrderItem.objects.create(
+                    order_item, created = OrderItem.objects.get_or_create(
                         order = order_obj,
                         product = product,
                         quantity = quantity,
-                        price = product.base_price,
+                        price = product.base_price
                     )
+
+                    if created:
+                        order_item.quantity = quantity
+                        order_item.price = product.base_price
+                    else:
+                        order_item.quantity += quantity
+                    
+                    order_item.save()
 
             cart.clear()
 
