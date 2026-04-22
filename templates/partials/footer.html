@@ -10,8 +10,8 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="logo">
-                        <a href="#">
-                            <img src="assets/images/logo.png" alt="sabzeonline">
+                        <a href="{% url 'home' %}" class="custom-logo-link">
+                            <img src="{% static 'img/logo/logo.png' %}" alt="sabzeonline">
                         </a>
                     </div>
                 </div>
@@ -217,7 +217,7 @@
 <div class="P-loader">
     <div class="P-loader-content">
         <div class="logo-loader">
-            <img src="assets/images/logo.png" alt="logo">
+            <img src="{% static 'img/logo/logo.png' %}" alt="logo">
         </div>
         <div class="pic-loader text-center">
             <img src="{% static 'img/three-dots.svg' %}" width="50" alt="">

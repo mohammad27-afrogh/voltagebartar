@@ -9,8 +9,8 @@
                 <div class="header-right">
                     <div class="col-lg-3 pr">
                         <div class="header-logo row text-right">
-                            <a href="{% url 'home' %}">
-                                <img src="assets/images/logo.png" alt="{% trans 'sabzeonline' %}">
+                            <a href="{% url 'home' %}" class="custom-logo-link">
+                                <img src="{% static 'img/logo/logo.png' %}" alt="{% trans 'sabzeonline' %}">
                             </a>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                                                     <a href="{% url 'order:profile' %}" class="account-link">{% trans 'profile' %}</a>
                                                 </li>
                                                 <li class="account-item">
-                                                    <a href="#" class="account-link">{% trans 'My orders' %}</a>
+                                                    <a href="{% url 'order:profile_order' %}" class="account-link">{% trans 'My orders' %}</a>
                                                 </li>
                                                 <li class="account-item">
                                                     <a href="{% url 'cart:Cart_detail' %}" class="account-link">{% trans 'cart' %}</a>

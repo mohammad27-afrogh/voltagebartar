@@ -1322,7 +1322,7 @@ header.header-main {
 
 .sidebar .nav-header .logo-wrap .logo-icon img {
     display: block;
-    width: 130px;
+    width: 1px;
 }
 
 .sidebar .nav-header .logo-wrap .logo-text {
@@ -10003,4 +10003,9 @@ body.account_page::before {
 .highlight-shipping-cost {
   color: #dc3545; /* قرمز */
   font-weight: bold;
+}
+
+.custom-logo-link img {
+    width: 200px !important; /* مثال: عرض 30 پیکسل */
+    height: auto !important; /* ارتفاع به صورت خودکار تنظیم شود */
 }

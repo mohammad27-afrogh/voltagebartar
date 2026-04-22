@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-01 20:57+0330\n"
-"PO-Revision-Date: 2026-01-01 21:01+0330\n"
+"POT-Creation-Date: 2026-04-22 08:10+0330\n"
+"PO-Revision-Date: 2026-04-22 08:20+0330\n"
 "Last-Translator:   <m.afroogh25@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,373 +18,344 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: .\models.py:20
+#: .\models.py:21
 msgid "Flower"
 msgstr "گل"
 
-#: .\models.py:21
+#: .\models.py:22
 msgid "Fertilizer"
 msgstr "کود"
 
-#: .\models.py:22
+#: .\models.py:23
 msgid "Gardening Tool"
 msgstr "ابزار باغبانی"
 
-#: .\models.py:23
+#: .\models.py:24
 msgid "Seed"
 msgstr "بذر"
 
-#: .\models.py:24
+#: .\models.py:25
 msgid "Potting Soil"
 msgstr "خاک گلدان"
 
-#: .\models.py:27 .\models.py:202
+#: .\models.py:28 .\models.py:156
 msgid "Available"
 msgstr "موجود است"
 
-#: .\models.py:28
+#: .\models.py:29
 msgid "Out_of_stock"
 msgstr "موجود نیست"
 
-#: .\models.py:29 .\models.py:261
+#: .\models.py:30
 msgid "Pending"
 msgstr "در انتظار"
 
-#: .\models.py:30
+#: .\models.py:31
 msgid "Discontinued"
 msgstr "متوقف شد"
 
-#: .\models.py:33
+#: .\models.py:34
 msgid "name"
 msgstr "نام"
 
-#: .\models.py:34
+#: .\models.py:35
 msgid "slug"
 msgstr "لینک آدرس محصول به انگلیسی"
 
-#: .\models.py:35
+#: .\models.py:36
 msgid "sku"
 msgstr "شماره سریال محصول"
 
-#: .\models.py:37 .\models.py:172
+#: .\models.py:38 .\models.py:126
 msgid "category"
 msgstr "دسته بندی"
 
-#: .\models.py:38
+#: .\models.py:39
 msgid "product_type"
 msgstr "نوع محصول"
 
-#: .\models.py:39
+#: .\models.py:40
 msgid "cover_product"
 msgstr "تصویر_محصول"
 
-#: .\models.py:41
+#: .\models.py:42
 msgid "features"
 msgstr "ویژگی ها"
 
-#: .\models.py:43
+#: .\models.py:44
 msgid "brand"
 msgstr "نام تجاری"
 
-#: .\models.py:45 .\models.py:209
+#: .\models.py:46 .\models.py:163
 msgid "inventory"
 msgstr "موجودی"
 
-#: .\models.py:46
+#: .\models.py:47
 msgid "commodity_status"
 msgstr "وضعیت_کالا"
 
-#: .\models.py:47
-msgid "successful_sales_count"
-msgstr "تعداد_فروش_موفق"
-
 #: .\models.py:48
+msgid "successful_sales_count"
+msgstr "تعداد فروش موفق"
+
+#: .\models.py:49
 msgid "base_price"
 msgstr "قیمت_پایه"
 
-#: .\models.py:49
+#: .\models.py:50
 msgid "short_description"
 msgstr "توضیح کوتاه"
 
-#: .\models.py:50 .\models.py:285
+#: .\models.py:51 .\models.py:215
 msgid "description"
 msgstr "توضیحات"
 
-#: .\models.py:51
+#: .\models.py:52
 msgid "tags"
 msgstr "برچسب ها"
 
-#: .\models.py:52
+#: .\models.py:53
 msgid "date_time_create"
 msgstr "تاریخ_زمان_ایجاد"
 
-#: .\models.py:53
+#: .\models.py:54
 msgid "date_time_modified"
 msgstr "تاریخ_زمان_تغییر یافته"
 
-#: .\models.py:57
+#: .\models.py:58
 msgid "Number of visits"
 msgstr "تعداد بازدید"
 
-#: .\models.py:132
+#: .\models.py:86
 msgid "product_discounts"
 msgstr "تخفیف‌های_محصول"
 
-#: .\models.py:133
+#: .\models.py:87
 msgid "discount_percentage"
 msgstr "درصد تخفیف"
 
-#: .\models.py:134
+#: .\models.py:88
 msgid "start_date"
 msgstr "شروع_تاریخ"
 
-#: .\models.py:135
+#: .\models.py:89
 msgid "end_date"
 msgstr "تاریخ پایان"
 
-#: .\models.py:136
+#: .\models.py:90
 msgid "is_active"
 msgstr "فعال است"
 
-#: .\models.py:159
+#: .\models.py:113
 msgid "Category name"
 msgstr "نام دسته بندی"
 
-#: .\models.py:160
+#: .\models.py:114
 msgid "Address (slug)"
 msgstr "آدرس (slug)"
 
-#: .\models.py:167
+#: .\models.py:121
 msgid "Parent category"
 msgstr "دسته والد"
 
-#: .\models.py:169
+#: .\models.py:123
 msgid "cover_category"
 msgstr "عکس_دسته"
 
-#: .\models.py:173
+#: .\models.py:127
 msgid "Categories"
 msgstr "زیر مجموعه ها"
 
-#: .\models.py:203
+#: .\models.py:157
 msgid "Non-available"
 msgstr "در دسترس نیست"
 
-#: .\models.py:204
+#: .\models.py:158
 msgid "Special"
 msgstr "ویژه"
 
-#: .\models.py:207
+#: .\models.py:161
 msgid "product_name"
 msgstr "نام محصول"
 
-#: .\models.py:208 .\models.py:266
+#: .\models.py:162
 msgid "status"
 msgstr "وضعیت"
 
-#: .\models.py:217
+#: .\models.py:171
 msgid "Gram"
 msgstr "گرم"
 
-#: .\models.py:218
+#: .\models.py:172
 msgid "KiloGram"
 msgstr "کیلو گرم"
 
-#: .\models.py:220
+#: .\models.py:174
 msgid "MilliLiter"
 msgstr "میلی لیتر"
 
-#: .\models.py:221
+#: .\models.py:175
 msgid "Liter"
 msgstr "لیتر"
 
-#: .\models.py:224
+#: .\models.py:178
 msgid "Number"
 msgstr "عدد"
 
-#: .\models.py:225
+#: .\models.py:179
 msgid "Packet"
 msgstr "بسته"
 
-#: .\models.py:228
+#: .\models.py:182
 msgid "SantiMeter"
 msgstr "سانتی متر"
 
-#: .\models.py:229
+#: .\models.py:183
 msgid "Meter"
 msgstr "متر"
 
-#: .\models.py:231
+#: .\models.py:185
 msgid "name_features"
 msgstr "نام ویژگی "
 
-#: .\models.py:233 .\templates\products\product_detail.html:135
+#: .\models.py:187 .\templates\products\product_detail.html:135
 #: .\templates\products\product_detail.html:347
 msgid "Length"
 msgstr "طول"
 
-#: .\models.py:234
+#: .\models.py:188
 msgid "Length_unit"
 msgstr "طول واحد"
 
-#: .\models.py:236 .\templates\products\product_detail.html:142
+#: .\models.py:190 .\templates\products\product_detail.html:142
 #: .\templates\products\product_detail.html:359
 msgid "Width"
 msgstr "عرض"
 
-#: .\models.py:237
+#: .\models.py:191
 msgid "Width_unit"
 msgstr "عرض واحد"
 
-#: .\models.py:239 .\templates\products\product_detail.html:149
+#: .\models.py:193 .\templates\products\product_detail.html:149
 #: .\templates\products\product_detail.html:371
 msgid "Height"
 msgstr "ارتفاع"
 
-#: .\models.py:240
+#: .\models.py:194
 msgid "Height_unit"
 msgstr "ارتفاع واحد"
 
-#: .\models.py:242
+#: .\models.py:196
 msgid "pot_size"
 msgstr "اندازه گلدان"
 
-#: .\models.py:244
+#: .\models.py:198
 msgid "number"
 msgstr "عدد"
 
-#: .\models.py:245
+#: .\models.py:199
 msgid "unit_counting"
 msgstr "واحد شمارش"
 
-#: .\models.py:248
+#: .\models.py:202
 msgid "weight"
 msgstr "وزن"
 
-#: .\models.py:249
+#: .\models.py:203
 msgid "weight_unit"
 msgstr "ارتفاع"
 
-#: .\models.py:251
+#: .\models.py:205
 msgid "ingredients"
 msgstr "مواد تشکیل دهنده"
 
-#: .\models.py:252
+#: .\models.py:206
 msgid "care tipe"
 msgstr "نکات مراقبتی"
 
-#: .\models.py:253
+#: .\models.py:207
 msgid "usage instructions"
 msgstr "دستورالعمل استفاده"
 
-#: .\models.py:262
-msgid "Paid"
-msgstr "پرداخت شده است"
-
-#: .\models.py:263
-msgid "Cancelled"
-msgstr "لغو شد"
-
-#: .\models.py:264
-msgid "Returned"
-msgstr "بازگشت"
-
-#: .\models.py:267
-msgid "created_at"
-msgstr "ایجاد_در"
-
-#: .\models.py:274
-msgid "items"
-msgstr "موارد"
-
-#: .\models.py:276
-msgid "order_items"
-msgstr "موارد اقلام"
-
-#: .\models.py:277
-msgid "quantity"
-msgstr "تعداد"
-
-#: .\models.py:284
+#: .\models.py:214
 msgid "Brand_name"
 msgstr "نام تجاری"
 
-#: .\models.py:297
+#: .\models.py:227
 msgid "comments"
 msgstr "نظرات"
 
-#: .\models.py:298 .\models.py:336
+#: .\models.py:228 .\models.py:266
 msgid "user"
 msgstr "کاربر"
 
-#: .\models.py:299
+#: .\models.py:229
 msgid "time_release_comment"
 msgstr "زمان_انتشار_نظر"
 
-#: .\models.py:300 .\models.py:338
+#: .\models.py:230 .\models.py:268
 msgid "update_to"
 msgstr "به روز رسانی به"
 
-#: .\models.py:301
+#: .\models.py:231
 msgid "body_comment"
 msgstr "متن نظر"
 
-#: .\models.py:303 .\models.py:341
+#: .\models.py:233 .\models.py:271
 msgid "answer"
 msgstr "پاسخ دهید"
 
-#: .\models.py:304
+#: .\models.py:234
 msgid "I recommend purchasing this product ?"
 msgstr "آیا خرید این محصول را توصیه میکنم؟"
 
-#: .\models.py:311
+#: .\models.py:241
 msgid "Ad Title"
 msgstr "عنوان آگهی"
 
-#: .\models.py:312
+#: .\models.py:242
 msgid "Short description"
 msgstr "توضیحات کوتاه"
 
-#: .\models.py:313
+#: .\models.py:243
 msgid "caver slide"
 msgstr "عکس اسلاید"
 
-#: .\models.py:316
+#: .\models.py:246
 msgid "Related category"
 msgstr "دسته بندی مرتبط"
 
-#: .\models.py:319
+#: .\models.py:249
 msgid "Display order"
 msgstr "نمایش سفارش"
 
-#: .\models.py:320
+#: .\models.py:250
 msgid "active"
 msgstr "فعال است"
 
-#: .\models.py:335
+#: .\models.py:265
 msgid "Product questions and answers"
 msgstr "پرسش و پاسخ محصول"
 
-#: .\models.py:337
+#: .\models.py:267
 msgid "time_release_question"
 msgstr "زمان_انتشار_سوال"
 
-#: .\models.py:339
+#: .\models.py:269
 msgid "body_question"
 msgstr "متن سوال"
 
-#: .\templates\products\product_detail.html:10
-#: .\templates\products\product_list.html:41
-msgid "sabzeonline"
-msgstr "سبز آنلاین"
-
-#: .\templates\products\product_detail.html:27
+#: .\templates\products\product_detail.html:26
 msgid "home"
 msgstr "خانه"
 
-#: .\templates\products\product_detail.html:78
+#: .\templates\products\product_detail.html:77
 msgid "successful sale"
-msgstr "فروش_موفق"
+msgstr "فروش موفق"
+
+#: .\templates\products\product_detail.html:78
+msgid "view count"
+msgstr "بازدید"
 
 #: .\templates\products\product_detail.html:98
 msgid "Category:"
@@ -423,27 +394,30 @@ msgid "Ingredients"
 msgstr "مواد تشکیل دهنده"
 
 #: .\templates\products\product_detail.html:186
-#: .\templates\products\product_list.html:139
+#: .\templates\products\product_list.html:108
 msgid "price: "
 msgstr "قیمت :"
 
 #: .\templates\products\product_detail.html:190
-#: .\templates\products\product_list.html:145
-#: .\templates\products\product_list.html:234
-#: .\templates\products\product_list.html:237
-#: .\templates\products\product_list.html:263
-#: .\templates\products\product_list.html:307
-#: .\templates\products\product_list.html:310
-#: .\templates\products\product_list.html:336
-#: .\templates\products\product_list.html:412
-#: .\templates\products\product_list.html:415
-#: .\templates\products\product_list.html:441
-#: .\templates\products\product_list.html:486
-#: .\templates\products\product_list.html:489
-#: .\templates\products\product_list.html:515
-#: .\templates\products\product_list.html:560
-#: .\templates\products\product_list.html:563
-#: .\templates\products\product_list.html:589
+#: .\templates\products\product_list.html:113
+#: .\templates\products\product_list.html:226
+#: .\templates\products\product_list.html:229
+#: .\templates\products\product_list.html:274
+#: .\templates\products\product_list.html:335
+#: .\templates\products\product_list.html:338
+#: .\templates\products\product_list.html:382
+#: .\templates\products\product_list.html:444
+#: .\templates\products\product_list.html:447
+#: .\templates\products\product_list.html:491
+#: .\templates\products\product_list.html:553
+#: .\templates\products\product_list.html:556
+#: .\templates\products\product_list.html:600
+#: .\templates\products\product_list.html:662
+#: .\templates\products\product_list.html:665
+#: .\templates\products\product_list.html:709
+#: .\templates\products\product_list.html:771
+#: .\templates\products\product_list.html:774
+#: .\templates\products\product_list.html:818
 msgid "$"
 msgstr "تومان"
 
@@ -535,89 +509,123 @@ msgstr "مشخصات"
 msgid "User comments to:"
 msgstr "نظرات کاربران به:"
 
-#: .\templates\products\product_detail.html:430
+#: .\templates\products\product_detail.html:431
 msgid "Register a comment"
 msgstr "ثبت نظر"
 
-#: .\templates\products\product_detail.html:446
+#: .\templates\products\product_detail.html:435
+msgid " please register for your comment ! "
+msgstr "لطفا برای ثبت نظر لاگین نمایید !"
+
+#: .\templates\products\product_detail.html:453
 msgid "I recommend purchasing this product."
 msgstr "خرید این محصول را توصیه می‌کنم."
 
-#: .\templates\products\product_detail.html:449
+#: .\templates\products\product_detail.html:456
 msgid "I do not recommend purchasing this product."
 msgstr "خرید این محصول را توصیه نمی‌کنم."
 
-#: .\templates\products\product_detail.html:474
+#: .\templates\products\product_detail.html:481
 msgid "Questions and answers"
 msgstr "پرسش و پاسخ"
 
-#: .\templates\products\product_detail.html:475
+#: .\templates\products\product_detail.html:482
 msgid "Ask your question about the product."
 msgstr "سوال خود را در مورد محصول مطرح کنید."
 
-#: .\templates\products\product_detail.html:480
+#: .\templates\products\product_detail.html:488
 msgid "Register question"
 msgstr "ثبت سوال"
 
-#: .\templates\products\product_list.html:59
-#| msgid "Product features"
+#: .\templates\products\product_detail.html:492
+msgid "please fill out the question !"
+msgstr "لطفا برای ثبت ایجاد پرسش لاگین نمایید !"
+
+#: .\templates\products\product_list.html:10
+msgid "sabzeonline"
+msgstr "سبز آنلاین"
+
+#: .\templates\products\product_list.html:28
 msgid "Product categories"
 msgstr "دسته بندی محصولات"
 
-#: .\templates\products\product_list.html:73
+#: .\templates\products\product_list.html:42
 msgid "everyone"
 msgstr "همه"
 
-#: .\templates\products\product_list.html:95
-#| msgid "brand"
+#: .\templates\products\product_list.html:64
 msgid "brands"
 msgstr "برند ها"
 
-#: .\templates\products\product_list.html:124
+#: .\templates\products\product_list.html:93
 msgid "Price range"
 msgstr "محدوده قیمت"
 
-#: .\templates\products\product_list.html:160
-#| msgid "Product features"
+#: .\templates\products\product_list.html:117
+msgid "apply"
+msgstr "اعمال"
+
+#: .\templates\products\product_list.html:135
 msgid "Product archive"
 msgstr "آرشیو محصول"
 
-#: .\templates\products\product_list.html:162
+#: .\templates\products\product_list.html:137
 msgid "Sort by:"
 msgstr "مرتب سازی بر اساس:"
 
-#: .\templates\products\product_list.html:169
+#: .\templates\products\product_list.html:144
 msgid "most visited"
 msgstr "بیشترین بازدید"
 
-#: .\templates\products\product_list.html:174
+#: .\templates\products\product_list.html:149
 msgid "Bestseller"
 msgstr "پرفروش ترین"
 
-#: .\templates\products\product_list.html:179
+#: .\templates\products\product_list.html:154
 msgid "the most popular"
 msgstr "محبوب ترین"
 
-#: .\templates\products\product_list.html:183
+#: .\templates\products\product_list.html:158
 msgid "The newest"
 msgstr "جدیدترین"
 
-#: .\templates\products\product_list.html:187
+#: .\templates\products\product_list.html:162
 msgid "the cheapest"
 msgstr "ارزان ترین"
 
-#: .\templates\products\product_list.html:192
+#: .\templates\products\product_list.html:167
 msgid "the most expensive"
 msgstr "گران ترین"
 
-#: .\templates\products\product_list.html:213
-#: .\templates\products\product_list.html:286
-#: .\templates\products\product_list.html:391
-#: .\templates\products\product_list.html:465
-#: .\templates\products\product_list.html:539
-#| msgid "Special"
+#: .\templates\products\product_list.html:188
+#: .\templates\products\product_list.html:297
+#: .\templates\products\product_list.html:406
+#: .\templates\products\product_list.html:515
+#: .\templates\products\product_list.html:624
+#: .\templates\products\product_list.html:733
 msgid "Special sale"
 msgstr "فروش ویژه"
+
+#~ msgid "Paid"
+#~ msgstr "پرداخت شده است"
+
+#~ msgid "Cancelled"
+#~ msgstr "لغو شد"
+
+#~ msgid "Returned"
+#~ msgstr "بازگشت"
+
+#~ msgid "created_at"
+#~ msgstr "ایجاد_در"
+
+#~ msgid "items"
+#~ msgstr "موارد"
+
+#~ msgid "order_items"
+#~ msgstr "موارد اقلام"
+
+#~ msgid "quantity"
+#~ msgstr "تعداد"
 
 #~ msgid "unit"
 #~ msgstr "واحد اندازه گیری"
