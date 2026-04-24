@@ -296,6 +296,18 @@ class Questions_and_answers(models.Model):
     time_release_question = models.DateTimeField(_('time_release_question'), default=timezone.now)
     update_to = models.DateTimeField(_('update_to'), auto_now=True)
     body_question = RichTextField(_('body_question'), )
-    answer_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True,
+    answer_question = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='child_questions',
                                        verbose_name=_('answer'))
     category_question = models.CharField(_('category_question'), max_length=3, choices=[('', _('What part do you have a question about?'))] + CHOICES_QUESTION_AND_ANSWER)
+
+
+class Answer(models.Model):
+    question = models.ForeignKey(Questions_and_answers, on_delete=models.CASCADE, related_name='answers',
+                                verbose_name=_('answer admin to question product'))
+    admin = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name=_('admin'))
+    answer_text = models.TextField(_('body_question_answer'),)
+    created_at = models.DateTimeField(_('created at'), default=timezone.now)
+
+    def __str__(self):
+        return self.answer_text[:50]
+    

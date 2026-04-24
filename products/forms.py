@@ -8,6 +8,7 @@ from .models import (Product,
                      Comment,
                      CategorySlider,
                      Questions_and_answers,
+                     Answer,
                      )
 
 class ProductForm(forms.ModelForm):
@@ -109,3 +110,13 @@ class QuestionsAndAnswersForm(forms.ModelForm):
             'body_question',
             'category_question',
         ]
+
+class AnswerForm(forms.ModelForm):
+    class Meta:
+        model = Answer
+        fields = [
+            'admin',
+            'answer_text',
+            'created_at',
+        ]
+        
