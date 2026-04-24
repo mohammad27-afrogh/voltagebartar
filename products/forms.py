@@ -107,4 +107,5 @@ class QuestionsAndAnswersForm(forms.ModelForm):
         model = Questions_and_answers
         fields = [
             'body_question',
+            'category_question',
         ]

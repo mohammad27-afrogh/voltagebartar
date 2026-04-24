@@ -9,11 +9,6 @@ from django.utils import timezone
 from .models import Blog
 from .forms import CommentForm
 
-# class BlogsPageView(generic.ListView):
-#     model = Blog
-#     template_name = 'blogs/blog.html'
-#     context_object_name = 'blogs'
-
 def blog_page_view(request):
     blog = Blog.objects.all()
 

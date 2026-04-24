@@ -12,28 +12,9 @@ from .forms import CommentForm, QuestionsAndAnswersForm
 
 
 def product_list_view(request):
-    todat = timezone.now().data()
-
-    best_discount_qs = Discount.objects.filter(
-        product = OuterRef('pk'),
-        is_active = True,
-        start_date__lte = todat,
-        end_date__gte = todat,
-    ).order_by('-discount_persentage')
-
-    products_with_discount = Product.objects.annotate(
-        best_discount_persentage = Subquery(best_discount_qs.values('discount_persenrage')[:1]),
-    ).annotate(
-        final_price = ExpressionWrapper(
-            F('base_price') * (
-                1 - F('best_discount_persentage') / 100
-            ),
-            output_field = DecimalField(max_digits=10, pesimal_places=2)
-        )
-    )
 
     # مقداردهی اولیه برای حالتی که هیچ فیلتری اعمال نشده است
-    products = products_with_discount
+    products_queryset = Product.objects.all()
     current_category_name = "همه محصولات"
 
     selected_category_slug = request.GET.get('category')
@@ -41,29 +22,31 @@ def product_list_view(request):
     if selected_category_slug:
         try:
             # یافتن دسته‌ای که کاربر روی آن کلیک کرده است
-            category = Category.objects.get(slug__iexact=selected_category_slug)
+            category = get_object_or_404(Category, slug__iexact=selected_category_slug)
 
             # 1. تمام زیردسته‌های (فرزندان در هر عمقی) این دسته را پیدا کن
             all_descendants = category.get_all_descendants()
 
             # 2. لیست نهایی دسته‌ها شامل: خود دسته + تمام نوادگان
-            all_related_categories = [category] + all_descendants
+            all_related_categories = [category] + list(all_descendants)
 
             # 3. فیلتر کردن محصولات بر اساس این لیست دسته‌ها
-            products = Product.objects.filter(category__in=all_related_categories)
+            products_queryset = Product.objects.filter(category__in=all_related_categories).prefetch_related('discounts')
 
 
             current_category_name = category.name
 
         except Category.DoesNotExist:
             # اگر دسته‌ای با این اسلاگ پیدا نشد، لیست محصولات خالی می‌شود
-            products = Product.objects.none()
+            products_queryset = Product.objects.none()
             current_category_name = "دسته مورد نظر یافت نشد"
+    else:
+        products_queryset = products_queryset.prefetch_related('discounts')
 
     categories = Category.objects.all()
 
     context = {
-        'products': products,
+        'products': products_queryset,
         'categories': categories,  # این برای نمایش منوی دسته‌بندی‌ها در نوار کناری استفاده می‌شود
         'current_category_name': current_category_name,
     }
@@ -211,20 +194,20 @@ def category_detail_view(request, category_slug):
 
     successful_sale_products = products_in_category.order_by('-successful_sales_count')
 
-    # *** اصلاح: اضافه کردن ویژگی active_discount ***
-    for product in successful_sale_products:
-        # این خط، اولین تخفیف فعال را پیدا کرده و به عنوان active_discount اضافه می‌کند
-        product.active_discount = product.discounts.filter(is_active=True).first()
+    # # *** اصلاح: اضافه کردن ویژگی active_discount ***
+    # for product in successful_sale_products:
+    #     # این خط، اولین تخفیف فعال را پیدا کرده و به عنوان active_discount اضافه می‌کند
+    #     product.active_discount = product.discounts.filter(is_active=True).first()
 
     Number_of_visits = products_in_category.order_by('-view_count')
 
     popular_active_products = products_in_category.annotate(
-    # 1. ایجاد یک فیلد جدید به نام 'active_comment_count'
-    active_comment_count=Count(
-        'comments',  # نام رابطه معکوس به مدل Comment
-        
-        # 2. شرط فیلتر کردن در حین شمارش: فقط نظراتی که is_active=True دارند
-        filter=Q(comments__is_active=True) 
+        # 1. ایجاد یک فیلد جدید به نام 'active_comment_count'
+        active_comment_count=Count(
+            'comments',  # نام رابطه معکوس به مدل Comment
+            
+            # 2. شرط فیلتر کردن در حین شمارش: فقط نظراتی که is_active=True دارند
+            filter=Q(comments__is_active=True) 
             )
         ).filter(
             # 3. فیلتر نهایی: فقط محصولاتی که تعداد نظرات فعالشان > 5 است

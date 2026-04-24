@@ -1,14 +1,14 @@
 from typing import Any
 
 from _decimal import Decimal
-from django.db import models
 from django.utils import timezone
-from django.contrib.auth import get_user_model
+from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.core.cache import cache
-from django.utils import timezone
 from django.db.models import Q
+from django.db import models
 
 from datetime import date
 from taggit.managers import TaggableManager
@@ -67,19 +67,34 @@ class Product(models.Model):
         self.save(update_fields=['view_count'])
 
 
+    @property
+    def active_discount(self):
+        if hasattr(self, 'active_discount_list'):
+            return self.active_discount_list[0] if self.active_discount_list else None
+        
+        now = timezone.now().date()
+        return Discount.objects.filter(
+            product = self,
+            is_active = True,
+            start_date__lte = now,
+            end_date__gte = now,
+        ).order_by('-start_date').first()
+
+    @property
+    def final_price(self):
+        discount = self.active_discount
+        if discount:
+            discount_factor = Decimal('1') - (discount.discount_percentage / Decimal('100'))
+            return (self.base_price * discount_factor).quantize(Decimal('0.01'))
+        return self.base_price
+
+
     def __str__(self):
         return f'{self.name}'
 
     def get_absolute_url(self):
         return reverse('product_detail_by_slug', args=[self.slug])
 
-
-    @property
-    def final_price(self):
-        if hasattr(self, 'best_discount_persentage') and self.best_discount_persentage:
-            discount_factor = Decimal('1') - (self.best_discount_persentage / Decimal('100'))
-            return (self.base_price * discount_factor).quantize(Decimal('0.01'))
-        return self.base_price
 
 class Discount(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='discounts',
@@ -95,19 +110,24 @@ class Discount(models.Model):
     def save(self, *args, **kwargs):
         # 1. اجرای عملیات ذخیره‌سازی اصلی
         super().save(*args, **kwargs)
+        try:
+            # 2. پاکسازی کش محصول مرتبط
+            # این کار تضمین می‌کند که هرگاه تخفیفی تغییر کرد، قیمت مجدداً محاسبه شود.
 
-        # 2. پاکسازی کش محصول مرتبط
-        # این کار تضمین می‌کند که هرگاه تخفیفی تغییر کرد، قیمت مجدداً محاسبه شود.
+            product_pk = self.product.pk
 
-        product_pk = self.product.pk
+            # پاک کردن کش قیمت نهایی محصول (از متد final_price در مدل Product)
+            cache.delete(f'product_final_price_{product_pk}')
 
-        # پاک کردن کش قیمت نهایی محصول (از متد final_price در مدل Product)
-        cache.delete(f'product_final_price_{product_pk}')
-
-        # پاک کردن کش‌های مربوط به نمایش لیست محصول و جزئیات محصول
-        # (که احتمالاً در Viewها کش شده‌اند)
-        cache.delete(f'product_detail_{product_pk}')
-        cache.delete(f'product_list_data')  # اگر لیست کلی را کش کرده‌اید
+            # پاک کردن کش‌های مربوط به نمایش لیست محصول و جزئیات محصول
+            # (که احتمالاً در Viewها کش شده‌اند)
+            cache.delete(f'product_detail_{product_pk}')
+            cache.delete(f'product_list_data')  # اگر لیست کلی را کش کرده‌اید
+            cache.delete('active_discount_slider_data')
+            cache.delete('active_discount_count_data')
+            cache.delete('all_active_discount_data')
+        except ImportError:
+            pass
 
 class Category(models.Model):
     name = models.CharField(_('Category name'), max_length=100, unique=True)
@@ -261,6 +281,15 @@ class CategorySlider(models.Model):
 
 
 class Questions_and_answers(models.Model):
+    CHOICES_QUESTION_AND_ANSWER = [
+        ('LAR', _('Log in and register')),
+        ('ORP', _('Order registration process')),
+        ('OT', _('Order tracking')),
+        ('RG', _('Returning goods')),
+        ('DCG', _('Discount codes and gift cards')),
+        ('OS', _('Other cases')),
+    ]
+
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='questions',
                                 verbose_name=_('Product questions and answers'))
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name=_('user'))
@@ -269,3 +298,4 @@ class Questions_and_answers(models.Model):
     body_question = RichTextField(_('body_question'), )
     answer_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True,
                                        verbose_name=_('answer'))
+    category_question = models.CharField(_('category_question'), max_length=3, choices=[('', _('What part do you have a question about?'))] + CHOICES_QUESTION_AND_ANSWER)

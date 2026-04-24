@@ -89,8 +89,13 @@
                                     </div>
                                     <a href="{% url 'products:product_detail_by_slug' discount.product.slug %}"
                                        class="d-block hover-img-link" data-toggle="modal" data-target="#exampleModal">
-                                        <img src="{% static 'img/products' %}"
-                                            class="img-fluid" alt="">
+                                       {% if discount.product.cover_product %}
+                                            <img src="{{ discount.product.cover_product.url }}"
+                                                class="img-fluid" alt="">
+                                        {% else %}
+                                            <img src="{% static 'img/products/no_product_image.jpg' %}"
+                                                class="img-fluid" alt="">
+                                        {% endif %}
                                     </a>
                                     <h2 class="post-title">
                                         <a href="{% url 'products:product_detail_by_slug' discount.product.slug %}">
@@ -205,7 +210,13 @@
                                         </div>
                                     {% endif %}
                                     <a href="{% url 'products:product_detail_by_slug' sales.slug %}" class="d-block hover-img-link">
-                                        <img src="{% static 'img/products' %}" class="img-fluid" alt="">
+                                        {% if sales.cover_product %}
+                                            <img src="{{ sales.cover_product.url }}"
+                                                class="img-fluid" alt="">
+                                        {% else %}
+                                            <img src="{% static 'img/products/no_product_image.jpg' %}"
+                                                class="img-fluid" alt="">
+                                        {% endif %}
                                     </a>
                                     <h2 class="post-title">
                                         <a href="{% url 'products:product_detail_by_slug' sales.slug %}">
@@ -247,7 +258,13 @@
                                         </div>
                                     {% endif %}
                                     <a href="{% url 'products:product_detail_by_slug' latest_product.slug %}" class="d-block hover-img-link">
-                                        <img src="{% static 'img/products' %}" class="img-fluid" alt="">
+                                        {% if latest_product.cover_product %}
+                                            <img src="{{ latest_product.cover_product.url }}"
+                                                class="img-fluid" alt="">
+                                        {% else %}
+                                            <img src="{% static 'img/products/no_product_image.jpg' %}"
+                                                class="img-fluid" alt="">
+                                        {% endif %}
                                     </a>
                                     <h2 class="post-title">
                                         <a href="{% url 'products:product_detail_by_slug' latest_product.slug %}">
@@ -255,10 +272,10 @@
                                         </a>
                                     </h2>
                                     <div class="price">
-                                        {% if latest_product.active_discount %} {# --- اگر تخفیف فعال وجود داشت، قیمت اصلی را خط بزنید --- #}
+                                        {% if latest_product.active_discount %}
                                             <del><span>{{ latest_product.base_price|intcomma:False|translate_number }} {% trans '$' %}</span></del>
                                             <ins><span>{{ latest_product.final_price|intcomma:False|translate_number }} {% trans '$' %}</span></ins>
-                                        {% else %} {# --- اگر تخفیف فعال وجود نداشت، فقط قیمت اصلی را نمایش دهید --- #}
+                                        {% else %}
                                             <ins><span>{{ latest_product.base_price|intcomma:False|translate_number }} {% trans '$' %}</span></ins>
                                         {% endif %}
                                     </div>
@@ -282,8 +299,13 @@
                                 <article class="blog-item">
                                     <figure class="figure">
                                         <div class="post-thumbnail">
-                                            <img src="{{ blog.cover_blog }}"
-                                                alt="camera">
+                                            {% if blog.cover_blog %}
+                                                <img src="{{ blog.cover_blog.url }}"
+                                                    class="img-fluid" alt="">
+                                            {% else %}
+                                                <img src="{% static 'img/products/no_product_image.jpg' %}"
+                                                    class="img-fluid" alt="">
+                                            {% endif %}
                                         </div>
                                         <div class="post-title">
                                             <p><b>{{ blog.name }}</b></p>

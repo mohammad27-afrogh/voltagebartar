@@ -178,7 +178,7 @@
                             {% for product in Number_of_visits %}
 
                                 {# فرض: اگر product.discount_percentage وجود داشته باشد، محصول تخفیف دارد #}
-                                {% if product.active_discounts.discount_percentage %}
+                                {% if product.active_discount.discount_percentage %}
 
                                     <!-- محصول با تخفیف -->
                                     <div class="col-lg-3 col-md-3 col-xs-12 order-1 d-block mb-3">
@@ -195,7 +195,7 @@
                                                     </div>
                                                     <div class="discount-d">
                                                         <!-- استفاده از ویژگی‌های تخفیف مستقیم روی product -->
-                                                        <span>{{ product.active_discounts.discount_percentage|intcomma:False|translate_number }} %</span>
+                                                        <span>{{ product.active_discount.discount_percentage|intcomma:False|translate_number }} %</span>
                                                     </div>
                                                      {% if product.cover_product %}
                                                         <a href="{% url 'products:product_detail_by_slug' product.slug %}">
@@ -287,7 +287,7 @@
                             {% for successful_sale_product in successful_sale_products %}
 
                                 {# فرض: اگر successful_sale_product.discount_percentage وجود داشته باشد، محصول تخفیف دارد #}
-                                {% if successful_sale_product.active_discounts.discount_percentage %}
+                                {% if successful_sale_product.active_discount.discount_percentage %}
 
                                     <!-- محصول با تخفیف -->
                                     <div class="col-lg-3 col-md-3 col-xs-12 order-1 d-block mb-3">
@@ -304,7 +304,7 @@
                                                     </div>
                                                     <div class="discount-d">
                                                         <!-- استفاده از ویژگی‌های تخفیف مستقیم روی successful_sale_product -->
-                                                        <span>{{ successful_sale_product.active_discounts.discount_percentage|intcomma:False|translate_number }} %</span>
+                                                        <span>{{ successful_sale_product.active_discount.discount_percentage|intcomma:False|translate_number }} %</span>
                                                     </div>
                                                     {% if successful_sale_product.cover_product %}
                                                         <a href="{% url 'products:product_detail_by_slug' successful_sale_product.slug %}">
@@ -396,7 +396,7 @@
                             {% for product_popular  in popular_active_products %}
 
                                 {# فرض: اگر product_popular.discount_percentage وجود داشته باشد، محصول تخفیف دارد #}
-                                {% if product_popular.active_discounts.discount_percentage %}
+                                {% if product_popular.active_discount.discount_percentage %}
 
                                     <!-- محصول با تخفیف -->
                                     <div class="col-lg-3 col-md-3 col-xs-12 order-1 d-block mb-3">
@@ -413,7 +413,7 @@
                                                     </div>
                                                     <div class="discount-d">
                                                         <!-- استفاده از ویژگی‌های تخفیف مستقیم روی product_popular -->
-                                                        <span>{{ product_popular.active_discounts.discount_percentage|intcomma:False|translate_number }} %</span>
+                                                        <span>{{ product_popular.active_discount.discount_percentage|intcomma:False|translate_number }} %</span>
                                                     </div>
                                                     {% if product_popular.cover_product %}
                                                         <a href="{% url 'products:product_detail_by_slug' product_popular.slug %}">
@@ -505,7 +505,7 @@
                             {% for new_product in new_products %}
 
                                 {# فرض: اگر new_product.discount_percentage وجود داشته باشد، محصول تخفیف دارد #}
-                                {% if new_product.active_discounts.discount_percentage %}
+                                {% if new_product.active_discount.discount_percentage %}
 
                                     <!-- محصول با تخفیف -->
                                     <div class="col-lg-3 col-md-3 col-xs-12 order-1 d-block mb-3">
@@ -522,7 +522,7 @@
                                                     </div>
                                                     <div class="discount-d">
                                                         <!-- استفاده از ویژگی‌های تخفیف مستقیم روی new_product -->
-                                                        <span>{{ new_product.active_discounts.discount_percentage|intcomma:False|translate_number }} %</span>
+                                                        <span>{{ new_product.active_discount.discount_percentage|intcomma:False|translate_number }} %</span>
                                                     </div>
                                                     {% if new_product.cover_product %}
                                                         <a href="{% url 'products:product_detail_by_slug' new_product.slug %}">
@@ -614,7 +614,7 @@
                             {% for cheapest in products_cheapest %}
 
                                 {# فرض: اگر new_product.discount_percentage وجود داشته باشد، محصول تخفیف دارد #}
-                                {% if cheapest.active_discounts.discount_percentage %}
+                                {% if cheapest.active_discount.discount_percentage %}
 
                                     <!-- محصول با تخفیف -->
                                     <div class="col-lg-3 col-md-3 col-xs-12 order-1 d-block mb-3">
@@ -631,7 +631,7 @@
                                                     </div>
                                                     <div class="discount-d">
                                                         <!-- استفاده از ویژگی‌های تخفیف مستقیم روی new_product -->
-                                                        <span>{{ cheapest.active_discounts.discount_percentage|intcomma:False|translate_number }} %</span>
+                                                        <span>{{ cheapest.active_discount.discount_percentage|intcomma:False|translate_number }} %</span>
                                                     </div>
                                                     {% if cheapest.cover_product %}
                                                         <a href="{% url 'products:product_detail_by_slug' cheapest.slug %}">
@@ -723,7 +723,7 @@
                             {% for most_expensive in products_most_expensive %}
 
                                 {# فرض: اگر new_product.discount_percentage وجود داشته باشد، محصول تخفیف دارد #}
-                                {% if most_expensive.active_discounts.discount_percentage %}
+                                {% if most_expensive.active_discount.discount_percentage %}
 
                                     <!-- محصول با تخفیف -->
                                     <div class="col-lg-3 col-md-3 col-xs-12 order-1 d-block mb-3">
@@ -740,7 +740,7 @@
                                                     </div>
                                                     <div class="discount-d">
                                                         <!-- استفاده از ویژگی‌های تخفیف مستقیم روی new_product -->
-                                                        <span>{{ most_expensive.active_discounts.discount_percentage|intcomma:False|translate_number }} %</span>
+                                                        <span>{{ most_expensive.active_discount.discount_percentage|intcomma:False|translate_number }} %</span>
                                                     </div>
                                                     {% if most_expensive.cover_product %}
                                                         <a href="{% url 'products:product_detail_by_slug' most_expensive.slug %}">
