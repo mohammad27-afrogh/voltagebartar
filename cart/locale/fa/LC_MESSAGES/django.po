@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-01 23:37+0330\n"
+"POT-Creation-Date: 2026-04-27 10:07+0330\n"
 "PO-Revision-Date: 2026-03-02 02:13+0330\n"
 "Last-Translator:   <m.afroogh25@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: .\cart.py:35
+#: .\cart.py:36
 msgid "product successfully added to cart"
 msgstr "محصول با موفقیت به سبد خرید اضافه شد"
 
-#: .\cart.py:47
+#: .\cart.py:48
 msgid "product successfully removed from cart"
 msgstr "محصول با موفقیت از سبد خرید حذف شد"
 
-#: .\cart.py:80
+#: .\cart.py:92
 msgid "Shopping cart successfully cleared."
 msgstr "سبد خرید با موفقیت پاک شد."
 
@@ -139,7 +139,6 @@ msgid "pyment to the House Door"
 msgstr "پرداخت درب منزل"
 
 #: .\templates\cart\cart_checkout_complete_buy.html:55
-#| msgid "final price :"
 msgid "base price :"
 msgstr "قیمت نهایی"
 
@@ -162,8 +161,8 @@ msgstr ""
 
 #: .\templates\cart\cart_checkout_complete_buy.html:105
 msgid ""
-"if your account is deducted , your account will be back in the next 72 hours"
-" ."
+"if your account is deducted , your account will be back in the next 72 "
+"hours ."
 msgstr ""
 " چنانچه طی این فرایند مبلغی از حساب شما کسر شده است، طی 72 ساعت آینده به "
 "حساب شما باز خواهد گشت."

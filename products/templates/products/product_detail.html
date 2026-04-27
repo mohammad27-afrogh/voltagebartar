@@ -4,6 +4,7 @@
 {% load i18n %}
 {% load persian_translation_tags %}
 {% load humanize %}
+{% load jalali_tags %}
 
 {% block page_title %}
     products
@@ -493,6 +494,51 @@
                                             <a href="{% url 'account_login' %}" type="submit">login</a>
                                         </li>
                                     {% endif %}
+                                    {% for question in questions %}
+                                        <div id="product-questions-list">
+                                            <div class="questions-list">
+                                                <ul class="faq-list">
+                                                    <li class="is-question">
+                                                        <div class="section">
+                                                            <div class="faq-header">
+                                                                <span class="icon-faq">?</span>
+                                                                <p class="h5">
+                                                                    {% trans 'question' %} :
+                                                                    <span>{{ question.user.username }}</span>
+                                                                </p>
+                                                            </div>
+                                                            <p>{{ question.body_question }}</p>
+                                                            <div class="faq-date">
+                                                                <em>{{ question.time_release_question|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</em>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            {% for answer in question.answers.all %}
+                                                <div class="questions-list answer-questions">
+                                                    <ul class="faq-list">
+                                                        <li class="is-question">
+                                                            <div class="section">
+                                                                <div class="faq-header">
+                                                                    <span class="icon-faq"><i
+                                                                            class="mdi mdi-storefront"></i></span>
+                                                                    <p class="h5">
+                                                                        {% trans 'answer admin' %} :
+                                                                        <span>{{ answer.admin }}</span>
+                                                                    </p>
+                                                                </div>
+                                                                <p>{{ answer.answer_text }}</p>
+                                                                <div class="faq-date">
+                                                                    <em>{{ answer.created_at|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</em>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>

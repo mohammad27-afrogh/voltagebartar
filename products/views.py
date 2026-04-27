@@ -71,6 +71,7 @@ def product_detail_view(request, product_slug):
     product.increment_view_count()
 
     product_comments = product.comments.all()  # نظرات همچنان با کوئری جداگانه لود می‌شوند (که برای لیست نظرات استاندارد است)
+    product_questions = product.questions.all()
 
     # --- ۲. محاسبه زنجیره Breadcrumb در View ---
     category = product.category
@@ -143,6 +144,7 @@ def product_detail_view(request, product_slug):
         'product': product,
         'comments': product_comments,
         'comment_form': comment_form,
+        'questions': product_questions,
         'question_form': question_form,
         'media_url': settings.MEDIA_URL,
         'breadcrumb_categories': categories_chain, # ارسال لیست دسته‌ها به قالب

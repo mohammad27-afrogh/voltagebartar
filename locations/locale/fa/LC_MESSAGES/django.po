@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-11 10:11+0330\n"
-"PO-Revision-Date: 2025-11-11 10:13+0330\n"
-"Last-Translator:   <m.afroogh25@gmail.com>\n"
+"POT-Creation-Date: 2026-04-27 10:06+0330\n"
+"PO-Revision-Date: 2026-04-27 12:24+0330\n"
+"Last-Translator:   <mohammad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,12 @@ msgstr ""
 
 #: .\models.py:6
 msgid "name_province"
-msgstr "نام_استان"
+msgstr "نام استان"
+
+#: .\models.py:10
+#| msgid "province"
+msgid "provinces"
+msgstr "استان ها"
 
 #: .\models.py:17
 msgid "province"
@@ -29,3 +34,7 @@ msgstr "استان"
 #: .\models.py:18
 msgid "city_name"
 msgstr "نام_شهرستان"
+
+#: .\models.py:22
+msgid "cities"
+msgstr "شهرها"

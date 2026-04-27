@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-05 16:26+0330\n"
-"PO-Revision-Date: 2025-11-05 16:43+0330\n"
-"Last-Translator:   <m.afroogh25@gmail.com>\n"
+"POT-Creation-Date: 2026-04-27 10:05+0330\n"
+"PO-Revision-Date: 2026-04-27 12:23+0330\n"
+"Last-Translator:   <mohammad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,66 +18,126 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: .\models.py:11 .\models.py:28
-msgid "name"
-msgstr "نام"
-
-#: .\models.py:12 .\models.py:29
-msgid "slug"
-msgstr "لینک آدرس محصول به انگلیسی"
-
-#: .\models.py:13
-msgid "category"
-msgstr "دسته بندی"
-
-#: .\models.py:14
-msgid "cover_blog"
-msgstr "عکس بلاگ"
-
-#: .\models.py:15
-msgid "short_description"
-msgstr "خلاصه توضیحات"
-
-#: .\models.py:16
-msgid "description"
-msgstr "توضیحات"
-
-#: .\models.py:17
-msgid "tags"
-msgstr "تگ ها"
-
-#: .\models.py:18
-msgid "date_time_create"
-msgstr "تاریخ_زمان_ایجاد"
-
-#: .\models.py:19
-msgid "date_time_modified"
-msgstr "تاریخ_زمان_تغییر یافته"
-
-#: .\models.py:30
-msgid "subcategories"
-msgstr "زیر مجموعه ها"
-
-#: .\models.py:36
-msgid "comments"
-msgstr "کامنت ها"
-
-#: .\models.py:37
+#: .\models.py:11 .\models.py:45
 msgid "user"
 msgstr "گاربر"
 
+#: .\models.py:12 .\models.py:33
+msgid "name"
+msgstr "نام"
+
+#: .\models.py:13 .\models.py:34
+msgid "slug"
+msgstr "لینک آدرس محصول به انگلیسی"
+
+#: .\models.py:14
+msgid "view count blog"
+msgstr "تعداد بازدید وبلاگ"
+
+#: .\models.py:15
+msgid "category"
+msgstr "دسته بندی"
+
+#: .\models.py:16
+msgid "cover_blog"
+msgstr "عکس بلاگ"
+
+#: .\models.py:17
+msgid "short_description"
+msgstr "خلاصه توضیحات"
+
+#: .\models.py:18
+msgid "description"
+msgstr "توضیحات"
+
+#: .\models.py:19
+msgid "tags"
+msgstr "تگ ها"
+
+#: .\models.py:20
+msgid "date_time_create"
+msgstr "تاریخ_زمان_ایجاد"
+
+#: .\models.py:21
+msgid "date_time_modified"
+msgstr "تاریخ_زمان_تغییر یافته"
+
+#: .\models.py:24
+msgid "Blog"
+msgstr "وبلاگ"
+
+#: .\models.py:35
+msgid "subcategories"
+msgstr "زیر مجموعه ها"
+
 #: .\models.py:38
+#| msgid "category"
+msgid "Category"
+msgstr "دسته بندی"
+
+#: .\models.py:44
+msgid "comments"
+msgstr "کامنت ها"
+
+#: .\models.py:46
 msgid "time_release_comment"
 msgstr "زمان انتشار کامنت"
 
-#: .\models.py:39
+#: .\models.py:47
 msgid "update_to"
 msgstr "آپدیت"
 
-#: .\models.py:40
+#: .\models.py:48
 msgid "body_comment"
 msgstr "متن کامنت"
 
-#: .\models.py:41
+#: .\models.py:49
 msgid "answer"
 msgstr "پاسخ دهید"
+
+#: .\models.py:52
+#| msgid "comments"
+msgid "Comment Blog"
+msgstr "نظرات وبلاگ"
+
+#: .\templates\blogs\blog.html:11 .\templates\blogs\blog_detail.html:11
+msgid "blog page"
+msgstr "صفحه وبلاگ"
+
+#: .\templates\blogs\blog.html:60 .\templates\blogs\blog_detail.html:116
+msgid "latest blog"
+msgstr "آخرین وبلاگ"
+
+#: .\templates\blogs\blog_detail.html:32
+msgid "produced by :"
+msgstr "تولید شده توسط:"
+
+#: .\templates\blogs\blog_detail.html:43
+msgid "bazdid"
+msgstr "بازدید :"
+
+#: .\templates\blogs\blog_detail.html:70
+#| msgid "comments"
+msgid "user comments"
+msgstr "نظرات کاربران"
+
+#: .\templates\blogs\blog_detail.html:71
+#| msgid "comments"
+msgid "comment"
+msgstr "کامنت"
+
+#: .\templates\blogs\blog_detail.html:80
+msgid "by :"
+msgstr "توسط:"
+
+#: .\templates\blogs\blog_detail.html:80
+msgid "in history :"
+msgstr "در تاریخ:"
+
+#: .\templates\blogs\blog_detail.html:96
+msgid "record"
+msgstr "ثبت کنید"
+
+#: .\templates\blogs\blog_detail.html:100
+msgid "please create a questionnaire !"
+msgstr "لطفا یک پرسشنامه ایجاد کنید!"

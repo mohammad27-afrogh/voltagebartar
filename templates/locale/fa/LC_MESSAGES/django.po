@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-26 21:47+0330\n"
-"PO-Revision-Date: 2025-12-26 23:13+0330\n"
-"Last-Translator:   <m.afroogh25@gmail.com>\n"
+"POT-Creation-Date: 2026-04-27 10:09+0330\n"
+"PO-Revision-Date: 2026-04-27 12:31+0330\n"
+"Last-Translator:   <mohammad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,7 +40,7 @@ msgid "Please Confirm email"
 msgstr "لطفا ایمیل را تایید کنید"
 
 #: .\account\login.html:7 .\account\login.html:27 .\account\signup.html:27
-#: .\partials\navbar.html:92
+#: .\partials\navbar.html:95
 msgid "login"
 msgstr "ورود"
 
@@ -50,7 +50,7 @@ msgid "to sabzeonline"
 msgstr "به سبزآنلاین"
 
 #: .\account\login.html:31 .\account\signup.html:7 .\account\signup.html:31
-#: .\partials\navbar.html:95
+#: .\partials\navbar.html:98
 msgid "signup"
 msgstr "ثبت نام"
 
@@ -171,65 +171,65 @@ msgstr "بعدی"
 msgid "Special discounts"
 msgstr "تخفیف های ویژه"
 
-#: .\home.html:76 .\home.html:127 .\home.html:145 .\home.html:163
-#: .\home.html:181
+#: .\home.html:76 .\home.html:132 .\home.html:150 .\home.html:168
+#: .\home.html:186
 msgid "view all"
 msgstr "مشاهده همه"
 
-#: .\home.html:101 .\home.html:102 .\home.html:217 .\home.html:218
-#: .\home.html:220 .\home.html:259 .\home.html:260 .\home.html:262
+#: .\home.html:106 .\home.html:107 .\home.html:228 .\home.html:229
+#: .\home.html:231 .\home.html:276 .\home.html:277 .\home.html:279
 msgid "$"
 msgstr "تومان"
 
-#: .\home.html:124
+#: .\home.html:129
 msgid "Houseplants"
 msgstr "گیاهان آپارتمانی"
 
-#: .\home.html:126
+#: .\home.html:131
 msgid "Houseplants and air purifiers"
 msgstr "گیاهان آپارتمانی و تصفیه کننده هوا"
 
-#: .\home.html:142
+#: .\home.html:147
 msgid "Ready compounds"
 msgstr "ترکیبات خاک آماده "
 
-#: .\home.html:144
+#: .\home.html:149
 msgid "Ready-made mixtures for flowers and houseplants and planting media"
 msgstr "مخلوط‌های آماده برای گل‌ها و گیاهان آپارتمانی و محیط‌های کاشت"
 
-#: .\home.html:160
+#: .\home.html:165
 msgid "chemical fertilizer"
 msgstr "کود شیمیایی"
 
-#: .\home.html:162
+#: .\home.html:167
 msgid "Chemical fertilizer for plant nutrition"
 msgstr "کود شیمیایی برای تغذیه گیاهان"
 
-#: .\home.html:178
+#: .\home.html:183
 msgid "plastic pot"
 msgstr "گلدان پلاستیکی"
 
-#: .\home.html:180
+#: .\home.html:185
 msgid "Plastic pots are the best choice for plants of all sizes."
 msgstr "گلدان‌های پلاستیکی بهترین انتخاب برای گیاهان در هر اندازه‌ای"
 
-#: .\home.html:194
+#: .\home.html:199
 msgid "successful sales"
 msgstr "پرفروش ترین ها"
 
-#: .\home.html:236
+#: .\home.html:247
 msgid "latest_products"
 msgstr "جدیدترین محصولات"
 
-#: .\home.html:277
+#: .\home.html:294
 msgid "The latest published blogs"
 msgstr "آخرین وبلاگ‌های منتشر شده"
 
-#: .\home.html:291
+#: .\home.html:313
 msgid "View the blog"
 msgstr "وبلاگ ها را مشاهده کنید"
 
-#: .\home.html:299
+#: .\home.html:321
 msgid "View all blogs"
 msgstr "مشاهده همه بلاگ ها"
 
@@ -328,19 +328,23 @@ msgstr "دسته بندی ها"
 msgid "User account"
 msgstr "حساب کاربری"
 
-#: .\partials\navbar.html:76 .\partials\navbar.html:89
+#: .\partials\navbar.html:76 .\partials\navbar.html:92
 msgid "blog"
 msgstr "بلاگ"
 
 #: .\partials\navbar.html:79
+msgid "profile"
+msgstr "پروفایل"
+
+#: .\partials\navbar.html:82
 msgid "My orders"
 msgstr "سفارشات من"
 
-#: .\partials\navbar.html:82
+#: .\partials\navbar.html:85
 msgid "cart"
 msgstr "سبد خرید"
 
-#: .\partials\navbar.html:85
+#: .\partials\navbar.html:88
 msgid "logout"
 msgstr "خروج"
 
@@ -367,7 +371,6 @@ msgid "Send by email"
 msgstr "از طریق ایمیل ارسال کنید"
 
 #: .\partials\product_actions.html:49
-#| msgid "Please Confirm email"
 msgid "send email"
 msgstr "ارسال ایمیل"
 
