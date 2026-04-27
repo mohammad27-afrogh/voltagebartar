@@ -48,6 +48,9 @@ class Order(models.Model):
     zarinpal_data = models.TextField(blank=True)
     pyment_price = models.CharField(_('other pyment price'), max_length=2, choices=PYMENT_PRICE_CHOICESS)
 
+    class Meta:
+        verbose_name_plural = _('Order')
+
     def __str__(self):
         return f'Order {self.id} for {self.user}'
 
@@ -64,6 +67,9 @@ class OrderItem(models.Model):
     quantity = models.PositiveIntegerField(_('quantity'), default=1)
     price = models.PositiveIntegerField(_('price'))
     date_time_create = models.DateTimeField(_('date_time_create'), default=timezone.now)
+
+    class Meta:
+        verbose_name_plural = _('Order Item')
 
     def __str__(self):
         return f'OrderItem {self.id}: {self.product.name} * {self.quantity} (price:{self.price})'
@@ -90,6 +96,8 @@ class Profile(models.Model):
     date_time_modified = models.DateTimeField(_('date_time_modified'), auto_now=True)
     Receive_the_newsletter = models.BooleanField(_('Receive the newsletter'), default=True)
 
+    class Meta:
+        verbose_name_plural = _('Profile')
 
     def __str__(self):
         return f"Profile of {self.user.username}"
@@ -110,8 +118,8 @@ class FavoriteProduct(models.Model):
     class Meta:
         # اطمینان از اینکه یک کاربر فقط یک بار می‌تواند یک محصول را به علاقه‌مندی اضافه کند
         unique_together = ('user', 'product')
-        verbose_name = "محصول مورد علاقه"
-        verbose_name_plural = "محصولات مورد علاقه"
+        verbose_name = _('Favorite Product')
+        verbose_name_plural = _('Favorite Product')
 
     def __str__(self):
         return f"{self.user.username} - {self.product.name}"

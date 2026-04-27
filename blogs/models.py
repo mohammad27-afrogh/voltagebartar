@@ -10,7 +10,7 @@ from ckeditor.fields import RichTextField
 class Blog(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='user', verbose_name=_('user'))
     name = models.CharField(_('name'), max_length=200)
-    slug = models.SlugField(_('slug'), unique=True, blank=True, null=False)
+    slug = models.SlugField(_('slug'), unique=True, blank=True, null=False, allow_unicode=True)
     view_count = models.IntegerField(_('view count blog'), default=0)
     category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='blogs', verbose_name=_('category'))
     cover_blog = models.ImageField(_('cover_blog'), upload_to='blog/blog_covers/', blank=True)
@@ -20,6 +20,9 @@ class Blog(models.Model):
     date_time_create = models.DateTimeField(_('date_time_create'), default=timezone.now)
     date_time_modified = models.DateTimeField(_('date_time_modified'), auto_now=True)
 
+    class Meta:
+        verbose_name_plural = _('Blog')
+
     def __str__(self):
         return f'{self.name}'
 
@@ -28,8 +31,11 @@ class Blog(models.Model):
 
 class Category(models.Model):
     name = models.CharField(_('name'), max_length=100, unique=True)
-    slug = models.SlugField(_('slug'), unique=True)
+    slug = models.SlugField(_('slug'), unique=True, allow_unicode=True)
     parent_category = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='subcategories', verbose_name=_('subcategories'))
+
+    class Meta:
+        verbose_name_plural = _('Category')
 
     def __str__(self):
         return f'{self.name}'
@@ -41,6 +47,9 @@ class CommentBlog(models.Model):
     update_to = models.DateTimeField(_('update_to'), auto_now=True)
     body_comment = RichTextField(_('body_comment'), )
     answer_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, verbose_name=_('answer'))
+
+    class Meta:
+        verbose_name_plural = _('Comment Blog')
 
     def __str__(self):
         return f'{self.blog}'

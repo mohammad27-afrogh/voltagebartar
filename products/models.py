@@ -32,7 +32,7 @@ class Product(models.Model):
     ]
 
     name = models.CharField(_('name'), max_length=200)
-    slug = models.SlugField(_('slug'), unique=True, blank=True, null=False)
+    slug = models.SlugField(_('slug'), unique=True, blank=True, null=False, allow_unicode=True)
     sku = models.CharField(_('sku'), max_length=150, unique=True, blank=True, null=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='products',
                                  verbose_name=_('category'))
@@ -57,6 +57,9 @@ class Product(models.Model):
         default=0, # مقدار پیش‌فرض صفر
         verbose_name=_('Number of visits')
     )
+
+    class Meta:
+        verbose_name_plural = _('product')
     
     def __str__(self):
         return self.name
@@ -104,6 +107,9 @@ class Discount(models.Model):
     end_date = models.DateField(_('end_date'), default=timezone.now)
     is_active = models.BooleanField(_('is_active'), default=True)
 
+    class Meta:
+        verbose_name_plural = _('Discount')
+
     def __str__(self):
         return f'{self.product.name} - % {self.discount_percentage} discount'
 
@@ -131,7 +137,7 @@ class Discount(models.Model):
 
 class Category(models.Model):
     name = models.CharField(_('Category name'), max_length=100, unique=True)
-    slug = models.SlugField(_('Address (slug)'), unique=True)
+    slug = models.SlugField(_('Address (slug)'), unique=True, allow_unicode=True)
     parent = models.ForeignKey(
         "self",
         on_delete=models.CASCADE,
@@ -144,7 +150,7 @@ class Category(models.Model):
 
     class Meta:
         verbose_name = _('category')
-        verbose_name_plural = _('Categories')
+        verbose_name_plural = _('Category')
         ordering = ["name"]
 
     def __str__(self):
@@ -181,6 +187,9 @@ class Inventory(models.Model):
                                 verbose_name=_('product_name'))
     status = models.CharField(_('status'), max_length=3, choices=INVENTORY_STATUS, default='AVA')
     inventory = models.PositiveIntegerField(_('inventory'), default=0)
+
+    class Meta:
+        verbose_name_plural = _('Inventory')
 
     def __str__(self):
         return f'{self.product}'
@@ -226,6 +235,9 @@ class Features(models.Model):
     care_tips = RichTextField(blank=True, null=True, verbose_name=_('care tipe'))
     usage_instructions = RichTextField(blank=True, null=True, verbose_name=_('usage instructions'))
 
+    class Meta:
+        verbose_name_plural = _('Features')
+
     def __str__(self):
         return f'{self.name_features}'
 
@@ -253,6 +265,9 @@ class Comment(models.Model):
                                        verbose_name=_('answer'))
     is_active = models.BooleanField(_('I recommend purchasing this product ?'), default=True)
 
+    class Meta:
+        verbose_name_plural = _('Comment')
+
     def __str__(self):
         return f'{self.product}'
 
@@ -271,6 +286,7 @@ class CategorySlider(models.Model):
 
     class Meta:
         ordering = ['order']
+        verbose_name_plural = _('Category Slider')
 
     def __str__(self):
         return self.title
@@ -300,6 +316,12 @@ class Questions_and_answers(models.Model):
                                        verbose_name=_('answer'))
     category_question = models.CharField(_('category_question'), max_length=3, choices=[('', _('What part do you have a question about?'))] + CHOICES_QUESTION_AND_ANSWER)
 
+    class Meta:
+        verbose_name_plural = _('Questions and answers')
+
+    def __str__(self):
+        return self.body_question[:50]
+
 
 class Answer(models.Model):
     question = models.ForeignKey(Questions_and_answers, on_delete=models.CASCADE, related_name='answers',
@@ -308,6 +330,8 @@ class Answer(models.Model):
     answer_text = models.TextField(_('body_question_answer'),)
     created_at = models.DateTimeField(_('created at'), default=timezone.now)
 
+    class Meta:
+        verbose_name_plural = _('Answer')
+
     def __str__(self):
         return self.answer_text[:50]
-    
