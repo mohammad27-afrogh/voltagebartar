@@ -26,7 +26,12 @@ class NewsRoom(models.Model):
     date_time_create = models.DateTimeField(_('date time create'), default=timezone.now)
     date_time_modified = models.DateTimeField(_('date time modified'), auto_now=True)
     is_published = models.BooleanField(_('published ?'), default=False)
-    publish_date = models.DateTimeField(_('date time create'), null=True, blank=True)
+    publish_date = models.DateTimeField(_('date time publish'), null=True, blank=True)
+    # ویژگی برای ذخیره تعداد بازدیدها
+    view_count = models.IntegerField(
+        default=0, # مقدار پیش‌فرض صفر
+        verbose_name=_('Number of visits')
+    )
 
     class Meta:
         verbose_name = _('news')
@@ -38,4 +43,4 @@ class NewsRoom(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('news_detail', args=[self.slug])
+        return reverse('news_detail_by_slug', args=[self.slug])

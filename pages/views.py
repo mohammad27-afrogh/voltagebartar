@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from django.views.generic import TemplateView
 
+from .models import NewsRoom
 from products.models import Questions_and_answers
 
 class HomePageView(TemplateView):
@@ -50,3 +51,17 @@ def faq_home_page_view(request):
     }
 
     return render(request, 'pages/faq.html', context)
+
+
+def news_room_page_view(request):
+    news = NewsRoom.objects.all()
+
+    return render(request, 'pages/news_list.html', context={'news': news})
+
+
+def news_detail_by_slug(request, news_slug):
+    new = get_object_or_404(NewsRoom, slug=news_slug)
+    new.view_count = new.view_count + 1
+    new.save()
+
+    return render(request, 'pages/news_detail.html', context={'new': new})

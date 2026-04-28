@@ -1,0 +1,99 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load persian_translation_tags %}
+{% load humanize %}
+{% load jalali_tags %}
+
+
+{% block page_title %}
+    {% trans 'news room sabzeonline' %}
+{% endblock page_title %}
+
+
+{% block content %}
+
+    {% include 'partials/navbar.html' %}
+
+    <!-- news_list---------------------------------->
+    <main class="main-row mb-2 mt-2">
+        <div class="container-main">
+            <div class="d-block">
+                <div class="col-lg-12 col-md-12 col-xs-12 pr mt-3">
+                    <section class="content-widget">
+                        {% for item in news %}
+                            <article class="post-item">
+                                <div class="post-thumb">
+                                    {% if item.image_newsroom %}
+                                        <a href="{% url 'news_detail_by_slug' item.slug %}" class="d-block">
+                                            <img src="{{ item.image_newsroom.url }}"
+                                                alt="{{ item.name }}">
+                                        </a>
+                                    {% else %}
+                                        <a href="{% url 'news_detail_by_slug' item.slug %}" class="d-block">
+                                            <img src="{% static 'img/products/no_product_image.jpg' %}"
+                                                alt="{{ item.name }}">
+                                        </a>
+                                    {% endif %}
+                                </div>
+                                <div class="post-content">
+                                    <div class="title">
+                                        <a href="{% url 'news_detail_by_slug' item.slug %}">
+                                            <h2 class="title-tag">{{ item.title }}</h2>
+                                        </a>
+                                    </div><br>
+                                    <div class="excerpt">{{ item.short_description }}</div>
+                                    <span class="post-date">
+                                        <i class="fa fa-calendar"></i>
+                                        {{ item.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}
+                                    </span>
+                                </div>
+                            </article>
+                        {% endfor %}
+                    </section>
+                </div>
+                <div class="pagination-product pr-3 pl-3 pr">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">«</span>
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link active" href="#">1</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">3</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">...</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">8</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">»</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- news_list---------------------------------->
+
+    {% include 'partials/footer.html' %}
+
+{% endblock content %}
+
+
+{% block body_class %}
+    account_page
+{% endblock body_class %}

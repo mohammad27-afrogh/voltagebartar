@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-28 11:21+0330\n"
-"PO-Revision-Date: 2026-04-28 11:22+0330\n"
+"POT-Creation-Date: 2026-04-28 11:33+0330\n"
+"PO-Revision-Date: 2026-04-28 11:34+0330\n"
 "Last-Translator:   <mohammad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -70,7 +70,7 @@ msgstr "عکس خبر"
 msgid "admin"
 msgstr "ادمین"
 
-#: .\models.py:26 .\models.py:29
+#: .\models.py:26
 msgid "date time create"
 msgstr "تاریخ زمان ساخت"
 
@@ -81,6 +81,11 @@ msgstr "تاریخ زمان بروزرسانی"
 #: .\models.py:28
 msgid "published ?"
 msgstr "منتشر شده؟"
+
+#: .\models.py:29
+#| msgid "date time modified"
+msgid "date time publish"
+msgstr "تاریخ زمان انتشار"
 
 #: .\models.py:32 .\models.py:33
 msgid "news"
