@@ -8,15 +8,119 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-02 03:18+0330\n"
-"PO-Revision-Date: 2026-03-02 03:19+0330\n"
-"Last-Translator:   <m.afroogh25@gmail.com>\n"
+"POT-Creation-Date: 2026-04-28 11:21+0330\n"
+"PO-Revision-Date: 2026-04-28 11:22+0330\n"
+"Last-Translator:   <mohammad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
+
+#: .\models.py:11
+msgid "announcment"
+msgstr "اعلامیه"
+
+#: .\models.py:12
+msgid "campaign"
+msgstr "کمپین"
+
+#: .\models.py:13
+msgid "event"
+msgstr "رویداد"
+
+#: .\models.py:14
+msgid "media"
+msgstr "رسانه"
+
+#: .\models.py:15
+msgid "update"
+msgstr "بروزرسانی سایت"
+
+#: .\models.py:16
+msgid "educational"
+msgstr "آموزشی"
+
+#: .\models.py:19
+msgid "title news"
+msgstr "سر تیتر خبر"
+
+#: .\models.py:20
+msgid "slug"
+msgstr "اسلاگ"
+
+#: .\models.py:21
+msgid "short description news"
+msgstr "توضیحات مختصر"
+
+#: .\models.py:22
+msgid "description news"
+msgstr "توضیحات کامل خبر"
+
+#: .\models.py:23
+msgid "category"
+msgstr "دسته بندی"
+
+#: .\models.py:24
+msgid "cover_newsroom"
+msgstr "عکس خبر"
+
+#: .\models.py:25
+msgid "admin"
+msgstr "ادمین"
+
+#: .\models.py:26 .\models.py:29
+msgid "date time create"
+msgstr "تاریخ زمان ساخت"
+
+#: .\models.py:27
+msgid "date time modified"
+msgstr "تاریخ زمان بروزرسانی"
+
+#: .\models.py:28
+msgid "published ?"
+msgstr "منتشر شده؟"
+
+#: .\models.py:32 .\models.py:33
+msgid "news"
+msgstr "خبر"
+
+#: .\templates\pages\faq.html:10
+msgid "question and answer"
+msgstr "پرسش و پاسخ"
+
+#: .\templates\pages\faq.html:25
+msgid "Categories of questions"
+msgstr "دسته بندی پرسش ها"
+
+#: .\templates\pages\faq.html:31
+msgid "Log in and register"
+msgstr "ورود و ثبت نام"
+
+#: .\templates\pages\faq.html:39
+msgid "Order registration process"
+msgstr "روند ثبت سفارش"
+
+#: .\templates\pages\faq.html:47
+msgid "Order tracking"
+msgstr "پیگیری ارسال سفارش"
+
+#: .\templates\pages\faq.html:55
+msgid "Returning goods"
+msgstr "بازگشت کالا"
+
+#: .\templates\pages\faq.html:63
+msgid "Discount codes and gift cards"
+msgstr "کد تخفیف و کارت هدیه"
+
+#: .\templates\pages\faq.html:71
+msgid "Other cases"
+msgstr "سایر موارد"
+
+#: .\templates\pages\faq.html:79
+msgid "Most frequently asked questions"
+msgstr "پرتکرارترین پرسش ها"
 
 #: .\templates\pages\order_registration.html:9
 msgid "order registration"
