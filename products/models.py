@@ -251,7 +251,7 @@ class Brand(models.Model):
 
     class Meta:
         verbose_name = 'brand'
-        verbose_name_plural = 'brands'
+        verbose_name_plural = _('brands')
         ordering = ['name']
 
 

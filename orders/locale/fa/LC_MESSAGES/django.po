@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-04-27 10:06+0330\n"
-"PO-Revision-Date: 2026-04-27 12:26+0330\n"
+"PO-Revision-Date: 2026-04-28 11:29+0330\n"
 "Last-Translator:   <mohammad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -147,11 +147,11 @@ msgstr "روش پرداخت قیمت"
 #: .\models.py:52
 #| msgid "order"
 msgid "Order"
-msgstr "سفارش دهید"
+msgstr "سفارش"
 
 #: .\models.py:65
 msgid "order"
-msgstr "سفارش دهید"
+msgstr "سفارش"
 
 #: .\models.py:66
 msgid "product"
@@ -168,7 +168,7 @@ msgstr "قیمت"
 #: .\models.py:72
 #| msgid "order notes"
 msgid "Order Item"
-msgstr "سفارش کالا"
+msgstr "لیست سفارشات"
 
 #: .\models.py:97
 msgid "Receive the newsletter"

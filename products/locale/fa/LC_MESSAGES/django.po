@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-27 10:06+0330\n"
+"POT-Creation-Date: 2026-04-28 11:27+0330\n"
 "PO-Revision-Date: 2026-04-27 12:30+0330\n"
 "Last-Translator:   <mohammad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -127,7 +127,6 @@ msgid "Number of visits"
 msgstr "تعداد بازدید"
 
 #: .\models.py:62
-#| msgid "product_type"
 msgid "product"
 msgstr "محصول"
 
@@ -152,7 +151,6 @@ msgid "is_active"
 msgstr "فعال است"
 
 #: .\models.py:111
-#| msgid "Discontinued"
 msgid "Discount"
 msgstr "تخفیف"
 
@@ -173,7 +171,6 @@ msgid "cover_category"
 msgstr "عکس_دسته"
 
 #: .\models.py:153
-#| msgid "Category:"
 msgid "Category"
 msgstr "دسته بندی"
 
@@ -194,7 +191,6 @@ msgid "status"
 msgstr "وضعیت"
 
 #: .\models.py:192
-#| msgid "inventory"
 msgid "Inventory"
 msgstr "موجودی"
 
@@ -294,13 +290,16 @@ msgid "usage instructions"
 msgstr "دستورالعمل استفاده"
 
 #: .\models.py:239
-#| msgid "features"
 msgid "Features"
 msgstr "ویژگی ها"
 
 #: .\models.py:246
 msgid "Brand_name"
 msgstr "نام تجاری"
+
+#: .\models.py:254 .\templates\products\product_list.html:64
+msgid "brands"
+msgstr "برند ها"
 
 #: .\models.py:259
 msgid "comments"
@@ -331,7 +330,6 @@ msgid "I recommend purchasing this product ?"
 msgstr "آیا خرید این محصول را توصیه میکنم؟"
 
 #: .\models.py:269
-#| msgid "comments"
 msgid "Comment"
 msgstr "نظرات"
 
@@ -360,7 +358,6 @@ msgid "active"
 msgstr "فعال است"
 
 #: .\models.py:289
-#| msgid "Categories"
 msgid "Category Slider"
 msgstr "زیر مجموعه ها"
 
@@ -377,7 +374,6 @@ msgid "Order tracking"
 msgstr "پیگیری سفارش"
 
 #: .\models.py:304
-#| msgid "Returned"
 msgid "Returning goods"
 msgstr "کالاهای برگشتی"
 
@@ -386,7 +382,6 @@ msgid "Discount codes and gift cards"
 msgstr "کدهای تخفیف و کارت‌های هدیه"
 
 #: .\models.py:306
-#| msgid "the cheapest"
 msgid "Other cases"
 msgstr "موارد دیگر"
 
@@ -403,7 +398,6 @@ msgid "body_question"
 msgstr "متن سوال"
 
 #: .\models.py:317
-#| msgid "body_question"
 msgid "category_question"
 msgstr "دسته سوال"
 
@@ -424,17 +418,14 @@ msgid "admin"
 msgstr "مدیر"
 
 #: .\models.py:330
-#| msgid "body_question"
 msgid "body_question_answer"
 msgstr "متن پاسخ سوال"
 
 #: .\models.py:331
-#| msgid "created_at"
 msgid "created at"
 msgstr "ایجاد در"
 
 #: .\models.py:334
-#| msgid "answer"
 msgid "Answer"
 msgstr "پاسخ دهید"
 
@@ -631,12 +622,10 @@ msgid "please fill out the question !"
 msgstr "لطفا برای ثبت ایجاد پرسش لاگین نمایید !"
 
 #: .\templates\products\product_detail.html:506
-#| msgid "body_question"
 msgid "question"
 msgstr "سوال"
 
 #: .\templates\products\product_detail.html:527
-#| msgid "answer"
 msgid "answer admin"
 msgstr "پاسخ مدیر"
 
@@ -651,10 +640,6 @@ msgstr "دسته بندی محصولات"
 #: .\templates\products\product_list.html:42
 msgid "everyone"
 msgstr "همه"
-
-#: .\templates\products\product_list.html:64
-msgid "brands"
-msgstr "برند ها"
 
 #: .\templates\products\product_list.html:93
 msgid "Price range"
