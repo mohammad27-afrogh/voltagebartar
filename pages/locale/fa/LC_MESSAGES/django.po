@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-29 07:35+0330\n"
-"PO-Revision-Date: 2026-04-29 07:37+0330\n"
+"POT-Creation-Date: 2026-04-29 16:58+0330\n"
+"PO-Revision-Date: 2026-04-29 17:00+0330\n"
 "Last-Translator:   <mohammad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -94,6 +94,30 @@ msgstr "تعداد بازدید"
 msgid "news"
 msgstr "خبر"
 
+#: .\models.py:50
+#| msgid "title news"
+msgid "title"
+msgstr "سر تیتر"
+
+#: .\models.py:51
+#| msgid "short description news"
+msgid "short_discription"
+msgstr "توضیحات مختصر"
+
+#: .\models.py:52
+#| msgid "description news"
+msgid "discription about us"
+msgstr "توضیحات کامل درباره ما"
+
+#: .\models.py:55 .\models.py:56
+msgid "aboutus"
+msgstr "درباره ما"
+
+#: .\templates\pages\aboutus.html:11
+#| msgid "news room sabzeonline"
+msgid "about sabzeonline"
+msgstr "درباره سبز آنلاین"
+
 #: .\templates\pages\faq.html:10
 msgid "question and answer"
 msgstr "پرسش و پاسخ"
@@ -131,7 +155,6 @@ msgid "Most frequently asked questions"
 msgstr "پرتکرارترین پرسش ها"
 
 #: .\templates\pages\news_detail.html:11
-#| msgid "news"
 msgid "new"
 msgstr "خبر"
 
@@ -140,7 +163,6 @@ msgid "produced by :"
 msgstr "تولید شده توسط :"
 
 #: .\templates\pages\news_detail.html:38
-#| msgid "category"
 msgid "name category :"
 msgstr "نام دسته بندی"
 

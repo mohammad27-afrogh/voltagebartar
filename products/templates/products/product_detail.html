@@ -24,7 +24,7 @@
                         <i class="mdi mdi-home"></i>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{% url 'home' %}">{% trans 'home' %}</a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'page:home' %}">{% trans 'home' %}</a></li>
                                 {% for breadcrumb_category in breadcrumb_categories %}
                                 	{% if breadcrumb_category.get_absolute_url %}
                                         <li class="breadcrumb-item">
@@ -241,7 +241,7 @@
                                     </a>
                                 </div>
                                 <div class="product-feature-col">
-                                    <a href="{% url 'aboutus' %}" class="product-feature-item">
+                                    <a href="{% url 'page:aboutus' %}" class="product-feature-item">
                                         <img src="{% static 'img/page-single-product/contact-us.svg' %}">
                                         {% trans '7 days a week' %}
                                         <br>

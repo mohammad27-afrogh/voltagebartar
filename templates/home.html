@@ -310,7 +310,7 @@
                                         <div class="post-title">
                                             <p><b>{{ blog.name }}</b></p>
                                             <p>{{ blog.short_description }}</p>
-                                            <a href="{% url 'blog_detail_by_slug' blog.slug %}" type="button" class="btn btn-light btn-see-all">{% trans 'View the blog' %}</a>
+                                            <a href="{% url 'blog:blog_detail_by_slug' blog.slug %}" type="button" class="btn btn-light btn-see-all">{% trans 'View the blog' %}</a>
                                         </div>
                                     </figure>
                                 </article>
@@ -318,7 +318,7 @@
                         {% endfor %}
                     </div>
                     <div class="container-for-my-button">
-                        <a href="{% url 'blogs' %}" type="button" class="my-custom-add-button btn btn-primary">{% trans 'View all blogs' %}</a>
+                        <a href="{% url 'blog:blogs' %}" type="button" class="my-custom-add-button btn btn-primary">{% trans 'View all blogs' %}</a>
                     </div>
                 </div>
             </div>

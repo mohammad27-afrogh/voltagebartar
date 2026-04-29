@@ -1,1 +1,58 @@
-<h1>about us</h1>
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load persian_translation_tags %}
+{% load humanize %}
+{% load jalali_tags %}
+
+
+{% block page_title %}
+    {% trans 'about sabzeonline' %}
+{% endblock page_title %}
+
+
+{% block content %}
+
+    {% include 'partials/navbar.html' %}
+
+    <!-- about----------------------------------->
+    <div class="container-main">
+        <div class="col-12">
+            <div id="content">
+                {% for item in about_us %}
+                    <div class="about">
+                        <div class="about-us-head">
+                            <div class="about-us-head-inner">
+                                <h1>{{ item.title }}</h1>
+                                <div class="item-thumb">
+                                    <a href="{% url 'page:aboutus' %}" class="d-block">
+                                        <img src="{% static 'img/about_us.jpg' %}"
+                                            alt="{{ item.title }}">
+                                    </a>
+                                </div>
+                                <div class="about-us-head-content mt-4 text-right">
+                                    {{ item.short_discription }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page-content-about">
+                            <div class="page-content-about-paragraph">
+                                {{ item.discription|safe }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- about----------------------------------->
+
+        {% include 'partials/footer.html' %}
+
+{% endblock content %}
+
+
+{% block body_class %}
+    account_page
+{% endblock body_class %}

@@ -44,3 +44,16 @@ class NewsRoom(models.Model):
 
     def get_absolute_url(self):
         return reverse('news_detail_by_slug', args=[self.slug])
+
+
+class AboutUs(models.Model):
+    title = models.CharField(_('title'), max_length=100)
+    short_discription = models.CharField(_('short_discription'), max_length=255)
+    discription = RichTextField(_('discription about us'))
+
+    class Meta:
+        verbose_name = _('aboutus')
+        verbose_name_plural = _('aboutus')
+
+    def __str__(self):
+        return self.title

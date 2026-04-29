@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="logo">
-                        <a href="{% url 'home' %}" class="custom-logo-link">
+                        <a href="{% url 'page:home' %}" class="custom-logo-link">
                             <img src="{% static 'img/logo/logo.png' %}" alt="sabzeonline">
                         </a>
                     </div>
@@ -46,18 +46,18 @@
                                 <div class="row">
                                     <section class="footer-links-col">
                                         <div class="headline-links">
-                                            <a href="{% url 'home' %}">
+                                            <a href="{% url 'page:home' %}">
                                                 {% trans 'with sabzeonline' %}
                                             </a>
                                         </div>
                                         <ul class="footer-menu-ul">
                                             <li class="menu-item-type-custom">
-                                                <a href="{% url 'news_room_page_view' %}">
+                                                <a href="{% url 'page:news_room_page_view' %}">
                                                     {% trans 'newsroom sabzeonline' %}
                                                 </a>
                                             </li>
                                             <li class="menu-item-type-custom">
-                                                <a href="{% url 'aboutus' %}">
+                                                <a href="{% url 'page:aboutus' %}">
                                                     {% trans 'about us' %}
                                                 </a>
                                             </li>
@@ -74,13 +74,13 @@
                                 <div class="row">
                                     <section class="footer-links-col">
                                         <div class="headline-links">
-                                            <a href="{% url 'home' %}">
+                                            <a href="{% url 'page:home' %}">
                                                 {% trans 'Customer service' %}
                                             </a>
                                         </div>
                                         <ul class="footer-menu-ul">
                                             <li class="menu-item-type-custom">
-                                                <a href="{% url 'faq' %}">
+                                                <a href="{% url 'page:faq' %}">
                                                     {% trans 'Answers to frequently asked questions' %}
                                                 </a>
                                             </li>
@@ -90,12 +90,12 @@
                                                 </a>
                                             </li>
                                             <li class="menu-item-type-custom">
-                                                <a href="{% url 'privacy' %}">
+                                                <a href="{% url 'page:privacy' %}">
                                                     {% trans 'Terms of Use' %}
                                                 </a>
                                             </li>
                                             <li class="menu-item-type-custom">
-                                                <a href="{% url 'privacy' %}">
+                                                <a href="{% url 'page:privacy' %}">
                                                     {% trans 'Privacy' %}
                                                 </a>
                                             </li>
@@ -107,23 +107,23 @@
                                 <div class="row">
                                     <section class="footer-links-col">
                                         <div class="headline-links">
-                                            <a href="{% url 'home' %}">
+                                            <a href="{% url 'page:home' %}">
                                                 {% trans 'Buying Guide from sabzeonline' %}
                                             </a>
                                         </div>
                                         <ul class="footer-menu-ul">
                                             <li class="menu-item-type-custom">
-                                                <a href="{% url 'order_registration' %}">
+                                                <a href="{% url 'page:order_registration' %}">
                                                     {% trans 'How to place an order' %}
                                                 </a>
                                             </li>
                                             <li class="menu-item-type-custom">
-                                                <a href="{% url 'order_registration' %}">
+                                                <a href="{% url 'page:order_registration' %}">
                                                     {% trans 'Order sending procedure' %}
                                                 </a>
                                             </li>
                                             <li class="menu-item-type-custom">
-                                                <a href="{% url 'order_registration' %}">
+                                                <a href="{% url 'page:order_registration' %}">
                                                     {% trans 'Payment methods' %}
                                                 </a>
                                             </li>

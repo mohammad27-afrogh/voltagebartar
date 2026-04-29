@@ -3,14 +3,16 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from django.views.generic import TemplateView
 
-from .models import NewsRoom
+from .models import NewsRoom, AboutUs
 from products.models import Questions_and_answers
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
 
-class AboutUsPageView(TemplateView):
-    template_name = 'pages/aboutus.html'
+def about_us_view_page(request):
+    about_us = AboutUs.objects.all()
+
+    return render(request, 'pages/aboutus.html', context={'about_us': about_us})
 
 class PrivacyPageView(TemplateView):
     template_name = 'pages/privacy.html'

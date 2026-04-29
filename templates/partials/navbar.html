@@ -9,7 +9,7 @@
                 <div class="header-right">
                     <div class="col-lg-3 pr">
                         <div class="header-logo row text-right">
-                            <a href="{% url 'home' %}" class="custom-logo-link">
+                            <a href="{% url 'page:home' %}" class="custom-logo-link">
                                 <img src="{% static 'img/logo/logo.png' %}" alt="{% trans 'sabzeonline' %}">
                             </a>
                         </div>
@@ -73,7 +73,7 @@
                                         <ul class="account-uls mb-0">
                                             {% if user.is_authenticated %}
                                                 <li class="account-item">
-                                                    <a href="{% url 'blogs' %}" class="account-link">{% trans 'blog' %}</a>
+                                                    <a href="{% url 'blog:blogs' %}" class="account-link">{% trans 'blog' %}</a>
                                                 </li>
                                                 <li class="account-item">
                                                     <a href="{% url 'order:profile' %}" class="account-link">{% trans 'profile' %}</a>
@@ -89,7 +89,7 @@
                                                 </li>
                                             {% else %}
                                                 <li class="account-item">
-                                                    <a href="{% url 'blogs' %}" class="account-link">{% trans 'blog' %}</a>
+                                                    <a href="{% url 'blog:blogs' %}" class="account-link">{% trans 'blog' %}</a>
                                                 </li>
                                                 <li class="account-item">
                                                     <a href="{% url 'account_login' %}" class="account-link">{% trans 'login' %}</a>
