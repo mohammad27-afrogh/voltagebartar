@@ -121,19 +121,19 @@
                                         <div class="item-inner">
                                             <div class="item-thumb">
                                                 {% if new_blog.cover_blog %}
-                                                    <a href="{% url 'blog_detail_by_slug' new_blog.slug %}" class="d-block">
+                                                    <a href="{% url 'blog:blog_detail_by_slug' new_blog.slug %}" class="d-block">
                                                         <img src="{{ new_blog.cover_blog.url }}"
                                                             alt="{{ new_blog.name}}">
                                                     </a>
                                                 {% else %}
-                                                    <a href="{% url 'blog_detail_by_slug' new_blog.slug %}" class="d-block">
+                                                    <a href="{% url 'blog:blog_detail_by_slug' new_blog.slug %}" class="d-block">
                                                         <img src="{% static 'img/products/no_product_image.jpg' %}"
                                                             alt="{{ new_blog.name}}">
                                                     </a>
                                                 {% endif %}
                                             </div>
                                             <div class="title">
-                                                <a href="{% url 'blog_detail_by_slug' new_blog.slug %}">
+                                                <a href="{% url 'blog:blog_detail_by_slug' new_blog.slug %}">
                                                     <h2 class="title-tag">
                                                         {{ new_blog.name }}
                                                     </h2>
