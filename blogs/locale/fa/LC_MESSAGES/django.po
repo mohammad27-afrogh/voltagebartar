@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-27 10:05+0330\n"
-"PO-Revision-Date: 2026-04-27 12:23+0330\n"
+"POT-Creation-Date: 2026-04-29 07:24+0330\n"
+"PO-Revision-Date: 2026-04-29 07:26+0330\n"
 "Last-Translator:   <mohammad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -71,7 +71,6 @@ msgid "subcategories"
 msgstr "زیر مجموعه ها"
 
 #: .\models.py:38
-#| msgid "category"
 msgid "Category"
 msgstr "دسته بندی"
 
@@ -96,7 +95,6 @@ msgid "answer"
 msgstr "پاسخ دهید"
 
 #: .\models.py:52
-#| msgid "comments"
 msgid "Comment Blog"
 msgstr "نظرات وبلاگ"
 
@@ -108,6 +106,14 @@ msgstr "صفحه وبلاگ"
 msgid "latest blog"
 msgstr "آخرین وبلاگ"
 
+#: .\templates\blogs\blog.html:102
+msgid "Previous Page"
+msgstr "صفحه قبل "
+
+#: .\templates\blogs\blog.html:112
+msgid "Next Page"
+msgstr "صفحه بعد"
+
 #: .\templates\blogs\blog_detail.html:32
 msgid "produced by :"
 msgstr "تولید شده توسط:"
@@ -117,12 +123,10 @@ msgid "bazdid"
 msgstr "بازدید :"
 
 #: .\templates\blogs\blog_detail.html:70
-#| msgid "comments"
 msgid "user comments"
 msgstr "نظرات کاربران"
 
 #: .\templates\blogs\blog_detail.html:71
-#| msgid "comments"
 msgid "comment"
 msgstr "کامنت"
 

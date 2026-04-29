@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-28 11:33+0330\n"
-"PO-Revision-Date: 2026-04-28 11:34+0330\n"
+"POT-Creation-Date: 2026-04-29 07:35+0330\n"
+"PO-Revision-Date: 2026-04-29 07:37+0330\n"
 "Last-Translator:   <mohammad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -83,11 +83,14 @@ msgid "published ?"
 msgstr "منتشر شده؟"
 
 #: .\models.py:29
-#| msgid "date time modified"
 msgid "date time publish"
 msgstr "تاریخ زمان انتشار"
 
-#: .\models.py:32 .\models.py:33
+#: .\models.py:33
+msgid "Number of visits"
+msgstr "تعداد بازدید"
+
+#: .\models.py:37 .\models.py:38
 msgid "news"
 msgstr "خبر"
 
@@ -126,6 +129,36 @@ msgstr "سایر موارد"
 #: .\templates\pages\faq.html:79
 msgid "Most frequently asked questions"
 msgstr "پرتکرارترین پرسش ها"
+
+#: .\templates\pages\news_detail.html:11
+#| msgid "news"
+msgid "new"
+msgstr "خبر"
+
+#: .\templates\pages\news_detail.html:32
+msgid "produced by :"
+msgstr "تولید شده توسط :"
+
+#: .\templates\pages\news_detail.html:38
+#| msgid "category"
+msgid "name category :"
+msgstr "نام دسته بندی"
+
+#: .\templates\pages\news_detail.html:44
+msgid "bazdid"
+msgstr "بازدید"
+
+#: .\templates\pages\news_list.html:11
+msgid "news room sabzeonline"
+msgstr "اتاق خبری سبز آنلاین"
+
+#: .\templates\pages\news_list.html:62
+msgid "Previous Page"
+msgstr "صفحه قبل"
+
+#: .\templates\pages\news_list.html:72
+msgid "Next Page"
+msgstr "صفحه بعد"
 
 #: .\templates\pages\order_registration.html:9
 msgid "order registration"

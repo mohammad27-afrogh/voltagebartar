@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from django.views.generic import TemplateView
 
@@ -56,7 +57,25 @@ def faq_home_page_view(request):
 def news_room_page_view(request):
     news = NewsRoom.objects.all()
 
-    return render(request, 'pages/news_list.html', context={'news': news})
+    NUMBER_PAGINATOR = 5
+    paginator = Paginator(news, NUMBER_PAGINATOR)
+    page_number = request.GET.get('page', 1)
+
+    try:
+        page_obj = paginator.page(page_number)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+
+    context = {
+        'news': page_obj.object_list,
+        'page_obj': page_obj,
+        'paginator': paginator,
+        'is_paginated': page_obj.has_other_pages(),
+    }
+
+    return render(request, 'pages/news_list.html', context)
 
 
 def news_detail_by_slug(request, news_slug):

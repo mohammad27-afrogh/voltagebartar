@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views import generic
 from django.db.models import Q
 from datetime import timedelta
@@ -11,6 +12,18 @@ from .forms import CommentForm
 
 def blog_page_view(request):
     blog = Blog.objects.all()
+    
+    NUMBER_PAGINATOR = 5
+    paginator = Paginator(blog, NUMBER_PAGINATOR)
+    page_number = request.GET.get('page', 1)
+
+    try:
+        page_obj = paginator.page(page_number)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+
 
     default_time = timezone.now()
     one_month_ago = default_time - timedelta(days=60)
@@ -18,7 +31,10 @@ def blog_page_view(request):
     latest_blog = blog.filter(Q(date_time_create__gte=one_month_ago) & Q(date_time_create__lte=default_time))
 
     return render(request, 'blogs/blog.html', context={
-        'blog': blog,
+        'blog': page_obj.object_list,
+        'page_obj': page_obj,
+        'paginator': paginator,
+        'is_paginated': page_obj.has_other_pages(),
         'latest_blog': latest_blog,
     })
 

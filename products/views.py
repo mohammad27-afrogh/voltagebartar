@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.conf import settings
+# from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q, Count, Min, Max, Avg, OuterRef, Subquery, DecimalField, ExpressionWrapper, F
 from star_ratings.models import Rating
 from datetime import timedelta
@@ -16,6 +17,17 @@ def product_list_view(request):
     # مقداردهی اولیه برای حالتی که هیچ فیلتری اعمال نشده است
     products_queryset = Product.objects.all()
     current_category_name = "همه محصولات"
+
+    # paginator = Paginator(products_queryset, 10)
+    # page_number = request.GET.get('page', 1)
+
+    # try:
+    #     page_obj = paginator.page(page_number)
+    # except PageNotAnInteger:
+    #     page_obj = paginator.page(1)
+    # except EmptyPage:
+    #     page_obj = paginator.page(paginator.num_pages)
+
 
     selected_category_slug = request.GET.get('category')
 
@@ -49,6 +61,9 @@ def product_list_view(request):
         'products': products_queryset,
         'categories': categories,  # این برای نمایش منوی دسته‌بندی‌ها در نوار کناری استفاده می‌شود
         'current_category_name': current_category_name,
+        # 'page_obj': page_obj,
+        # 'paginator': paginator,
+        # 'is_paginated': paginator.has_other_pages(),
     }
 
     # نام فایل قالب HTML شما (که محصولات را رندر می‌کند)
@@ -168,6 +183,17 @@ def category_detail_view(request, category_slug):
     # 2. فیلتر کردن محصولات بر اساس لیست دسته‌بندی‌های جمع‌آوری شده
     products_in_category = Product.objects.filter(category__in=all_related_categories).prefetch_related('discounts')
 
+    # NUMBER_PAGINATOR = 1
+    # paginator = Paginator(products_in_category, NUMBER_PAGINATOR)
+    # page_number = request.GET.get('page', 1)
+
+    # try:
+    #     page_obj = paginator.page(page_number)
+    # except PageNotAnInteger:
+    #     page_obj = paginator.page(1)
+    # except EmptyPage:
+    #     page_obj = paginator.page(paginator.num_pages)
+
     # فیلتر برای یافتن فرزندان مستقیم
     child_categories = Category.objects.filter(parent=current_category)
 
@@ -222,6 +248,9 @@ def category_detail_view(request, category_slug):
     context = {
         'category': current_category,
         'products': products_in_category,
+        # 'page_obj': page_obj,
+        # 'paginator': paginator,
+        # 'is_paginated': page_obj.has_other_pages(),
         'child_categories': child_categories,
         'brands': related_brands,
         'min_price': price_range['min_price'],
