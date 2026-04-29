@@ -4,6 +4,7 @@
 {% load i18n %}
 {% load persian_translation_tags %}
 {% load humanize %}
+{% load jalali_tags %}
 
 
 {% block page_title %}
@@ -32,7 +33,7 @@
                                     {% if profile.phone_number %}
                                         <footer class="profile-box-content-footer">
                                             <span class="profile-box-nameuser">{{ profile.first_name }} {{ profile.last_name }}</span>
-                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_join_date_str }}</span>
+                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ profile.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</span>
                                             <span class="profile-box-phone">{% trans 'mobile number : ' %} {{ profile.phone_number }}</span>
                                             <div class="profile-box-tabs">
                                                 <a href="{% url 'account_logout' %}" class="profile-box-tab-sign-out"><i
@@ -42,7 +43,7 @@
                                     {% else %}
                                         <footer class="profile-box-content-footer">
                                             <span class="profile-box-nameuser">{{ profile.first_name }} {{ profile.last_name }}</span>
-                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_join_date_str }}</span>
+                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ profile.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</span>
                                             <span class="profile-box-phone">{% trans 'mobile number : Not registered yet' %}</span>
                                             <div class="profile-box-tabs">
                                                 <a href="{% url 'account_logout' %}" class="profile-box-tab-sign-out"><i
@@ -97,27 +98,31 @@
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">{% trans 'Product name' %}</th>
+                                                        <th scope="col">{% trans 'quantity' %}</th>
                                                         <th scope="col">{% trans 'total' %}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
                                                         <td class="product-name">{{ order_item_product.product.name }}</td>
+                                                        <td class="product-quantity">{{ order_item_product.quantity }}</td>
                                                         <td class="product-total">
                                                             <span class="amount">
                                                                 <span>{% trans '$' %}</span>
-                                                                {{ order_item_product.product.final_price|intcomma:False|translate_number }}
+                                                                <!-- در اینجا قیمت هر آیتم سبد خرید جداگانه محاسبه میشود -->
+                                                                {{ item_product_price|intcomma:False|translate_number }}
                                                             </span>
                                                         </td>
                                                     </tr>
                                                 </tbody>
                                                 <tfoot>
+                                                    <!-- در اینجا مجموع قیمت آیتم های سبد خرید محاسبه میشود -->
                                                     <tr>
                                                         <th scope="row">{% trans 'total' %}</th>
                                                         <td>
                                                             <span class="amount">
                                                                 <span>{% trans '$' %}</span>
-                                                                {{ total_price_city|intcomma:False|translate_number }}
+                                                                {{ total_order_item|intcomma:False|translate_number }}
                                                             </span>
                                                         </td>
                                                     </tr>
@@ -126,23 +131,20 @@
                                                         {% if order.city_address == 'Tehran' %}
                                                             <td>{% trans 'Free transportation in Tehran province' %}</td>
                                                         {% else %}
-                                                            <td>{% trans 'Transportation to other provinces 500,000 Tomans' %}</td>
+                                                            <td>{% trans 'Transportation to other county 500,000 Tomans' %}</td>
                                                         {% endif %}
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">{% trans 'Payment method ' %}</th>
-                                                        <td>{% trans 'Direct bank transfer' %}</td>
+                                                        <td>{{ order.get_pyment_price_display }}</td>
                                                     </tr>
-                                                    <tr>
-                                                        <th scope="row">{% trans 'quantity' %}</th>
-                                                            <td>{{ order_item_product.quantity }}</td>
-                                                    </tr>
+                                                    <!-- در اینجا قیمت سبد خرید (به صورتی که جمع سبد خرید با هزینه ارسال حساب میشود ) -->
                                                     <tr>
                                                         <th scope="row">{% trans 'Final price' %}</th>
                                                         <td>
                                                             <span class="amount">
                                                                 <span>{% trans '$' %}</span>
-                                                                {{ total_price_city|intcomma:False|translate_number }}
+                                                                {{ order.get_total_price|intcomma:False|translate_number }}
                                                             </span>
                                                         </td>
                                                     </tr>

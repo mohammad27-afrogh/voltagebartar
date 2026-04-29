@@ -4,7 +4,7 @@
 {% load i18n %}
 {% load persian_translation_tags %}
 {% load humanize %}
-
+{% load jalali_tags %}
 
 {% block page_title %}
     {% trans 'profile page' %}
@@ -32,7 +32,7 @@
                                     {% if profile.phone_number %}
                                         <footer class="profile-box-content-footer">
                                             <span class="profile-box-nameuser">{{ profile.first_name }} {{ profile.last_name }}</span>
-                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_join_date_str }}</span>
+                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ profile.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</span>
                                             <span class="profile-box-phone">{% trans 'mobile number : ' %} {{ profile.phone_number }}</span>
                                             <div class="profile-box-tabs">
                                                 <a href="{% url 'account_logout' %}" class="profile-box-tab-sign-out"><i
@@ -42,7 +42,7 @@
                                     {% else %}
                                         <footer class="profile-box-content-footer">
                                             <span class="profile-box-nameuser">{{ profile.first_name }} {{ profile.last_name }}</span>
-                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_join_date_str }}</span>
+                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ profile.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</span>
                                             <span class="profile-box-phone">{% trans 'mobile number : Not registered yet' %}</span>
                                             <div class="profile-box-tabs">
                                                 <a href="{% url 'account_logout' %}" class="profile-box-tab-sign-out"><i
@@ -124,7 +124,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="title">{% trans 'Profile update date : ' %}</div>
-                                                    <div class="value">{{ jalali_profile_date_str }}</div>
+                                                    <div class="value">{{ profile.date_time_modified|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</div>
                                                 </td>
                                             </tr>
                                             <tr>

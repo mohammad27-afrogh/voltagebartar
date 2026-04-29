@@ -58,7 +58,7 @@ class Order(models.Model):
     def get_total_price(self):
         total_price = sum(item.quantity * item.price for item in self.items.all())
 
-        shipping_cost = 0 if self.province_address.name == 'تهران' else 500000
+        shipping_cost = 0 if self.city_address.name == 'تهران' else 500000
         return total_price + shipping_cost
 
 class OrderItem(models.Model):

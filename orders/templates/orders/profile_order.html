@@ -66,22 +66,22 @@
                                         </li>
                                         <li class="profile-account-nav-item navigation-link-dashboard">
                                             <a href="{% url 'order:favorite_list' %}" class=""><i class="mdi mdi-heart"></i>
-                                               {% trans 'Favorites list' %}
+                                            {% trans 'Favorites list' %}
                                             </a>
                                         </li>
                                         <li class="profile-account-nav-item navigation-link-dashboard">
                                             <a href="{% url 'order:profile_address' %}" class=""><i class="mdi mdi-map-outline"></i>
-                                               {% trans 'Addresses' %}
+                                            {% trans 'Addresses' %}
                                             </a>
                                         </li>
                                         <li class="profile-account-nav-item navigation-link-dashboard">
                                             <a href="{% url 'order:profile_comment' %}" class=""><i class="mdi mdi-email-open-outline"></i>
-                                               {%  trans 'Comments' %}
+                                            {%  trans 'Comments' %}
                                             </a>
                                         </li>
                                         <li class="profile-account-nav-item navigation-link-dashboard">
                                             <a href="{% url 'order:profile_user_edit' %}" class=""><i class="mdi mdi-tooltip-text-outline"></i>
-                                               {% trans 'Account information' %}
+                                            {% trans 'Account information' %}
                                             </a>
                                         </li>
                                     </ul>
@@ -89,50 +89,59 @@
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-9 col-xs-12 pl">
-                            <div class="profile-content">
-                                <div class="profile-stats">
-                                    <div class="table-orders">
-                                        <table class="table table-profile-orders">
-                                            <thead class="thead-light">
-                                                <tr>
-                                                    <th scope="col">{% trans 'order number' %}</th>
-                                                    <th scope="col">{% trans 'Order registration date' %}</th>
-                                                    <th scope="col">{% trans 'status' %}</th>
-                                                    <th scope="col">{% trans 'total' %}</th>
-                                                    <th scope="col">{% trans 'Details' %}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {% for order in orders_whit_items %}
-                                                    {% for item in order.items.all %}
-                                                        <tr>
-                                                            <td class="order-code">{{ item.id }}</td>
-                                                            <td>{{ item.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</td>
-                                                            {% if order.is_paid %}
-                                                                <td class="Waiting text-success">{% trans 'paid' %}</td>
-                                                            {% else %}
-                                                                <td class="Waiting" style="color: orange;">{% trans 'waiting' %}</td>
-                                                            {% endif %}
-                                                            <td class="totla">
-                                                                <span class="amount">{{ order.get_total_price|intcomma:False|translate_number }}
-                                                                    <span>{% trans '$' %}</span>
-                                                                </span>
-                                                            </td>
-                                                            <td class="detail">
-                                                                <button type="submit", method="POST">
-                                                                    <a href="{% url 'order:order_view' %}"
-                                                                        class="btn btn-secondary d-block">{% trans 'view' %}
-                                                                    </a>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
+                            {% if orders_whit_items %}
+                                <div class="profile-content">
+                                    <div class="profile-stats">
+                                        <div class="table-orders">
+                                            <table class="table table-profile-orders">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th scope="col">{% trans 'order number' %}</th>
+                                                        <th scope="col">{% trans 'Order registration date' %}</th>
+                                                        <th scope="col">{% trans 'status' %}</th>
+                                                        <th scope="col">{% trans 'total' %}</th>
+                                                        <th scope="col">{% trans 'Details' %}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for order in orders_whit_items %}
+                                                        {% for item in order.items.all %}
+                                                            <tr>
+                                                                <td class="order-code">{{ order.id }}</td>
+                                                                <td>{{ item.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</td>
+                                                                {% if order.is_paid %}
+                                                                    <td class="Waiting text-success">{% trans 'paid' %}</td>
+                                                                {% else %}
+                                                                    <td class="Waiting" style="color: orange;">{% trans 'waiting' %}</td>
+                                                                {% endif %}
+                                                                <td class="totla">
+                                                                    <span class="amount">{{ order.get_total_price|intcomma:False|translate_number }}
+                                                                        <span>{% trans '$' %}</span>
+                                                                    </span>
+                                                                </td>
+                                                                <td class="detail">
+                                                                    <button type="submit", method="POST">
+                                                                        <a href="{% url 'order:order_view' %}"
+                                                                            class="btn btn-secondary d-block">{% trans 'view' %}
+                                                                        </a>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        {% endfor %}
                                                     {% endfor %}
-                                                {% endfor %}
-                                            </tbody>
-                                        </table>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            {% else %}
+                                <!-- فایل HTML شما -->
+                                <div id="shipping-alert" class="alert-container">
+                                <span class="alert-icon">⚠️</span>
+                                <span class="alert-title">{% trans 'attention :' %}</span>
+                                {% trans 'custom still not registered to you , please perform your order from the department store' %}
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

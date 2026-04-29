@@ -94,23 +94,6 @@ def profile_view(request):
     profile, created  = Profile.objects.get_or_create(user=current_user)
     username = current_user
 
-    # گرفتن تاریخ ثبت نام کاربر
-    gregorian_join_date = current_user.date_joined  
-    jalali_join_date_str = "تاریخ نامشخص"
-
-    if gregorian_join_date:
-        jalali_join_date = jdatetime.datetime.fromgregorian(datetime=gregorian_join_date)
-        # فرمت تاریخ: سال/ماه/روز ساعت:دقیقه
-        jalali_join_date_str = jalali_join_date.strftime("%Y/%m/%d %H:%M:%S")
-
-    # گرفتن تاریخ آپدیت ویرایش پروفایل کاربر
-    gregorian_profile_date = profile.date_time_modified
-    jalali_profile_date_str = "تاریخ نامشخص"
-    if gregorian_profile_date:
-        jalali_profile_date = jdatetime.datetime.fromgregorian(datetime=gregorian_profile_date)
-        # فرمت دلخواه: سال/ماه/روز ساعت:دقیقه
-        jalali_profile_date_str = jalali_profile_date.strftime("%Y/%m/%d %H:%M")
-
     incomplete_fields = []
     if not profile.first_name:
         incomplete_fields.append(_('first_name'))
@@ -130,8 +113,6 @@ def profile_view(request):
         'username': username,
         'profile': profile,
         'incomplete_fields': incomplete_fields,
-        'jalali_join_date_str': jalali_join_date_str,
-        'jalali_profile_date_str': jalali_profile_date_str
     }
     
     return render(request, 'orders/profile_user.html', context)
@@ -143,15 +124,6 @@ def profile_user_edit_view(request):
     current_user = request.user
     username = current_user
     profile, created  = Profile.objects.get_or_create(user=current_user)
-
-    # گرفتن تاریخ ثبت نام کاربر
-    gregorian_join_date = current_user.date_joined  
-    jalali_join_date_str = "تاریخ نامشخص"
-
-    if gregorian_join_date:
-        jalali_join_date = jdatetime.datetime.fromgregorian(datetime=gregorian_join_date)
-        # فرمت تاریخ: سال/ماه/روز ساعت:دقیقه
-        jalali_join_date_str = jalali_join_date.strftime("%Y/%m/%d %H:%M:%S")
 
     if request.method == 'POST':
         form = ProfileFormBasic(request.POST, instance=profile)
@@ -165,7 +137,6 @@ def profile_user_edit_view(request):
         'profile': profile,
         'username': username,
         'form': form,
-        'jalali_join_date_str': jalali_join_date_str,
     }
 
     return render(request, 'orders/profile_user_edit.html', context)
@@ -197,36 +168,26 @@ def profile_order_view(request):
     # این شیء تکی (object) دارای فیلدهای آدرس است.
     # ما از select_related برای بهینه‌سازی دسترسی به آدرس‌ها استفاده می‌کنیم.
 
-    order = get_object_or_404(
-        Order.objects.select_related('city_address', 'province_address'),
-        user=current_user
-    )
+    order = get_object_or_404(Order, user=current_user)
 
     profile, created  = Profile.objects.get_or_create(user=current_user)
 
-    # گرفتن تاریخ ثبت نام کاربر
-    gregorian_join_date = current_user.date_joined  
-    jalali_join_date_str = "تاریخ نامشخص"
-
-    if gregorian_join_date:
-        jalali_join_date = jdatetime.datetime.fromgregorian(datetime=gregorian_join_date)
-        # فرمت تاریخ: سال/ماه/روز ساعت:دقیقه
-        jalali_join_date_str = jalali_join_date.strftime("%Y/%m/%d %H:%M:%S")
-
     order_items_product = order.items.select_related('product').all()
 
-    if order.city_address == 'Tehra':
-        total_price_city = order.get_total_price()
-    else:
-        total_price_city = order.get_total_price() + 500000
+    total_order_item = 0
+
+    for item in order_items_product:
+        item_product_price = item.quantity * item.price
+
+    total_order_item = item_product_price + total_order_item
 
     context = {
         'username': username,
         'profile': profile,
-        'jalali_join_date_str': jalali_join_date_str,
         'order': order,
         'order_items_product': order_items_product,
-        'total_price_city': total_price_city,
+        'item_product_price': item_product_price,
+        'total_order_item': total_order_item,
     }
 
     return render(request, 'orders/profile_order_view.html', context)
@@ -300,20 +261,10 @@ def profile_address_view(request):
     if not profile.order_notes:
         incomplete_fields_address.append(_('order_notes'))
 
-    # گرفتن تاریخ ثبت نام کاربر
-    gregorian_join_date = current_user.date_joined  
-    jalali_join_date_str = "تاریخ نامشخص"
-
-    if gregorian_join_date:
-        jalali_join_date = jdatetime.datetime.fromgregorian(datetime=gregorian_join_date)
-        # فرمت تاریخ: سال/ماه/روز ساعت:دقیقه
-        jalali_join_date_str = jalali_join_date.strftime("%Y/%m/%d %H:%M:%S")
-
     context = {
         'profile': profile,
         'username': username,
         'incomplete_fields_address': incomplete_fields_address,
-        'jalali_join_date_str': jalali_join_date_str,
     }
 
     return render(request, 'orders/profile_address.html', context)
@@ -324,15 +275,6 @@ def profile_address_edit_view(request):
     current_user = request.user
     username = current_user
     profile, created  = Profile.objects.get_or_create(user=current_user)
-
-    # گرفتن تاریخ ثبت نام کاربر
-    gregorian_join_date = current_user.date_joined  
-    jalali_join_date_str = "تاریخ نامشخص"
-
-    if gregorian_join_date:
-        jalali_join_date = jdatetime.datetime.fromgregorian(datetime=gregorian_join_date)
-        # فرمت تاریخ: سال/ماه/روز ساعت:دقیقه
-        jalali_join_date_str = jalali_join_date.strftime("%Y/%m/%d %H:%M:%S")
 
     if request.method == 'POST':
         form = ProfileFormLocations(request.POST, instance=profile)
@@ -345,7 +287,6 @@ def profile_address_edit_view(request):
 
     context = {
         'profile': profile,
-        'jalali_join_date_str': jalali_join_date_str,
         'form': form,
     }
 
@@ -359,21 +300,11 @@ def profile_comment_view(request):
     username = current_user
     profile, created  = Profile.objects.get_or_create(user=current_user)
 
-    # گرفتن تاریخ ثبت نام کاربر
-    gregorian_join_date = current_user.date_joined  
-    jalali_join_date_str = "تاریخ نامشخص"
-
-    if gregorian_join_date:
-        jalali_join_date = jdatetime.datetime.fromgregorian(datetime=gregorian_join_date)
-        # فرمت تاریخ: سال/ماه/روز ساعت:دقیقه
-        jalali_join_date_str = jalali_join_date.strftime("%Y/%m/%d %H:%M:%S")
-
     comments_user = Comment.objects.select_related('user').filter(user=current_user).prefetch_related('product').all()
     
     context = {
         'profile': profile,
         'username': username,
-        'jalali_join_date_str': jalali_join_date_str,
         'comments_user': comments_user,
     }
 

@@ -4,6 +4,7 @@
 {% load i18n %}
 {% load persian_translation_tags %}
 {% load humanize %}
+{% load jalali_tags %}
 
 
 {% block page_title %}
@@ -32,7 +33,7 @@
                                     {% if profile.phone_number %}
                                         <footer class="profile-box-content-footer">
                                             <span class="profile-box-nameuser">{{ profile.first_name }} {{ profile.last_name }}</span>
-                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_join_date_str }}</span>
+                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ profile.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</span>
                                             <span class="profile-box-phone">{% trans 'mobile number : ' %} {{ profile.phone_number }}</span>
                                             <div class="profile-box-tabs">
                                                 <a href="{% url 'account_logout' %}" class="profile-box-tab-sign-out"><i
@@ -42,7 +43,7 @@
                                     {% else %}
                                         <footer class="profile-box-content-footer">
                                             <span class="profile-box-nameuser">{{ profile.first_name }} {{ profile.last_name }}</span>
-                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ jalali_join_date_str }}</span>
+                                            <span class="profile-box-registery-date">{% trans 'Join the site : ' %} {{ profile.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</span>
                                             <span class="profile-box-phone">{% trans 'mobile number : Not registered yet' %}</span>
                                             <div class="profile-box-tabs">
                                                 <a href="{% url 'account_logout' %}" class="profile-box-tab-sign-out"><i
@@ -88,10 +89,10 @@
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-9 col-xs-12 pl">
-                            <div class="profile-content">
-                                <div class="profile-stats">
-                                    <div class="profile-comment">
-                                        {% if comments_user %}
+                            {% if comments_user %}
+                                <div class="profile-content">
+                                    <div class="profile-stats">
+                                        <div class="profile-comment">
                                             <table class="table table-borderless table-profile-comment">
                                                 <thead>
                                                     <tr>
@@ -144,15 +145,18 @@
                                                     {% endfor %}
                                                 </tbody>
                                             </table>
-                                        {% else %}
-                                            <ul>
-                                                <li>{% trans 'You have not posted a comment yet.' %}</li>
-                                                <li>{% trans 'Please visit the products section to post a comment!' %}</li>
-                                            </ul>
-                                        {% endif %}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            {% else %}
+                                <!-- فایل HTML شما -->
+                                <div id="shipping-alert" class="alert-container">
+                                <span class="alert-icon">⚠️</span>
+                                <span class="alert-title">{% trans 'attention :' %}</span>
+                                {% trans 'You have not posted a comment yet.' %}
+                                {% trans 'Please visit the products section to post a comment!' %}
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
