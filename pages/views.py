@@ -4,7 +4,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import TemplateView
 
 from .models import NewsRoom, AboutUs
-from products.models import Questions_and_answers
+from products.models import Questions_and_answers, Answer
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
@@ -21,36 +21,61 @@ class OrderRegistrationPageView(TemplateView):
     template_name = 'pages/order_registration.html'
 
 def faq_home_page_view(request):
-    all_faq_items = Questions_and_answers.objects.all()
+    # all_faq_items = Questions_and_answers.objects.all()
 
-    li_LAR = []
-    li_ORP = []
-    li_OT = []
-    li_RG = []
-    li_DCG = []
-    li_OS = []
+    # li_LAR = []
+    # li_ORP = []
+    # li_OT = []
+    # li_RG = []
+    # li_DCG = []
+    # li_OS = []
 
-    for item in all_faq_items:
-        if item.category_question == 'LAR':
-            li_LAR.append(item)
-        elif item.category_question == 'ORP':
-            li_ORP.append(item)
-        elif item.category_question == 'OT':
-            li_OT.append(item)
-        elif item.category_question == 'RG':
-            li_RG.append(item)
-        elif item.category_question == 'DCG':
-            li_DCG.append(item)
-        elif item.category_question == 'OS':
-            li_OS.append(item)
+    # for item in all_faq_items:
+    #     if item.category_question == 'LAR':
+    #         li_LAR.append(item)
+    #     elif item.category_question == 'ORP':
+    #         li_ORP.append(item)
+    #     elif item.category_question == 'OT':
+    #         li_OT.append(item)
+    #     elif item.category_question == 'RG':
+    #         li_RG.append(item)
+    #     elif item.category_question == 'DCG':
+    #         li_DCG.append(item)
+    #     elif item.category_question == 'OS':
+    #         li_OS.append(item)
+
+    # context = {
+    #     'li_LAR': li_LAR,
+    #     'li_ORP': li_ORP,
+    #     'li_OT': li_OT,
+    #     'li_RG': li_RG,
+    #     'li_DCG': li_DCG,
+    #     'li_OS': li_OS,
+    # }
+    category = request.GET.get('category')
+
+    if category:
+        questions = Questions_and_answers.objects.filter(category_question=category)
+
+    else:
+        questions = Questions_and_answers.objects.all()
+
+    # عکس مربوط به هر دسته بندی 
+    category_images = {
+        'LAR': '/static/img/page-faq/add-group.png',
+        'ORP': '/static/img/page-faq/open-box.png',
+        'OT': '/static/img/page-faq/tracking.png',
+        'RG': '/static/img/page-faq/return.png',
+        'DCG': '/static/img/page-faq/gift.png',
+        'OS': '/static/img/page-faq/other.svg',
+    }
 
     context = {
-        'li_LAR': li_LAR,
-        'li_ORP': li_ORP,
-        'li_OT': li_OT,
-        'li_RG': li_RG,
-        'li_DCG': li_DCG,
-        'li_OS': li_OS,
+        'questions': questions,
+        'selected_category': category,
+        # برای نمایش دکمه ها 
+        'categories': Questions_and_answers.CHOICES_QUESTION_AND_ANSWER,
+        'category_images': category_images,
     }
 
     return render(request, 'pages/faq.html', context)

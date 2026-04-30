@@ -1,5 +1,6 @@
 {% extends '_base.html' %}
 {% load static %}
+{% load custom_filters %}
 {% load crispy_forms_tags %}
 {% load i18n %}
 {% load persian_translation_tags %}
@@ -7,7 +8,7 @@
 
 
 {% block page_title %}
-    {% trans 'sabzeonline' %}
+    {% trans 'question and answer' %}
 {% endblock page_title %}
 
 
@@ -23,176 +24,49 @@
                     <div id="content-bottom">
                         <div class="content-bottom-title">
                             <h2 class="box-rounded-headline">{% trans 'Categories of questions' %}</h2>
-                            
-                            <div class="add-group-border">
-                                <a href="#" class="category-link" data-category="LAR">
-                                    <div class="add-group"></div>
-                                    <img src="{% static 'img/page-faq/add-group.png' %}" alt="fag">
-                                    <h3>{% trans 'Log in and register' %}</h3>
-                                </a>
-                            </div>
-
-                            <div class="open-box-border">
-                                <a href="#" class="category-link" data-category="ORP">
-                                    <div class="open-box"></div>
-                                    <img src="{% static 'img/page-faq/open-box.png' %}" alt="fag">
-                                    <h3>{% trans 'Order registration process' %}</h3>
-                                </a>
-                            </div>
-
-                            <div class="tracking-border">
-                                <a href="#" class="category-link" data-category="OT">
-                                    <div class="tracking"></div>
-                                    <img src="{% static 'img/page-faq/tracking.png' %}" alt="fag">
-                                    <h3>{% trans 'Order tracking' %}</h3>
-                                </a>
-                            </div>
-
-                            <div class="return-border">
-                                <a href="#" class="category-link" data-category="RG">
-                                    <div class="return"></div>
-                                    <img src="{% static 'img/page-faq/return.png' %}" alt="fag">
-                                    <h3>{% trans 'Returning goods' %}</h3>
-                                </a>
-                            </div>
-
-                            <div class="gift-border">
-                                <a href="#" class="category-link" data-category="DCG">
-                                    <div class="gift"></div>
-                                    <img src="{% static 'img/page-faq/gift.png' %}" alt="fag">
-                                    <h3>{% trans 'Discount codes and gift cards' %}</h3>
-                                </a>
-                            </div>
-
-                            <div class="other-border">
-                                <a href="#" class="category-link" data-category="OS">
-                                    <div class="other-hover"></div>
-                                    <img src="{% static 'img/page-faq/other.svg' %}" alt="fag">
-                                    <h3>{% trans 'Other cases' %}</h3>
-                                </a>
-                            </div>
+                            {% for key, title in categories %}
+                                <div class="add-group-border">
+                                    <a href="?category={{ key }}" class="category-link">
+                                        <div class="add-group"></div>
+                                        {% if category_images %}
+                                            {% with image_url=category_images|get_item:key %}
+                                                {% if image_url %}
+                                                    <img src="{{ image_url }}" alt="{{ title }}">
+                                                {% endif %}
+                                            {% endwith %}
+                                        {% endif %}
+                                        <h3>{{ title }}</h3>
+                                    </a>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
-                <div class="info-page-faq">
-                    <div class="content-info-page">
-                        <h2 class="box-rounded_headline">{% trans 'Most frequently asked questions' %}</h2>
-                        
-                        <div class="toggle-box" id="questions-LAR" style="display: none;">
-                            <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="LAR">
-                                <div class="toggle-box-active">
-                                    <ul>
-                                        {% for question in li_LAR %}
-                                            <li class="has-sub">
-                                                <a>{{ question.body_question }}</a>
-                                                <ul style="display: none;">
-                                                    {# اگر پاسخ مستقیما در فیلد دیگری است، آن را نمایش دهید #}
-                                                    {# مثال: <li class="has-sub"><a href="#">{{ question.answer }}</a></li> #}
-                                                    {# اگر پاسخ به صورت کامنت است، ممکن است نیاز به تغییر مدل یا کوئری داشته باشد #}
-                                                    <li class="has-sub"><a href="#">پاسخ: {{ question.answer_comment.body_question|default:"پاسخی ثبت نشده است." }}</a></li>
-                                                    <a href="#" class="info-page-show-more">مشاهده توضیحات تکمیلی<i class="fa fa-angle-left"></i></a>
-                                                </ul>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
+                {% if selected_category %}
+                    <div class="info-page-faq">
+                        <div class="content-info-page">
+                            <h2 class="box-rounded_headline">{% trans 'Most frequently asked questions' %}</h2>
+                            {% for q in questions %}
+                                <div class="toggle-box" id="questions-{{ selected_category}}">
+                                    <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="{{ selected_category}}">
+                                        <div class="toggle-box-active">
+                                            <ul>
+                                                <li class="has-sub">
+                                                    <a>{{ q.body_question }}</a>
+                                                    <ul style="display: none;">
+                                                        {% for answer in q.answers.all %}
+                                                            <li class="has-sub"><a>{{ answer.answer_text }}</a></li> 
+                                                        {% endfor %}
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="toggle-box" id="questions-ORP" style="display: none;">
-                            <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="ORP">
-                                <div class="toggle-box-active">
-                                    <ul>
-                                        {% for question in li_ORP %}
-                                            <li class="has-sub">
-                                                <a>{{ question.body_question }}</a>
-                                                <ul style="display: none;">
-                                                    <li class="has-sub"><a href="#">پاسخ: {{ question.answer_comment.body_question|default:"پاسخی ثبت نشده است." }}</a></li>
-                                                    <a href="#" class="info-page-show-more">مشاهده توضیحات تکمیلی<i class="fa fa-angle-left"></i></a>
-                                                </ul>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="toggle-box" id="questions-OT" style="display: none;">
-                            <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="OT">
-                                <div class="toggle-box-active">
-                                    <ul>
-                                        {% for question in li_OT %}
-                                            <li class="has-sub">
-                                                <a>{{ question.body_question }}</a>
-                                                <ul style="display: none;">
-                                                    <li class="has-sub"><a href="#">پاسخ: {{ question.answer_comment.body_question|default:"پاسخی ثبت نشده است." }}</a></li>
-                                                    <a href="#" class="info-page-show-more">مشاهده توضیحات تکمیلی<i class="fa fa-angle-left"></i></a>
-                                                </ul>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="toggle-box" id="questions-RG" style="display: none;">
-                            <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="RG">
-                                <div class="toggle-box-active">
-                                    <ul>
-                                        {% for question in li_RG %}
-                                            <li class="has-sub">
-                                                <a>{{ question.body_question }}</a>
-                                                <ul style="display: none;">
-                                                    {# اگر پاسخ مستقیما در فیلد دیگری است، آن را نمایش دهید #}
-                                                    {# مثال: <li class="has-sub"><a href="#">{{ question.answer }}</a></li> #}
-                                                    {# اگر پاسخ به صورت کامنت است، ممکن است نیاز به تغییر مدل یا کوئری داشته باشد #}
-                                                    <li class="has-sub"><a href="#">پاسخ: {{ question.answer_comment.body_question|default:"پاسخی ثبت نشده است." }}</a></li>
-                                                    <a href="#" class="info-page-show-more">مشاهده توضیحات تکمیلی<i class="fa fa-angle-left"></i></a>
-                                                </ul>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="toggle-box" id="questions-DCG" style="display: none;">
-                            <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="DCG">
-                                <div class="toggle-box-active">
-                                    <ul>
-                                        {% for question in li_DCG %}
-                                            <li class="has-sub">
-                                                <a>{{ question.body_question }}</a>
-                                                <ul style="display: none;">
-                                                    <li class="has-sub"><a href="#">پاسخ: {{ question.answer_comment.body_question|default:"پاسخی ثبت نشده است." }}</a></li>
-                                                    <a href="#" class="info-page-show-more">مشاهده توضیحات تکمیلی<i class="fa fa-angle-left"></i></a>
-                                                </ul>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="toggle-box" id="questions-OS" style="display: none;">
-                            <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="OS">
-                                <div class="toggle-box-active">
-                                    <ul>
-                                        {% for question in li_OS %}
-                                            <li class="has-sub">
-                                                <a>{{ question.body_question }}</a>
-                                                <ul style="display: none;">
-                                                    <li class="has-sub"><a href="#">پاسخ: {{ question.answer_comment.body_question|default:"پاسخی ثبت نشده است." }}</a></li>
-                                                    <a href="#" class="info-page-show-more">مشاهده توضیحات تکمیلی<i class="fa fa-angle-left"></i></a>
-                                                </ul>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
-                </div>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -202,64 +76,6 @@
 
 {% endblock content %}
 
-{% block custom_js %}
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // نمایش اولین دسته بندی به صورت پیش فرض (اختیاری)
-    // document.getElementById('questions-LAR').style.display = 'block';
-
-    // اضافه کردن event listener به لینک های دسته بندی
-    const categoryLinks = document.querySelectorAll('.category-link');
-    const questionSections = document.querySelectorAll('.toggle-box[id^="questions-"]'); // انتخاب تمام بخش های سوالات
-
-    categoryLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault(); // جلوگیری از باز شدن لینک
-
-            const category = this.getAttribute('data-category');
-            
-            // پنهان کردن تمام بخش های سوالات
-            questionSections.forEach(section => {
-                section.style.display = 'none';
-            });
-
-            // نمایش بخش مربوط به دسته بندی کلیک شده
-            const targetSection = document.getElementById('questions-' + category);
-            if (targetSection) {
-                targetSection.style.display = 'block';
-            }
-        });
-    });
-
-    // مدیریت نمایش سوالات فرعی (toggle) - کدی که قبلا داشتید یا شبیه آن
-    // این قسمت را بر اساس کد جاوااسکریپت فعلی سایت خودتان تنظیم کنید
-    document.querySelectorAll('.toggle-box-active li.has-sub > a').forEach(function(element) {
-        element.addEventListener('click', function(e) {
-            e.preventDefault();
-            var subMenu = this.nextElementSibling; // دریافت ul بعدی
-            if (subMenu && subMenu.tagName === 'UL') {
-                // toggle نمایش/پنهان کردن زیر منو
-                if (subMenu.style.display === 'block' || subMenu.style.display === 'list-item') {
-                    subMenu.style.display = 'none';
-                } else {
-                    subMenu.style.display = 'block';
-                }
-            }
-        });
-    });
-
-     // مدیریت دکمه "مشاهده توضیحات تکمیلی"
-    document.querySelectorAll('.info-page-show-more').forEach(function(element) {
-        element.addEventListener('click', function(e) {
-            e.preventDefault();
-            // اینجا منطق مربوط به نمایش توضیحات تکمیلی را اضافه کنید
-            // مثلاً می توانید یک پاپ آپ باز کنید یا یک بخش دیگر را نمایش دهید.
-            alert('مشاهده توضیحات تکمیلی کلیک شد!');
-        });
-    });
-});
-</script>
-{% endblock custom_js %}
 
 {% block body_class %}
     account_page
