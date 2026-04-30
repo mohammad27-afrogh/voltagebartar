@@ -1,23 +1,18 @@
 {% load i18n %}
 
 
-<div class="gallery-item">
+<!-- <div class="gallery-item">
     <div>
         <ul class="gallery-actions">
-            <li>
-                <a href="#" class="btn-option add-product-wishes">
-                    <i class="mdi mdi-heart-outline"></i>
-                    <span>{% trans 'popular' %}</span>
-                </a>
-            </li>
+            
             <li class="option-social">
                 <a href="#" class="btn-option btn-option-social"
                     data-toggle="modal" data-target="#option-social">
                     <i class="mdi mdi-share"></i>
                     <span>{% trans 'subscription' %}</span>
-                </a>
+                </a> -->
                 <!-- Modal-option-social -->
-                <div class="modal fade" id="option-social" tabindex="-1"
+                <!-- <div class="modal fade" id="option-social" tabindex="-1"
                     role="dialog" aria-labelledby="exampleModalCenterTitle"
                     aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered"
@@ -32,8 +27,8 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
-                                <div class="title">
+                            <div class="modal-body"> -->
+                                <!-- <div class="title">
                                     {% trans 'You can share this page with your friends using the methods below.' %}
                                 </div>
                                 <form action="#" class="email-sharing">
@@ -48,30 +43,30 @@
                                             class="btn-send-email btn btn-primary"
                                             type="submit">{% trans 'send email' %}</button>
                                     </div>
-                                </form>
-                                <div class="share-options">
-                                    <div class="share-social-buttons text-center">
+                                </form> -->
+                                <!-- <div class="share-options">
+                                    <div class="share-social-buttons text-center"> -->
 
                                         <!-- توییتر -->
-                                        <a href="https://twitter.com/intent/tweet?text=این محصول را در دیجی‌کالا ببینید: &url=https://www.digikala.com/product/dkp-1672478" target="_blank"
+                                        <!-- <a href="https://twitter.com/intent/tweet?text=این محصول را در دیجی‌کالا ببینید: &url=https://www.digikala.com/product/dkp-1672478" target="_blank"
                                             class="share-social share-social-twitter">
                                             <i class="mdi mdi-twitter"></i>
-                                        </a>
+                                        </a> -->
 
                                         <!-- فیسبوک -->
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.digikala.com/product/dkp-1672478" target="_blank"
+                                        <!-- <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.digikala.com/product/dkp-1672478" target="_blank"
                                             class="share-social share-social-facebook">
                                             <i class="mdi mdi-facebook"></i>
-                                        </a>
+                                        </a> -->
 
                                         <!-- واتس‌اپ -->
-                                        <a href="https://api.whatsapp.com/send?text=این محصول را در دیجی‌کالا ببینید: https://www.digikala.com/product/dkp-1672478" target="_blank"
+                                        <!-- <a href="https://api.whatsapp.com/send?text=این محصول را در دیجی‌کالا ببینید: https://www.digikala.com/product/dkp-1672478" target="_blank"
                                             class="share-social share-social-whatsapp">
                                             <i class="mdi mdi-whatsapp"></i>
-                                        </a>
+                                        </a> -->
 
                                         <!-- ایمیل -->
-                                        <a href="mailto:?subject=محصول پیشنهادی در دیجی‌کالا&body=این محصول را بررسی کنید: https://www.digikala.com/product/dkp-1672478"
+                                        <!-- <a href="mailto:?subject=محصول پیشنهادی در دیجی‌کالا&body=این محصول را بررسی کنید: https://www.digikala.com/product/dkp-1672478"
                                             class="share-social share-social-email-outline">
                                             <i class="mdi mdi-email-outline"></i>
                                         </a>
@@ -86,16 +81,16 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </li>
+                </div> -->
+            <!-- </li>
             <li class="option-alarm">
                 <a href="#" class="btn-option btn-option-alarm"
                     data-toggle="modal" data-target="#btn-option-alarm">
                     <i class="mdi mdi-bell-outline"></i>
                     <span>{% trans 'notification' %}</span>
-                </a>
+                </a> -->
                 <!-- Modal-option-alarm -->
-                <div class="modal fade" id="btn-option-alarm" tabindex="-1"
+                <!-- <div class="modal fade" id="btn-option-alarm" tabindex="-1"
                     role="dialog" aria-labelledby="exampleModalCenterTitle"
                     aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered"
@@ -105,8 +100,8 @@
                                 <h5 class="modal-title"
                                     id="exampleModalCenterTitle">
                                     {% trans 'let me know' %}
-                                </h5>
-                                <button type="button" class="close"
+                                </h5> -->
+                                <!-- <button type="button" class="close"
                                     data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -122,8 +117,8 @@
                                     </label>
                                     <label for="remember"
                                         class="remember-me mr-0">{% trans 'email to : ' %}
-                                        {{ user.email }}</label>
-                                </div>
+                                        {{ user.email }}</label> -->
+                                <!-- </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button"
@@ -138,3 +133,12 @@
         </ul>
     </div>
 </div>
+ -->
+
+<form id="favorite-form-{{ product.id }}" method="POST" action="{% url 'favorite:favorite_add' product.id %}" style="display: inline-block;">
+    {% csrf_token%}
+    <button type="submit" class="btn-favorite-toggle">
+        <i class="mdi mdi-heart-outline favorite-icon"></i>
+        <span>{% trans 'popular' %}</span>
+    </button>
+</form>

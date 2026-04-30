@@ -10009,3 +10009,68 @@ body.account_page::before {
     width: 200px !important; /* مثال: عرض 30 پیکسل */
     height: auto !important; /* ارتفاع به صورت خودکار تنظیم شود */
 }
+
+/* دکمه: کارت کوچیک و مدرن */
+.btn-favorite-toggle{
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #eceff3;
+
+  display: inline-flex;
+  flex-direction: column;   /* => قلب بالا، اسم زیرش */
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+
+  cursor: pointer;
+  padding: 10px;
+
+  transition: transform .2s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+/* متن: زیر قلب */
+.btn-favorite-toggle .favorite-text,
+.btn-favorite-toggle span{
+  font-size: 12px;
+  font-weight: 700;
+  color: #334155; /* slate */
+  line-height: 1.1;
+  text-align: center;
+}
+
+/* آیکون قلب */
+.btn-favorite-toggle .favorite-icon{
+  font-size: 22px;
+  color: #cbd5e1; /* خاکستری */
+  transition: color .2s ease, transform .2s ease;
+}
+
+/* حالت هاور */
+.btn-favorite-toggle:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(2, 6, 23, 0.10);
+  border-color: #ffd1dc;
+}
+
+.btn-favorite-toggle:hover .favorite-icon{
+  color: #ff4081;
+  transform: scale(1.05);
+}
+
+/* حالت فعال (قلب پر) — با جاوااسکریپت باید این کلاس اضافه/حذف بشه */
+.btn-favorite-toggle.is-active{
+  border-color: rgba(255, 64, 129, 0.35);
+  background: rgba(255, 235, 242, 0.75);
+}
+
+.btn-favorite-toggle.is-active .favorite-icon{
+  color: #ff4081;
+}
+
+.btn-favorite-toggle.is-active .favorite-text,
+.btn-favorite-toggle.is-active span{
+  color: #ff4081;
+}

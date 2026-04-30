@@ -7,7 +7,7 @@
 {% load jalali_tags %}
 
 {% block page_title %}
-    {% trans 'profile page' %}
+    {% trans 'profile address' %}
 {% endblock page_title %}
 
 
@@ -64,7 +64,7 @@
                                             </a>
                                         </li>
                                         <li class="profile-account-nav-item navigation-link-dashboard">
-                                            <a href="{% url 'order:favorite_list' %}" class=""><i class="mdi mdi-heart"></i>
+                                            <a href="{% url 'favorite:favorite_list' %}" class=""><i class="mdi mdi-heart"></i>
                                                {% trans 'Favorites list' %}
                                             </a>
                                         </li>

@@ -26,6 +26,7 @@ urlpatterns = [
     path('rosetta/', include('rosetta.urls')),
     path('', include('pages.urls')),
     path('products/', include('products.urls', namespace='products')),
+    path('favorites/', include('favorites.urls')),
     path('blogs/', include('blogs.urls')),
     path('cart/', include('cart.urls')),
     path('locations/', include('locations.urls', namespace='locations')),

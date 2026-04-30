@@ -8,7 +8,7 @@
 
 
 {% block page_title %}
-    {% trans 'profile page' %}
+    {% trans 'favorite list' %}
 {% endblock page_title %}
 
 
@@ -65,7 +65,7 @@
                                             </a>
                                         </li>
                                         <li class="profile-account-nav-item navigation-link-dashboard">
-                                            <a href="{% url 'order:favorite_list' %}" class=""><i class="mdi mdi-heart"></i>
+                                            <a href="{% url 'favorite:favorite_list' %}" class=""><i class="mdi mdi-heart"></i>
                                                {% trans 'Favorites list' %}
                                             </a>
                                         </li>
@@ -88,168 +88,72 @@
                                 </section>
                             </div>
                         </div>
-                        <div class="col-lg-9 col-md-9 col-xs-12 pl">
-                            <div class="profile-content">
-                                <div class="profile-stats">
-                                    <div class="table-favorites">
-                                        <table class="table ns-table table-profile-favorites">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col" width="50"> </th>
-                                                    <th scope="col">نام محصول</th>
-                                                    <th scope="col">قیمت</th>
-                                                    <th class="actions-th"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">
-                                                        <div class="favorites-product-img">
-                                                            <img src="assets/images/slider-product/Samsung-S10Plus.jpg">
-                                                            <div class="product-rate">
-                                                                <i class="fa fa-star active"></i>
-                                                                <i class="fa fa-star active"></i>
-                                                                <i class="fa fa-star active"></i>
-                                                                <i class="fa fa-star active"></i>
-                                                                <i class="fa fa-star active"></i>
-                                                            </div>
-                                                        </div>
-                                                    </th>
-                                                    <td>
-                                                        <a href="#">سامسونگ گلکسی اس 10 پلاس – 128 گیگابایت – دو سیم
-                                                            کارت</a>
-                                                    </td>
-                                                    <td>
-                                                        <span class="amount">6,000,000
-                                                            <span>تومان</span>
-                                                        </span>
-                                                    </td>
-                                                    <td class="text-left actions">
-                                                        <a href="#" class="remove-product"><i
-                                                                class="mdi mdi-close"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="spacer"></tr>
-                                                <tr>
-                                                    <th scope="row">
-                                                        <div class="favorites-product-img">
-                                                            <img src="assets/images/slider-product/asus-laptop.jpg">
-                                                            <div class="product-rate">
-                                                                <i class="fa fa-star active"></i>
-                                                                <i class="fa fa-star active"></i>
-                                                                <i class="fa fa-star active"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                            </div>
-                                                        </div>
-                                                    </th>
-                                                    <td>
-                                                        <a href="#">لپ تاپ ایسوس زِنبوک 14</a>
-                                                    </td>
-                                                    <td>
-                                                        <span class="amount">6,000,000
-                                                            <span>تومان</span>
-                                                        </span>
-                                                    </td>
-                                                    <td class="text-left actions">
-                                                        <a href="#" class="remove-product"><i
-                                                                class="mdi mdi-close"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="spacer"></tr>
-                                                <tr>
-                                                    <th scope="row">
-                                                        <div class="favorites-product-img">
-                                                            <img src="assets/images/slider-product/Avocado.jpg">
-                                                            <div class="product-rate">
-                                                                <i class="fa fa-star active"></i>
-                                                                <i class="fa fa-star active"></i>
-                                                                <i class="fa fa-star active"></i>
-                                                                <i class="fa fa-star active"></i>
-                                                                <i class="fa fa-star"></i>
-                                                            </div>
-                                                        </div>
-                                                    </th>
-                                                    <td>
-                                                        <a href="#">آب میوه گیری پارس خزر مدل Avocado</a>
-                                                    </td>
-                                                    <td>
-                                                        <span class="amount">6,000,000
-                                                            <span>تومان</span>
-                                                        </span>
-                                                    </td>
-                                                    <td class="text-left actions">
-                                                        <a href="#" class="remove-product"><i
-                                                                class="mdi mdi-close"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="spacer"></tr>
-                                                <tr>
-                                                    <th scope="row">
-                                                        <div class="favorites-product-img">
-                                                            <img src="assets/images/slider-product/huawei.jpg">
-                                                            <div class="product-rate">
-                                                                <i class="fa fa-star active"></i>
-                                                                <i class="fa fa-star active"></i>
-                                                                <i class="fa fa-star active"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                            </div>
-                                                        </div>
-                                                    </th>
-                                                    <td>
-                                                        <a href="#">هواوی پی 20 پرو 128 گیگابایت – دو سیم کارت</a>
-                                                    </td>
-                                                    <td>
-                                                        <span class="amount">6,000,000
-                                                            <span>تومان</span>
-                                                        </span>
-                                                    </td>
-                                                    <td class="text-left actions">
-                                                        <a href="#" class="remove-product"><i
-                                                                class="mdi mdi-close"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="spacer"></tr>
-                                            </tbody>
-                                        </table>
-                                        <div class="profile-recent-fav">
-                                            <a href="#" class="img-profile-favorites">
-                                                <img src="assets/images/slider-product/Samsung-S10Plus.jpg">
-                                            </a>
-                                            <div class="profile-recent-fav-col">
-                                                <a href="#">سامسونگ گلکسی اس 10 پلاس – 128 گیگابایت – دو سیم کارت</a>
-                                            </div>
-                                            <div class="profile-recent-fav-price">
-                                                <span class="amount">6,000,000
-                                                    <span>تومان</span>
-                                                </span>
-                                            </div>
-                                            <div class="profile-recent-fav-remove">
-                                                <a href="#"><i class="mdi mdi-close"></i></a>
-                                            </div>
-                                        </div>
-
-                                        <div class="profile-recent-fav">
-                                            <a href="#" class="img-profile-favorites">
-                                                <img src="assets/images/slider-product/huawei.jpg">
-                                            </a>
-                                            <div class="profile-recent-fav-col">
-                                                <a href="#">هواوی پی 20 پرو 128 گیگابایت – دو سیم کارت</a>
-                                            </div>
-                                            <div class="profile-recent-fav-price">
-                                                <span class="amount">6,000,000
-                                                    <span>تومان</span>
-                                                </span>
-                                            </div>
-                                            <div class="profile-recent-fav-remove">
-                                                <a href="#"><i class="mdi mdi-close"></i></a>
-                                            </div>
+                        {% if favorite_list %}
+                            <div class="col-lg-9 col-md-9 col-xs-12 pl">
+                                <div class="profile-content">
+                                    <div class="profile-stats">
+                                        <div class="table-favorites">
+                                            <table class="table ns-table table-profile-favorites">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col" width="50"> </th>
+                                                        <th scope="col">{% trans 'product name' %}</th>
+                                                        <th scope="col">{% trans 'price' %}</th>
+                                                        <th class="actions-th"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for favorite in favorite_list %}
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div class="favorites-product-img">
+                                                                    <a>
+                                                                        {% if favorite.product.cover_product %}
+                                                                            <img class="zoom-img"
+                                                                                src="{{ favorite.product.cover_product.url }}"/>
+                                                                        {% else %}
+                                                                            <img class="zoom-img"
+                                                                                src="{% static 'img/products/no_product_image.jpg' %}"/>
+                                                                        {% endif %}
+                                                                        <div id="gallery_01f" style="width:420px;float:right;">
+                                                                    </a>
+                                                                    <div class="product-rate">
+                                                                        <i class="fa fa-star active"></i>
+                                                                        <i class="fa fa-star active"></i>
+                                                                        <i class="fa fa-star active"></i>
+                                                                        <i class="fa fa-star active"></i>
+                                                                        <i class="fa fa-star active"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </th>
+                                                            <td>
+                                                                <a>{{ favorite.product.name }}</a>
+                                                            <td>
+                                                                <span class="amount">{{ favorite.product.final_price|intcomma:False|translate_number }}
+                                                                    <span>{% trans '$' %}</span>
+                                                                </span>
+                                                            </td>
+                                                            <td class="text-left actions">
+                                                                <a href="{% url 'favorite:favorite_delete' favorite.product.id %}" class="remove-product"><i
+                                                                        class="mdi mdi-close"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="spacer"></tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        {% else %}
+                            <!-- فایل HTML شما -->
+                            <div id="shipping-alert" class="alert-container">
+                            <span class="alert-icon">⚠️</span>
+                            <span class="alert-title">{% trans 'attention :' %}</span>
+                            {% trans 'no product is added to your favorite list!' %}
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </section>
