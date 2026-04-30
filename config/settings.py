@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'orders',
     'persian_translate',
     'pyment',
+    'favorites',
 ]
 
 CKEDITOR_CONFIGS = {
