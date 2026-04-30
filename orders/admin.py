@@ -1,7 +1,7 @@
 from django.contrib import admin
 from jalali_date.admin import ModelAdminJalaliMixin
 
-from .models import Order, OrderItem, Profile, FavoriteProduct
+from .models import Order, OrderItem, Profile
 
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
@@ -60,10 +60,3 @@ class ProfileAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     ]
     autocomplete_fields = ['province_address', 'city_address']
 
-@admin.register(FavoriteProduct)
-class FavoriteProductAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
-    list_display = [
-        'user',
-        'product',
-        'date_added',
-    ]

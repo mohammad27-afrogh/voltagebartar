@@ -11,10 +11,3 @@ class SuggestProductComment(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = ['is_active']
-
-class FavoriteProductSerializer(serializers.ModelSerializer):
-    product = ProductSerializer(read_only=True)
-    Suggest_product = SuggestProductComment(read_only=True)
-    class Meta:
-        model = FavoriteProduct
-        fields = ['product', 'Suggest_product']
