@@ -2,9 +2,9 @@ from django.urls import path
 
 from . import views
 
+app_name='payment'
+
 urlpatterns = [
-    # path('process/', views.pyment_process, name='pyment_process'),
-    # path('call_back/', views.pyment_callback, name='pyment_callback'),
-    path('process/', views.pyment_process_sandbox, name='pyment_process'),
-    path('call_back/', views.pyment_callback_sandbox, name='pyment_callback'),
+    path('process/', views.payment_process_view, name='payment_process'),
+    path('callback/', views.payment_callback_view, name='payment_callback'),
 ]

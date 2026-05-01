@@ -62,13 +62,81 @@
                                         </div>
                                     </div>
                                 {% elif order_obj.pyment_price == 'PP' %}
-                                    <div class="col2-set" id="customer-details">
+                                    {% if order_obj.zarinpal_payment_code == 100 %}
+                                        <div class="col2-set" id="customer-details">
+                                            <div class="col-12">
+                                                <div class="billing-fields mt-4">
+                                                    <h3 class="text-success">{% trans 'order received' %}</h3>
+                                                    <p class="thankyou-order-received">
+                                                        {% trans 'payment succeeded your order will be recorded successfully and will be sent to you at the time specified .' %}
+                                                        {% trans 'thank you for choosing to buy green .' %}
+                                                    </p>
+                                                    <ul class="order-overview">
+                                                        <li class="order-overview-item">
+                                                            {% trans 'order code :' %}
+                                                            <span>{{ order_obj.id }}</span>
+                                                        </li>
+                                                        <li class="order-overview-item">
+                                                            {% trans 'date :' %}
+                                                            <span>{{ order_obj.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</span>
+                                                        </li>
+                                                        {% if pyment_price == 'PP' %}
+                                                            <li class="order-overview-item">
+                                                                {% trans 'payment method :' %}
+                                                                <span>{% trans 'pyment to the House Door' %}</span>
+                                                            </li>
+                                                        {% endif %}
+                                                        <li class="order-overview-item">
+                                                            {% trans 'final price :' %}
+                                                            <span class="amount">{{ order_obj.get_total_price|intcomma:False|translate_number }}
+                                                                <span>{% trans '$' %}</span>
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% elif order_obj.zarinpal_payment_code == 101 %}
+                                        <div class="col2-set" id="customer-details">
+                                            <div class="col-12">
+                                                <div class="billing-fields mt-4">
+                                                    <h3 class="text-success">{% trans 'order received' %}</h3>
+                                                    <p class="thankyou-order-received">
+                                                        {% trans 'Your payment has been successfully processed, but this order has already been placed!' %}
+                                                    </p>
+                                                    <ul class="order-overview">
+                                                        <li class="order-overview-item">
+                                                            {% trans 'order code :' %}
+                                                            <span>{{ order_obj.id }}</span>
+                                                        </li>
+                                                        <li class="order-overview-item">
+                                                            {% trans 'date :' %}
+                                                            <span>{{ order_obj.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</span>
+                                                        </li>
+                                                        {% if pyment_price == 'PP' %}
+                                                            <li class="order-overview-item">
+                                                                {% trans 'payment method :' %}
+                                                                <span>{% trans 'pyment to the House Door' %}</span>
+                                                            </li>
+                                                        {% endif %}
+                                                        <li class="order-overview-item">
+                                                            {% trans 'final price :' %}
+                                                            <span class="amount">{{ order_obj.get_total_price|intcomma:False|translate_number }}
+                                                                <span>{% trans '$' %}</span>
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <div class="col2-set" id="customer-details">
                                         <div class="col-12">
                                             <div class="billing-fields mt-4">
-                                                <h3 class="text-success">{% trans 'order received' %}</h3>
+                                                <h3 class="text-danger">{% trans 'order not received' %}</h3>
                                                 <p class="thankyou-order-received">
-                                                    {% trans 'payment succeeded your order will be recorded successfully and will be sent to you at the time specified .' %}
-                                                    {% trans 'thank you for choosing to buy green .' %}
+                                                {% trans 'failed payment .to avoid ordering the system , carry out the payment until the next 24 hours .' %}
+                                                {% trans 'if your account is deducted , your account will be back in the next 72 hours .' %}
                                                 </p>
                                                 <ul class="order-overview">
                                                     <li class="order-overview-item">
@@ -79,10 +147,17 @@
                                                         {% trans 'date :' %}
                                                         <span>{{ order_obj.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</span>
                                                     </li>
-                                                    {% if pyment_price == 'PP' %}
+                                                    {% if pyment_price == 'HD' %}
                                                         <li class="order-overview-item">
                                                             {% trans 'payment method :' %}
                                                             <span>{% trans 'pyment to the House Door' %}</span>
+                                                        </li>
+                                                    {% else %}
+                                                        <li class="order-overview-item">
+                                                            {% trans 'payment method :' %}
+                                                            <span>{% trans 'smart internet payment' %}</span>
+                                                            {{ error_code }}
+                                                            {{ error_message }}
                                                         </li>
                                                     {% endif %}
                                                     <li class="order-overview-item">
@@ -94,7 +169,8 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                    </div>
+                                        </div>
+                                    {% endif %}
                                 {% else %}
                                     <div class="col2-set" id="customer-details">
                                         <div class="col-12">
@@ -122,6 +198,8 @@
                                                         <li class="order-overview-item">
                                                             {% trans 'payment method :' %}
                                                             <span>{% trans 'smart internet payment' %}</span>
+                                                            {{ error_code }}
+                                                            {{ error_message }}
                                                         </li>
                                                     {% endif %}
                                                     <li class="order-overview-item">
