@@ -47,7 +47,7 @@ class Order(models.Model):
     zarinpal_ref_id = models.CharField(_('zarinpal ref id'), max_length=255, blank=True)
     zarinpal_data = models.TextField(_('zarinpal data'), blank=True)
     zarinpal_payment_code = models.CharField(_('zarinpal payment code'), max_length=100, blank=True)
-    pyment_price = models.CharField(_('other pyment price'), max_length=2, choices=PYMENT_PRICE_CHOICESS)
+    payment_price = models.CharField(_('other pyment price'), max_length=2, choices=PYMENT_PRICE_CHOICESS)
 
 
     class Meta:

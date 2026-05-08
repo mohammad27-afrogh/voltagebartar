@@ -11,7 +11,7 @@ class AddressFormOrder(forms.Form):
         ('HD', _('House Door')),
     ]
 
-    pyment_price = forms.ChoiceField(label=_('pyment_price'), required=True, choices=[('', _('choose how to pay...'))] + PYMENT_PRICE_CHOICESS)
+    payment_price = forms.ChoiceField(label=_('pyment_price'), required=True, choices=[('', _('choose how to pay...'))] + PYMENT_PRICE_CHOICESS)
     first_name = forms.CharField(max_length=50, label=_('first_name'), required=True)
     last_name = forms.CharField(max_length=50, label=_('last_name'), required=True)
     phone_number = forms.CharField(max_length=15, label=_('phone_number'), required=True)
@@ -55,7 +55,7 @@ class AddressFormOrder(forms.Form):
     def save(self, commit=True):
         order_data = self.cleaned_data
         # استخراج داده ها از cleaned_data
-        payment_method = order_data.get('pyment_price')
+        payment_method = order_data.get('payment_price')
         first_name = order_data.get('first_name')
         last_name = order_data.get('last_name')
         phone_number = order_data.get('phone_number')
@@ -69,7 +69,7 @@ class AddressFormOrder(forms.Form):
 
         # ایجاد یا به روز رسانی شیء Order
         order = Order() # یا Order.objects.get(pk=...) برای ویرایش
-        order.pyment_price = payment_method
+        order.payment_price = payment_method
         order.first_name = first_name
         order.last_name = last_name
         order.phone_number = phone_number

@@ -96,7 +96,7 @@ class Product(models.Model):
         return f'{self.name}'
 
     def get_absolute_url(self):
-        return reverse('product_detail_by_slug', args=[self.slug])
+        return reverse('products:product_detail_by_slug', args=[self.slug])
 
 
 class Discount(models.Model):

@@ -27,7 +27,7 @@ class Blog(models.Model):
         return f'{self.name}'
 
     def get_absolute_url(self):
-        return reverse('blog_detail_by_slug', args=[self.slug])
+        return reverse('blog:blog_detail_by_slug', args=[self.slug])
 
 class Category(models.Model):
     name = models.CharField(_('name'), max_length=100, unique=True)

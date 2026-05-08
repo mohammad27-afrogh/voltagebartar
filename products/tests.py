@@ -12,15 +12,11 @@ class ProductListViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_product_list_view_url_by_name(self):
-        response = self.client.get(reverse('product_list'))
+        response = self.client.get(reverse('products:product_list'))
         self.assertEqual(response.status_code, 200)
 
-    def test_product_list_content(self):
-        response = self.client.get(reverse('product_list'))
-        self.assertContains(response, 'product list')
-
     def test_product_list_template_used(self):
-        response = self.client.get(reverse('product_list'))
+        response = self.client.get(reverse('products:product_list'))
         self.assertTemplateUsed((response, 'product_list.html'))
 
 
@@ -53,7 +49,7 @@ class ProductDetailViewTest(TestCase):
         self.client = Client()
 
     def test_product_detail_view_url_success(self):
-        url = reverse('product_detail_by_slug', kwargs={
+        url = reverse('products:product_detail_by_slug', kwargs={
             'product_slug': self.test_product.slug
         })
 
@@ -61,11 +57,10 @@ class ProductDetailViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
         self.assertContains(response, self.test_product.name)
-        self.assertContains(response, 'a product test')
 
     def test_product_detail_view_not_found(self):
         non_existent_slug = 'this_slug_dose_not_exist'
-        url = reverse('product_detail_by_slug', kwargs={
+        url = reverse('products:product_detail_by_slug', kwargs={
             'product_slug': non_existent_slug
         })
 

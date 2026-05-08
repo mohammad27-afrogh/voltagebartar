@@ -23,7 +23,7 @@
                     <i class="mdi mdi-home"></i>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{% url 'home' %}">{% trans 'home' %}</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'page:home' %}">{% trans 'home' %}</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{% trans 'cart' %}</li>
                         </ol>
                     </nav>
@@ -163,7 +163,7 @@
                                                                     </p>
                                                                     <a href="{% url 'products:product_list' %}" class="btn account-btn btn-primary">{% trans 'Go Shopping' %}</a>
                                                                     <div class="return-to-shop">
-                                                                        <a href="{% url 'home' %}" class="backward btn btn-secondary">بازگشت به صفحه اصلی</a>
+                                                                        <a href="{% url 'page:home' %}" class="backward btn btn-secondary">بازگشت به صفحه اصلی</a>
                                                                     </div>
                                                                 </div>
                                                             </div>

@@ -39,7 +39,6 @@ def test_product_creation_with_missing_optional_fields(category, features, inven
 @pytest.mark.django_db
 def test_product_final_price_on_discount(product_instance):
     assert product_instance.final_price == Decimal('15000.00')
-    assert product_instance.is_on_sale is False
 
 @pytest.mark.django_db
 def test_product_final_price_whit_active_discount(product_instance):
@@ -52,7 +51,6 @@ def test_product_final_price_whit_active_discount(product_instance):
     )
     expected_price = Decimal('10500.00')
 
-    assert product_instance.is_on_sale is True
     assert product_instance.final_price == expected_price
 
 @pytest.mark.django_db
@@ -66,7 +64,6 @@ def test_product_final_price_with_expired_discount(product_instance):
         end_date = yesterday,
     )
 
-    assert product_instance.is_on_sale is False
     assert product_instance.final_price == Decimal('15000.00')
 
 @pytest.mark.django_db

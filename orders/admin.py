@@ -18,7 +18,7 @@ class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         'date_time_create',
         'is_paid',
         'status',
-        'pyment_price',
+        'payment_price',
     ]
 
     def display_order_id(self, obj):

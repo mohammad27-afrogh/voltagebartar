@@ -3,7 +3,7 @@ import pytest
 from django.utils import timezone
 from decimal import Decimal
 
-from products.models import Product, Discount, Category, Inventory, Features, Order, OrderItem, Brand, Comment
+from products.models import Product, Discount, Category, Inventory, Features, Brand, Comment
 
 
 @pytest.fixture
