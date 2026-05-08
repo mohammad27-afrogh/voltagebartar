@@ -32,7 +32,7 @@ urlpatterns = [
     path('locations/', include('locations.urls', namespace='locations')),
     path('order/', include('orders.urls')),
     # path('__debug__/', include('debug_toolbar.urls')),
-    path('pyment/', include('pyment.urls')),
+    path('payment/', include('payment.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

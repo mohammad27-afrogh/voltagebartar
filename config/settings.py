@@ -73,7 +73,7 @@ INSTALLED_APPS = [
     'locations',
     'orders',
     'persian_translate',
-    'pyment',
+    'payment',
     'favorites',
 ]
 
