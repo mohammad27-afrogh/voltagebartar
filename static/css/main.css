@@ -9740,7 +9740,7 @@ body.account_page::before {
    width: 100%;
    height: 100%;
    /* مسیر تصویر در فولدر static/img/ فرض شده است */
-   background-image: url("/static/img/login/background4.jpg");
+   background-image: url("/static/img/background.jpeg");
    background-size: cover;
    background-position: center;
    filter: blur(3px); /* اعمال کمی تاری برای تمرکز بیشتر روی فرم */
