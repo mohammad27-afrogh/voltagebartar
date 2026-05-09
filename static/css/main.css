@@ -9627,6 +9627,12 @@ footer.footer-main-site .footer-middlebar .footer-copyright .footer-copyright-te
     display: block;
 }
 
+.P-loader .P-loader-content .logo-loader img {
+    width: 350px;
+    height: auto;
+    display: block;
+}
+
 /* Page Loader------------------------ */
 
 /* scroll_Progress---------------------*/
