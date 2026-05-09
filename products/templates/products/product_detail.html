@@ -182,7 +182,7 @@
                                     <div class="col=lg-6 col-md-6 col-xs-12 pr">
                                         <div class="product-seller-info">
                                             <div class="seller-info-changable">
-                                                {% if inventory %}
+                                                {% if product.inventory > 20 %}
                                                     <div class="product-seller-row price">
                                                         <span class="title">{% trans 'price: ' %}</span>
                                                         <span class="product-name">
@@ -210,6 +210,40 @@
                                                             </button>
                                                         </div>
                                                     </form>
+                                                {% elif product.inventory <= 20 and product.inventory > 0 %}
+                                                    <div class="product-seller-row price">
+                                                        <span class="title">{% trans 'price: ' %}</span>
+                                                        <span class="product-name">
+                                                            <span class="amount">
+                                                                {{ product.final_price|intcomma:False|translate_number }}
+                                                                <span>{% trans '$' %}</span>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                    <form action="{% url 'cart:cart_add' product.slug %}" method="POST">
+                                                        {% csrf_token %}
+                                                        <div class="product-seller-row guarantee">
+                                                            <span class="title mt-3">{% trans 'quantity:' %}</span>
+                                                            <div class="quantity pl">
+                                                                <input type="number" name="quantity" id="qty" value="1" min="1">
+                                                                <div class="quantity-nav">
+                                                                    <div class="quantity-button quantity-up">+</div>
+                                                                    <div class="quantity-button quantity-down">-</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- فایل HTML شما -->
+                                                        <div id="shipping-alert" class="alert-container">
+                                                        <span class="alert-icon">⚠️</span>
+                                                        <span class="alert-title">{% trans 'attention :' %}</span>
+                                                        {% trans 'Only a few left!' %}
+                                                        </div>
+                                                        <div class="product-seller-row add-to-cart">
+                                                            <button type="submit" class="my-custom-add-button btn btn-primary">
+                                                                <span class="btn-add-to-cart-txt">{% trans 'add to cart' %}</span>
+                                                            </button>
+                                                        </div>
+                                                    </form>
                                                 {% else %}
                                                     <div class="product-seller-row price">
                                                         <span class="title">{% trans 'price:' %}</span>
@@ -218,9 +252,14 @@
                                                         </span>
                                                     </div>
                                                     <div class="product-seller-row add-to-cart">
-                                                        <a href="#" class="btn-add-to-cart Let-me-know btn btn-primary">
-                                                            <span class="btn-add-to-cart-txt">{% trans 'Notify me when available' %}</span>
-                                                        </a>
+                                                        <span class="btn-add-to-cart-txt">
+                                                            <!-- فایل HTML شما -->
+                                                            <div id="shipping-alert" class="alert-container">
+                                                                <span class="alert-icon">⚠️</span>
+                                                                <span class="alert-title">{% trans 'non-existent :' %}</span>
+                                                                {% trans 'Coming soon.' %}
+                                                            </div>
+                                                        </span>
                                                     </div>
                                                 {% endif %}
                                             </div>

@@ -2,7 +2,6 @@ from django import forms
 from .models import (Product,
                      Discount,
                      Category,
-                     Inventory,
                      Features,
                      Brand,
                      Comment,
@@ -20,6 +19,7 @@ class ProductForm(forms.ModelForm):
             'sku',
             'view_count',
             'category',
+            'inventory',
             'product_type',
             'successful_sales_count',
             'commodity_status',
@@ -46,15 +46,6 @@ class CategoryForm(forms.ModelForm):
             'name',
             'slug',
             'parent',
-        ]
-
-class InventoryForm(forms.ModelForm):
-    class Meta:
-        model = Inventory
-        fields = [
-            'product',
-            'status',
-            'inventory',
         ]
 
 class FeaturesForm(forms.ModelForm):

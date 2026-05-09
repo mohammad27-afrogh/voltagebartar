@@ -27,7 +27,7 @@
                     <div class="checkout woocommerce-checkout">
                         <div class="content-checkout">
                             <div class="middle-container">
-                                {% if order_obj.pyment_price == 'HD' %}
+                                {% if order_obj.payment_price == 'HD' %}
                                     <div class="col2-set" id="customer-details">
                                         <div class="col-12">
                                             <div class="billing-fields mt-4">
@@ -45,7 +45,7 @@
                                                         {% trans 'date :' %}
                                                         <span>{{ order_obj.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</span>
                                                     </li>
-                                                    {% if pyment_price == 'HD' %}
+                                                    {% if payment_price == 'HD' %}
                                                         <li class="order-overview-item">
                                                            {% trans 'payment method :' %}
                                                             <span>{% trans 'pyment to the House Door' %}</span>
@@ -61,7 +61,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                {% elif order_obj.pyment_price == 'PP' %}
+                                {% elif order_obj.payment_price == 'PP' %}
                                     {% if order_obj.zarinpal_payment_code == 100 %}
                                         <div class="col2-set" id="customer-details">
                                             <div class="col-12">
@@ -80,7 +80,7 @@
                                                             {% trans 'date :' %}
                                                             <span>{{ order_obj.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</span>
                                                         </li>
-                                                        {% if pyment_price == 'PP' %}
+                                                        {% if payment_price == 'PP' %}
                                                             <li class="order-overview-item">
                                                                 {% trans 'payment method :' %}
                                                                 <span>{% trans 'pyment to the House Door' %}</span>
@@ -113,7 +113,7 @@
                                                             {% trans 'date :' %}
                                                             <span>{{ order_obj.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</span>
                                                         </li>
-                                                        {% if pyment_price == 'PP' %}
+                                                        {% if payment_price == 'PP' %}
                                                             <li class="order-overview-item">
                                                                 {% trans 'payment method :' %}
                                                                 <span>{% trans 'pyment to the House Door' %}</span>
@@ -147,7 +147,7 @@
                                                         {% trans 'date :' %}
                                                         <span>{{ order_obj.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</span>
                                                     </li>
-                                                    {% if pyment_price == 'HD' %}
+                                                    {% if payment_price == 'HD' %}
                                                         <li class="order-overview-item">
                                                             {% trans 'payment method :' %}
                                                             <span>{% trans 'pyment to the House Door' %}</span>
@@ -189,7 +189,7 @@
                                                         {% trans 'date :' %}
                                                         <span>{{ order_obj.date_time_create|to_jalali:'%H:%M:%S _ %Y/%m/%d' }}</span>
                                                     </li>
-                                                    {% if pyment_price == 'HD' %}
+                                                    {% if payment_price == 'HD' %}
                                                         <li class="order-overview-item">
                                                             {% trans 'payment method :' %}
                                                             <span>{% trans 'pyment to the House Door' %}</span>

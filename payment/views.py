@@ -6,6 +6,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.urls import reverse
 from django.db import transaction
+from django.db.models import F
 from django.conf import settings
 
 from orders.models import Order, OrderItem
@@ -120,6 +121,15 @@ def payment_callback_view(request):
                     order.zarinpal_data = data_payload # ذخیره کامل پاسخ زرین پال
                     order.zarinpal_payment_code = payment_code
                     order.save()
+
+                    order_item = order.items.select_related('product').all()
+                    for item in order_item:
+                        if item.product:
+                            item.product.successful_sales_count = F('successful_sales_count') + item.quantity
+                            item.product.save(update_fields=['successful_sales_count'])
+                            item.product.inventory = F('inventory') - item.quantity
+                            item.product.save(update_fields=['inventory'])
+                
                     # ریدایرکت به صفحه تکمیل خرید
                     return redirect(reverse('payment:custom_success'))
 

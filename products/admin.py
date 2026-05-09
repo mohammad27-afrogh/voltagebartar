@@ -1,7 +1,7 @@
 from django.contrib import admin
 from jalali_date.admin import ModelAdminJalaliMixin
 
-from .models import Product, Discount, Category, Inventory, Features, Brand, Comment, CategorySlider, Questions_and_answers, Answer
+from .models import Product, Discount, Category, Features, Brand, Comment, CategorySlider, Questions_and_answers, Answer
 
 class CommentsInline(admin.TabularInline):
     model = Comment
@@ -14,7 +14,7 @@ class CommentsInline(admin.TabularInline):
 class ProductAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = [
         'name',
-        'slug',
+        'inventory',
         'category',
         'successful_sales_count',
         'view_count',
@@ -54,17 +54,7 @@ class CategoryAdmin(admin.ModelAdmin):
         'slug': ['name',]
     }
     search_fields = ['name',]
-
-@admin.register(Inventory)
-class InventoryAdmin(admin.ModelAdmin):
-    list_display = [
-        'product',
-        'status',
-        'inventory',
-    ]
-    search_fields = ['product',]
-    autocomplete_fields = ['product',]
-
+    
 
 @admin.register(Features)
 class FeaturesAdmin(admin.ModelAdmin):

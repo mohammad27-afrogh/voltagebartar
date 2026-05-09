@@ -9,7 +9,7 @@ from datetime import timedelta
 from products.models import Product, Discount, Comment
 
 @pytest.mark.django_db
-def test_product_creation_success(product_instance, category, brand, features, inventory):
+def test_product_creation_success(product_instance, category, brand, features):
     assert product_instance.category == category
     assert product_instance.features == features
     assert product_instance.brand == brand
@@ -22,13 +22,13 @@ def test_product_creation_success(product_instance, category, brand, features, i
     assert str(product_instance) == 'Rose_Seedling'
 
 @pytest.mark.django_db
-def test_product_creation_with_missing_optional_fields(category, features, inventory):
+def test_product_creation_with_missing_optional_fields(category, features):
     product =  Product.objects.create(
         name = 'only Required Fields',
         slug = 'only_req',
         category = category,
         features = features,
-        inventory = inventory,
+        inventory = 10,
         base_price = '15000.00',
         product_type = 'FER',
         short_description = 'minimal',

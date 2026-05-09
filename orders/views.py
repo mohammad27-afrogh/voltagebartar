@@ -58,7 +58,7 @@ def order_create_view(request):
 
             cart.clear()
 
-            if order_obj.pyment_price == 'HD':
+            if order_obj.payment_price == 'HD':
                 order_item = order_obj.items.select_related('product').all()
 
                 order_obj.status = 'PEN'
@@ -69,6 +69,8 @@ def order_create_view(request):
                     if item.product:
                         item.product.successful_sales_count = F('successful_sales_count') + item.quantity
                         item.product.save(update_fields=['successful_sales_count'])
+                        item.product.inventory = F('inventory') - item.quantity
+                        item.product.save(update_fields=['inventory'])
                 
 
                 return render(request, 'cart/cart_checkout_complete_buy.html', context={

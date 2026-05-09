@@ -42,8 +42,7 @@ class Product(models.Model):
                                  verbose_name=_('features'))
     brand = models.ForeignKey('Brand', on_delete=models.SET_NULL, blank=True, null=True, related_name='products',
                               verbose_name=_('brand'))
-    inventory = models.ForeignKey('Inventory', on_delete=models.CASCADE, blank=True, null=True,
-                                  related_name='inventory_link', verbose_name=_('inventory'))
+    inventory = models.PositiveIntegerField(_('inventory'), blank=True, null=False, default=0)
     commodity_status = models.CharField(_('commodity_status'), max_length=3, choices=INVENTORY_STATUS, default='AVA')
     successful_sales_count = models.PositiveIntegerField(_('successful_sales_count'), default=0)
     base_price = models.DecimalField(_('base_price'), max_digits=10, decimal_places=2)
@@ -175,25 +174,6 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         return reverse('products:category_detail', kwargs={'category_slug': self.slug})
-
-
-class Inventory(models.Model):
-    INVENTORY_STATUS = [
-        ('AVA', _('Available')),
-        ('NON', _('Non-available')),
-        ('SPE', _('Special')),
-    ]
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_item',
-                                verbose_name=_('product_name'))
-    status = models.CharField(_('status'), max_length=3, choices=INVENTORY_STATUS, default='AVA')
-    inventory = models.PositiveIntegerField(_('inventory'), default=0)
-
-    class Meta:
-        verbose_name_plural = _('Inventory')
-
-    def __str__(self):
-        return f'{self.product}'
-
 
 class Features(models.Model):
     PRODUCT_LIQUID_UNIT = [

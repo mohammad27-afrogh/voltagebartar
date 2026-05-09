@@ -18,17 +18,6 @@ def product_list_view(request):
     products_queryset = Product.objects.all()
     current_category_name = "همه محصولات"
 
-    # paginator = Paginator(products_queryset, 10)
-    # page_number = request.GET.get('page', 1)
-
-    # try:
-    #     page_obj = paginator.page(page_number)
-    # except PageNotAnInteger:
-    #     page_obj = paginator.page(1)
-    # except EmptyPage:
-    #     page_obj = paginator.page(paginator.num_pages)
-
-
     selected_category_slug = request.GET.get('category')
 
     if selected_category_slug:
@@ -61,9 +50,6 @@ def product_list_view(request):
         'products': products_queryset,
         'categories': categories,  # این برای نمایش منوی دسته‌بندی‌ها در نوار کناری استفاده می‌شود
         'current_category_name': current_category_name,
-        # 'page_obj': page_obj,
-        # 'paginator': paginator,
-        # 'is_paginated': paginator.has_other_pages(),
     }
 
     # نام فایل قالب HTML شما (که محصولات را رندر می‌کند)
@@ -91,8 +77,6 @@ def product_detail_view(request, product_slug):
     # --- ۲. محاسبه زنجیره Breadcrumb در View ---
     category = product.category
     categories_chain = []
-
-    total_inventory_exists = product.product_item.filter(inventory__gt=0).exists()
 
     if category:
         # اضافه کردن دسته فعلی
@@ -164,7 +148,6 @@ def product_detail_view(request, product_slug):
         'media_url': settings.MEDIA_URL,
         'breadcrumb_categories': categories_chain, # ارسال لیست دسته‌ها به قالب
         'features': product.features,
-        'inventory': total_inventory_exists,
         'product_avg_rating': product_avg_rating,  # ارسال امتیاز میانگین به قالب
     }
 

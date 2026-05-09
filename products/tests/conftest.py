@@ -3,7 +3,7 @@ import pytest
 from django.utils import timezone
 from decimal import Decimal
 
-from products.models import Product, Discount, Category, Inventory, Features, Brand, Comment
+from products.models import Product, Discount, Category, Features, Brand, Comment
 
 
 @pytest.fixture
@@ -28,24 +28,6 @@ def brand():
         description = 'This is a Brand Electric',
     )
 
-@pytest.fixture
-def inventory(category, features, brand):
-    prod = Product.objects.create(
-        name = 'sample item',
-        slug = 'sample_item',
-        category = category,
-        features = features,
-        brand = brand,
-        base_price = 15000,
-        product_type = 'FL',
-        commodity_status = 'AVA',
-        short_description = 'test',
-    )
-
-    return Inventory.objects.create(
-        product = prod,
-        inventory = 50,
-    )
 
 @pytest.fixture
 def product_instance(category, features, brand):
