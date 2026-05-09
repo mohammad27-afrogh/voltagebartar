@@ -113,3 +113,11 @@ class ProfileFormLocations(forms.ModelForm):
             'order_notes',
         ]
 
+
+class SmsSendForm(forms.Form):
+    message = forms.CharField(label=_('text sms...'))
+    widget = forms.Textarea(attrs={
+        'rows': 5,
+        'cols': 60,
+        'placeholder': _('Enter the message text...'),
+    })

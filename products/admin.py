@@ -31,6 +31,9 @@ class ProductAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         CommentsInline,
     ]
 
+    list_per_page = 10
+    list_editable = ['inventory', 'base_price']
+
 @admin.register(Discount)
 class DiscountAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = [
