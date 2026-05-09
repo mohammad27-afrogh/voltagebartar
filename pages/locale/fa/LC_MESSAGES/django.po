@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-29 16:58+0330\n"
-"PO-Revision-Date: 2026-04-29 17:00+0330\n"
+"POT-Creation-Date: 2026-05-09 11:58+0330\n"
+"PO-Revision-Date: 2026-05-09 12:06+0330\n"
 "Last-Translator:   <mohammad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -95,17 +95,14 @@ msgid "news"
 msgstr "خبر"
 
 #: .\models.py:50
-#| msgid "title news"
 msgid "title"
 msgstr "سر تیتر"
 
 #: .\models.py:51
-#| msgid "short description news"
 msgid "short_discription"
 msgstr "توضیحات مختصر"
 
 #: .\models.py:52
-#| msgid "description news"
 msgid "discription about us"
 msgstr "توضیحات کامل درباره ما"
 
@@ -114,43 +111,18 @@ msgid "aboutus"
 msgstr "درباره ما"
 
 #: .\templates\pages\aboutus.html:11
-#| msgid "news room sabzeonline"
-msgid "about sabzeonline"
-msgstr "درباره سبز آنلاین"
+msgid "about voltage bartar"
+msgstr "درباره ولتاژ برتر"
 
-#: .\templates\pages\faq.html:10
+#: .\templates\pages\faq.html:11
 msgid "question and answer"
 msgstr "پرسش و پاسخ"
 
-#: .\templates\pages\faq.html:25
+#: .\templates\pages\faq.html:26
 msgid "Categories of questions"
 msgstr "دسته بندی پرسش ها"
 
-#: .\templates\pages\faq.html:31
-msgid "Log in and register"
-msgstr "ورود و ثبت نام"
-
-#: .\templates\pages\faq.html:39
-msgid "Order registration process"
-msgstr "روند ثبت سفارش"
-
-#: .\templates\pages\faq.html:47
-msgid "Order tracking"
-msgstr "پیگیری ارسال سفارش"
-
-#: .\templates\pages\faq.html:55
-msgid "Returning goods"
-msgstr "بازگشت کالا"
-
-#: .\templates\pages\faq.html:63
-msgid "Discount codes and gift cards"
-msgstr "کد تخفیف و کارت هدیه"
-
-#: .\templates\pages\faq.html:71
-msgid "Other cases"
-msgstr "سایر موارد"
-
-#: .\templates\pages\faq.html:79
+#: .\templates\pages\faq.html:48
 msgid "Most frequently asked questions"
 msgstr "پرتکرارترین پرسش ها"
 
@@ -171,8 +143,8 @@ msgid "bazdid"
 msgstr "بازدید"
 
 #: .\templates\pages\news_list.html:11
-msgid "news room sabzeonline"
-msgstr "اتاق خبری سبز آنلاین"
+msgid "news room voltage bartar"
+msgstr "اتاق خبر ولتاژ برتر"
 
 #: .\templates\pages\news_list.html:62
 msgid "Previous Page"
@@ -187,31 +159,40 @@ msgid "order registration"
 msgstr "آموزش ثبت سفارش"
 
 #: .\templates\pages\order_registration.html:25
-msgid "order to log on the sabzeonline site"
-msgstr "آموزش ثبت سفارش در فروشگاه سبز آنلاین"
+#| msgid "order to log on the sabzeonline site"
+msgid "order to log on the voltage bartar site"
+msgstr "آموزش ثبت سفارش در فروشگاه ولتاژ برتر"
 
 #: .\templates\pages\privacy.html:7
 msgid "privacy page"
 msgstr "حریم خصوصی"
 
 #: .\templates\pages\privacy.html:26
-msgid "Green Online Store Terms, Conditions, and Privacy Policies"
-msgstr "شرایط، ضوابط و سیاست‌های حفظ حریم خصوصی فروشگاه سبز آنلاین "
+#| msgid "Green Online Store Terms, Conditions, and Privacy Policies"
+msgid "voltage bartar Store Terms, Conditions, and Privacy Policies"
+msgstr "شرایط، ضوابط و سیاست‌های حفظ حریم خصوصی فروشگاه ولتاژ برتر"
 
 #: .\templates\pages\privacy.html:28
 msgid "1. General rules"
 msgstr "۱. قوانین عمومی"
 
 #: .\templates\pages\privacy.html:29
+#| msgid ""
+#| "Sabz Online Online Store is subject to the laws of the Islamic Republic of "
+#| "Iran, the E-Commerce Law, and the Consumer Rights Protection Law. Using the "
+#| "services of this site means accepting all the rules and regulations stated "
+#| "on this page.Any changes to these rules will be notified through this page, "
+#| "and users' continued use of the site constitutes approval and acceptance of "
+#| "the new changes."
 msgid ""
-"Sabz Online Online Store is subject to the laws of the Islamic Republic of "
-"Iran, the E-Commerce Law, and the Consumer Rights Protection Law. Using the "
-"services of this site means accepting all the rules and regulations stated "
-"on this page.Any changes to these rules will be notified through this page, "
-"and users' continued use of the site constitutes approval and acceptance of "
-"the new changes."
+"voltage bartar Online Store is subject to the laws of the Islamic Republic "
+"of Iran, the E-Commerce Law, and the Consumer Rights Protection Law. Using "
+"the services of this site means accepting all the rules and regulations "
+"stated on this page.Any changes to these rules will be notified through this"
+" page, and users' continued use of the site constitutes approval and "
+"acceptance of the new changes."
 msgstr ""
-"فروشگاه اینترنتی سبز آنلاین تابع قوانین جمهوری اسلامی ایران، قانون تجارت "
+"فروشگاه اینترنتی ولتاژ برتر تابع قوانین جمهوری اسلامی ایران، قانون تجارت "
 "الکترونیک و قانون حمایت از حقوق مصرف‌کننده است. استفاده از خدمات این سایت به"
 " منزله پذیرش کلیه قوانین و مقررات مندرج در این صفحه می‌باشد. هرگونه تغییر در"
 " این قوانین از طریق همین صفحه اطلاع‌رسانی خواهد شد و ادامه استفاده کاربران "
@@ -304,19 +285,25 @@ msgid "Quality assurance and return policy"
 msgstr "تضمین کیفیت و سیاست بازگشت کالا"
 
 #: .\templates\pages\privacy.html:46
+#| msgid ""
+#| "The quality, freshness, and health of the flowers and plants are guaranteed."
+#| " If customers are not satisfied with the quality or the product is damaged "
+#| "upon delivery, they can return the product unconditionally before the "
+#| "courier returns and receive a full refund.Products whose packaging is open "
+#| "or damaged (such as soil or opened fertilizer) cannot be returned after "
+#| "delivery."
 msgid ""
-"The quality, freshness, and health of the flowers and plants are guaranteed."
-" If customers are not satisfied with the quality or the product is damaged "
-"upon delivery, they can return the product unconditionally before the "
-"courier returns and receive a full refund.Products whose packaging is open "
-"or damaged (such as soil or opened fertilizer) cannot be returned after "
-"delivery."
+"The quality, freshness and health of the products are guaranteed. If "
+"customers are not satisfied with the quality or the product is damaged upon "
+"delivery, they can return the product unconditionally after the courier "
+"visits and receive a full refund. Installed or used products such as "
+"(switches, sockets, lamps, etc.) cannot be returned after delivery."
 msgstr ""
-"کیفیت، تازگی و سلامت گل‌ها و گیاهان تضمین شده است. در صورت عدم رضایت مشتریان"
-" از کیفیت یا آسیب دیدن محصول هنگام تحویل، می‌توانند قبل از مراجعه پیک، محصول"
-" را بدون قید و شرط مرجوع کرده و مبلغ پرداختی را به طور کامل دریافت کنند. "
-"محصولاتی که بسته‌بندی آنها باز یا آسیب دیده باشد (مانند خاک یا کود باز شده) "
-"پس از تحویل قابل بازگشت نیستند."
+"کیفیت، تازگی و سلامت محصولات تضمین شده است. در صورت عدم رضایت مشتریان از "
+"کیفیت یا آسیب دیدگی محصول هنگام تحویل، آنها می توانند پس از مراجعه پیک، "
+"محصول را بدون قید و شرط مرجوع کرده و وجه پرداختی خود را به طور کامل دریافت "
+"کنند. محصولات نصب شده یا کارکرده مانند (کلید، پریز، لامپ و ...) پس از تحویل "
+"قابل بازگشت نیستند."
 
 #: .\templates\pages\privacy.html:48
 msgid "5. Shipping and delivery of goods"
@@ -351,48 +338,56 @@ msgstr ""
 "خواهد بود."
 
 #: .\templates\pages\privacy.html:52
-msgid ""
-"• Orders exceeding 30 million rials or shipped via freight must be paid for "
-"offline (online or card-to-card) before shipping."
+msgid "• The order amount can be paid in two ways, both online and at home."
 msgstr ""
-"• سفارش‌هایی که مبلغ آنها بیش از 30 میلیون ریال است یا از طریق باربری ارسال "
-"می‌شوند، باید قبل از ارسال، هزینه آنها به صورت آفلاین (آنلاین یا کارت به "
-"کارت) پرداخت شود."
+"• مبلغ سفارش به دو صورت پرداخت می شود، هم به صورت آنلاین و هم درب منزل."
 
 #: .\templates\pages\privacy.html:54
 msgid "6. Electronic communications"
 msgstr "۶. ارتباطات الکترونیکی"
 
 #: .\templates\pages\privacy.html:55
+#| msgid ""
+#| "Placing an order or using the online green services means agreeing to "
+#| "receive promotional messages via email, text message or phone call. The "
+#| "email address and phone number registered by the user are considered the "
+#| "official basis for communication. Users can disable the receipt of "
+#| "promotional SMS messages in the user account section.All text messages are "
+#| "sent only through the official site system, and messages sent from other "
+#| "numbers under the name Sabz Online are considered a violation and abuse and "
+#| "must be reported for legal action."
 msgid ""
-"Placing an order or using the online green services means agreeing to "
+"Placing an order or using the voltage bartar services means agreeing to "
 "receive promotional messages via email, text message or phone call. The "
 "email address and phone number registered by the user are considered the "
 "official basis for communication. Users can disable the receipt of "
 "promotional SMS messages in the user account section.All text messages are "
 "sent only through the official site system, and messages sent from other "
-"numbers under the name Sabz Online are considered a violation and abuse and "
-"must be reported for legal action."
+"numbers under the name voltage bartar are considered a violation and abuse "
+"and must be reported for legal action."
 msgstr ""
-"ثبت سفارش یا استفاده از خدمات سبز آنلاین به منزله موافقت با دریافت پیام‌های "
+"ثبت سفارش یا استفاده از خدمات ولتاژ برتر به معنای موافقت با دریافت پیام‌های "
 "تبلیغاتی از طریق ایمیل، پیامک یا تماس تلفنی است. آدرس ایمیل و شماره تلفن ثبت"
-" شده توسط کاربر، مبنای رسمی ارتباط محسوب می‌شود. کاربران می‌توانند در بخش "
-"حساب کاربری، دریافت پیامک‌های تبلیغاتی را غیرفعال کنند. تمامی پیامک‌ها فقط "
-"از طریق سامانه رسمی سایت ارسال می‌شوند و پیام‌های ارسالی از شماره‌های دیگر "
-"تحت نام سبز آنلاین تخلف و سوءاستفاده محسوب شده و باید برای پیگیری قانونی "
-"گزارش شوند."
+" شده توسط کاربر، مبنای رسمی ارتباط محسوب می‌شود. کاربران می‌توانند دریافت "
+"پیامک‌های تبلیغاتی را در بخش حساب کاربری غیرفعال کنند. تمامی پیامک‌ها فقط از"
+" طریق سامانه رسمی سایت ارسال می‌شوند و پیام‌های ارسالی از شماره‌های دیگر تحت"
+" نام ولتاژ برتر تخلف و سوءاستفاده محسوب شده و باید برای پیگیری قانونی گزارش "
+"شوند."
 
 #: .\templates\pages\privacy.html:57
 msgid "7. Privacy Policy"
 msgstr "۷. سیاست حفظ حریم خصوصی"
 
 #: .\templates\pages\privacy.html:59
+#| msgid ""
+#| "• Sabz Online is committed to protecting users' personal information and not"
+#| " exploiting any of the recorded data without consent or a legal order."
 msgid ""
-"• Sabz Online is committed to protecting users' personal information and not"
-" exploiting any of the recorded data without consent or a legal order."
+"• voltage bartar is committed to protecting users' personal information and "
+"not exploiting any of the recorded data without consent or a legal order."
 msgstr ""
-"• سبز آنلاین متعهد به حفاظت از اطلاعات شخصی کاربران و عدم سوءاستفاده از هیچ "
-"یک از داده‌های ثبت شده بدون رضایت یا حکم قانونی است."
+"• ولتاژ برتر متعهد به حفاظت از اطلاعات شخصی کاربران و عدم بهره‌برداری از "
+"هرگونه داده ثبت شده بدون رضایت یا حکم قانونی است."
 
 #: .\templates\pages\privacy.html:60
 msgid ""
@@ -420,14 +415,19 @@ msgstr ""
 "مسئولیت فعالیت هایی که تحت نام کاربری آنها انجام می شود، بر عهده آنهاست."
 
 #: .\templates\pages\privacy.html:63
+#| msgid ""
+#| "• All written content, graphics, images and information on the site are "
+#| "considered the intellectual property of Sabz Online. Their commercial use or"
+#| " republishing without written permission is prohibited and the company "
+#| "reserves the right to pursue legal action."
 msgid ""
 "• All written content, graphics, images and information on the site are "
-"considered the intellectual property of Sabz Online. Their commercial use or"
-" republishing without written permission is prohibited and the company "
+"considered the intellectual property of voltage bartar. Their commercial use"
+" or republishing without written permission is prohibited and the company "
 "reserves the right to pursue legal action."
 msgstr ""
-"• تمامی محتوای نوشتاری، گرافیک، تصاویر و اطلاعات موجود در سایت، دارایی معنوی"
-" سبز آنلاین محسوب می‌شوند. استفاده تجاری یا بازنشر آنها بدون اجازه کتبی "
+"• تمامی محتوای نوشتاری، گرافیک، تصاویر و اطلاعات موجود در سایت، مالکیت معنوی"
+" ولتاژ برتر محسوب می‌شوند. استفاده تجاری یا بازنشر آنها بدون اجازه کتبی "
 "ممنوع است و شرکت حق پیگیری قانونی را برای خود محفوظ می‌دارد."
 
 #: .\templates\pages\privacy.html:66
@@ -435,13 +435,18 @@ msgid "8. Dispute resolution and complaint handling"
 msgstr "۸. حل اختلاف و رسیدگی به شکایات"
 
 #: .\templates\pages\privacy.html:67
+#| msgid ""
+#| "In the event of any dispute between the user and Sabz Online, the matter "
+#| "will first be reviewed through site support and, in the event of "
+#| "disagreement, will be pursued through legal authorities in accordance with "
+#| "the current regulations of the Islamic Republic of Iran."
 msgid ""
-"In the event of any dispute between the user and Sabz Online, the matter "
+"In the event of any dispute between the user and voltage bartar, the matter "
 "will first be reviewed through site support and, in the event of "
 "disagreement, will be pursued through legal authorities in accordance with "
 "the current regulations of the Islamic Republic of Iran."
 msgstr ""
-"در صورت بروز هرگونه اختلاف بین کاربر و سبز آنلاین، موضوع ابتدا از طریق "
+"در صورت بروز هرگونه اختلاف بین کاربر و ولتاژ برتر، موضوع ابتدا از طریق "
 "پشتیبانی سایت بررسی و در صورت عدم توافق، از طریق مراجع قانونی مطابق با "
 "مقررات جاری جمهوری اسلامی ایران پیگیری خواهد شد."
 
@@ -450,12 +455,16 @@ msgid "9. Change of rules and update date"
 msgstr "۹. تغییر قوانین و تاریخ به‌روزرسانی"
 
 #: .\templates\pages\privacy.html:70
+#| msgid ""
+#| "Sabz Online may update these terms and conditions to improve services or "
+#| "change legal conditions. The last revision date is listed at the top of this"
+#| " page."
 msgid ""
-"Sabz Online may update these terms and conditions to improve services or "
+"voltage bartar may update these terms and conditions to improve services or "
 "change legal conditions. The last revision date is listed at the top of this"
 " page."
 msgstr ""
-"سبز آنلاین ممکن است این شرایط و ضوابط را برای بهبود خدمات یا تغییر شرایط "
+"ولتاژ برتر ممکن است این شرایط و ضوابط را برای بهبود خدمات یا تغییر شرایط "
 "قانونی به‌روزرسانی کند. تاریخ آخرین به‌روزرسانی در بالای این صفحه ذکر شده "
 "است."
 
@@ -476,5 +485,39 @@ msgid "• Central store address: [Physical address]"
 msgstr "• آدرس فروشگاه مرکزی: [آدرس فیزیکی]"
 
 #: .\templates\pages\privacy.html:77
-msgid "Wishing you greenery and freshness in your home 🌱"
-msgstr "با آرزوی سرسبزی و طراوت در خانه‌هایتان 🌱"
+#| msgid "Wishing you greenery and freshness in your home 🌱"
+msgid "Wishing you greenery and freshness in your home "
+msgstr ""
+"با آرزوی سلامتی برای همه دوستان برق کار و همراهان همیشگی فروشگاه ولتاژ برتر"
+
+#~ msgid "about sabzeonline"
+#~ msgstr "درباره سبز آنلاین"
+
+#~ msgid "Log in and register"
+#~ msgstr "ورود و ثبت نام"
+
+#~ msgid "Order registration process"
+#~ msgstr "روند ثبت سفارش"
+
+#~ msgid "Order tracking"
+#~ msgstr "پیگیری ارسال سفارش"
+
+#~ msgid "Returning goods"
+#~ msgstr "بازگشت کالا"
+
+#~ msgid "Discount codes and gift cards"
+#~ msgstr "کد تخفیف و کارت هدیه"
+
+#~ msgid "Other cases"
+#~ msgstr "سایر موارد"
+
+#~ msgid "news room sabzeonline"
+#~ msgstr "اتاق خبری سبز آنلاین"
+
+#~ msgid ""
+#~ "• Orders exceeding 30 million rials or shipped via freight must be paid for "
+#~ "offline (online or card-to-card) before shipping."
+#~ msgstr ""
+#~ "• سفارش‌هایی که مبلغ آنها بیش از 30 میلیون ریال است یا از طریق باربری ارسال "
+#~ "می‌شوند، باید قبل از ارسال، هزینه آنها به صورت آفلاین (آنلاین یا کارت به "
+#~ "کارت) پرداخت شود."

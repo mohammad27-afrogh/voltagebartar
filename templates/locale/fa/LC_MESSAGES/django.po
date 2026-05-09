@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-27 10:09+0330\n"
-"PO-Revision-Date: 2026-04-27 12:31+0330\n"
+"POT-Creation-Date: 2026-05-09 11:59+0330\n"
+"PO-Revision-Date: 2026-05-09 12:12+0330\n"
 "Last-Translator:   <mohammad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -46,8 +46,8 @@ msgstr "ورود"
 
 #: .\account\login.html:28 .\account\login.html:32 .\account\signup.html:28
 #: .\account\signup.html:32
-msgid "to sabzeonline"
-msgstr "به سبزآنلاین"
+msgid "to voltage bartar"
+msgstr "به ولتاژ برتر"
 
 #: .\account\login.html:31 .\account\signup.html:7 .\account\signup.html:31
 #: .\partials\navbar.html:98
@@ -59,18 +59,18 @@ msgid "Login to user account"
 msgstr "وارد حساب کاربری شوید"
 
 #: .\account\login.html:43
-msgid "login to sabzeonline"
-msgstr "ورود به سبزآنلاین"
+msgid "login to voltage bartar"
+msgstr "ورود به ولتاژ برتر"
 
-#: .\account\logout.html:15
+#: .\account\logout.html:7
 msgid "log out"
 msgstr "خروج"
 
-#: .\account\logout.html:39
+#: .\account\logout.html:31
 msgid "Are you sure you want to log out?"
 msgstr "آیا مطمئن هستید که می‌خواهید از سیستم خارج شوید؟"
 
-#: .\account\logout.html:43
+#: .\account\logout.html:35
 msgid "Yes, I'm sure. Get out!"
 msgstr "بله، مطمئنم. خارج شو!"
 
@@ -140,20 +140,68 @@ msgid "Terms of the rules"
 msgstr "شرایط قوانین"
 
 #: .\account\signup.html:48
+#| msgid ""
+#| "I have read the terms of use of the sabzeonline website services and agree "
+#| "to all of them."
 msgid ""
-"I have read the terms of use of the sabzeonline website services and agree "
-"to all of them."
+"I have read the terms of use of the voltage bartar website services and "
+"agree to all of them."
 msgstr ""
-"شرایط استفاده از خدمات وب‌سایت سبزآنلاین را مطالعه کرده و با تمامی موارد آن "
-"موافقم."
+"شرایط استفاده از خدمات وب‌سایت ولتاژ برتر را مطالعه کرده و با تمامی موارد آن"
+" موافقم."
 
 #: .\account\signup.html:53
-msgid "signup to sabzeonline"
-msgstr "ثبت نام در سبزآنلاین"
+#| msgid "signup to user account"
+msgid "signup to voltage bartar"
+msgstr "ثبت نام در ولتاژ برتر"
 
-#: .\home.html:10 .\partials\navbar.html:13
-msgid "sabzeonline"
-msgstr "سبزآنلاین"
+#: .\account\welcome_email.html:8 .\account\welcome_email.html:57
+msgid "Welcome to our family!"
+msgstr "به خانواده ما خوش آمدید!"
+
+#: .\account\welcome_email.html:60
+msgid "Hello"
+msgstr "سلام"
+
+#: .\account\welcome_email.html:60
+msgid "Dear User,"
+msgstr "کاربر گرامی"
+
+#: .\account\welcome_email.html:61
+msgid "tank you for registering on our website!"
+msgstr "از ثبت نام شما در وب سایت ما متشکریم!"
+
+#: .\account\welcome_email.html:62
+msgid "we hope you enjoy your experience with us."
+msgstr "امیدواریم از تجربه خود با ما لذت ببرید."
+
+#: .\account\welcome_email.html:63
+msgid "To get started, you can"
+msgstr "برای شروع، می‌توانید"
+
+#: .\account\welcome_email.html:63
+msgid "Home Page"
+msgstr "صفحه اصلی"
+
+#: .\account\welcome_email.html:63
+msgid "visit the."
+msgstr "بازدید کنید."
+
+#: .\account\welcome_email.html:65
+msgid "Best regards,"
+msgstr "با احترام،"
+
+#: .\account\welcome_email.html:66
+msgid "The Team"
+msgstr "تیم"
+
+#: .\account\welcome_email.html:69
+msgid "All rights reserved."
+msgstr "تمامی حقوق محفوظ است."
+
+#: .\home.html:10
+msgid "voltage bartar"
+msgstr "ولتاژ برتر"
 
 #: .\home.html:41
 msgid "make a purchase"
@@ -238,12 +286,12 @@ msgid "follow us"
 msgstr "ما را دنبال کنید"
 
 #: .\partials\footer.html:50
-msgid "with sabzeonline"
-msgstr "با سبزآنلاین"
+msgid "with voltage bartar"
+msgstr "با ولتاژ برتر"
 
 #: .\partials\footer.html:56
-msgid "newsroom sabzeonline"
-msgstr "اتاق خبر سبزآنلاین"
+msgid "newsroom voltage bartar"
+msgstr "اتاق خبر ولتاژ برتر"
 
 #: .\partials\footer.html:61
 msgid "about us"
@@ -270,8 +318,9 @@ msgid "Terms of Use"
 msgstr "شرایط استفاده"
 
 #: .\partials\footer.html:111
-msgid "Buying Guide from sabzeonline"
-msgstr "راهنمای خرید از سبزآنلاین"
+#| msgid "Buying Guide from sabzeonline"
+msgid "Buying Guide from voltage bartar"
+msgstr "راهنمای خرید از ولتاژ برتر"
 
 #: .\partials\footer.html:117
 msgid "How to place an order"
@@ -300,21 +349,28 @@ msgid "send"
 msgstr "ارسال کنید"
 
 #: .\partials\footer.html:156
-msgid "sabzeonline flower and plant store"
-msgstr "فروشگاه گل و گیاه سبز آنلاین"
+#| msgid "sabzeonline flower and plant store"
+msgid "voltage bartar flower and plant store"
+msgstr "فروشگاه الکتریکی ولتاژ برتر"
 
 #: .\partials\footer.html:158
+#| msgid ""
+#| "sabzeonline, a specialized reference for buying flowers, plants, seeds, "
+#| "soil, fertilizers and gardening tools.Quality, freshness and free advice for"
+#| " nature lovers."
 msgid ""
-"sabzeonline, a specialized reference for buying flowers, plants, seeds, "
+"voltage bartar, a specialized reference for buying flowers, plants, seeds, "
 "soil, fertilizers and gardening tools.Quality, freshness and free advice for"
 " nature lovers."
 msgstr ""
-"سبزآنلاین، مرجع تخصصی خرید گل، گیاه، بذر، خاک، کود و ابزار باغبانی. کیفیت، "
-"تازگی و مشاوره رایگان برای دوستداران طبیعت."
+"ولتاژ برتر، مرجع تخصصی خرید سیم و کابل ، روشنایی ، کلیدو پریز و ... به همراه"
+" مشاوره رایگان برای دوستداران و عاشقان برقکاری."
 
 #: .\partials\footer.html:199
-msgid "All content, photos, etc. belong to the sabzeonline shopping site."
-msgstr "تمامی مطالب، عکس ها و... متعلق به سایت فروشگاهی سبزآنلاین می باشد."
+#| msgid ""
+#| "All content, photos, etc. belong to the sabzeonline shopping site."
+msgid "All content, photos, etc. belong to the voltage bartar shopping site."
+msgstr "تمامی مطالب، عکس ها و ... متعلق به سایت خرید ولتاژ برتر می باشد."
 
 #: .\partials\navbar.html:22
 msgid "Search for the product name, brand or category you are looking for…"
@@ -348,52 +404,70 @@ msgstr "سبد خرید"
 msgid "logout"
 msgstr "خروج"
 
-#: .\partials\product_actions.html:10
-msgid "popular"
-msgstr "محبوب"
-
-#: .\partials\product_actions.html:17
+#: .\partials\product_actions.html:12
 msgid "subscription"
 msgstr "اشتراک"
 
-#: .\partials\product_actions.html:28
+#: .\partials\product_actions.html:23
 msgid "share"
 msgstr "به اشتراک بگذارید"
 
-#: .\partials\product_actions.html:37
+#: .\partials\product_actions.html:32
 msgid "You can share this page with your friends using the methods below."
 msgstr ""
 "شما می‌توانید با استفاده از روش‌های زیر، این صفحه را با دوستان خود به اشتراک"
 " بگذارید."
 
-#: .\partials\product_actions.html:41
+#: .\partials\product_actions.html:36
 msgid "Send by email"
 msgstr "از طریق ایمیل ارسال کنید"
 
-#: .\partials\product_actions.html:49
+#: .\partials\product_actions.html:44
 msgid "send email"
 msgstr "ارسال ایمیل"
 
-#: .\partials\product_actions.html:95
+#: .\partials\product_actions.html:90
 msgid "notification"
 msgstr "اطلاع رسانی"
 
-#: .\partials\product_actions.html:107
+#: .\partials\product_actions.html:102
 msgid "let me know"
 msgstr "به من اطلاع بده"
 
-#: .\partials\product_actions.html:115
+#: .\partials\product_actions.html:110
 msgid "through:"
 msgstr "از طریق :"
 
-#: .\partials\product_actions.html:124
+#: .\partials\product_actions.html:119
 msgid "email to : "
 msgstr "ایمیل به :"
 
-#: .\partials\product_actions.html:130
+#: .\partials\product_actions.html:125
 msgid "registration"
 msgstr "ثبت نام"
 
-#: .\partials\product_actions.html:132
+#: .\partials\product_actions.html:127
 msgid "return"
 msgstr "بازگشت"
+
+#: .\partials\product_actions.html:142
+msgid "popular"
+msgstr "محبوب"
+
+#~ msgid "to sabzeonline"
+#~ msgstr "به سبزآنلاین"
+
+#~ msgid "login to sabzeonline"
+#~ msgstr "ورود به سبزآنلاین"
+
+#~ msgid "signup to sabzeonline"
+#~ msgstr "ثبت نام در سبزآنلاین"
+
+#~ msgid "sabzeonline"
+#~ msgstr "سبزآنلاین"
+
+#~ msgid "with sabzeonline"
+#~ msgstr "با سبزآنلاین"
+
+#~ msgid "newsroom sabzeonline"
+#~ msgstr "اتاق خبر سبزآنلاین"
