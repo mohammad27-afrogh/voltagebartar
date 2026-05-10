@@ -7,5 +7,5 @@ app_name = 'products'
 urlpatterns = [
     path('', product_list_view, name='product_list'),
     re_path(r'(?P<product_slug>[^/]+)/$', product_detail_view, name='product_detail_by_slug'),
-    path('category/<slug:category_slug>/', category_detail_view, name='category_detail'),
+    re_path(r'^category/(?P<category_slug>[^/]+)/$', category_detail_view, name='category_detail'),
 ]

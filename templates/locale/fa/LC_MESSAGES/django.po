@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:59+0330\n"
-"PO-Revision-Date: 2026-05-09 12:12+0330\n"
+"POT-Creation-Date: 2026-05-10 04:49+0330\n"
+"PO-Revision-Date: 2026-05-10 04:52+0330\n"
 "Last-Translator:   <mohammad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -140,9 +140,6 @@ msgid "Terms of the rules"
 msgstr "شرایط قوانین"
 
 #: .\account\signup.html:48
-#| msgid ""
-#| "I have read the terms of use of the sabzeonline website services and agree "
-#| "to all of them."
 msgid ""
 "I have read the terms of use of the voltage bartar website services and "
 "agree to all of them."
@@ -151,7 +148,6 @@ msgstr ""
 " موافقم."
 
 #: .\account\signup.html:53
-#| msgid "signup to user account"
 msgid "signup to voltage bartar"
 msgstr "ثبت نام در ولتاژ برتر"
 
@@ -230,36 +226,36 @@ msgid "$"
 msgstr "تومان"
 
 #: .\home.html:129
-msgid "Houseplants"
-msgstr "گیاهان آپارتمانی"
+msgid "Wire and cable distributor"
+msgstr "سیم و کابل افشان"
 
 #: .\home.html:131
-msgid "Houseplants and air purifiers"
-msgstr "گیاهان آپارتمانی و تصفیه کننده هوا"
+msgid "Flexible, easy to install, smart connection"
+msgstr "اتصال هوشمند، انعطاف‌پذیر، نصب آسان"
 
 #: .\home.html:147
-msgid "Ready compounds"
-msgstr "ترکیبات خاک آماده "
+msgid "lamp"
+msgstr "لامپ"
 
 #: .\home.html:149
-msgid "Ready-made mixtures for flowers and houseplants and planting media"
-msgstr "مخلوط‌های آماده برای گل‌ها و گیاهان آپارتمانی و محیط‌های کاشت"
+msgid "Good lamp, better brightness, more light, less consumption"
+msgstr "لامپ خوب، روشنایی بهتر، نور بیشتر، مصرف کمتر"
 
 #: .\home.html:165
-msgid "chemical fertilizer"
-msgstr "کود شیمیایی"
+msgid "Built-in switch and socket"
+msgstr "کلید و پریز توکار"
 
 #: .\home.html:167
-msgid "Chemical fertilizer for plant nutrition"
-msgstr "کود شیمیایی برای تغذیه گیاهان"
+msgid "Beauty along with efficiency"
+msgstr "زیبایی در کنار کارایی"
 
 #: .\home.html:183
-msgid "plastic pot"
-msgstr "گلدان پلاستیکی"
+msgid "iPhone image"
+msgstr "آیفون تصویری"
 
 #: .\home.html:185
-msgid "Plastic pots are the best choice for plants of all sizes."
-msgstr "گلدان‌های پلاستیکی بهترین انتخاب برای گیاهان در هر اندازه‌ای"
+msgid "Stay home and see everything."
+msgstr "در خانه بمانید و همه چیز را ببینید."
 
 #: .\home.html:199
 msgid "successful sales"
@@ -318,7 +314,6 @@ msgid "Terms of Use"
 msgstr "شرایط استفاده"
 
 #: .\partials\footer.html:111
-#| msgid "Buying Guide from sabzeonline"
 msgid "Buying Guide from voltage bartar"
 msgstr "راهنمای خرید از ولتاژ برتر"
 
@@ -349,15 +344,10 @@ msgid "send"
 msgstr "ارسال کنید"
 
 #: .\partials\footer.html:156
-#| msgid "sabzeonline flower and plant store"
 msgid "voltage bartar flower and plant store"
 msgstr "فروشگاه الکتریکی ولتاژ برتر"
 
 #: .\partials\footer.html:158
-#| msgid ""
-#| "sabzeonline, a specialized reference for buying flowers, plants, seeds, "
-#| "soil, fertilizers and gardening tools.Quality, freshness and free advice for"
-#| " nature lovers."
 msgid ""
 "voltage bartar, a specialized reference for buying flowers, plants, seeds, "
 "soil, fertilizers and gardening tools.Quality, freshness and free advice for"
@@ -367,8 +357,6 @@ msgstr ""
 " مشاوره رایگان برای دوستداران و عاشقان برقکاری."
 
 #: .\partials\footer.html:199
-#| msgid ""
-#| "All content, photos, etc. belong to the sabzeonline shopping site."
 msgid "All content, photos, etc. belong to the voltage bartar shopping site."
 msgstr "تمامی مطالب، عکس ها و ... متعلق به سایت خرید ولتاژ برتر می باشد."
 
@@ -453,6 +441,30 @@ msgstr "بازگشت"
 #: .\partials\product_actions.html:142
 msgid "popular"
 msgstr "محبوب"
+
+#~ msgid "Houseplants"
+#~ msgstr "گیاهان آپارتمانی"
+
+#~ msgid "Houseplants and air purifiers"
+#~ msgstr "گیاهان آپارتمانی و تصفیه کننده هوا"
+
+#~ msgid "Ready compounds"
+#~ msgstr "ترکیبات خاک آماده "
+
+#~ msgid "Ready-made mixtures for flowers and houseplants and planting media"
+#~ msgstr "مخلوط‌های آماده برای گل‌ها و گیاهان آپارتمانی و محیط‌های کاشت"
+
+#~ msgid "chemical fertilizer"
+#~ msgstr "کود شیمیایی"
+
+#~ msgid "Chemical fertilizer for plant nutrition"
+#~ msgstr "کود شیمیایی برای تغذیه گیاهان"
+
+#~ msgid "plastic pot"
+#~ msgstr "گلدان پلاستیکی"
+
+#~ msgid "Plastic pots are the best choice for plants of all sizes."
+#~ msgstr "گلدان‌های پلاستیکی بهترین انتخاب برای گیاهان در هر اندازه‌ای"
 
 #~ msgid "to sabzeonline"
 #~ msgstr "به سبزآنلاین"

@@ -57,6 +57,7 @@ class CategoryAdmin(admin.ModelAdmin):
         'slug': ['name',]
     }
     search_fields = ['name',]
+    autocomplete_fields = ['parent',]
     
 
 @admin.register(Features)
