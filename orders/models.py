@@ -48,6 +48,7 @@ class Order(models.Model):
     zarinpal_data = models.TextField(_('zarinpal data'), blank=True)
     zarinpal_payment_code = models.CharField(_('zarinpal payment code'), max_length=100, blank=True)
     payment_price = models.CharField(_('other pyment price'), max_length=2, choices=PYMENT_PRICE_CHOICESS)
+    sms_send = models.BooleanField(_('sms send'), default=False)
 
 
     class Meta:
