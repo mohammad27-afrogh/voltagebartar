@@ -1,5 +1,5 @@
 {
-    "disks": [
+  "disks": [
     {
       "name": "media",
       "mountTo": "/usr/src/app/shop_flower/media"
@@ -8,19 +8,15 @@
       "name": "database",
       "mountTo": "/usr/src/app/shop_flower/database"
     }
-    ],
-    "app": "voltagebartar",
-    "port": 80,
-    "platform": "django",
-    "django": {
-      "mirror": false,
-      "pythonVersion": "3.12",
-      "timezone": "Iran/Tehran",
-      "collectStatic": false,
-      "compileMessages": true,
-      "modifySettings": false
-    },
-    "build": {
-    "location": "iran"
+  ],
+  "app": "voltagebartar",
+  "platform": "django",
+  "django": {
+    "mirror": false,
+    "pythonVersion": "3.12",
+    "timezone": "Iran/Tehran",
+    "collectStatic": false,
+    "compileMessages": true,
+    "modifySettings": false
   }
 }
