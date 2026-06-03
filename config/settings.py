@@ -12,10 +12,6 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
-from environs import Env
-
-env = Env()
-env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,16 +24,16 @@ LOCALE_PATHS = [
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.str('DJANGO_SECRET_KEY')
+SECRET_KEY = 'DJANGO_SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('DJANGO_DEBUG')
+DEBUG = 'DJANGO_DEBUG'
 
 ALLOWED_HOSTS = []
 
-KAVENEGAR_API_KEY = env('KAVENEGAR_API_KEY')
-KAVENEGAR_SENDER = env('KAVENEGAR_SENDER')
-ADMIN_PHONE_NUMBER = env('ADMIN_PHONE_NUMBER')
+KAVENEGAR_API_KEY = 'KAVENEGAR_API_KEY'
+KAVENEGAR_SENDER = 'KAVENEGAR_SENDER'
+ADMIN_PHONE_NUMBER = 'ADMIN_PHONE_NUMBER'
 
 
 # Application definition
@@ -242,4 +238,4 @@ PHONENUMBER_DEFAULT_REGION = 'IR'
 
 ACCOUNT_PASSWORD_CHANGE_REDIRECT_URL = '/accounts/password/change/done/'
 
-ZARINPAL_MERCHANT_ID = env.str('DJANGO_ZARINPAL_MERCHANT_ID')
+ZARINPAL_MERCHANT_ID = 'DJANGO_ZARINPAL_MERCHANT_ID'
