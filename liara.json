@@ -9,5 +9,14 @@
             "mountTo": "media"
         }
     ],
-    "app": "voltagebartar"
+    "app": "voltagebartar",
+    "platform": "django",
+    "django": {
+      "mirror": false,
+      "pythonVersion": "3.12",
+      "timezone": "Iran/Tehran",
+      "collectStatic": false,
+      "compileMessages": true,
+      "modifySettings": false
+    }
 }
