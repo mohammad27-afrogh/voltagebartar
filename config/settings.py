@@ -64,7 +64,6 @@ INSTALLED_APPS = [
     'rosetta',
     'rest_framework',
     'phonenumber_field',
-    'debug_toolbar',
     'dal',
     'dal_select2',
 
@@ -102,7 +101,6 @@ MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
 SITE_ID = 1
 
 MIDDLEWARE = [
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -113,9 +111,18 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
+if DEBUG:
+    INSTALLED_APPS += [
+        'debug_toolbar',
+    ]
+
+    MIDDLEWARE += [
+        "debug_toolbar.middleware.DebugToolbarMiddleware",
+    ]
+
+    INTERNAL_IPS = [
+        "127.0.0.1",
+    ]
 
 ROOT_URLCONF = 'config.urls'
 

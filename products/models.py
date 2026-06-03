@@ -176,44 +176,10 @@ class Category(models.Model):
         return reverse('products:category_detail', kwargs={'category_slug': self.slug})
 
 class Features(models.Model):
-    PRODUCT_LIQUID_UNIT = [
-        ('GR', _('Gram')),
-        ('KG', _('KiloGram')),
-
-        ('Ml', _('MilliLiter')),
-        ('L', _('Liter')),
-    ]
-    PRODUCT_SOLIDS_UNIT = [
-        ('Num', _('Number')),
-        ('Pack', _('Packet')),
-    ]
-    PRODUCT_NUMBER_UNIT = [
-        ('Cm', _('SantiMeter')),
-        ('M', _('Meter')),
-    ]
     name_features = models.CharField(_('name_features'), max_length=100)
-
-    Length = models.DecimalField(_('Length'), decimal_places=2, max_digits=10, blank=True, null=True)
-    Length_unit = models.CharField(_('Length_unit'), max_length=20, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
-
-    Width = models.DecimalField(_('Width'), decimal_places=2, max_digits=10, blank=True, null=True)
-    Width_unit = models.CharField(_('Width_unit'), max_length=20, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
-
-    Height = models.DecimalField(_('Height'), decimal_places=2, max_digits=10, blank=True, null=True)
-    Height_unit = models.CharField(_('Height_unit'), max_length=20, choices=PRODUCT_NUMBER_UNIT, blank=True, null=True)
-
-    pot_size = models.CharField(_('pot_size'), max_length=50, blank=True, null=True)
-
-    number = models.DecimalField(_('number'), decimal_places=2, max_digits=10, blank=True, null=True)
-    unit_counting = models.CharField(_('unit_counting'), max_length=4, choices=PRODUCT_SOLIDS_UNIT, blank=True,
-                                     null=True)
-
-    weight = models.DecimalField(_('weight'), decimal_places=2, max_digits=10, blank=True, null=True)
-    weight_unit = models.CharField(_('weight_unit'), max_length=2, choices=PRODUCT_LIQUID_UNIT, blank=True, null=True)
-
-    ingredients = models.CharField(_('ingredients'), max_length=250, blank=True, null=True)
-    care_tips = RichTextField(blank=True, null=True, verbose_name=_('care tipe'))
-    usage_instructions = RichTextField(blank=True, null=True, verbose_name=_('usage instructions'))
+    short_discription = RichTextField(blank=True, null=True, verbose_name=_('short_discription'))
+    discription = RichTextField(blank=True, null=True, verbose_name=_('discription'))
+    image_Technical_specifications = models.ImageField(_('image Technical specifications'), upload_to='product/product_covers/', blank=True, null=True)
 
     class Meta:
         verbose_name_plural = _('Features')
