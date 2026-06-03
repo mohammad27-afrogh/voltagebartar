@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:59+0330\n"
-"PO-Revision-Date: 2026-05-09 12:06+0330\n"
-"Last-Translator:   <mohammad@gmail.com>\n"
+"POT-Creation-Date: 2026-06-04 00:36+0330\n"
+"PO-Revision-Date: 2026-06-04 00:38+0330\n"
+"Last-Translator:   <m.afroogh@mail.ir>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -106,7 +106,7 @@ msgstr "قیمت_پایه"
 msgid "short_description"
 msgstr "توضیح کوتاه"
 
-#: .\models.py:50 .\models.py:227
+#: .\models.py:50 .\models.py:193
 msgid "description"
 msgstr "توضیحات"
 
@@ -174,238 +174,162 @@ msgstr "عکس_دسته"
 msgid "Category"
 msgstr "دسته بندی"
 
-#: .\models.py:180
-msgid "Gram"
-msgstr "گرم"
-
-#: .\models.py:181
-msgid "KiloGram"
-msgstr "کیلو گرم"
-
-#: .\models.py:183
-msgid "MilliLiter"
-msgstr "میلی لیتر"
-
-#: .\models.py:184
-msgid "Liter"
-msgstr "لیتر"
-
-#: .\models.py:187
-msgid "Number"
-msgstr "عدد"
-
-#: .\models.py:188
-msgid "Packet"
-msgstr "بسته"
-
-#: .\models.py:191
-msgid "SantiMeter"
-msgstr "سانتی متر"
-
-#: .\models.py:192
-msgid "Meter"
-msgstr "متر"
-
-#: .\models.py:194
+#: .\models.py:179
 msgid "name_features"
 msgstr "نام ویژگی "
 
-#: .\models.py:196 .\templates\products\product_detail.html:136
-#: .\templates\products\product_detail.html:387
-msgid "Length"
-msgstr "طول"
+#: .\models.py:180
+#| msgid "short_description"
+msgid "short_discription"
+msgstr "توضیح کوتاه"
 
-#: .\models.py:197
-msgid "Length_unit"
-msgstr "طول واحد"
+#: .\models.py:181
+#| msgid "description"
+msgid "discription"
+msgstr "توضیحات"
 
-#: .\models.py:199 .\templates\products\product_detail.html:143
-#: .\templates\products\product_detail.html:399
-msgid "Width"
-msgstr "عرض"
+#: .\models.py:182
+#| msgid "Technical specifications"
+msgid "image Technical specifications"
+msgstr "تصویر مشخصات فنی"
 
-#: .\models.py:200
-msgid "Width_unit"
-msgstr "عرض واحد"
-
-#: .\models.py:202 .\templates\products\product_detail.html:150
-#: .\templates\products\product_detail.html:411
-msgid "Height"
-msgstr "ارتفاع"
-
-#: .\models.py:203
-msgid "Height_unit"
-msgstr "ارتفاع واحد"
-
-#: .\models.py:205
-msgid "pot_size"
-msgstr "اندازه گلدان"
-
-#: .\models.py:207
-msgid "number"
-msgstr "عدد"
-
-#: .\models.py:208
-msgid "unit_counting"
-msgstr "واحد شمارش"
-
-#: .\models.py:211
-msgid "weight"
-msgstr "وزن"
-
-#: .\models.py:212
-msgid "weight_unit"
-msgstr "ارتفاع"
-
-#: .\models.py:214
-msgid "ingredients"
-msgstr "مواد تشکیل دهنده"
-
-#: .\models.py:215
-msgid "care tipe"
-msgstr "نکات مراقبتی"
-
-#: .\models.py:216
-msgid "usage instructions"
-msgstr "دستورالعمل استفاده"
-
-#: .\models.py:219
+#: .\models.py:185
 msgid "Features"
 msgstr "ویژگی ها"
 
-#: .\models.py:226
+#: .\models.py:192
 msgid "Brand_name"
 msgstr "نام تجاری"
 
-#: .\models.py:234 .\templates\products\product_list.html:64
+#: .\models.py:200 .\templates\products\product_list.html:64
 msgid "brands"
 msgstr "برند ها"
 
-#: .\models.py:239
+#: .\models.py:205
 msgid "comments"
 msgstr "نظرات"
 
-#: .\models.py:240 .\models.py:291
+#: .\models.py:206 .\models.py:257
 msgid "user"
 msgstr "کاربر"
 
-#: .\models.py:241
+#: .\models.py:207
 msgid "time_release_comment"
 msgstr "زمان_انتشار_نظر"
 
-#: .\models.py:242 .\models.py:293
+#: .\models.py:208 .\models.py:259
 msgid "update_to"
 msgstr "به روز رسانی به"
 
-#: .\models.py:243
+#: .\models.py:209
 msgid "body_comment"
 msgstr "متن نظر"
 
-#: .\models.py:245 .\models.py:296
+#: .\models.py:211 .\models.py:262
 msgid "answer"
 msgstr "پاسخ دهید"
 
-#: .\models.py:246
+#: .\models.py:212
 msgid "I recommend purchasing this product ?"
 msgstr "آیا خرید این محصول را توصیه میکنم؟"
 
-#: .\models.py:249
+#: .\models.py:215
 msgid "Comment"
 msgstr "نظرات"
 
-#: .\models.py:256
+#: .\models.py:222
 msgid "Ad Title"
 msgstr "عنوان آگهی"
 
-#: .\models.py:257
+#: .\models.py:223
 msgid "Short description"
 msgstr "توضیحات کوتاه"
 
-#: .\models.py:258
+#: .\models.py:224
 msgid "caver slide"
 msgstr "عکس اسلاید"
 
-#: .\models.py:261
+#: .\models.py:227
 msgid "Related category"
 msgstr "دسته بندی مرتبط"
 
-#: .\models.py:264
+#: .\models.py:230
 msgid "Display order"
 msgstr "نمایش سفارش"
 
-#: .\models.py:265
+#: .\models.py:231
 msgid "active"
 msgstr "فعال است"
 
-#: .\models.py:269
+#: .\models.py:235
 msgid "Category Slider"
 msgstr "زیر مجموعه ها"
 
-#: .\models.py:281
+#: .\models.py:247
 msgid "Log in and register"
 msgstr "وارد شوید و ثبت نام کنید"
 
-#: .\models.py:282
+#: .\models.py:248
 msgid "Order registration process"
 msgstr "مراحل ثبت سفارش"
 
-#: .\models.py:283
+#: .\models.py:249
 msgid "Order tracking"
 msgstr "پیگیری سفارش"
 
-#: .\models.py:284
+#: .\models.py:250
 msgid "Returning goods"
 msgstr "کالاهای برگشتی"
 
-#: .\models.py:285
+#: .\models.py:251
 msgid "Discount codes and gift cards"
 msgstr "کدهای تخفیف و کارت‌های هدیه"
 
-#: .\models.py:286
+#: .\models.py:252
 msgid "Other cases"
 msgstr "موارد دیگر"
 
-#: .\models.py:290
+#: .\models.py:256
 msgid "Product questions and answers"
 msgstr "پرسش و پاسخ محصول"
 
-#: .\models.py:292
+#: .\models.py:258
 msgid "time_release_question"
 msgstr "زمان_انتشار_سوال"
 
-#: .\models.py:294
+#: .\models.py:260
 msgid "body_question"
 msgstr "متن سوال"
 
-#: .\models.py:297
+#: .\models.py:263
 msgid "category_question"
 msgstr "دسته سوال"
 
-#: .\models.py:297
+#: .\models.py:263
 msgid "What part do you have a question about?"
 msgstr "در مورد کدوم بخش سوال دارید؟"
 
-#: .\models.py:300 .\templates\products\product_detail.html:521
+#: .\models.py:266 .\templates\products\product_detail.html:521
 msgid "Questions and answers"
 msgstr "پرسش و پاسخ"
 
-#: .\models.py:308
+#: .\models.py:274
 msgid "answer admin to question product"
 msgstr "پاسخ مدیر برای سوال در مورد محصول"
 
-#: .\models.py:309
+#: .\models.py:275
 msgid "admin"
 msgstr "مدیر"
 
-#: .\models.py:310
+#: .\models.py:276
 msgid "body_question_answer"
 msgstr "متن پاسخ سوال"
 
-#: .\models.py:311
+#: .\models.py:277
 msgid "created at"
 msgstr "ایجاد در"
 
-#: .\models.py:314
+#: .\models.py:280
 msgid "Answer"
 msgstr "پاسخ دهید"
 
@@ -441,6 +365,21 @@ msgstr "ویژگی محصول"
 #: .\templates\products\product_detail.html:375
 msgid "Weight"
 msgstr "وزن"
+
+#: .\templates\products\product_detail.html:136
+#: .\templates\products\product_detail.html:387
+msgid "Length"
+msgstr "طول"
+
+#: .\templates\products\product_detail.html:143
+#: .\templates\products\product_detail.html:399
+msgid "Width"
+msgstr "عرض"
+
+#: .\templates\products\product_detail.html:150
+#: .\templates\products\product_detail.html:411
+msgid "Height"
+msgstr "ارتفاع"
 
 #: .\templates\products\product_detail.html:157
 #: .\templates\products\product_detail.html:423
@@ -685,6 +624,63 @@ msgstr "گران ترین"
 #: .\templates\products\product_list.html:733
 msgid "Special sale"
 msgstr "فروش ویژه"
+
+#~ msgid "Gram"
+#~ msgstr "گرم"
+
+#~ msgid "KiloGram"
+#~ msgstr "کیلو گرم"
+
+#~ msgid "MilliLiter"
+#~ msgstr "میلی لیتر"
+
+#~ msgid "Liter"
+#~ msgstr "لیتر"
+
+#~ msgid "Number"
+#~ msgstr "عدد"
+
+#~ msgid "Packet"
+#~ msgstr "بسته"
+
+#~ msgid "SantiMeter"
+#~ msgstr "سانتی متر"
+
+#~ msgid "Meter"
+#~ msgstr "متر"
+
+#~ msgid "Length_unit"
+#~ msgstr "طول واحد"
+
+#~ msgid "Width_unit"
+#~ msgstr "عرض واحد"
+
+#~ msgid "Height_unit"
+#~ msgstr "ارتفاع واحد"
+
+#~ msgid "pot_size"
+#~ msgstr "اندازه گلدان"
+
+#~ msgid "number"
+#~ msgstr "عدد"
+
+#~ msgid "unit_counting"
+#~ msgstr "واحد شمارش"
+
+#~ msgid "weight"
+#~ msgstr "وزن"
+
+#~ msgid "weight_unit"
+#~ msgstr "ارتفاع"
+
+#~ msgid "ingredients"
+#~ msgstr "مواد تشکیل دهنده"
+
+#~ msgid "care tipe"
+#~ msgstr "نکات مراقبتی"
+
+#~ msgid "usage instructions"
+#~ msgstr "دستورالعمل استفاده"
 
 #~ msgid "sabzeonline"
 #~ msgstr "سبز آنلاین"

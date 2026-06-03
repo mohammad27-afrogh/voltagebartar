@@ -64,9 +64,6 @@ class CategoryAdmin(admin.ModelAdmin):
 class FeaturesAdmin(admin.ModelAdmin):
     list_display = [
         'name_features',
-        'pot_size',
-        'unit_counting',
-        'ingredients',
     ]
     search_fields = ['name_features',]
 

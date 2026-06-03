@@ -1,15 +1,16 @@
 {
-    "disks":[
-        {
-            "name": "database",
-            "mountTo": "database"
-        },
-        {
-            "name": "media",
-            "mountTo": "media"
-        }
+    "disks": [
+    {
+      "name": "media",
+      "mountTo": "/usr/src/app/shop_flower/media"
+    },
+    {
+      "name": "database",
+      "mountTo": "/usr/src/app/shop_flower/database"
+    }
     ],
     "app": "voltagebartar",
+    "port": 80,
     "platform": "django",
     "django": {
       "mirror": false,
@@ -18,5 +19,8 @@
       "collectStatic": false,
       "compileMessages": true,
       "modifySettings": false
-    }
+    },
+    "build": {
+    "location": "iran"
+  }
 }

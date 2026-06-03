@@ -53,20 +53,9 @@ class FeaturesForm(forms.ModelForm):
         model = Features
         fields = [
             'name_features',
-            'Length_unit',
-            'Length',
-            'Width_unit',
-            'Width',
-            'Height_unit',
-            'Height',
-            'pot_size',
-            'number',
-            'unit_counting',
-            'weight',
-            'weight_unit',
-            'ingredients',
-            'care_tips',
-            'usage_instructions',
+            'short_discription',
+            'discription',
+            'image_Technical_specifications',
         ]
 
 class BrandForm(forms.ModelForm):
