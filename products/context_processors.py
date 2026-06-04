@@ -1,4 +1,4 @@
-from .models import Category, Discount, Product
+from .models import Category, Discount, Product, Brand
 from datetime import timedelta
 from django.utils import timezone
 from django.core.cache import cache
@@ -77,3 +77,9 @@ def context_latest_products(request):
     latest_products = (Product.objects.filter(date_time_create__gte=one_month_ago).prefetch_related(active_discounts_prefetch))    
 
     return {'latest_products': latest_products}
+
+
+def context_brand_products(request):
+    brands = Brand.objects.all()
+
+    return {'brands': brands}

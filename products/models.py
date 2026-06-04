@@ -17,13 +17,6 @@ from decimal import Decimal, ROUND_HALF_UP
 
 
 class Product(models.Model):
-    PRODUCT_TYPE = [
-        ('FL', _('Flower')),
-        ('FER', _('Fertilizer')),
-        ('TOOL', _('Gardening Tool')),
-        ('SEED', _('Seed')),
-        ('SOIL', _('Potting Soil')),
-    ]
     INVENTORY_STATUS = [
         ('AVA', _('Available')),
         ('OFS', _('Out_of_stock')),
@@ -36,7 +29,6 @@ class Product(models.Model):
     sku = models.CharField(_('sku'), max_length=150, unique=True, blank=True, null=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='products',
                                  verbose_name=_('category'))
-    product_type = models.CharField(_('product_type'), max_length=4, choices=PRODUCT_TYPE)
     cover_product = models.ImageField(_('cover_product'), upload_to='product/product_covers/', blank=True, null=True)
     features = models.ForeignKey('Features', on_delete=models.CASCADE, related_name='product',
                                  verbose_name=_('features'))
@@ -190,10 +182,11 @@ class Features(models.Model):
 
 class Brand(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name=_('Brand_name'))
+    cover_brand = models.ImageField(_('cover brand'), upload_to='brand/cover_brand/', blank=True, null=True)
     description = RichTextField(blank=True, null=True, verbose_name=_('description'))
 
     def __str__(self):
-        return f'{self.name}'
+        return self.name
 
     class Meta:
         verbose_name = 'brand'

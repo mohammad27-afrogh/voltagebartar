@@ -120,61 +120,11 @@
                                         </ul>
                                     </div>
                                     <div class="col=lg-6 col-md-6 col-xs-12 pr">
-                                        {% if features %}
+                                        {% if features.short_discription %}
                                             <div class="product-params pt-3">
                                                 <ul data-title="{% trans 'Product features' %}">
-
-                                                    {% if features.weight %}
-                                                    <li>
-                                                        <span>{% trans 'Weight' %}</span>
-                                                        <span>{{ features.weight }} {{ features.get_weight_unit_display }}</span>
-                                                    </li>
-                                                    {% endif %}
-
-                                                    {% if features.Length %}
-                                                    <li>
-                                                        <span>{% trans 'Length' %}</span>
-                                                        <span>{{ features.Length }} {{ features.get_Length_unit_display }}</span>
-                                                    </li>
-                                                    {% endif %}
-
-                                                    {% if features.Width %}
-                                                    <li>
-                                                        <span>{% trans 'Width' %}</span>
-                                                        <span>{{ features.Width }} {{ features.get_Width_unit_display }}</span>
-                                                    </li>
-                                                    {% endif %}
-
-                                                    {% if features.Height %}
-                                                    <li>
-                                                        <span>{% trans 'Height' %}</span>
-                                                        <span>{{ features.Height }} {{ features.get_Height_unit_display }}</span>
-                                                    </li>
-                                                    {% endif %}
-
-                                                    {% if features.pot_size %}
-                                                    <li>
-                                                        <span>{% trans 'Pot Size' %}</span>
-                                                        <span>{{ features.pot_size }}</span>
-                                                    </li>
-                                                    {% endif %}
-
-                                                    {% if features.number %}
-                                                    <li>
-                                                        <span>{% trans 'Quantity' %}</span>
-                                                        <span>{{ features.number }} {{ features.get_unit_counting_display }}</span>
-                                                    </li>
-                                                    {% endif %}
-
-                                                    {% if features.ingredients %}
-                                                    <li>
-                                                        <span>{% trans 'Ingredients' %}</span>
-                                                        <span>{{ features.ingredients }}</span>
-                                                    </li>
-                                                    {% endif %}
-
+                                                    {{ features.short_discription|safe }}
                                                 </ul>
-
                                             </div>
                                         {% endif %}
                                     </div>
@@ -343,14 +293,14 @@
                                 <section class="content-expert-summary">
                                     <div class="mask pm-3">
                                         <div class="mask-text">
-                                            {% if features.care_tips %}
-                                                    <h3>{% trans 'Care Tips' %}</h3>
-                                                    <div>{{ features.care_tips|safe }}</div> {# استفاده از |safe برای نمایش محتوای RichTextField #}
+                                            {% if features.short_discription %}
+                                                    <h3>{% trans 'short discription' %}</h3>
+                                                    <div>{{ features.short_discription|safe }}</div> {# استفاده از |safe برای نمایش محتوای RichTextField #}
                                             {% endif %}
 
-                                            {% if features.usage_instructions %}
-                                                <h3>{% trans 'Usage Instructions' %}</h3>
-                                                <div>{{ features.usage_instructions|safe }}</div>
+                                            {% if features.discription %}
+                                                <h3>{% trans 'discription' %}</h3>
+                                                <div>{{ features.discription|safe }}</div>
                                             {% endif %}
                                         </div>
                                         <a href="#" class="mask-handler">
@@ -370,87 +320,11 @@
                                         <section>
                                             <ul class="params-list">
                                                 <li class="params-list-item">
-                                                    {% if features.weight %}
-                                                        <div class="params-list-key">
-                                                            <span class="block">{% trans 'Weight' %}</span>
-                                                        </div>
-                                                        <div class="params-list-value">
-                                                            <span class="block">
-                                                                {{ features.weight }} {{ features.get_weight_unit_display }}
-                                                            </span>
-                                                        </div>
-                                                    {% endif %}
-                                                </li>
-                                                <li class="params-list-item">
-                                                    {% if features.Length %}
-                                                        <div class="params-list-key">
-                                                            <span class="block">{% trans 'Length' %}</span>
-                                                        </div>
-                                                        <div class="params-list-value">
-                                                            <span class="block">
-                                                                {{ features.Length }} {{ features.get_Length_unit_display }}
-                                                            </span>
-                                                        </div>
-                                                    {% endif %}
-                                                </li>
-                                                <li class="params-list-item">
-                                                    {% if features.Width %}
-                                                        <div class="params-list-key">
-                                                            <span class="block">{% trans 'Width' %}</span>
-                                                        </div>
-                                                        <div class="params-list-value">
-                                                            <span class="block">
-                                                                {{ features.Width }} {{ features.get_Width_unit_display }}
-                                                            </span>
-                                                        </div>
-                                                    {% endif %}
-                                                </li>
-                                                <li class="params-list-item">
-                                                    {% if features.Height %}
-                                                        <div class="params-list-key">
-                                                            <span class="block">{% trans 'Height' %}</span>
-                                                        </div>
-                                                        <div class="params-list-value">
-                                                            <span class="block">
-                                                                {{ features.Height }} {{ features.get_Height_unit_display }}
-                                                            </span>
-                                                        </div>
-                                                    {% endif %}
-                                                </li>
-                                                <li class="params-list-item">
-                                                    {% if features.pot_size %}
-                                                        <div class="params-list-key">
-                                                            <span class="block">{% trans 'Pot Size' %}</span>
-                                                        </div>
-                                                        <div class="params-list-value">
-                                                            <span class="block">
-                                                                {{ features.pot_size }}
-                                                            </span>
-                                                        </div>
-                                                    {% endif %}
-                                                </li>
-                                                <li class="params-list-item">
-                                                    {% if features.number %}
-                                                        <div class="params-list-key">
-                                                            <span class="block">{% trans 'Quantity' %}</span>
-                                                        </div>
-                                                        <div class="params-list-value">
-                                                            <span class="block">
-                                                                {{ features.number }} {{ features.get_unit_counting_display }}
-                                                            </span>
-                                                        </div>
-                                                    {% endif %}
-                                                </li>
-                                                <li class="params-list-item">
-                                                    {% if features.ingredients %}
-                                                        <div class="params-list-key">
-                                                            <span class="block">{% trans 'Ingredients' %}</span>
-                                                        </div>
-                                                        <div class="params-list-value">
-                                                            <span class="block">
-                                                               {{ features.ingredients }}
-                                                            </span>
-                                                        </div>
+                                                    {% if features.image_Technical_specifications %}
+                                                        <img
+                                                            src="{{ features.image_Technical_specifications.url }}"
+                                                            data-zoom-image="{{ features.image_Technical_specifications.url }}"
+                                                            width="1350" />
                                                     {% endif %}
                                                 </li>
                                             </ul>

@@ -20,7 +20,6 @@ class ProductForm(forms.ModelForm):
             'view_count',
             'category',
             'inventory',
-            'product_type',
             'successful_sales_count',
             'commodity_status',
             'base_price',
@@ -63,6 +62,7 @@ class BrandForm(forms.ModelForm):
         model = Brand
         fields = [
             'name',
+            'cover_brand',
             'description',
         ]
 
