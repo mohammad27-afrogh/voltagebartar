@@ -54,7 +54,7 @@
                                                     <tr class="cart-subtotal">
                                                         <th>{% trans 'sum total cart' %}</th>
                                                         <td>
-                                                            <span class="amount">{{ item.get_total_price|intcomma:False|translate_number }}
+                                                            <span class="amount">{{ cart.get_total_price|intcomma:False|translate_number }}
                                                                 <span>{% trans '$' %}</span>
                                                             </span>
                                                         </td>
