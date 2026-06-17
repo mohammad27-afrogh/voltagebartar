@@ -2,11 +2,11 @@
   "disks": [
     {
       "name": "media",
-      "mountTo": "shop_flower/media"
+      "mountTo": "/usr/src/app/voltagebartar/media"
     },
     {
       "name": "database",
-      "mountTo": "shop_flower/database"
+      "mountTo": "/usr/src/app/voltagebartar/database"
     }
   ],
   "app": "voltagebartar",
