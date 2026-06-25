@@ -65,7 +65,7 @@ def product_detail_view(request, product_slug):
             'category',
             'category__parent',
             'category__parent__parent'  # اگر بیشتر از دو سطح والد دارید، این را افزایش دهید
-        ).prefetch_related('discounts'),
+        ).prefetch_related('discounts').prefetch_related('images'),
         slug=product_slug
     )
 
@@ -164,7 +164,7 @@ def category_detail_view(request, category_slug):
     all_related_categories.append(current_category)  # اضافه کردن دسته مادر
 
     # 2. فیلتر کردن محصولات بر اساس لیست دسته‌بندی‌های جمع‌آوری شده
-    products_in_category = Product.objects.filter(category__in=all_related_categories).prefetch_related('discounts')
+    products_in_category = Product.objects.filter(category__in=all_related_categories).prefetch_related('discounts').prefetch_related('images').all()
 
     # NUMBER_PAGINATOR = 1
     # paginator = Paginator(products_in_category, NUMBER_PAGINATOR)
@@ -196,7 +196,7 @@ def category_detail_view(request, category_slug):
 
     new_products = (products_in_category.filter(Q(date_time_create__gte=one_month_ago) &
                                               Q(date_time_create__lte=default_time))
-                       .prefetch_related('discounts')  # *** اصلاح: اضافه کردن prefetch_related ***
+                       .prefetch_related('discounts').prefetch_related('images').all()  # *** اصلاح: اضافه کردن prefetch_related ***
                        )
 
     products_cheapest = products_in_category.order_by('base_price')

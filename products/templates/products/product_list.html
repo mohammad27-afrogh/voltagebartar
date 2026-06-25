@@ -197,13 +197,14 @@
                                                         <!-- استفاده از ویژگی‌های تخفیف مستقیم روی product -->
                                                         <span>{{ product.active_discount.discount_percentage|intcomma:False|translate_number }} %</span>
                                                     </div>
-                                                     {% if product.cover_product %}
-                                                        <a href="{% url 'products:product_detail_by_slug' product.slug %}">
-                                                            <img
-                                                                src="{{ product.cover_product.url }}"
-                                                                data-zoom-image="{{ product.cover_product.url }}"
-                                                                width="411" />
-                                                        </a>
+                                                    {% if product.images.all %}
+                                                        {% with first_image_obj=product.images.all.0 %}
+                                                            <a href="{% url 'products:product_detail_by_slug' product.slug %}">
+                                                                <img src="{{ first_image_obj.cover_product.url }}"
+                                                                    data-zoom-image="{{ first_image_obj.cover_product.url }}"
+                                                                    width="411" />
+                                                            </a>
+                                                        {% endwith %}
                                                     {% else %}
                                                         <a href="{% url 'products:product_detail_by_slug' product.slug %}">
                                                             <img
@@ -247,13 +248,14 @@
                                                             class="fa fa-star active"></i>
                                                     </div>
                                                     <!-- <img src="{{ product.cover_product }}" alt="{{ product.name }}"> -->
-                                                     {% if product.cover_product %}
-                                                        <a href="{% url 'products:product_detail_by_slug' product.slug %}">
-                                                            <img
-                                                                src="{{ product.cover_product.url }}"
-                                                                data-zoom-image="{{ product.cover_product.url }}"
-                                                                width="411" />
-                                                        </a>
+                                                    {% if product.images.all %}
+                                                        {% with first_image_obj=product.images.all.0 %}
+                                                            <a href="{% url 'products:product_detail_by_slug' product.slug %}">
+                                                                <img src="{{ first_image_obj.cover_product.url }}"
+                                                                    data-zoom-image="{{ first_image_obj.cover_product.url }}"
+                                                                    width="411" />
+                                                            </a>
+                                                        {% endwith %}
                                                     {% else %}
                                                         <a href="{% url 'products:product_detail_by_slug' product.slug %}">
                                                             <img
@@ -306,13 +308,14 @@
                                                         <!-- استفاده از ویژگی‌های تخفیف مستقیم روی successful_sale_product -->
                                                         <span>{{ successful_sale_product.active_discount.discount_percentage|intcomma:False|translate_number }} %</span>
                                                     </div>
-                                                    {% if successful_sale_product.cover_product %}
-                                                        <a href="{% url 'products:product_detail_by_slug' successful_sale_product.slug %}">
-                                                            <img
-                                                                src="{{ successful_sale_product.cover_product.url }}"
-                                                                data-zoom-image="{{ product.cover_product.url }}"
-                                                                width="411" />
-                                                        </a>
+                                                    {% if product.images.all %}
+                                                        {% with first_image_obj=product.images.all.0 %}
+                                                            <a href="{% url 'products:product_detail_by_slug' successful_sale_product.slug %}">
+                                                                <img src="{{ first_image_obj.cover_product.url }}"
+                                                                    data-zoom-image="{{ first_image_obj.cover_product.url }}"
+                                                                    width="411" />
+                                                            </a>
+                                                        {% endwith %}
                                                     {% else %}
                                                         <a href="{% url 'products:product_detail_by_slug' successful_sale_product.slug %}">
                                                             <img
@@ -355,13 +358,14 @@
                                                             class="fa fa-star active"></i><i
                                                             class="fa fa-star active"></i>
                                                     </div>
-                                                    {% if successful_sale_product.cover_product %}
-                                                        <a href="{% url 'products:product_detail_by_slug' successful_sale_product.slug %}">
-                                                            <img
-                                                                src="{{ successful_sale_product.cover_product.url }}"
-                                                                data-zoom-image="{{ product.cover_product.url }}"
-                                                                width="411" />
-                                                        </a>
+                                                    {% if product.images.all %}
+                                                        {% with first_image_obj=product.images.all.0 %}
+                                                            <a href="{% url 'products:product_detail_by_slug' successful_sale_product.slug %}">
+                                                                <img src="{{ first_image_obj.cover_product.url }}"
+                                                                    data-zoom-image="{{ first_image_obj.cover_product.url }}"
+                                                                    width="411" />
+                                                            </a>
+                                                        {% endwith %}
                                                     {% else %}
                                                         <a href="{% url 'products:product_detail_by_slug' successful_sale_product.slug %}">
                                                             <img
@@ -415,13 +419,14 @@
                                                         <!-- استفاده از ویژگی‌های تخفیف مستقیم روی product_popular -->
                                                         <span>{{ product_popular.active_discount.discount_percentage|intcomma:False|translate_number }} %</span>
                                                     </div>
-                                                    {% if product_popular.cover_product %}
-                                                        <a href="{% url 'products:product_detail_by_slug' product_popular.slug %}">
-                                                            <img
-                                                                src="{{ product_popular.cover_product.url }}"
-                                                                data-zoom-image="{{ product.cover_product.url }}"
-                                                                width="411" />
-                                                        </a>
+                                                    {% if product.images.all %}
+                                                        {% with first_image_obj=product.images.all.0 %}
+                                                            <a href="{% url 'products:product_detail_by_slug' product_popular.slug %}">
+                                                                <img src="{{ first_image_obj.cover_product.url }}"
+                                                                    data-zoom-image="{{ first_image_obj.cover_product.url }}"
+                                                                    width="411" />
+                                                            </a>
+                                                        {% endwith %}
                                                     {% else %}
                                                         <a href="{% url 'products:product_detail_by_slug' product_popular.slug %}">
                                                             <img
@@ -464,13 +469,14 @@
                                                             class="fa fa-star active"></i><i
                                                             class="fa fa-star active"></i>
                                                     </div>
-                                                    {% if product_popular.cover_product %}
-                                                        <a href="{% url 'products:product_detail_by_slug' product_popular.slug %}">
-                                                            <img
-                                                                src="{{ product_popular.cover_product.url }}"
-                                                                data-zoom-image="{{ product.cover_product.url }}"
-                                                                width="411" />
-                                                        </a>
+                                                    {% if product.images.all %}
+                                                        {% with first_image_obj=product.images.all.0 %}
+                                                            <a href="{% url 'products:product_detail_by_slug' product_popular.slug %}">
+                                                                <img src="{{ first_image_obj.cover_product.url }}"
+                                                                    data-zoom-image="{{ first_image_obj.cover_product.url }}"
+                                                                    width="411" />
+                                                            </a>
+                                                        {% endwith %}
                                                     {% else %}
                                                         <a href="{% url 'products:product_detail_by_slug' product_popular.slug %}">
                                                             <img
@@ -524,13 +530,14 @@
                                                         <!-- استفاده از ویژگی‌های تخفیف مستقیم روی new_product -->
                                                         <span>{{ new_product.active_discount.discount_percentage|intcomma:False|translate_number }} %</span>
                                                     </div>
-                                                    {% if new_product.cover_product %}
-                                                        <a href="{% url 'products:product_detail_by_slug' new_product.slug %}">
-                                                            <img
-                                                                src="{{ new_product.cover_product.url }}"
-                                                                data-zoom-image="{{ product.cover_product.url }}"
-                                                                width="411" />
-                                                        </a>
+                                                    {% if product.images.all %}
+                                                        {% with first_image_obj=product.images.all.0 %}
+                                                            <a href="{% url 'products:product_detail_by_slug' new_product.slug %}">
+                                                                <img src="{{ first_image_obj.cover_product.url }}"
+                                                                    data-zoom-image="{{ first_image_obj.cover_product.url }}"
+                                                                    width="411" />
+                                                            </a>
+                                                        {% endwith %}
                                                     {% else %}
                                                         <a href="{% url 'products:product_detail_by_slug' new_product.slug %}">
                                                             <img
@@ -573,13 +580,14 @@
                                                             class="fa fa-star active"></i><i
                                                             class="fa fa-star active"></i>
                                                     </div>
-                                                    {% if new_product.cover_product %}
-                                                        <a href="{% url 'products:product_detail_by_slug' new_product.slug %}">
-                                                            <img
-                                                                src="{{ new_product.cover_product.url }}"
-                                                                data-zoom-image="{{ product.cover_product.url }}"
-                                                                width="411" />
-                                                        </a>
+                                                    {% if product.images.all %}
+                                                        {% with first_image_obj=product.images.all.0 %}
+                                                            <a href="{% url 'products:product_detail_by_slug' new_product.slug %}">
+                                                                <img src="{{ first_image_obj.cover_product.url }}"
+                                                                    data-zoom-image="{{ first_image_obj.cover_product.url }}"
+                                                                    width="411" />
+                                                            </a>
+                                                        {% endwith %}
                                                     {% else %}
                                                         <a href="{% url 'products:product_detail_by_slug' new_product.slug %}">
                                                             <img
@@ -633,13 +641,14 @@
                                                         <!-- استفاده از ویژگی‌های تخفیف مستقیم روی new_product -->
                                                         <span>{{ cheapest.active_discount.discount_percentage|intcomma:False|translate_number }} %</span>
                                                     </div>
-                                                    {% if cheapest.cover_product %}
-                                                        <a href="{% url 'products:product_detail_by_slug' cheapest.slug %}">
-                                                            <img
-                                                                src="{{ cheapest.cover_product.url }}"
-                                                                data-zoom-image="{{ product.cover_product.url }}"
-                                                                width="411" />
-                                                        </a>
+                                                    {% if product.images.all %}
+                                                        {% with first_image_obj=product.images.all.0 %}
+                                                            <a href="{% url 'products:product_detail_by_slug' cheapest.slug %}">
+                                                                <img src="{{ first_image_obj.cover_product.url }}"
+                                                                    data-zoom-image="{{ first_image_obj.cover_product.url }}"
+                                                                    width="411" />
+                                                            </a>
+                                                        {% endwith %}
                                                     {% else %}
                                                         <a href="{% url 'products:product_detail_by_slug' cheapest.slug %}">
                                                             <img
@@ -682,13 +691,14 @@
                                                             class="fa fa-star active"></i><i
                                                             class="fa fa-star active"></i>
                                                     </div>
-                                                    {% if cheapest.cover_product %}
-                                                        <a href="{% url 'products:product_detail_by_slug' cheapest.slug %}">
-                                                            <img
-                                                                src="{{ cheapest.cover_product.url }}"
-                                                                data-zoom-image="{{ product.cover_product.url }}"
-                                                                width="411" />
-                                                        </a>
+                                                    {% if product.images.all %}
+                                                        {% with first_image_obj=product.images.all.0 %}
+                                                            <a href="{% url 'products:product_detail_by_slug' cheapest.slug %}">
+                                                                <img src="{{ first_image_obj.cover_product.url }}"
+                                                                    data-zoom-image="{{ first_image_obj.cover_product.url }}"
+                                                                    width="411" />
+                                                            </a>
+                                                        {% endwith %}
                                                     {% else %}
                                                         <a href="{% url 'products:product_detail_by_slug' cheapest.slug %}">
                                                             <img
@@ -742,13 +752,14 @@
                                                         <!-- استفاده از ویژگی‌های تخفیف مستقیم روی new_product -->
                                                         <span>{{ most_expensive.active_discount.discount_percentage|intcomma:False|translate_number }} %</span>
                                                     </div>
-                                                    {% if most_expensive.cover_product %}
-                                                        <a href="{% url 'products:product_detail_by_slug' most_expensive.slug %}">
-                                                            <img
-                                                                src="{{ most_expensive.cover_product.url }}"
-                                                                data-zoom-image="{{ product.cover_product.url }}"
-                                                                width="411" />
-                                                        </a>
+                                                    {% if product.images.all %}
+                                                        {% with first_image_obj=product.images.all.0 %}
+                                                            <a href="{% url 'products:product_detail_by_slug' most_expensive.slug %}">
+                                                                <img src="{{ first_image_obj.cover_product.url }}"
+                                                                    data-zoom-image="{{ first_image_obj.cover_product.url }}"
+                                                                    width="411" />
+                                                            </a>
+                                                        {% endwith %}
                                                     {% else %}
                                                         <a href="{% url 'products:product_detail_by_slug' most_expensive.slug %}">
                                                             <img
@@ -791,13 +802,14 @@
                                                             class="fa fa-star active"></i><i
                                                             class="fa fa-star active"></i>
                                                     </div>
-                                                    {% if most_expensive.cover_product %}
-                                                        <a href="{% url 'products:product_detail_by_slug' most_expensive.slug %}">
-                                                            <img
-                                                                src="{{ most_expensive.cover_product.url }}"
-                                                                data-zoom-image="{{ product.cover_product.url }}"
-                                                                width="411" />
-                                                        </a>
+                                                    {% if product.images.all %}
+                                                        {% with first_image_obj=product.images.all.0 %}
+                                                            <a href="{% url 'products:product_detail_by_slug' most_expensive.slug %}">
+                                                                <img src="{{ first_image_obj.cover_product.url }}"
+                                                                    data-zoom-image="{{ first_image_obj.cover_product.url }}"
+                                                                    width="411" />
+                                                            </a>
+                                                        {% endwith %}
                                                     {% else %}
                                                         <a href="{% url 'products:product_detail_by_slug' most_expensive.slug %}">
                                                             <img

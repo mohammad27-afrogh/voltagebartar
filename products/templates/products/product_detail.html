@@ -47,20 +47,36 @@
                                         {% include 'partials/product_actions.html' %}
                                         <div class="gallery-item">
                                             <div class="gallery-img">
-                                                <a href="#">
-                                                    {% if product.cover_product %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{{ product.cover_product.url }}"
-                                                            data-zoom-image="{{ product.cover_product.url }}"
-                                                            width="411" />
-                                                    {% else %}
-                                                        <img class="zoom-img" id="img-product-zoom"
-                                                            src="{% static 'img/products/no_product_image.jpg' %}"
-                                                            data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
-                                                            width="411" />
-                                                    {% endif %}
-                                                    <div id="gallery_01f" style="width:420px;float:right;">
-                                                </a>
+                                                {% if product.images.all %}
+                                                    {% with first_image_obj=product.images.all.0 %}
+                                                        <a href="#">
+                                                            <img class="zoom-img" id="img-product-zoom"
+                                                                src="{{ first_image_obj.cover_product.url }}"
+                                                                data-zoom-image="{{ first_image_obj.cover_product.url }}"
+                                                                width="411" />
+                                                            <div id="gallery_01f" style="width:420px;float:right;">
+                                                        </a>
+                                                    {% endwith %}
+                                                    <div id="gallery_01f" style="width: 420px;float: right;">
+                                                        <ul class="gallery-items owl-carousel owl-theme" id="gallery-slider">
+                                                            {% for img_obj in product.images.all %}
+                                                                <li class="item">
+                                                                    <a href="#" class="elevatezoom-gallery {% if forloop.first %}active{% endif %}"
+                                                                        data-image="{{ img_obj.cover_product.url }}"
+                                                                        data-zoom-image="{{ img_obj.cover_product.url }}">
+                                                                        <img src="{{ img_obj.cover_product.url }}"
+                                                                            width="100" />
+                                                                    </a>
+                                                                </li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                {% else %}
+                                                    <img class="zoom-img" id="img-product-zoom"
+                                                        src="{% static 'img/products/no_product_image.jpg' %}"
+                                                        data-zoom-image="{% static 'img/products/no_product_image.jpg' %}"
+                                                        width="411" />
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </div>
@@ -243,6 +259,22 @@
                                         {% trans 'Possibility of' %}
                                         <br>
                                         {% trans 'payment on site' %}
+                                    </a>
+                                </div>
+                                <div class="product-feature-col">
+                                    <a href="#" class="product-feature-item">
+                                        <img src="{% static 'img/page-single-product/return-policy.svg' %}">
+                                        {% trans 'Seven-day ' %}
+                                        <br>
+                                        {% trans 'return guarantee' %}
+                                    </a>
+                                </div>
+                                <div class="product-feature-col">
+                                    <a href="#" class="product-feature-item">
+                                        <img src="{% static 'img/page-single-product/origin-guarantee.svg' %}">
+                                        {% trans 'guarantee' %}
+                                        <br>
+                                        {% trans 'The originality of the goods' %}
                                     </a>
                                 </div>
                             </div>

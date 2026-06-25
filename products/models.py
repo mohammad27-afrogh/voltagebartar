@@ -29,7 +29,7 @@ class Product(models.Model):
     sku = models.CharField(_('sku'), max_length=150, unique=True, blank=True, null=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='products',
                                  verbose_name=_('category'))
-    cover_product = models.ImageField(_('cover_product'), upload_to='product/product_covers/', blank=True, null=True)
+    # cover_product = models.ImageField(_('cover_product'), upload_to='product/product_covers/', blank=True, null=True)
     features = models.ForeignKey('Features', on_delete=models.CASCADE, related_name='product',
                                  verbose_name=_('features'))
     brand = models.ForeignKey('Brand', on_delete=models.SET_NULL, blank=True, null=True, related_name='products',
@@ -88,6 +88,15 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('products:product_detail_by_slug', args=[self.slug])
+
+
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images',
+                                verbose_name=_('product_covers'))
+    cover_product = models.ImageField(_('cover_product'), upload_to='product/product_covers/', blank=True, null=True)
+
+    def __str__(self):
+        return f'Image for {self.product.name}'
 
 
 class Discount(models.Model):

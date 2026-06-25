@@ -89,9 +89,11 @@
                                     </div>
                                     <a href="{% url 'products:product_detail_by_slug' discount.product.slug %}"
                                        class="d-block hover-img-link" data-toggle="modal" data-target="#exampleModal">
-                                       {% if discount.product.cover_product %}
-                                            <img src="{{ discount.product.cover_product.url }}"
+                                        {% if discount.images.all %}
+                                            {% with first_image_obj=product.images.all.0 %}
+                                                <img src="{{ first_image_obj.cover_product.url }}"
                                                 class="img-fluid" alt="">
+                                            {% endwith %}
                                         {% else %}
                                             <img src="{% static 'img/products/no_product_image.jpg' %}"
                                                 class="img-fluid" alt="">
@@ -210,9 +212,11 @@
                                         </div>
                                     {% endif %}
                                     <a href="{% url 'products:product_detail_by_slug' sales.slug %}" class="d-block hover-img-link">
-                                        {% if sales.cover_product %}
-                                            <img src="{{ sales.cover_product.url }}"
+                                        {% if sales.images.all %}
+                                            {% with first_image_obj=product.images.all.0 %}
+                                                <img src="{{ first_image_obj.cover_product.url }}"
                                                 class="img-fluid" alt="">
+                                            {% endwith %}
                                         {% else %}
                                             <img src="{% static 'img/products/no_product_image.jpg' %}"
                                                 class="img-fluid" alt="">
@@ -258,9 +262,11 @@
                                         </div>
                                     {% endif %}
                                     <a href="{% url 'products:product_detail_by_slug' latest_product.slug %}" class="d-block hover-img-link">
-                                        {% if latest_product.cover_product %}
-                                            <img src="{{ latest_product.cover_product.url }}"
+                                        {% if latest_product.images.all %}
+                                            {% with first_image_obj=product.images.all.0 %}
+                                                <img src="{{ first_image_obj.cover_product.url }}"
                                                 class="img-fluid" alt="">
+                                            {% endwith %}
                                         {% else %}
                                             <img src="{% static 'img/products/no_product_image.jpg' %}"
                                                 class="img-fluid" alt="">

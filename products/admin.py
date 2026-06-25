@@ -1,7 +1,7 @@
 from django.contrib import admin
 from jalali_date.admin import ModelAdminJalaliMixin
 
-from .models import Product, Discount, Category, Features, Brand, Comment, CategorySlider, Questions_and_answers, Answer
+from .models import Product, Discount, Category, Features, Brand, Comment, CategorySlider, Questions_and_answers, Answer, ProductImage
 
 class CommentsInline(admin.TabularInline):
     model = Comment
@@ -9,6 +9,11 @@ class CommentsInline(admin.TabularInline):
         'user',
         'body_comment',
     ]
+
+
+class ProductImageInline(admin.TabularInline):
+    model = ProductImage
+    extra = 1
 
 @admin.register(Product)
 class ProductAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
@@ -28,6 +33,7 @@ class ProductAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     search_fields = ['name',]
 
     inlines = [
+        ProductImageInline,
         CommentsInline,
     ]
 

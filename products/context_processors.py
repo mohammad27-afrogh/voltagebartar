@@ -55,7 +55,7 @@ def context_successful_sales(request):
     )
 
     successful_sales = (Product.objects.filter(successful_sales_count__gte=10)
-                        .order_by('-successful_sales_count').prefetch_related(active_discounts_prefetch))
+                        .order_by('-successful_sales_count').prefetch_related(active_discounts_prefetch).prefetch_related('images').all())
 
     return {'successful_sales': successful_sales}
 
@@ -74,7 +74,7 @@ def context_latest_products(request):
         to_attr = 'active_discount_list'
     )
 
-    latest_products = (Product.objects.filter(date_time_create__gte=one_month_ago).prefetch_related(active_discounts_prefetch))    
+    latest_products = (Product.objects.filter(date_time_create__gte=one_month_ago).prefetch_related(active_discounts_prefetch).prefetch_related('images').all())    
 
     return {'latest_products': latest_products}
 
