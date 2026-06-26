@@ -48,6 +48,9 @@ def payment_process_view(request):
     else:
         return HttpResponse('Error from zarinpal!')
 
+    # print("--- DEBUG ZARINPAL RESPONSE ---")
+    # print(res.text) # یا print(res.json())
+    # print("-------------------------------")
 
 def custom_success_page_view(request):
     return render(request, 'cart/cart_checkout_complete_buy.html')

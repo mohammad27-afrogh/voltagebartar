@@ -97,6 +97,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/usr/src/app/voltagebartar/media'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 SITE_ID = 1
 
@@ -142,6 +143,7 @@ TEMPLATES = [
                 'products.context_processors.context_processors_discount',
                 'products.context_processors.context_successful_sales',
                 'products.context_processors.context_latest_products',
+                'products.context_processors.context_brand_products',
                 'blogs.context_processors.context_processors_blog',
                 'pages.context_processors.context_slider_category_home',
             ],

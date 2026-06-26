@@ -77,7 +77,7 @@ def order_create_view(request):
                     'order_obj': order_obj,
                 })
             else:
-                request.session['order_id'] = order_obj.id
+                request.session['order_id'] = str(order_obj.id)
                 return redirect('payment:payment_process')
 
     else:
