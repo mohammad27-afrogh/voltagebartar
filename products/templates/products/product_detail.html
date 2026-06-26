@@ -130,7 +130,7 @@
                                                     <span>
                                                         {% trans 'Brand:' %}
                                                     </span>
-                                                    <a href="#" class="product-link product-tag-title">{{ product.brand.name }}</a>
+                                                    <a href="{% url 'products:brand_detail_by_slug' product.brand.slug %}" class="product-link product-tag-title">{{ product.brand.name }}</a>
                                                 {% endif %}
                                             </li>
                                         </ul>

@@ -79,6 +79,10 @@ class BrandAdmin(admin.ModelAdmin):
     list_display = [
         'name',
     ]
+    prepopulated_fields = {
+        'slug': ['name',]
+    }
+
     search_fields = ['name',]
 
 @admin.register(Comment)

@@ -1,0 +1,58 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load persian_translation_tags %}
+{% load humanize %}
+{% load jalali_tags %}
+
+
+{% block page_title %}
+    {{ brand.name }}
+{% endblock page_title %}
+
+
+{% block content %}
+
+    {% include 'partials/navbar.html' %}
+    <!-- single-brand--------------------------->
+    <main class="main-row mb-2 mt-2 d-block">
+        <div class="container-main">
+            <div class="d-block">
+                <div class="col-lg-9 col-md-8 col-xs-12 pr mt-3">
+                    <section class="blog-home">
+                        <article class="post-item">
+                            <div class="post-thumbnail">
+                                {% if brand.cover_brand %}
+                                    <img src="{{ brand.cover_brand.url }}"
+                                        alt="{{ brand.name }}">
+                                    </a>
+                                {% else %}
+                                    <img src="{% static 'img/products/no_product_image.jpg' %}"
+                                        alt="{{ brand.name }}">
+                                    </a>
+                                {% endif %}
+                            </div>
+                            <div class="title">
+                                <h1 class="title-tag">{{ brand.name }}</h1>
+                            </div>
+                            <div class="content-blog">
+                                {{ brand.description|safe }}
+                            </div>
+                        </article>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- single-brand--------------------------->
+
+
+    {% include 'partials/footer.html' %}
+
+{% endblock content %}
+
+
+{% block body_class %}
+    account_page
+{% endblock body_class %}

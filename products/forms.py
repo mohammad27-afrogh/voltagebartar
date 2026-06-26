@@ -62,6 +62,7 @@ class BrandForm(forms.ModelForm):
         model = Brand
         fields = [
             'name',
+            'slug',
             'cover_brand',
             'description',
         ]

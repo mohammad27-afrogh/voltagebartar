@@ -191,6 +191,7 @@ class Features(models.Model):
 
 class Brand(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name=_('Brand_name'))
+    slug = models.SlugField(_('slug'), unique=True, blank=True, null=False, allow_unicode=True)
     cover_brand = models.ImageField(_('cover brand'), upload_to='brand/cover_brand/', blank=True, null=True)
     description = RichTextField(blank=True, null=True, verbose_name=_('description'))
 

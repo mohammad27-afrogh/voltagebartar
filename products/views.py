@@ -155,6 +155,17 @@ def product_detail_view(request, product_slug):
     return render(request, 'products/product_detail.html', context)
 
 
+def brand_detail_view(request, brand_slug):
+
+    brand = get_object_or_404(Brand, slug=brand_slug)
+
+    context = {
+        'brand': brand,
+    }
+
+    return render(request, 'brands/brand_detail.html', context)
+
+
 def category_detail_view(request, category_slug):
     current_category = get_object_or_404(Category, slug=category_slug)
 

@@ -340,7 +340,7 @@
                         <div class="product-carousel owl-carousel owl-theme owl-rtl owl-loaded owl-drag">
                             {% for brand in brands %}
                                 <div class="item">
-                                    <a class="d-block hover-img-link">
+                                    <a href="{% url 'products:brand_detail_by_slug' brand.slug %}" class="d-block hover-img-link">
                                         {% if brand.cover_brand %}
                                             <img src="{{ brand.cover_brand.url }}" class="img-fluid img-brand"
                                                 alt="{{ brand.name }}">
