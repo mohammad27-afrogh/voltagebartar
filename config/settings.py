@@ -112,18 +112,18 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-if DEBUG:
-    INSTALLED_APPS += [
-        'debug_toolbar',
-    ]
+# if DEBUG:
+#     INSTALLED_APPS += [
+#         'debug_toolbar',
+#     ]
 
-    MIDDLEWARE += [
-        "debug_toolbar.middleware.DebugToolbarMiddleware",
-    ]
+#     MIDDLEWARE += [
+#         "debug_toolbar.middleware.DebugToolbarMiddleware",
+#     ]
 
-    INTERNAL_IPS = [
-        "127.0.0.1",
-    ]
+#     INTERNAL_IPS = [
+#         "127.0.0.1",
+#     ]
 
 ROOT_URLCONF = 'config.urls'
 
