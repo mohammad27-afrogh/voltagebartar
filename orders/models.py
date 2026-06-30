@@ -36,7 +36,7 @@ class Order(models.Model):
     province_address = models.ForeignKey(Province, on_delete=models.CASCADE, verbose_name=_('province'))
     city_address = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name=_('city'))
     exact_address = models.CharField(_('exact address'), max_length=700)
-    postal_code = models.IntegerField(_('postal code'), null=True, max_length=10)
+    postal_code = models.CharField(_('postal code'), max_length=10, null=True)
     email = models.EmailField(_('email'))
     order_notes = RichTextField(_('order notes'))
 

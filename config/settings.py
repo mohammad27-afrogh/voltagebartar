@@ -27,7 +27,7 @@ LOCALE_PATHS = [
 SECRET_KEY = 'DJANGO_SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = 'DEBUG'
 
 ALLOWED_HOSTS = [
     'www.voltagebartar.ir',

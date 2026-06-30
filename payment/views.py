@@ -29,7 +29,8 @@ def payment_process_view(request):
         'merchant_id': settings.ZARINPAL_MERCHANT_ID,
         'amount': rial_total_price,
         'description': f'#{order.id} : {order.user.first_name} {order.user.last_name}',
-        'callback_url': request.build_absolute_uri(reverse('payment:payment_callback')),
+        # 'callback_url': request.build_absolute_uri(reverse('payment:payment_callback')),
+        'callback_url': 'https://voltagebartar.ir' + reverse('payment:payment_callback'),
     }
 
     res = requests.post(
@@ -37,6 +38,10 @@ def payment_process_view(request):
         data=json.dumps(request_data), 
         headers=request_header
     )
+
+    # print("--- DEBUG ZARINPAL RESPONSE ---")
+    # print(res.text)
+    # print("-------------------------------")
 
     data = res.json()['data']
     authority = data['authority']
@@ -48,9 +53,6 @@ def payment_process_view(request):
     else:
         return HttpResponse('Error from zarinpal!')
 
-    # print("--- DEBUG ZARINPAL RESPONSE ---")
-    # print(res.text) # یا print(res.json())
-    # print("-------------------------------")
 
 def custom_success_page_view(request):
     return render(request, 'cart/cart_checkout_complete_buy.html')
