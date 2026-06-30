@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +25,7 @@ LOCALE_PATHS = [
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'DJANGO_SECRET_KEY'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEBUG'
@@ -35,9 +36,9 @@ ALLOWED_HOSTS = [
     'https://voltagebartar.liara.run',
     ]
 
-KAVENEGAR_API_KEY = 'KAVENEGAR_API_KEY'
-KAVENEGAR_SENDER = 'KAVENEGAR_SENDER'
-ADMIN_PHONE_NUMBER = 'ADMIN_PHONE_NUMBER'
+KAVENEGAR_API_KEY = os.getenv('KAVENEGAR_API_KEY')
+KAVENEGAR_SENDER = os.getenv('KAVENEGAR_SENDER')
+ADMIN_PHONE_NUMBER = os.getenv('ADMIN_PHONE_NUMBER')
 
 
 # Application definition
@@ -164,9 +165,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'voltagebartardb',
         'USER': 'root',
-        'PASSWORD': 'rSlCumG6QHsaWTJZ8mnsU2O5',
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
         'HOST': 'voltagebartardb',
-        'PORT': '5432',
+        'PORT': os.getenv('DATABASE_PORT'),
     }
 }
 
@@ -262,4 +263,4 @@ PHONENUMBER_DEFAULT_REGION = 'IR'
 
 ACCOUNT_PASSWORD_CHANGE_REDIRECT_URL = '/accounts/password/change/done/'
 
-ZARINPAL_MERCHANT_ID = 'DJANGO_ZARINPAL_MERCHANT_ID'
+ZARINPAL_MERCHANT_ID = os.getenv('DJANGO_ZARINPAL_MERCHANT_ID')
