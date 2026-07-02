@@ -162,38 +162,88 @@
                         </div>
                         <div class="col-lg-2 pl">
                             <div class="footer-safety-partner">
-                                <div class="widget widget-product card mb-0">
-                                    <div
-                                        class="product-carousel-symbol owl-carousel owl-theme owl-rtl owl-loaded owl-drag">
-                                        <div class="owl-stage-outer">
-                                            <div class="owl-stage"
-                                                style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 2234px;">
-{#                                                active picture alamat e namad#}
-                                                <div class="owl-item active"
-                                                    style="width: 300.75px; margin-left: 10px;">
-                                                    <div class="item">
-                                                        <a referrerpolicy='origin' 
-                                                            target='_blank' 
-                                                            href='https://trustseal.enamad.ir/?id=734659&Code=k6YzsqFC3OjsFFYwPbpogel01EwX5mKT'>
-                                                            <img 
-                                                                referrerpolicy='origin' 
-                                                                src='https://trustseal.enamad.ir/logo.aspx?id=734659&Code=k6YzsqFC3OjsFFYwPbpogel01EwX5mKT' 
-                                                                alt='' 
-                                                                style='cursor:pointer' 
-                                                                code='k6YzsqFC3OjsFFYwPbpogel01EwX5mKT'>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <style>#zarinpal{margin:auto} #zarinpal img {width: 80px;}</style>
-                                                <div id="zarinpal">
-                                                    <script src="https://www.zarinpal.com/webservice/TrustCode" type="text/javascript"></script>
-                                                </div>
+                                <div class="widget widget-product card mb-0 p-3">
+                                    <!-- ظرف اصلی برای قرارگیری کنار هم -->
+                                    <div class="trust-container">
+                                        
+                                        <!-- بخش اینماد -->
+                                        <div class="trust-item enamad">
+                                            <a referrerpolicy='origin' 
+                                            target='_blank' 
+                                            href='https://trustseal.enamad.ir/?id=734659&Code=k6YzsqFC3OjsFFYwPbpogel01EwX5mKT'>
+                                                <img 
+                                                    referrerpolicy='origin' 
+                                                    src='https://trustseal.enamad.ir/logo.aspx?id=734659&Code=k6YzsqFC3OjsFFYwPbpogel01EwX5mKT' 
+                                                    alt='اینماد' 
+                                                    class="trust-logo">
+                                            </a>
+                                        </div>
+
+                                        <!-- بخش زرین‌پال -->
+                                        <div class="trust-item zarinpal">
+                                            <div id="zarinpal">
+                                                <script src="https://www.zarinpal.com/webservice/TrustCode" type="text/javascript"></script>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <style>
+                            /* استایل ظرف اصلی */
+                            .trust-container {
+                                display: flex;
+                                align-items: center; /* تراز عمودی وسط */
+                                justify-content: center; /* تراز افقی وسط */
+                                gap: 20px; /* فاصله بین دو لوگو */
+                                direction: ltr; /* برای اینکه در کنار هم باشند حتی در سایت فارسی */
+                            }
+
+                            /* استایل هر آیتم */
+                            .trust-item {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                transition: transform 0.3s ease;
+                            }
+
+                            /* افکت هوور شیک */
+                            .trust-item:hover {
+                                transform: translateY(-3px);
+                            }
+
+                            /* اندازه لوگوی اینماد */
+                            .trust-logo {
+                                max-width: 80px; /* اندازه را می‌توانید تنظیم کنید */
+                                height: auto;
+                                cursor: pointer;
+                                display: block;
+                            }
+
+                            /* تنظیمات اختصاصی زرین‌پال */
+                            #zarinpal {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            }
+                            
+                            #zarinpal img {
+                                width: 80px !important; /* اندازه لوگو زرین پال */
+                                height: auto !important;
+                            }
+
+                            /* ریسپانسیو برای موبایل */
+                            @media (max-width: 576px) {
+                                .trust-container {
+                                    gap: 10px;
+                                }
+                                .trust-logo, #zarinpal img {
+                                    max-width: 65px; /* در موبایل کمی کوچکتر شوند */
+                                }
+                            }
+                        </style>
                         <div class="footer-copyright">
                             <div class="footer-copyright-text">
                                 <p>{% trans 'All content, photos, etc. belong to the voltage bartar shopping site.' %}</p>

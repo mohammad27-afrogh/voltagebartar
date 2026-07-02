@@ -15,8 +15,8 @@
     "mirror": false,
     "pythonVersion": "3.12",
     "timezone": "Iran/Tehran",
-    "collectStatic": false,
+    "collectStatic": true,
     "compileMessages": true,
-    "modifySettings": false
+    "modifySettings": true
   }
 }
